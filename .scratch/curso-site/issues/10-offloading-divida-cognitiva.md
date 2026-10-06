@@ -1,6 +1,6 @@
 # Cognitive offloading e dívida cognitiva: o que dizer ao aluno?
 Type: research
-Status: claimed
+Status: resolved
 Blocked by: —
 
 ## Question
@@ -10,3 +10,12 @@ O que a pesquisa (até out/2026) diz sobre *cognitive offloading* e *cognitive d
 ## Comments
 
 Research: research/10-offloading-divida-cognitiva.md
+
+## Answer
+
+Detalhe em research/10-offloading-divida-cognitiva.md.
+- Margaret = **Margaret-Anne Storey**, "How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive Debt" (09/02/2026, opinião; falando de equipes de software). Não misturar com o "cognitive debt" do estudo do MIT (individual).
+- Estudo do MIT ("Your Brain on ChatGPT"): preprint, n=54, criticado. Serve de gancho, não de prova.
+- Evidência mais forte: Bastani 2025 (PNAS, ~1.000 alunos). ChatGPT sem restrição levou a −17% na prova sem IA; IA que dá dicas evitou a perda. Risko & Gilbert 2016: delegar tarefa mental é normal e muitas vezes racional. Shaw & Nave 2026 (preprint pré-registrado): ~80% seguiram a IA errada (conferir o número no PDF).
+- Mensagem: **delegue a tarefa, não o julgamento** ("use e fique com o volante"), sem alarmismo. Hábitos: pense antes de perguntar · explique de volta · peça o contra-argumento · peça dica, não resposta, quando estiver aprendendo · anote por que decidiu.
+- Encaixe sugerido: bloco curto no E1; uma linha de checagem humana no "deu certo se…" de cada exercício; página na Consulta; no E4, escrever o "porquê" de cada rotina.
