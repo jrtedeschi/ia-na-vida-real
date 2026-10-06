@@ -1,0 +1,52 @@
+/* Mapeia os tokens IVR para as variáveis do Starlight. */
+:root {
+	--sl-font: var(--ivr-font-body);
+	--sl-font-mono: var(--ivr-font-mono);
+
+	--sl-color-accent-low: #4d2615;
+	--sl-color-accent: #ff6a33;
+	--sl-color-accent-high: #ffb596;
+	--sl-color-white: #edeee8;
+	--sl-color-gray-1: #d6d7d0;
+	--sl-color-gray-2: #a6a89f;
+	--sl-color-gray-3: #7c7e76;
+	--sl-color-gray-4: #4a4c45;
+	--sl-color-gray-5: #34362f;
+	--sl-color-gray-6: #24251f;
+	--sl-color-black: #121311;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #ffd6c4;
+	--sl-color-accent: #c23a08;
+	--sl-color-accent-high: #7a2404;
+	--sl-color-white: #121311;
+	--sl-color-gray-1: #24251f;
+	--sl-color-gray-2: #3a3c36;
+	--sl-color-gray-3: #50524c;
+	--sl-color-gray-4: #8a8c84;
+	--sl-color-gray-5: #c9cac3;
+	--sl-color-gray-6: #e0e1dc;
+	--sl-color-gray-7: #f2f2ee;
+	--sl-color-black: #edeeea;
+}
+
+body {
+	background-color: var(--ivr-bg);
+	background-image: radial-gradient(var(--ivr-dot) 1.6px, transparent 1.6px);
+	background-size: 22px 22px;
+}
+
+.sl-markdown-content :is(h1, h2, h3),
+h1#_top,
+.site-title {
+	font-family: var(--ivr-font-display);
+	font-weight: 900;
+	letter-spacing: -0.04em;
+}
+
+.hand {
+	font-family: var(--ivr-font-hand);
+	font-weight: 700;
+	color: var(--ivr-graphite-ink);
+}

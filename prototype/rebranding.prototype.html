@@ -1,0 +1,430 @@
+<title>Rebranding IA na Vida Real</title>
+<!-- PROTOTYPE — descartável. Ticket 02 "Rebranding: qual direção visual". 3 direções, troque por #a #b #c ou pelas setas. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600;800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;700;900&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root,:root[data-v="a"]{
+  --bg:#EEF2EF;--surface:#FFFFFF;--surface-2:#E2E9E4;--ink:#15201B;--ink-soft:#46554D;--line:#CBD6CF;
+  --accent:#E8930C;--accent-ink:#8A5300;--accent-2:#1F8A70;--term:#15201B;--term-ink:#D9F2E6;--hl:#FFE7B8;
+}
+:root[data-v="b"]{
+  --bg:#F6F8FC;--surface:#FFFFFF;--surface-2:#E9EEF8;--ink:#17244F;--ink-soft:#4A5680;--line:#D3DCEE;
+  --accent:#E0483E;--accent-ink:#B42B22;--accent-2:#2F5BD8;--grid:rgba(47,91,216,.09);--hl:#FFE76A;--note:#FFF2A8;
+}
+:root[data-v="c"]{
+  --bg:#EDEEEA;--surface:#F8F8F5;--surface-2:#E0E1DC;--ink:#121311;--ink-soft:#50524C;--line:#C9CAC3;
+  --accent:#FF5A1F;--accent-ink:#C23A08;--accent-2:#2B44FF;--hl:#FFD6C4;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]),:root[data-v="a"]:not([data-theme="light"]){color-scheme:dark;
+    --bg:#0F1613;--surface:#16201B;--surface-2:#1E2B25;--ink:#E3EEE8;--ink-soft:#9DB0A6;--line:#2A3A32;
+    --accent:#F5A524;--accent-ink:#FFC164;--accent-2:#3CC79F;--term:#0A0F0D;--term-ink:#C9F0DD;--hl:#4A3510}
+  :root[data-v="b"]:not([data-theme="light"]){color-scheme:dark;
+    --bg:#0E1430;--surface:#151C3D;--surface-2:#1C2550;--ink:#E6EBFA;--ink-soft:#A7B2D8;--line:#2A3566;
+    --accent:#FF6B60;--accent-ink:#FF8E86;--accent-2:#7F9CFF;--grid:rgba(127,156,255,.08);--hl:#5C4F10;--note:#3B3612}
+  :root[data-v="c"]:not([data-theme="light"]){color-scheme:dark;
+    --bg:#121311;--surface:#1A1B18;--surface-2:#24251F;--ink:#EDEEE8;--ink-soft:#A2A49B;--line:#33352E;
+    --accent:#FF6A33;--accent-ink:#FF8C5E;--accent-2:#7C8CFF;--hl:#4A2414}
+}
+:root[data-theme="dark"],:root[data-v="a"][data-theme="dark"]{color-scheme:dark;
+  --bg:#0F1613;--surface:#16201B;--surface-2:#1E2B25;--ink:#E3EEE8;--ink-soft:#9DB0A6;--line:#2A3A32;
+  --accent:#F5A524;--accent-ink:#FFC164;--accent-2:#3CC79F;--term:#0A0F0D;--term-ink:#C9F0DD;--hl:#4A3510}
+:root[data-v="b"][data-theme="dark"]{color-scheme:dark;
+  --bg:#0E1430;--surface:#151C3D;--surface-2:#1C2550;--ink:#E6EBFA;--ink-soft:#A7B2D8;--line:#2A3566;
+  --accent:#FF6B60;--accent-ink:#FF8E86;--accent-2:#7F9CFF;--grid:rgba(127,156,255,.08);--hl:#5C4F10;--note:#3B3612}
+:root[data-v="c"][data-theme="dark"]{color-scheme:dark;
+  --bg:#121311;--surface:#1A1B18;--surface-2:#24251F;--ink:#EDEEE8;--ink-soft:#A2A49B;--line:#33352E;
+  --accent:#FF6A33;--accent-ink:#FF8C5E;--accent-2:#7C8CFF;--hl:#4A2414}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);padding-inline:20px;padding-block:28px 120px;font:400 17px/1.6 system-ui,sans-serif}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin-inline:auto;display:grid;gap:48px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;font:500 13px/1.4 ui-monospace,Menlo,monospace;color:var(--ink-soft)}
+.meta b{color:var(--ink)}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw span{display:inline-flex;align-items:center;gap:8px;padding:6px 10px 6px 6px;border-radius:8px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font:500 12px/1 ui-monospace,Menlo,monospace}
+.sw i{width:22px;height:22px;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.slide{aspect-ratio:16/9;max-width:100%;width:100%;overflow:hidden;position:relative}
+.label{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.copy{cursor:pointer;border:0;font:inherit}
+
+/* ============ A — TERMINAL AMIGÁVEL ============ */
+.va{font-family:"Figtree",system-ui,sans-serif}
+.va .mono{font-family:"Martian Mono",ui-monospace,monospace}
+.va-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.va-logo{display:inline-flex;align-items:center;gap:10px;font:800 17px/1 "Martian Mono",monospace;letter-spacing:-.04em}
+.va-logo .k{color:var(--accent-2)}
+.va-logo .cur{width:.55em;height:1.05em;background:var(--accent);display:inline-block;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.va-nav{display:flex;gap:6px;flex-wrap:wrap}
+.va-nav a{font:500 13px/1 "Martian Mono",monospace;padding:9px 12px;border-radius:10px;color:var(--ink-soft);text-decoration:none}
+.va-nav a[aria-current]{background:var(--ink);color:var(--bg)}
+.va-hero{display:grid;gap:28px;align-items:center}
+@media(min-width:900px){.va-hero{grid-template-columns:1fr 1fr}}
+.va-hero h1{font:800 clamp(2.3rem,5.4vw,4rem)/1 "Martian Mono",monospace;letter-spacing:-.06em}
+.va-hero h1 em{font-style:normal;color:var(--accent-ink)}
+.va-hero p{margin-top:16px;color:var(--ink-soft);max-width:44ch;font-size:18px}
+.va-term{border-radius:18px;background:var(--term);color:var(--term-ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.45);overflow:hidden}
+.va-term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font:500 11.5px/1 "Martian Mono",monospace;color:#7FA393}
+.va-term-bar i{width:10px;height:10px;border-radius:50%;background:#2E3F37}
+.va-term-bar i:first-child{background:var(--accent)}
+.va-term-bar span{margin-left:auto}
+.va-term-body{padding:18px 18px 22px;display:grid;gap:12px;font:400 14px/1.6 "Martian Mono",monospace}
+.va-term-body .you::before{content:"você › ";color:var(--accent)}
+.va-term-body .ia::before{content:"ia   › ";color:#3CC79F}
+.va-tok{display:flex;flex-wrap:wrap;gap:4px}
+.va-tok span{padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.07)}
+.va-tok span:nth-child(3n+1){background:rgba(245,165,36,.22)}
+.va-tok span:nth-child(3n+2){background:rgba(60,199,159,.2)}
+.va-study{display:grid;gap:32px}
+@media(min-width:900px){.va-study{grid-template-columns:220px 1fr}}
+.va-toc{display:grid;gap:4px;align-content:start;font:500 13px/1.3 "Martian Mono",monospace}
+.va-toc li{padding:9px 12px;border-radius:10px;color:var(--ink-soft)}
+.va-toc li.on{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.va-toc li.on::before{content:"▸ ";color:var(--accent)}
+.va-article{display:grid;gap:18px;max-width:66ch}
+.va-article h2{font:800 clamp(1.6rem,3vw,2.2rem)/1.1 "Martian Mono",monospace;letter-spacing:-.05em}
+.va-article p{color:var(--ink-soft)}
+.va-article mark{background:var(--hl);color:inherit;padding:0 .2em;border-radius:3px}
+.va-ex{border-radius:18px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.va-ex-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px dashed var(--line)}
+.va-ex-head b{font:600 15px/1.3 "Martian Mono",monospace;letter-spacing:-.03em}
+.va-chip{font:500 11.5px/1 "Martian Mono",monospace;padding:6px 9px;border-radius:999px;background:var(--surface-2)}
+.va-chip.free{background:color-mix(in srgb,var(--accent-2) 18%,transparent);color:var(--accent-2)}
+.va-ex-body{padding:20px;display:grid;gap:16px}
+.va-prompt{position:relative;border-radius:12px;background:var(--term);color:var(--term-ink);padding:16px 16px 16px 18px;font:400 13.5px/1.7 "Martian Mono",monospace}
+.va-prompt b{color:var(--accent);font-weight:600}
+.va-prompt .copy{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);color:var(--term-ink);padding:6px 10px;border-radius:8px;font:500 11px/1 "Martian Mono",monospace}
+.va-check{display:grid;gap:8px}
+.va-check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.va-check input{accent-color:var(--accent-2);width:18px;height:18px;margin-top:3px}
+.va-slide{border-radius:18px;background:var(--term);color:var(--term-ink);padding:clamp(20px,5%,56px);display:grid;align-content:space-between}
+.va-slide .label{color:#7FA393}
+.va-slide h3{font:800 clamp(1.4rem,4.4vw,3.4rem)/1 "Martian Mono",monospace;letter-spacing:-.06em}
+.va-slide h3 em{font-style:normal;color:var(--accent)}
+.va-slide .va-tok{font:400 clamp(11px,1.6vw,17px)/1.6 "Martian Mono",monospace}
+
+/* ============ B — CADERNO DE LABORATÓRIO ============ */
+.vb{font-family:"Familjen Grotesk",system-ui,sans-serif}
+.vb .hand{font-family:"Caveat",cursive}
+.vb .plex{font-family:"IBM Plex Mono",ui-monospace,monospace}
+body:has(.vb:not([hidden])){background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.vb-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.vb-logo{font:700 22px/1 "Familjen Grotesk",sans-serif;letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
+.vb-logo svg{width:30px;height:30px}
+.vb-logo .hand{font-size:24px;color:var(--accent-ink);font-weight:700;transform:rotate(-4deg);display:inline-block}
+.vb-top nav{display:flex;gap:18px;flex-wrap:wrap;font:500 13px/1 "IBM Plex Mono",monospace}
+.vb-top nav a{color:var(--ink-soft);text-decoration:none}
+.vb-top nav a[aria-current]{color:var(--ink);text-decoration:underline wavy var(--accent) 1.5px;text-underline-offset:6px}
+.vb-hero{display:grid;gap:32px}
+@media(min-width:900px){.vb-hero{grid-template-columns:1.1fr .9fr;align-items:end}}
+.vb-hero h1{font:700 clamp(2.6rem,6.4vw,4.8rem)/.98 "Familjen Grotesk",sans-serif;letter-spacing:-.045em}
+.vb-hero h1 .hl{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 92%,transparent 92%)}
+.vb-hero p{margin-top:16px;color:var(--ink-soft);max-width:44ch;font-size:18px}
+.vb-ann{position:relative;padding:22px;background:var(--surface);box-shadow:0 1px 0 var(--line),0 18px 36px -24px rgba(23,36,79,.4);border-radius:4px}
+.vb-ann .hand{font-size:22px;color:var(--accent-ink);line-height:1.1}
+.vb-diagram{display:flex;flex-wrap:wrap;gap:6px;margin-block:14px 6px;font:500 18px/1 "IBM Plex Mono",monospace}
+.vb-diagram span{padding:8px 10px;border:1.5px solid var(--ink);border-radius:3px;background:var(--surface)}
+.vb-diagram span:nth-child(even){background:var(--surface-2)}
+.vb-note{position:absolute;right:-10px;top:-22px;background:var(--note);padding:10px 14px;transform:rotate(3deg);box-shadow:0 8px 16px -10px rgba(0,0,0,.35);font:700 19px/1.1 "Caveat",cursive;color:var(--ink);max-width:180px}
+.vb-study{display:grid;grid-template-columns:44px 1fr;gap:0 18px}
+@media(min-width:900px){.vb-study{grid-template-columns:90px minmax(0,66ch) 1fr}}
+.vb-margin{border-right:2px solid color-mix(in srgb,var(--accent) 55%,transparent);font:500 12px/1.3 "IBM Plex Mono",monospace;color:var(--ink-soft);padding-top:6px;text-align:right;padding-right:10px}
+.vb-article{display:grid;gap:16px}
+.vb-article h2{font:700 clamp(1.7rem,3.4vw,2.4rem)/1.05 "Familjen Grotesk",sans-serif;letter-spacing:-.035em}
+.vb-article p{color:var(--ink-soft)}
+.vb-article .hand{font-size:23px;color:var(--accent-2);line-height:1.15}
+.vb-side{display:none}
+@media(min-width:900px){.vb-side{display:block;padding-left:12px}}
+.vb-side .hand{font-size:21px;color:var(--accent-ink);transform:rotate(-2deg);display:block;line-height:1.15}
+.vb-ex{background:var(--surface);border:2px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink)}
+.vb-ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:14px 18px;border-bottom:2px solid var(--ink);background:var(--surface-2)}
+.vb-ex-head b{font:700 18px/1.2 "Familjen Grotesk",sans-serif}
+.vb-ex-head span{font:500 12px/1 "IBM Plex Mono",monospace}
+.vb-ex-body{padding:18px;display:grid;gap:14px}
+.vb-prompt{display:grid;gap:6px;font:400 15px/1.5 "IBM Plex Mono",monospace}
+.vb-prompt div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.vb-prompt div b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink);font:700 20px/1 "Caveat",cursive}
+.vb-check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding-block:4px}
+.vb-check input{accent-color:var(--accent);width:18px;height:18px;margin-top:3px}
+.vb-ex-body .copy{justify-self:start;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:3px;font:500 13px/1 "IBM Plex Mono",monospace}
+.vb-slide{background:var(--surface);border:2px solid var(--ink);border-radius:4px;padding:clamp(18px,5%,52px);display:grid;align-content:space-between;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px}
+.vb-slide h3{font:700 clamp(1.5rem,4.6vw,3.6rem)/1 "Familjen Grotesk",sans-serif;letter-spacing:-.045em}
+.vb-slide .hand{font-size:clamp(18px,3vw,34px);color:var(--accent-ink)}
+.vb-slide .vb-diagram{font-size:clamp(12px,2vw,22px)}
+
+/* ============ C — EDITORIAL TECH ============ */
+.vc{font-family:"Instrument Sans",system-ui,sans-serif}
+.vc .disp{font-family:"Schibsted Grotesk",sans-serif}
+.vc-top{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.vc-logo{font:900 15px/1 "Schibsted Grotesk",sans-serif;text-transform:uppercase;letter-spacing:.02em;display:flex;gap:8px;align-items:center}
+.vc-logo i{width:14px;height:14px;background:var(--accent);display:inline-block;border-radius:50%}
+.vc-top nav{display:flex;gap:2px}
+.vc-top nav a{font:600 13px/1 "Instrument Sans",sans-serif;padding:9px 13px;text-decoration:none;color:var(--ink-soft);border-radius:999px}
+.vc-top nav a[aria-current]{background:var(--accent);color:#fff}
+.vc-hero{display:grid;gap:10px;grid-template-columns:repeat(12,1fr);align-items:end}
+.vc-num{grid-column:1/-1;font:900 clamp(7rem,26vw,19rem)/.78 "Schibsted Grotesk",sans-serif;letter-spacing:-.07em;color:var(--accent)}
+.vc-hero h1{grid-column:1/-1;font:700 clamp(2.2rem,5.6vw,4.4rem)/.95 "Schibsted Grotesk",sans-serif;letter-spacing:-.05em}
+.vc-hero p{grid-column:1/-1;color:var(--ink-soft);font-size:18px;max-width:44ch}
+@media(min-width:900px){.vc-num{grid-column:1/6}.vc-hero h1{grid-column:6/13}.vc-hero p{grid-column:6/11;margin-top:12px}}
+.vc-band{display:grid;grid-template-columns:repeat(2,1fr);border-block:2px solid var(--ink)}
+@media(min-width:700px){.vc-band{grid-template-columns:repeat(4,1fr)}}
+.vc-band div{padding:16px 14px 18px;display:grid;gap:6px;border-right:1px solid var(--line)}
+.vc-band div:last-child{border-right:0}
+.vc-band b{font:900 clamp(1.8rem,4vw,2.6rem)/1 "Schibsted Grotesk",sans-serif;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.vc-band span{font-size:14px;color:var(--ink-soft)}
+.vc-study{display:grid;gap:24px}
+@media(min-width:900px){.vc-study{grid-template-columns:repeat(12,1fr)}.vc-study .k{grid-column:1/4}.vc-study .body{grid-column:4/11}}
+.vc-study .k{font:600 13px/1.4 "Instrument Sans",sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-ink)}
+.vc-study .body{display:grid;gap:18px}
+.vc-study h2{font:700 clamp(1.8rem,3.6vw,2.8rem)/1 "Schibsted Grotesk",sans-serif;letter-spacing:-.045em}
+.vc-study p{color:var(--ink-soft);max-width:62ch}
+.vc-study p.lead{font-size:21px;color:var(--ink);line-height:1.45}
+.vc-pull{border-left:6px solid var(--accent);padding:4px 0 4px 18px;font:700 clamp(1.3rem,2.4vw,1.7rem)/1.2 "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.vc-ex{display:grid;gap:0;background:var(--ink);color:var(--bg);border-radius:28px;overflow:hidden}
+@media(min-width:900px){.vc-ex{grid-template-columns:.85fr 1.15fr}}
+.vc-ex-l{padding:28px;display:grid;gap:14px;align-content:start}
+.vc-ex-l .tag{justify-self:start;font:700 12px/1 "Instrument Sans",sans-serif;text-transform:uppercase;letter-spacing:.1em;background:var(--accent);color:#fff;padding:7px 11px;border-radius:999px}
+.vc-ex-l h3{font:700 clamp(1.6rem,3vw,2.2rem)/1 "Schibsted Grotesk",sans-serif;letter-spacing:-.04em}
+.vc-ex-l p{opacity:.75}
+.vc-ex-r{background:var(--surface);color:var(--ink);padding:28px;display:grid;gap:16px;border-radius:28px 0 0 28px}
+@media(max-width:899px){.vc-ex-r{border-radius:28px 28px 0 0}}
+.vc-prompt{font:500 15px/1.6 "Instrument Sans",sans-serif;display:grid;gap:4px}
+.vc-prompt span{display:block}
+.vc-prompt b{font:700 11px/1 "Instrument Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-right:8px}
+.vc-check{display:grid;gap:0;border-top:1px solid var(--line)}
+.vc-check label{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer;font-weight:500}
+.vc-check input{accent-color:var(--accent);width:20px;height:20px}
+.vc-ex-r .copy{justify-self:start;background:var(--accent);color:#fff;padding:12px 18px;border-radius:999px;font:700 13px/1 "Instrument Sans",sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.vc-slide{background:var(--accent);color:#fff;border-radius:28px;padding:clamp(18px,5%,56px);display:grid;grid-template-columns:1fr 1fr;align-content:space-between}
+.vc-slide .big{grid-column:1/-1;font:900 clamp(2rem,9vw,7.5rem)/.85 "Schibsted Grotesk",sans-serif;letter-spacing:-.065em}
+.vc-slide .label{color:rgba(255,255,255,.8)}
+.vc-slide p{grid-column:1/-1;font:500 clamp(13px,2vw,22px)/1.3 "Instrument Sans",sans-serif;max-width:30ch;align-self:end}
+
+/* switcher (não faz parte do design avaliado) */
+.proto-bar{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:#111;color:#fff;box-shadow:0 12px 32px rgba(0,0,0,.4);font:500 13px/1 ui-monospace,Menlo,monospace;max-width:calc(100% - 32px)}
+.proto-bar button{width:38px;height:38px;border-radius:50%;border:0;background:#2a2a2a;color:#fff;font-size:17px;cursor:pointer}
+.proto-bar button:hover{background:#444}
+.proto-bar span{padding-inline:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<!-- ================= A ================= -->
+<main class="wrap va" id="v-a" data-name="A — Terminal amigável">
+  <div class="meta"><b>A · Terminal amigável</b><span>Martian Mono (títulos) + Figtree (texto)</span><span>Grafite esverdeado, âmbar de cursor, verde-água</span></div>
+  <div class="sw"><span><i style="background:#EEF2EF"></i>#EEF2EF fundo</span><span><i style="background:#15201B"></i>#15201B tinta/terminal</span><span><i style="background:#E8930C"></i>#E8930C cursor</span><span><i style="background:#1F8A70"></i>#1F8A70 IA</span><span><i style="background:#FFE7B8"></i>#FFE7B8 marca-texto</span></div>
+
+  <header class="va-top">
+    <span class="va-logo"><span class="k">ia</span>na_vida_real<span class="cur" aria-hidden="true"></span></span>
+    <nav class="va-nav" aria-label="Seções"><a href="#a" aria-current="page">encontro_01</a><a href="#a">consulta</a><a href="#a">exercícios</a><a href="#a">slides</a></nav>
+  </header>
+
+  <section class="va-hero">
+    <div>
+      <p class="label">Encontro 01 · terça, 20/10</p>
+      <h1 style="margin-top:14px">Como a IA <em>pensa</em> (e por que isso muda seu pedido)</h1>
+      <p>Tokens, custo, modelos e raciocínio, explicados com exemplos da sua rotina. No fim, você escreve seu primeiro pedido em 5 partes.</p>
+    </div>
+    <div class="va-term" aria-label="Exemplo de conversa">
+      <div class="va-term-bar"><i></i><i></i><i></i><span>conversa.txt</span></div>
+      <div class="va-term-body">
+        <p class="you">Quantos pedaços tem a frase abaixo?</p>
+        <div class="va-tok"><span>Organ</span><span>ize</span><span> minha</span><span> sem</span><span>ana</span><span> com</span><span> 3</span><span> prior</span><span>idades</span></div>
+        <p class="ia">9 tokens. É assim que eu leio: em pedaços, não em palavras.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="va-study">
+    <ol class="va-toc"><li>1. O que é um modelo</li><li class="on">2. Tokens</li><li>3. Custo e limites</li><li>4. Modelos diferentes</li><li>5. Raciocínio</li><li>6. O método C-O-R-R-F</li></ol>
+    <article class="va-article">
+      <h2>Tokens: a IA lê em pedaços</h2>
+      <p>Um modelo de linguagem não enxerga letras nem palavras inteiras. Ele quebra o texto em <mark>tokens</mark>, pedaços de mais ou menos 3 a 4 letras em português. "Semana" pode virar dois pedaços: "sem" e "ana".</p>
+      <p>Por que isso importa para você? Porque o limite de uma conversa e o preço dos planos pagos são contados em tokens. Uma conversa muito longa faz a IA "esquecer" o começo.</p>
+      <div class="va-ex">
+        <div class="va-ex-head"><b>exercício_01.organizar_semana</b><span style="display:flex;gap:6px"><span class="va-chip free">grátis · qualquer IA</span><span class="va-chip">10 min</span></span></div>
+        <div class="va-ex-body">
+          <div class="va-prompt"><button class="copy" type="button">copiar</button><b>Contexto:</b> trabalho em equipe pequena, muitas reuniões.<br><b>Objetivo:</b> não deixar nada importante para sexta.<br><b>Referências:</b> [cole sua lista de tarefas]<br><b>Restrições:</b> máx. 2h livres por dia, nada depois das 18h.<br><b>Formato:</b> uma tabela por dia, 3 prioridades cada.</div>
+          <p class="label">Deu certo se…</p>
+          <div class="va-check">
+            <label><input type="checkbox" id="a1" checked> A resposta tem uma tabela para cada dia útil</label>
+            <label><input type="checkbox" id="a2"> Nenhum dia passa de 2h de tarefas</label>
+            <label><input type="checkbox" id="a3"> As tarefas com prazo aparecem antes de sexta</label>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div>
+    <p class="label" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide va-slide">
+      <span class="label">01 / tokens</span>
+      <h3>A IA lê em <em>pedaços</em>,<br>não em palavras.</h3>
+      <div class="va-tok"><span>Organ</span><span>ize</span><span> minha</span><span> sem</span><span>ana</span><span> com</span><span> 3</span><span> prior</span><span>idades</span></div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= B ================= -->
+<main class="wrap vb" id="v-b" data-name="B — Caderno de laboratório" hidden>
+  <div class="meta"><b>B · Caderno de laboratório</b><span>Familjen Grotesk + Caveat (anotações) + IBM Plex Mono</span><span>Papel quadriculado, caneta azul, marca-texto, caneta vermelha</span></div>
+  <div class="sw"><span><i style="background:#F6F8FC"></i>#F6F8FC papel</span><span><i style="background:#17244F"></i>#17244F caneta azul</span><span><i style="background:#E0483E"></i>#E0483E caneta vermelha</span><span><i style="background:#2F5BD8"></i>#2F5BD8 grade</span><span><i style="background:#FFE76A"></i>#FFE76A marca-texto</span></div>
+
+  <header class="vb-top">
+    <span class="vb-logo"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="3" width="24" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20l4-6 4 4 5-8" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>IA na Vida Real <span class="hand">caderno</span></span>
+    <nav aria-label="Seções"><a href="#b" aria-current="page">Encontro 1</a><a href="#b">Consulta</a><a href="#b">Exercícios</a><a href="#b">Slides</a></nav>
+  </header>
+
+  <section class="vb-hero">
+    <div>
+      <p class="label plex">Encontro 01 · terça, 20/10 · 1h30</p>
+      <h1 style="margin-top:14px">Como a IA funciona, <span class="hl">desenhado à mão</span>.</h1>
+      <p>Tokens, custo, modelos e raciocínio, explicados como um experimento no caderno. Você observa, testa e anota.</p>
+    </div>
+    <div class="vb-ann">
+      <span class="vb-note">9 pedaços para 5 palavras!</span>
+      <p class="hand">Observação nº 1: a IA corta o texto assim →</p>
+      <div class="vb-diagram"><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span><span>com</span><span>3</span><span>prior</span><span>idades</span></div>
+      <p class="plex" style="font-size:13px;color:var(--ink-soft)">cada caixa = 1 token</p>
+    </div>
+  </section>
+
+  <section class="vb-study">
+    <div class="vb-margin">pág. 2<br>tokens</div>
+    <article class="vb-article">
+      <h2>Tokens: a IA lê em pedaços</h2>
+      <p>Um modelo de linguagem não enxerga letras nem palavras inteiras. Ele quebra o texto em tokens, pedaços de mais ou menos 3 a 4 letras em português.</p>
+      <p class="hand">→ conversa longa demais = a IA esquece o começo</p>
+      <p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Por isso vale começar uma conversa nova para cada assunto.</p>
+      <div class="vb-ex">
+        <div class="vb-ex-head"><b>Experimento 1 · Organize sua semana</b><span>grátis · qualquer IA · 10 min</span></div>
+        <div class="vb-ex-body">
+          <div class="vb-prompt">
+            <div><b>C</b><span>Trabalho em equipe pequena, muitas reuniões.</span></div>
+            <div><b>O</b><span>Não deixar nada importante para sexta.</span></div>
+            <div><b>R</b><span>[cole sua lista de tarefas]</span></div>
+            <div><b>R</b><span>Máx. 2h livres por dia, nada depois das 18h.</span></div>
+            <div><b>F</b><span>Uma tabela por dia, 3 prioridades cada.</span></div>
+          </div>
+          <button class="copy" type="button">Copiar pedido</button>
+          <p class="label plex">Deu certo se…</p>
+          <div class="vb-check">
+            <label><input type="checkbox" id="b1" checked> A resposta tem uma tabela para cada dia útil</label>
+            <label><input type="checkbox" id="b2"> Nenhum dia passa de 2h de tarefas</label>
+            <label><input type="checkbox" id="b3"> As tarefas com prazo aparecem antes de sexta</label>
+          </div>
+        </div>
+      </div>
+    </article>
+    <aside class="vb-side"><span class="hand">dica: compare com só "organize minha semana" e anote a diferença</span></aside>
+  </section>
+
+  <div>
+    <p class="label plex" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide vb-slide">
+      <span class="label plex">Observação nº 1</span>
+      <h3>A IA lê em pedaços.</h3>
+      <div><div class="vb-diagram"><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span></div><span class="hand">5 palavras → 9 tokens</span></div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= C ================= -->
+<main class="wrap vc" id="v-c" data-name="C — Editorial tech" hidden>
+  <div class="meta"><b>C · Editorial tech</b><span>Schibsted Grotesk Black (títulos) + Instrument Sans (texto)</span><span>Concreto frio, laranja sinal, azul elétrico de apoio</span></div>
+  <div class="sw"><span><i style="background:#EDEEEA"></i>#EDEEEA concreto</span><span><i style="background:#121311"></i>#121311 tinta</span><span><i style="background:#FF5A1F"></i>#FF5A1F laranja sinal</span><span><i style="background:#2B44FF"></i>#2B44FF elétrico</span><span><i style="background:#F8F8F5"></i>#F8F8F5 papel</span></div>
+
+  <header class="vc-top">
+    <span class="vc-logo"><i aria-hidden="true"></i>IA na Vida Real</span>
+    <nav aria-label="Seções"><a href="#c" aria-current="page">Encontro 1</a><a href="#c">Consulta</a><a href="#c">Slides</a></nav>
+  </header>
+
+  <section class="vc-hero">
+    <span class="vc-num" aria-hidden="true">01</span>
+    <h1>Como a IA funciona por dentro.</h1>
+    <p>Tokens, custo, modelos e raciocínio. Entenda o que acontece quando você aperta enviar, e escreva pedidos melhores.</p>
+  </section>
+
+  <div class="vc-band">
+    <div><b>1h30</b><span>ao vivo, terça 20/10</span></div>
+    <div><b>5</b><span>conceitos</span></div>
+    <div><b>4</b><span>exercícios práticos</span></div>
+    <div><b>R$ 0</b><span>dá para fazer no grátis</span></div>
+  </div>
+
+  <section class="vc-study">
+    <p class="k">Parte 2 de 6 · Tokens</p>
+    <div class="body">
+      <h2>A IA lê em pedaços, não em palavras.</h2>
+      <p class="lead">Um modelo de linguagem quebra o texto em tokens: pedaços de mais ou menos 3 a 4 letras em português.</p>
+      <p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Uma conversa longa demais faz a IA perder o começo de vista. Por isso vale começar uma conversa nova para cada assunto.</p>
+      <p class="vc-pull">"Organize minha semana com 3 prioridades": 5 palavras, 9 tokens.</p>
+    </div>
+  </section>
+
+  <section class="vc-ex">
+    <div class="vc-ex-l">
+      <span class="tag">Exercício 1 · 10 min</span>
+      <h3>Organize sua semana em 5 partes.</h3>
+      <p>Funciona no plano grátis de qualquer IA. Depois compare com o pedido curto "organize minha semana".</p>
+    </div>
+    <div class="vc-ex-r">
+      <div class="vc-prompt">
+        <span><b>Contexto</b>Trabalho em equipe pequena, muitas reuniões.</span>
+        <span><b>Objetivo</b>Não deixar nada importante para sexta.</span>
+        <span><b>Referências</b>[cole sua lista de tarefas]</span>
+        <span><b>Restrições</b>Máx. 2h livres por dia, nada depois das 18h.</span>
+        <span><b>Formato</b>Uma tabela por dia, 3 prioridades cada.</span>
+      </div>
+      <button class="copy" type="button">Copiar pedido</button>
+      <div class="vc-check">
+        <label><input type="checkbox" id="c1" checked> Tem uma tabela para cada dia útil</label>
+        <label><input type="checkbox" id="c2"> Nenhum dia passa de 2h de tarefas</label>
+        <label><input type="checkbox" id="c3"> Tarefas com prazo vêm antes de sexta</label>
+      </div>
+    </div>
+  </section>
+
+  <div>
+    <p class="label" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide vc-slide">
+      <span class="label">01 · Tokens</span><span class="label" style="text-align:right">IA na Vida Real</span>
+      <span class="big">5 palavras.<br>9 tokens.</span>
+      <p>A IA lê em pedaços. É assim que ela conta limite e preço.</p>
+    </div>
+  </div>
+</main>
+
+<div class="proto-bar" role="group" aria-label="Trocar direção visual (protótipo)">
+  <button type="button" id="prev" aria-label="Direção anterior">←</button>
+  <span id="cur">A — Terminal amigável</span>
+  <button type="button" id="next" aria-label="Próxima direção">→</button>
+</div>
+
+<script>
+(function(){
+  var keys=['a','b','c'];
+  function show(k){
+    if(keys.indexOf(k)<0)k='a';
+    keys.forEach(function(x){document.getElementById('v-'+x).hidden=x!==k});
+    document.documentElement.dataset.v=k;
+    document.getElementById('cur').textContent=document.getElementById('v-'+k).dataset.name;
+    if(location.hash!=='#'+k)history.replaceState(null,'','#'+k);
+  }
+  function step(d){var i=keys.indexOf(document.documentElement.dataset.v||'a');show(keys[(i+d+keys.length)%keys.length]);window.scrollTo(0,0)}
+  document.getElementById('prev').onclick=function(){step(-1)};
+  document.getElementById('next').onclick=function(){step(1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target;if(t.closest&&t.closest('input,textarea,[contenteditable]'))return;
+    if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);
+  });
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  document.querySelectorAll('.copy').forEach(function(b){b.onclick=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1400)}});
+  show(location.hash.slice(1)||'a');
+})();
+</script>

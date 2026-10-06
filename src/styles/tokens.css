@@ -1,0 +1,34 @@
+/* Design tokens — fonte única. Direção "Rascunho técnico" + grafite (ticket 02). */
+:root {
+	--ivr-font-display: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+	--ivr-font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+	--ivr-font-hand: 'Kalam', 'Comic Sans MS', cursive;
+	--ivr-font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+	/* Starlight: :root é o tema escuro */
+	--ivr-bg: #121311;
+	--ivr-paper: #1b1c19;
+	--ivr-ink: #edeee8;
+	--ivr-ink-soft: #a6a89f;
+	--ivr-line: #34362f;
+	--ivr-orange: #ff6a33;
+	--ivr-orange-ink: #ff8c5e;
+	--ivr-graphite: #a9aca2;
+	--ivr-graphite-ink: #c4c7bd;
+	--ivr-dot: rgba(237, 238, 232, 0.1);
+	--ivr-hl: #4d2615;
+}
+
+:root[data-theme='light'] {
+	--ivr-bg: #edeeea;
+	--ivr-paper: #f8f8f5;
+	--ivr-ink: #121311;
+	--ivr-ink-soft: #50524c;
+	--ivr-line: #c9cac3;
+	--ivr-orange: #ff5a1f;
+	--ivr-orange-ink: #c23a08;
+	--ivr-graphite: #5b5f57;
+	--ivr-graphite-ink: #4a4d46;
+	--ivr-dot: rgba(18, 19, 17, 0.13);
+	--ivr-hl: #ffd6c4;
+}

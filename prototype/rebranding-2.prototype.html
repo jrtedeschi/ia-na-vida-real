@@ -1,0 +1,496 @@
+<title>Rebranding IA na Vida Real · Rodada 2</title>
+<!-- PROTOTYPE — descartável. Ticket 02, rodada 2: estilo do caderno (B) + cores do editorial (C). 3 variantes: #d #e #f -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;900&family=Instrument+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Gochi+Hand&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EDEEEA;--paper:#F8F8F5;--ink:#121311;--ink-soft:#50524C;--line:#C9CAC3;
+  --orange:#FF5A1F;--orange-ink:#C23A08;--blue:#2B44FF;--blue-ink:#2234D6;
+  --grid:rgba(43,68,255,.10);--hl:#FFD6C4;--note:#FFC2A1;--tape:rgba(43,68,255,.22);--on-orange:#121311;
+  --f-disp:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#121311;--paper:#1B1C19;--ink:#EDEEE8;--ink-soft:#A6A89F;--line:#34362F;
+  --orange:#FF6A33;--orange-ink:#FF8C5E;--blue:#7C8CFF;--blue-ink:#A3AEFF;
+  --grid:rgba(124,140,255,.09);--hl:#4D2615;--note:#5C2C16;--tape:rgba(124,140,255,.28);--on-orange:#121311}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#121311;--paper:#1B1C19;--ink:#EDEEE8;--ink-soft:#A6A89F;--line:#34362F;
+  --orange:#FF6A33;--orange-ink:#FF8C5E;--blue:#7C8CFF;--blue-ink:#A3AEFF;
+  --grid:rgba(124,140,255,.09);--hl:#4D2615;--note:#5C2C16;--tape:rgba(124,140,255,.28);--on-orange:#121311}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);padding-inline:20px;padding-block:28px 120px;font:400 17px/1.6 var(--f-body)}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1120px;margin-inline:auto;display:grid;gap:52px}
+.label{font:500 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.slide{aspect-ratio:16/9;width:100%;max-width:100%;overflow:hidden;position:relative}
+.copy{cursor:pointer;border:0;font:inherit}
+.chk{display:grid;gap:4px}
+.chk label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding-block:4px}
+.chk input{accent-color:var(--orange);width:18px;height:18px;margin-top:4px;flex:none}
+
+/* ---------- Ficha de marca (comum, pelo /brand) ---------- */
+.sheet{display:grid;gap:18px;padding:22px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+.sheet-top{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:baseline}
+.sheet-top b{font:700 20px/1.2 var(--f-disp);letter-spacing:-.02em}
+.sheet-top span{color:var(--ink-soft);font-size:15px}
+.sheet-grid{display:grid;gap:18px}
+@media(min-width:900px){.sheet-grid{grid-template-columns:1.1fr 1fr 1fr}}
+.sheet h4{margin:0 0 10px;font:500 11.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.pal{display:grid;gap:6px}
+.pal div{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.pal i{width:28px;height:28px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.pal small{font:500 12px/1 var(--f-mono);color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.typ{display:grid;gap:8px;font-size:14px}
+.typ div{display:grid;gap:2px}
+.typ small{color:var(--ink-soft);font:500 12px/1.3 var(--f-mono)}
+.voice{display:grid;gap:8px;font-size:15px}
+.voice p{color:var(--ink-soft)}
+.voice q{font-weight:600;color:var(--ink)}
+.warn{font:500 12.5px/1.45 var(--f-mono);color:var(--orange-ink)}
+
+/* ================= D — CADERNO DE BORDO ================= */
+.vd .hand{font-family:"Caveat",cursive;font-weight:700}
+body:has(.vd:not([hidden])){background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.vd-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.vd-logo{display:flex;align-items:center;gap:10px;font:900 20px/1 var(--f-disp);letter-spacing:-.03em}
+.vd-logo svg{width:30px;height:30px}
+.vd-logo .hand{font-size:24px;color:var(--orange-ink);transform:rotate(-4deg);display:inline-block}
+.vd-top nav{display:flex;gap:18px;flex-wrap:wrap;font:500 13px/1 var(--f-mono)}
+.vd-top nav a{color:var(--ink-soft);text-decoration:none}
+.vd-top nav a[aria-current]{color:var(--ink);text-decoration:underline wavy var(--orange) 1.5px;text-underline-offset:6px}
+.vd-hero{display:grid;gap:32px}
+@media(min-width:900px){.vd-hero{grid-template-columns:1.1fr .9fr;align-items:end}}
+.vd-hero h1{font:900 clamp(2.6rem,6.4vw,4.8rem)/.96 var(--f-disp);letter-spacing:-.05em}
+.vd-hero h1 .hl{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 92%,transparent 92%)}
+.vd-hero p{margin-top:16px;color:var(--ink-soft);max-width:44ch;font-size:18px}
+.vd-ann{position:relative;padding:22px;background:var(--paper);box-shadow:0 18px 36px -24px rgba(0,0,0,.4),inset 0 0 0 1px var(--line);border-radius:4px}
+.vd-ann .hand{font-size:23px;color:var(--orange-ink);line-height:1.1}
+.tok{display:flex;flex-wrap:wrap;gap:6px;margin-block:14px 6px;font:500 18px/1 var(--f-mono)}
+.tok span{padding:8px 10px;border:1.5px solid var(--ink);border-radius:3px;background:var(--paper)}
+.tok span:nth-child(even){background:var(--hl)}
+.vd-note{position:absolute;right:-10px;top:-24px;background:var(--note);padding:10px 14px;transform:rotate(3deg);box-shadow:0 8px 16px -10px rgba(0,0,0,.35);font:700 20px/1.1 "Caveat",cursive;color:var(--ink);max-width:190px}
+.vd-study{display:grid;grid-template-columns:44px 1fr;gap:0 18px}
+@media(min-width:900px){.vd-study{grid-template-columns:90px minmax(0,66ch) 1fr}}
+.vd-margin{border-right:2px solid var(--orange);font:500 12px/1.3 var(--f-mono);color:var(--ink-soft);padding-top:6px;text-align:right;padding-right:10px}
+.vd-art{display:grid;gap:16px}
+.vd-art h2{font:900 clamp(1.7rem,3.4vw,2.4rem)/1.02 var(--f-disp);letter-spacing:-.04em}
+.vd-art p{color:var(--ink-soft)}
+.vd-art p.hand{font-size:24px;color:var(--blue-ink);line-height:1.15}
+.vd-side{display:none}
+@media(min-width:900px){.vd-side{display:block;padding-left:12px}}
+.vd-side .hand{font-size:22px;color:var(--orange-ink);transform:rotate(-2deg);display:block;line-height:1.15}
+.vd-ex{background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--orange)}
+.vd-ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:14px 18px;border-bottom:2px solid var(--ink)}
+.vd-ex-head b{font:700 18px/1.2 var(--f-disp)}
+.vd-ex-head span{font:500 12px/1 var(--f-mono)}
+.vd-ex-body{padding:18px;display:grid;gap:14px}
+.vd-prompt{display:grid;gap:6px;font:400 15px/1.5 var(--f-mono)}
+.vd-prompt div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.vd-prompt b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--orange);color:var(--orange-ink);font:700 20px/1 "Caveat",cursive}
+.vd-ex-body .copy{justify-self:start;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:3px;font:500 13px/1 var(--f-mono)}
+.vd-slide{background:var(--paper);border:2px solid var(--ink);border-radius:4px;padding:clamp(18px,5%,52px);display:grid;align-content:space-between;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px}
+.vd-slide h3{font:900 clamp(1.5rem,4.8vw,3.8rem)/1 var(--f-disp);letter-spacing:-.05em}
+.vd-slide .hand{font-size:clamp(18px,3vw,34px);color:var(--orange-ink)}
+.vd-slide .tok{font-size:clamp(12px,2vw,22px)}
+
+/* ================= E — RASCUNHO TÉCNICO ================= */
+.ve .hand{font-family:"Kalam",cursive;font-weight:700}
+body:has(.ve:not([hidden])){background-image:radial-gradient(var(--grid) 1.6px,transparent 1.6px);background-size:22px 22px}
+.ve-top{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.ve-logo{display:flex;align-items:center;gap:10px;font:900 16px/1 var(--f-disp);text-transform:uppercase;letter-spacing:.02em}
+.ve-logo .mk{position:relative;width:30px;height:30px;display:grid;place-items:center;font:900 13px/1 var(--f-disp);color:var(--ink)}
+.ve-logo .mk svg{position:absolute;inset:-4px;width:38px;height:38px}
+.ve-top nav{display:flex;gap:4px;flex-wrap:wrap}
+.ve-top nav a{font:600 13px/1 var(--f-body);padding:9px 13px;text-decoration:none;color:var(--ink-soft);border-radius:999px}
+.ve-top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 0 0 2px var(--blue)}
+.ve-hero{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;align-items:end;position:relative}
+.ve-num{grid-column:1/-1;position:relative;justify-self:start;font:900 clamp(7rem,24vw,17rem)/.8 var(--f-disp);letter-spacing:-.07em;color:var(--ink)}
+.ve-num svg{position:absolute;inset:-12% -14% -18% -10%;width:124%;height:136%;overflow:visible}
+.ve-num svg path{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round;stroke-dasharray:1400;animation:scrib 1.3s .2s cubic-bezier(.6,0,.2,1) backwards}
+@keyframes scrib{from{stroke-dashoffset:1400}}
+.ve-num .hand{position:absolute;left:100%;top:6%;white-space:nowrap;font-size:clamp(18px,2.4vw,26px);letter-spacing:0;color:var(--orange-ink);transform:rotate(-6deg);margin-left:8px}
+.ve-hero h1{grid-column:1/-1;font:900 clamp(2.2rem,5.4vw,4.2rem)/.95 var(--f-disp);letter-spacing:-.05em}
+.ve-hero p{grid-column:1/-1;color:var(--ink-soft);font-size:18px;max-width:44ch}
+@media(min-width:900px){.ve-num{grid-column:1/6}.ve-hero h1{grid-column:6/13}.ve-hero p{grid-column:6/11;margin-top:12px}}
+.ve-band{display:grid;grid-template-columns:repeat(2,1fr);border-block:2px solid var(--ink);background:var(--paper)}
+@media(min-width:700px){.ve-band{grid-template-columns:repeat(4,1fr)}}
+.ve-band div{padding:16px 14px 18px;display:grid;gap:4px;border-right:1px dashed var(--line)}
+.ve-band div:last-child{border-right:0}
+.ve-band b{font:900 clamp(1.8rem,4vw,2.6rem)/1 var(--f-disp);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.ve-band span{font-size:14px;color:var(--ink-soft)}
+.ve-band .hand{font-size:17px;color:var(--blue-ink)}
+.ve-study{display:grid;gap:24px}
+@media(min-width:900px){.ve-study{grid-template-columns:repeat(12,1fr)}.ve-study .k{grid-column:1/4}.ve-study .body{grid-column:4/11}}
+.ve-study .k{display:grid;gap:8px;align-content:start}
+.ve-study .k .hand{font-size:22px;color:var(--blue-ink);line-height:1.15}
+.ve-study .body{display:grid;gap:18px}
+.ve-study h2{font:900 clamp(1.8rem,3.6vw,2.8rem)/1 var(--f-disp);letter-spacing:-.045em}
+.ve-study p{color:var(--ink-soft);max-width:62ch}
+.ve-study p.lead{font-size:21px;color:var(--ink);line-height:1.45}
+.ve-diag{display:flex;flex-wrap:wrap;gap:0;font:500 17px/1 var(--f-mono);position:relative;padding-top:34px}
+.ve-diag span{padding:10px 8px;border:1.5px dashed var(--blue);margin-right:-1.5px;background:var(--paper)}
+.ve-diag .hand{position:absolute;top:0;left:4px;font-size:20px;color:var(--blue-ink);border:0;background:none;padding:0}
+.ve-ex{display:grid;background:var(--paper);border:2px solid var(--ink);border-radius:6px;position:relative}
+@media(min-width:900px){.ve-ex{grid-template-columns:.8fr 1.2fr}}
+.ve-ex-l{padding:26px;display:grid;gap:12px;align-content:start;border-bottom:2px dashed var(--line)}
+@media(min-width:900px){.ve-ex-l{border-bottom:0;border-right:2px dashed var(--line)}}
+.ve-ex-l .tag{justify-self:start;font:700 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.1em;background:var(--orange);color:var(--on-orange);padding:7px 11px;border-radius:999px}
+.ve-ex-l h3{font:900 clamp(1.6rem,3vw,2.2rem)/1 var(--f-disp);letter-spacing:-.04em}
+.ve-ex-l p{color:var(--ink-soft)}
+.ve-ex-l .hand{font-size:19px;color:var(--orange-ink);line-height:1.2}
+.ve-ex-r{padding:26px;display:grid;gap:14px}
+.ve-prompt{display:grid;gap:4px;font:500 15px/1.6 var(--f-body)}
+.ve-prompt b{font:700 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--blue-ink);margin-right:8px}
+.ve-ex-r .copy{justify-self:start;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font:700 13px/1 var(--f-body);letter-spacing:.04em}
+.ve-slide{background:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:clamp(18px,5%,56px);display:grid;align-content:space-between;background-image:radial-gradient(var(--grid) 1.4px,transparent 1.4px);background-size:20px 20px}
+.ve-slide .big{font:900 clamp(2rem,9vw,7.2rem)/.85 var(--f-disp);letter-spacing:-.065em;position:relative;justify-self:start}
+.ve-slide .big em{font-style:normal;color:var(--orange-ink)}
+.ve-slide .hand{font-size:clamp(16px,2.6vw,30px);color:var(--blue-ink)}
+
+/* ================= F — MURAL DE RECORTES ================= */
+.vf .hand{font-family:"Gochi Hand",cursive}
+.vf-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.vf-logo{display:inline-flex;align-items:center;gap:0;font:900 19px/1 var(--f-disp);letter-spacing:-.03em}
+.vf-logo span{padding:8px 10px;background:var(--ink);color:var(--bg);transform:rotate(-2deg)}
+.vf-logo span+span{background:var(--orange);color:var(--on-orange);transform:rotate(2deg);margin-left:-4px}
+.vf-top nav{display:flex;gap:8px;flex-wrap:wrap}
+.vf-top nav a{font:600 14px/1 var(--f-body);padding:9px 13px;text-decoration:none;color:var(--ink);background:var(--paper);box-shadow:0 2px 0 var(--line)}
+.vf-top nav a[aria-current]{background:var(--note)}
+.vf-board{display:grid;gap:22px}
+@media(min-width:900px){.vf-board{grid-template-columns:repeat(12,1fr);align-items:start}}
+.scrap{position:relative;background:var(--paper);padding:24px;box-shadow:0 1px 0 var(--line),0 22px 40px -28px rgba(0,0,0,.55)}
+.scrap::before{content:"";position:absolute;top:-11px;left:50%;width:96px;height:22px;transform:translateX(-50%) rotate(-3deg);background:var(--tape)}
+.vf-hero{transform:rotate(-.6deg)}
+@media(min-width:900px){.vf-hero{grid-column:1/8}.vf-tok{grid-column:8/13;margin-top:40px}}
+.vf-hero h1{font:900 clamp(2.5rem,6vw,4.6rem)/.95 var(--f-disp);letter-spacing:-.05em}
+.vf-hero h1 u{text-decoration:none;background:var(--orange);color:var(--on-orange);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.vf-hero p{margin-top:14px;color:var(--ink-soft);font-size:18px;max-width:42ch}
+.vf-tok{background:var(--note);transform:rotate(1.8deg)}
+.vf-tok::before{background:rgba(255,255,255,.45)}
+.vf-tok .hand{font-size:24px;line-height:1.15}
+.vf-tok .tok span{background:var(--paper)}
+.vf-tok .tok span:nth-child(even){background:var(--paper);border-style:dashed}
+.vf-study{transform:rotate(.3deg)}
+@media(min-width:900px){.vf-study{grid-column:1/9}.vf-aside{grid-column:9/13;margin-top:60px}}
+.vf-study{display:grid;gap:14px}
+.vf-study h2{font:900 clamp(1.7rem,3.4vw,2.4rem)/1.02 var(--f-disp);letter-spacing:-.04em}
+.vf-study p{color:var(--ink-soft);max-width:62ch}
+.vf-aside{background:var(--ink);color:var(--bg);transform:rotate(-2deg)}
+.vf-aside::before{background:var(--orange);opacity:.7}
+.vf-aside .hand{font-size:24px;line-height:1.2}
+.vf-ex{grid-column:1/-1;display:grid;gap:16px;transform:rotate(-.25deg)}
+@media(min-width:900px){.vf-ex{grid-template-columns:1fr 1fr;gap:28px}}
+.vf-ex-head{display:grid;gap:10px;align-content:start}
+.vf-ex-head .tag{justify-self:start;font:700 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.1em;background:var(--blue);color:#fff;padding:7px 11px}
+.vf-ex-head h3{font:900 clamp(1.6rem,3vw,2.2rem)/1 var(--f-disp);letter-spacing:-.04em}
+.vf-ex-head p{color:var(--ink-soft)}
+.vf-prompt{display:grid;gap:8px}
+.vf-prompt div{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;font-size:15.5px}
+.vf-prompt b{font:400 20px/1 "Gochi Hand",cursive;color:var(--orange-ink);min-width:96px}
+.vf-ex .copy{justify-self:start;background:var(--orange);color:var(--on-orange);padding:12px 18px;font:700 13px/1 var(--f-body);letter-spacing:.04em;box-shadow:3px 3px 0 var(--ink)}
+.vf-slide{background:var(--bg);display:grid;place-items:center;padding:4%;border:2px solid var(--line)}
+.vf-slide .scrap{width:78%;transform:rotate(-1.5deg);padding:clamp(14px,4%,44px)}
+.vf-slide h3{font:900 clamp(1.4rem,5vw,4rem)/.95 var(--f-disp);letter-spacing:-.05em}
+.vf-slide h3 u{text-decoration:none;background:var(--orange);color:var(--on-orange);padding:0 .1em}
+.vf-slide .hand{font-size:clamp(16px,2.6vw,30px);color:var(--blue-ink)}
+.vf-slide .post{position:absolute;right:6%;bottom:8%;background:var(--note);padding:clamp(8px,1.6%,18px);transform:rotate(4deg);font:400 clamp(14px,2.2vw,26px)/1.1 "Gochi Hand",cursive;box-shadow:0 10px 18px -12px rgba(0,0,0,.5);color:var(--ink)}
+
+/* switcher (fora do design avaliado) */
+.proto-bar{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:#111;color:#fff;box-shadow:0 12px 32px rgba(0,0,0,.4);font:500 13px/1 ui-monospace,Menlo,monospace;max-width:calc(100% - 32px)}
+.proto-bar button{width:38px;height:38px;border-radius:50%;border:0;background:#2a2a2a;color:#fff;font-size:17px;cursor:pointer}
+.proto-bar button:hover{background:#444}
+.proto-bar span{padding-inline:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<!-- ================= D ================= -->
+<main class="wrap vd" id="v-d" data-name="D — Caderno de bordo">
+  <section class="sheet" aria-label="Ficha de marca D">
+    <div class="sheet-top"><b>D · Caderno de bordo</b><span>O caderno da direção B, fiel, com as cores da C. Laranja faz o papel da caneta vermelha e o azul vira a grade.</span></div>
+    <div class="sheet-grid">
+      <div><h4>Paleta e papéis</h4><div class="pal">
+        <div><i style="background:#EDEEEA"></i>Concreto · fundo<small>#EDEEEA</small></div>
+        <div><i style="background:#121311"></i>Tinta · texto, bordas<small>#121311</small></div>
+        <div><i style="background:#FF5A1F"></i>Laranja sinal · anotações, sombra<small>#FF5A1F</small></div>
+        <div><i style="background:#2B44FF"></i>Azul elétrico · grade, dicas<small>#2B44FF</small></div>
+        <div><i style="background:#FFD6C4"></i>Marca-texto<small>#FFD6C4</small></div>
+      </div></div>
+      <div><h4>Tipografia</h4><div class="typ">
+        <div><span style="font:900 22px/1 var(--f-disp);letter-spacing:-.04em">Schibsted Grotesk 900</span><small>títulos</small></div>
+        <div><span>Instrument Sans 400/600</span><small>texto corrido</small></div>
+        <div><span style="font:700 24px/1 Caveat,cursive;color:var(--orange-ink)">Caveat, a mão</span><small>anotações, nunca texto longo</small></div>
+        <div><span style="font:500 14px/1 var(--f-mono)">IBM Plex Mono</span><small>rótulos, prompts</small></div>
+      </div></div>
+      <div><h4>Voz</h4><div class="voice">
+        <p>Professor que rabisca do lado. Curioso, paciente, testa antes de afirmar.</p>
+        <p><q>Anote o que mudou.</q> em vez de <q>Otimize seus resultados.</q></p>
+        <p class="warn">Laranja #FF5A1F em texto pequeno não passa contraste AA (≈3:1). Para texto, use #C23A08.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <header class="vd-top">
+    <span class="vd-logo"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="3" width="24" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20l4-6 4 4 5-8" fill="none" stroke="var(--orange)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>IA na Vida Real <span class="hand">caderno</span></span>
+    <nav aria-label="Seções"><a href="#d" aria-current="page">Encontro 1</a><a href="#d">Consulta</a><a href="#d">Exercícios</a><a href="#d">Slides</a></nav>
+  </header>
+
+  <section class="vd-hero">
+    <div>
+      <p class="label">Encontro 01 · terça, 20/10 · 1h30</p>
+      <h1 style="margin-top:14px">Como a IA funciona, <span class="hl">desenhado à mão</span>.</h1>
+      <p>Tokens, custo, modelos e raciocínio, explicados como um experimento no caderno. Você observa, testa e anota.</p>
+    </div>
+    <div class="vd-ann">
+      <span class="vd-note">5 palavras, 9 pedaços!</span>
+      <p class="hand">Observação nº 1: a IA corta o texto assim →</p>
+      <div class="tok"><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span><span>com</span><span>3</span><span>prior</span><span>idades</span></div>
+      <p class="label" style="text-transform:none;letter-spacing:0">cada caixa = 1 token</p>
+    </div>
+  </section>
+
+  <section class="vd-study">
+    <div class="vd-margin">pág. 2<br>tokens</div>
+    <article class="vd-art">
+      <h2>Tokens: a IA lê em pedaços</h2>
+      <p>Um modelo de linguagem não enxerga letras nem palavras inteiras. Ele quebra o texto em tokens, pedaços de mais ou menos 3 a 4 letras em português.</p>
+      <p class="hand">→ conversa longa demais = a IA esquece o começo</p>
+      <p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Por isso vale começar uma conversa nova para cada assunto.</p>
+      <div class="vd-ex">
+        <div class="vd-ex-head"><b>Experimento 1 · Organize sua semana</b><span>grátis · qualquer IA · 10 min</span></div>
+        <div class="vd-ex-body">
+          <div class="vd-prompt">
+            <div><b>C</b><span>Trabalho em equipe pequena, muitas reuniões.</span></div>
+            <div><b>O</b><span>Não deixar nada importante para sexta.</span></div>
+            <div><b>R</b><span>[cole sua lista de tarefas]</span></div>
+            <div><b>R</b><span>Máx. 2h livres por dia, nada depois das 18h.</span></div>
+            <div><b>F</b><span>Uma tabela por dia, 3 prioridades cada.</span></div>
+          </div>
+          <button class="copy" type="button">Copiar pedido</button>
+          <p class="label">Deu certo se…</p>
+          <div class="chk">
+            <label><input type="checkbox" id="d1" checked> A resposta tem uma tabela para cada dia útil</label>
+            <label><input type="checkbox" id="d2"> Nenhum dia passa de 2h de tarefas</label>
+            <label><input type="checkbox" id="d3"> As tarefas com prazo aparecem antes de sexta</label>
+          </div>
+        </div>
+      </div>
+    </article>
+    <aside class="vd-side"><span class="hand">dica: compare com só "organize minha semana" e anote a diferença</span></aside>
+  </section>
+
+  <div>
+    <p class="label" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide vd-slide">
+      <span class="label">Observação nº 1</span>
+      <h3>A IA lê em pedaços.</h3>
+      <div><div class="tok"><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span></div><span class="hand">5 palavras → 9 tokens</span></div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= E ================= -->
+<main class="wrap ve" id="v-e" data-name="E — Rascunho técnico" hidden>
+  <section class="sheet" aria-label="Ficha de marca E">
+    <div class="sheet-top"><b>E · Rascunho técnico</b><span>A estrutura editorial da C (números gigantes, grid de 12) riscada à mão por cima, como um engenheiro explicando no guardanapo.</span></div>
+    <div class="sheet-grid">
+      <div><h4>Paleta e papéis</h4><div class="pal">
+        <div><i style="background:#EDEEEA"></i>Concreto · fundo pontilhado<small>#EDEEEA</small></div>
+        <div><i style="background:#121311"></i>Tinta · números, títulos<small>#121311</small></div>
+        <div><i style="background:#FF5A1F"></i>Laranja · círculos, etiquetas<small>#FF5A1F</small></div>
+        <div><i style="background:#2B44FF"></i>Azul · cotas, explicações<small>#2B44FF</small></div>
+        <div><i style="background:#F8F8F5"></i>Papel · cartões<small>#F8F8F5</small></div>
+      </div></div>
+      <div><h4>Tipografia</h4><div class="typ">
+        <div><span style="font:900 22px/1 var(--f-disp);letter-spacing:-.04em">Schibsted Grotesk 900</span><small>números e títulos, bem grandes</small></div>
+        <div><span>Instrument Sans 400/600</span><small>texto corrido</small></div>
+        <div><span style="font:700 22px/1 Kalam,cursive;color:var(--blue-ink)">Kalam, letra de forma</span><small>cotas e setas, mais legível que Caveat</small></div>
+        <div><span style="font:500 14px/1 var(--f-mono)">IBM Plex Mono</span><small>rótulos</small></div>
+      </div></div>
+      <div><h4>Voz</h4><div class="voice">
+        <p>Especialista que simplifica. Direto e confiante, com um rabisco para apontar o que importa.</p>
+        <p><q>5 palavras. 9 tokens.</q> Primeiro o fato, depois a explicação.</p>
+        <p class="warn">Laranja só em traço, etiqueta com texto escuro ou número grande. Texto laranja pequeno usa #C23A08.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <header class="ve-top">
+    <span class="ve-logo"><span class="mk">IA<svg viewBox="0 0 38 38" aria-hidden="true"><path d="M19 3c9 0 16 6 16 15s-7 16-16 16S3 28 4 18 11 2 21 4" fill="none" stroke="var(--orange)" stroke-width="2.4" stroke-linecap="round"/></svg></span>na Vida Real</span>
+    <nav aria-label="Seções"><a href="#e" aria-current="page">Encontro 1</a><a href="#e">Consulta</a><a href="#e">Slides</a></nav>
+  </header>
+
+  <section class="ve-hero">
+    <span class="ve-num" aria-hidden="true">01<svg viewBox="0 0 400 300" preserveAspectRatio="none"><path d="M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26"/></svg><span class="hand">hoje!</span></span>
+    <h1>Como a IA funciona por dentro.</h1>
+    <p>Tokens, custo, modelos e raciocínio. Entenda o que acontece quando você aperta enviar, e escreva pedidos melhores.</p>
+  </section>
+
+  <div class="ve-band">
+    <div><b>1h30</b><span>ao vivo, terça 20/10</span></div>
+    <div><b>5</b><span>conceitos</span></div>
+    <div><b>4</b><span>exercícios práticos</span></div>
+    <div><b>R$ 0</b><span class="hand">dá pra fazer no grátis ✓</span></div>
+  </div>
+
+  <section class="ve-study">
+    <div class="k"><p class="label">Parte 2 de 6 · Tokens</p><p class="hand">↓ o conceito que explica limite e preço</p></div>
+    <div class="body">
+      <h2>A IA lê em pedaços, não em palavras.</h2>
+      <p class="lead">Um modelo de linguagem quebra o texto em tokens: pedaços de mais ou menos 3 a 4 letras em português.</p>
+      <div class="ve-diag"><span class="hand">← 1 token →</span><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span><span>com</span><span>3</span><span>prior</span><span>idades</span></div>
+      <p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Uma conversa longa demais faz a IA perder o começo de vista. Por isso vale começar uma conversa nova para cada assunto.</p>
+    </div>
+  </section>
+
+  <section class="ve-ex">
+    <div class="ve-ex-l">
+      <span class="tag">Exercício 1 · 10 min</span>
+      <h3>Organize sua semana em 5 partes.</h3>
+      <p>Funciona no plano grátis de qualquer IA.</p>
+      <p class="hand">depois peça só "organize minha semana" e compare →</p>
+    </div>
+    <div class="ve-ex-r">
+      <div class="ve-prompt">
+        <span><b>Contexto</b>Trabalho em equipe pequena, muitas reuniões.</span>
+        <span><b>Objetivo</b>Não deixar nada importante para sexta.</span>
+        <span><b>Referências</b>[cole sua lista de tarefas]</span>
+        <span><b>Restrições</b>Máx. 2h livres por dia, nada depois das 18h.</span>
+        <span><b>Formato</b>Uma tabela por dia, 3 prioridades cada.</span>
+      </div>
+      <button class="copy" type="button">Copiar pedido</button>
+      <p class="label">Deu certo se…</p>
+      <div class="chk">
+        <label><input type="checkbox" id="e1" checked> Tem uma tabela para cada dia útil</label>
+        <label><input type="checkbox" id="e2"> Nenhum dia passa de 2h de tarefas</label>
+        <label><input type="checkbox" id="e3"> Tarefas com prazo vêm antes de sexta</label>
+      </div>
+    </div>
+  </section>
+
+  <div>
+    <p class="label" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide ve-slide">
+      <span class="label">01 · Tokens</span>
+      <span class="big">5 palavras.<br><em>9 tokens.</em></span>
+      <span class="hand">↑ é assim que a IA conta limite e preço</span>
+    </div>
+  </div>
+</main>
+
+<!-- ================= F ================= -->
+<main class="wrap vf" id="v-f" data-name="F — Mural de recortes" hidden>
+  <section class="sheet" aria-label="Ficha de marca F">
+    <div class="sheet-top"><b>F · Mural de recortes</b><span>O caderno virou quadro de cortiça: cada conteúdo é um recorte colado com fita azul, post-its laranja, letra de marcador.</span></div>
+    <div class="sheet-grid">
+      <div><h4>Paleta e papéis</h4><div class="pal">
+        <div><i style="background:#EDEEEA"></i>Concreto · mural<small>#EDEEEA</small></div>
+        <div><i style="background:#F8F8F5"></i>Papel · recortes<small>#F8F8F5</small></div>
+        <div><i style="background:#FFC2A1"></i>Post-it laranja<small>#FFC2A1</small></div>
+        <div><i style="background:#FF5A1F"></i>Laranja · destaque de palavra<small>#FF5A1F</small></div>
+        <div><i style="background:#2B44FF"></i>Azul · fita, etiquetas<small>#2B44FF</small></div>
+      </div></div>
+      <div><h4>Tipografia</h4><div class="typ">
+        <div><span style="font:900 22px/1 var(--f-disp);letter-spacing:-.04em">Schibsted Grotesk 900</span><small>títulos</small></div>
+        <div><span>Instrument Sans 400/600</span><small>texto corrido</small></div>
+        <div><span style="font:400 24px/1 'Gochi Hand',cursive">Gochi Hand, marcador</span><small>post-its e rótulos do prompt</small></div>
+      </div></div>
+      <div><h4>Voz</h4><div class="voice">
+        <p>Colega de oficina, informal e mão na massa. Fala como quem cola um lembrete na sua mesa.</p>
+        <p><q>Cola isso na IA e vê o que sai.</q></p>
+        <p class="warn">Recortes inclinados (até 2°) cansam em páginas longas. No site real, inclinar só destaques e manter o texto corrido reto.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <header class="vf-top">
+    <span class="vf-logo"><span>IA na</span><span>Vida Real</span></span>
+    <nav aria-label="Seções"><a href="#f" aria-current="page">Encontro 1</a><a href="#f">Consulta</a><a href="#f">Exercícios</a><a href="#f">Slides</a></nav>
+  </header>
+
+  <div class="vf-board">
+    <section class="scrap vf-hero">
+      <p class="label">Encontro 01 · terça, 20/10 · 1h30</p>
+      <h1 style="margin-top:12px">Como a IA <u>funciona</u> por dentro.</h1>
+      <p>Tokens, custo, modelos e raciocínio, explicados com coisas da sua rotina. No fim, você escreve seu primeiro pedido em 5 partes.</p>
+    </section>
+    <aside class="scrap vf-tok">
+      <p class="hand">Repara: a IA corta o texto em pedaços</p>
+      <div class="tok"><span>Organ</span><span>ize</span><span>minha</span><span>sem</span><span>ana</span><span>com</span><span>3</span><span>prior</span><span>idades</span></div>
+      <p class="hand">5 palavras = 9 tokens</p>
+    </aside>
+
+    <article class="scrap vf-study">
+      <p class="label">Parte 2 de 6</p>
+      <h2>Tokens: a IA lê em pedaços</h2>
+      <p>Um modelo de linguagem não enxerga letras nem palavras inteiras. Ele quebra o texto em tokens, pedaços de mais ou menos 3 a 4 letras em português.</p>
+      <p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Uma conversa longa demais faz a IA perder o começo de vista. Por isso vale começar uma conversa nova para cada assunto.</p>
+    </article>
+    <aside class="scrap vf-aside"><p class="hand">Um assunto por conversa. A IA agradece.</p></aside>
+
+    <section class="scrap vf-ex">
+      <div class="vf-ex-head">
+        <span class="tag">Exercício 1 · grátis · 10 min</span>
+        <h3>Organize sua semana em 5 partes.</h3>
+        <p>Depois peça só "organize minha semana" e compare as duas respostas.</p>
+        <button class="copy" type="button">Copiar pedido</button>
+      </div>
+      <div style="display:grid;gap:16px">
+        <div class="vf-prompt">
+          <div><b>Contexto</b><span>Trabalho em equipe pequena, muitas reuniões.</span></div>
+          <div><b>Objetivo</b><span>Não deixar nada importante para sexta.</span></div>
+          <div><b>Referências</b><span>[cole sua lista de tarefas]</span></div>
+          <div><b>Restrições</b><span>Máx. 2h livres por dia, nada depois das 18h.</span></div>
+          <div><b>Formato</b><span>Uma tabela por dia, 3 prioridades cada.</span></div>
+        </div>
+        <p class="label">Deu certo se…</p>
+        <div class="chk">
+          <label><input type="checkbox" id="f1" checked> Tem uma tabela para cada dia útil</label>
+          <label><input type="checkbox" id="f2"> Nenhum dia passa de 2h de tarefas</label>
+          <label><input type="checkbox" id="f3"> Tarefas com prazo vêm antes de sexta</label>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div>
+    <p class="label" style="margin-bottom:12px">Slide de aula · 16:9</p>
+    <div class="slide vf-slide">
+      <div class="scrap"><span class="label">01 · Tokens</span><h3 style="margin-top:10px">A IA lê em <u>pedaços</u>.</h3><p class="hand" style="margin-top:10px">5 palavras → 9 tokens</p></div>
+      <span class="post">e é assim que ela cobra!</span>
+    </div>
+  </div>
+</main>
+
+<div class="proto-bar" role="group" aria-label="Trocar variante (protótipo)">
+  <button type="button" id="prev" aria-label="Variante anterior">←</button>
+  <span id="cur">D — Caderno de bordo</span>
+  <button type="button" id="next" aria-label="Próxima variante">→</button>
+</div>
+
+<script>
+(function(){
+  var keys=['d','e','f'],cur='d';
+  function show(k){
+    if(keys.indexOf(k)<0)k='d';cur=k;
+    keys.forEach(function(x){document.getElementById('v-'+x).hidden=x!==k});
+    document.getElementById('cur').textContent=document.getElementById('v-'+k).dataset.name;
+    if(location.hash!=='#'+k)history.replaceState(null,'','#'+k);
+  }
+  function step(d){show(keys[(keys.indexOf(cur)+d+keys.length)%keys.length]);window.scrollTo(0,0)}
+  document.getElementById('prev').onclick=function(){step(-1)};
+  document.getElementById('next').onclick=function(){step(1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target;if(t.closest&&t.closest('input,textarea,[contenteditable]'))return;
+    if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);
+  });
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  document.querySelectorAll('.copy').forEach(function(b){b.onclick=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1400)}});
+  show(location.hash.slice(1)||'d');
+})();
+</script>
