@@ -35,6 +35,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Animações nos conceitos](issues/09-animacoes-conceitos.md) — animação web nativa (custom element + Web Animations API + traço à mão), mesma peça na página e no slide; estado final = poster do PDF.
 - [Formato do exercício](issues/04-formato-exercicio.md) — situação real → pedido em 5 partes copiável → "deu certo se…" → "não deu certo?" apontando o conceito; grátis por padrão; em aula/para casa.
 - [Dívida cognitiva](issues/10-offloading-divida-cognitiva.md) — "delegue a tarefa, não o julgamento"; base em Bastani 2025 (PNAS); MIT só como gancho; Storey = dívida de equipes.
+- [Segurança e privacidade](issues/11-seguranca-privacidade.md) — pagar não desliga treino; Claude opt-in, ChatGPT e Gemini treinam por padrão; checklist de 1 página; bloco de configuração ao vivo no E1.
 
 ## Not yet specified
 
