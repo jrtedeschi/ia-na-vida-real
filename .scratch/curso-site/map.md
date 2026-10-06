@@ -37,10 +37,10 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Dívida cognitiva](issues/10-offloading-divida-cognitiva.md) — "delegue a tarefa, não o julgamento"; base em Bastani 2025 (PNAS); MIT só como gancho; Storey = dívida de equipes.
 - [Segurança e privacidade](issues/11-seguranca-privacidade.md) — pagar não desliga treino; Claude opt-in, ChatGPT e Gemini treinam por padrão; checklist de 1 página; bloco de configuração ao vivo no E1.
 - [Distribuição do conteúdo](issues/14-distribuicao-conteudo.md) — um arco por aula; E1 = jornada do "enviar" + privacidade ao vivo; vetores e estudo no E2; raciocínio, checagem e golpes no E3; futuro do trabalho fecha o E4; profundidade na Consulta.
+- [Estudar com IA](issues/13-estudar-com-ia.md) — "para aprender, use a IA para te perguntar"; Gemini Notebook Studio + modos tutor grátis; 7 práticas com evidência; exercício apostila → quiz no E2.
 
 ## Not yet specified
 
-- Página "Estudar com IA" e exercício do E2: conteúdo, depende de 13.
 
 - Sequência "IA e trabalho": 3–4 slides na abertura do E1 + fechamento do E4 + página completa na Consulta, depende de 12.
 
