@@ -1,0 +1,281 @@
+<title>Roteiro do Encontro 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EDEEEA;--paper:#F8F8F5;--ink:#121311;--ink-soft:#50524C;--line:#C9CAC3;
+  --orange:#FF5A1F;--graphite:#5B5F57;--graphite-ink:#4A4D46;--dot:rgba(18,19,17,.13);--hl:#FFD6C4;
+  --f-disp:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-hand:"Kalam","Comic Sans MS",cursive;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#121311;--paper:#1B1C19;--ink:#EDEEE8;--ink-soft:#A6A89F;--line:#34362F;
+  --orange:#FF6A33;--graphite:#A9ACA2;--graphite-ink:#C4C7BD;--dot:rgba(237,238,232,.1);--hl:#4D2615}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#121311;--paper:#1B1C19;--ink:#EDEEE8;--ink-soft:#A6A89F;--line:#34362F;
+  --orange:#FF6A33;--graphite:#A9ACA2;--graphite-ink:#C4C7BD;--dot:rgba(237,238,232,.1);--hl:#4D2615}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.5px,transparent 1.5px);background-size:22px 22px;color:var(--ink);font:400 17px/1.6 var(--f-body);padding-inline:20px;padding-block:40px 96px}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2.5px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1040px;margin-inline:auto;display:grid;gap:64px}
+.label{font:500 12px/1.4 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.hand{font:700 19px/1.2 var(--f-hand);color:var(--graphite-ink)}
+h2{font:900 clamp(1.7rem,3.6vw,2.5rem)/1 var(--f-disp);letter-spacing:-.045em;text-wrap:balance}
+h3{font:900 clamp(1.25rem,2.4vw,1.55rem)/1.1 var(--f-disp);letter-spacing:-.035em;text-wrap:balance}
+p{max-width:68ch}
+.soft{color:var(--ink-soft)}
+.sec{display:grid;gap:24px}
+.sec-head{display:grid;gap:8px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;align-items:end}
+.num{grid-column:1/-1;position:relative;justify-self:start;font:900 clamp(6.5rem,22vw,15rem)/.8 var(--f-disp);letter-spacing:-.07em}
+.num svg{position:absolute;inset:-12% -14% -18% -10%;width:124%;height:136%;overflow:visible}
+.num path{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round}
+.num .hand{position:absolute;left:100%;top:8%;white-space:nowrap;margin-left:10px;transform:rotate(-6deg);letter-spacing:0;font-size:clamp(17px,2.2vw,24px)}
+.hero h1{grid-column:1/-1;font:900 clamp(2.2rem,5.4vw,4rem)/.95 var(--f-disp);letter-spacing:-.05em;text-wrap:balance}
+.hero .intro{grid-column:1/-1;display:grid;gap:10px}
+@media(min-width:900px){.num{grid-column:1/6}.hero h1{grid-column:6/13}.hero .intro{grid-column:6/12;margin-top:10px}}
+.band{display:grid;grid-template-columns:repeat(2,1fr);border-block:2px solid var(--ink);background:var(--paper)}
+@media(min-width:700px){.band{grid-template-columns:repeat(4,1fr)}}
+.band div{padding:14px 14px 16px;display:grid;gap:4px;border-right:1px dashed var(--line)}
+.band div:last-child{border-right:0}
+.band b{font:900 clamp(1.6rem,3.6vw,2.3rem)/1 var(--f-disp);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.band span{font-size:14px;color:var(--ink-soft)}
+
+/* timeline */
+.tl{display:grid;gap:0;border-top:2px solid var(--ink)}
+.tl li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding-block:16px;border-bottom:1px dashed var(--line)}
+@media(min-width:800px){.tl li{grid-template-columns:110px 1fr 210px}}
+.tl time{font:500 14px/1.5 var(--f-mono);font-variant-numeric:tabular-nums}
+.tl .what{display:grid;gap:4px}
+.tl .what b{font:700 18px/1.3 var(--f-disp);letter-spacing:-.02em}
+.tl .why{grid-column:2;font:700 16px/1.2 var(--f-hand);color:var(--graphite-ink)}
+@media(min-width:800px){.tl .why{grid-column:3}}
+.bar{display:flex;height:14px;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%}
+.bar .c{background:var(--graphite)}
+.bar .p{background:var(--orange)}
+.bar .o{background:var(--paper)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--ink-soft)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border:1.5px solid var(--ink);border-radius:2px}
+
+/* slides */
+.slides{display:grid;gap:12px}
+@media(min-width:800px){.slides{grid-template-columns:repeat(2,1fr)}}
+.slide{background:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:20px;display:grid;gap:10px;align-content:start}
+.slide .label{display:flex;justify-content:space-between;gap:8px}
+.slide .fact{font-size:15px;color:var(--ink-soft);padding-top:10px;border-top:1px dashed var(--line)}
+.slide .hand{font-size:17px}
+.slide.honest{border-style:dashed}
+
+/* concepts */
+.concepts{display:grid;gap:12px}
+@media(min-width:800px){.concepts{grid-template-columns:repeat(2,1fr)}}
+.concept{display:grid;gap:8px;padding:20px;background:var(--paper);border-left:4px solid var(--orange)}
+.concept .anim{font-size:15px;color:var(--ink-soft)}
+.concept .anim b{font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-right:6px}
+
+/* exercises */
+.exs{display:grid;gap:22px}
+.ex{background:var(--paper);border:2px solid var(--ink);border-radius:6px;display:grid}
+@media(min-width:900px){.ex{grid-template-columns:.8fr 1.2fr}}
+.ex-l{padding:22px;display:grid;gap:12px;align-content:start;border-bottom:2px dashed var(--line)}
+@media(min-width:900px){.ex-l{border-bottom:0;border-right:2px dashed var(--line)}}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:600 12px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.tag.o{background:var(--orange);color:#121311;box-shadow:none}
+.ex-r{padding:22px;display:grid;gap:14px}
+.prompt{display:grid;gap:4px;font-size:15.5px;padding:14px 16px;background:var(--bg);border-radius:4px}
+.prompt b{font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+.prompt .f{background:var(--hl);padding:0 .2em;border-radius:2px}
+.checks{display:grid;gap:6px;font-size:15.5px}
+.checks li{display:flex;gap:10px}
+.checks li::before{content:"";flex:none;width:16px;height:16px;margin-top:4px;border:1.5px solid var(--ink);border-radius:3px}
+.checks li.human::before{border-color:var(--orange);border-width:2px}
+.fail{font-size:15.5px;padding:12px 14px;border:1.5px dashed var(--line);border-radius:4px}
+.fail b{font:500 11px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+
+/* lists */
+.cols{display:grid;gap:22px}
+@media(min-width:800px){.cols{grid-template-columns:repeat(2,1fr)}}
+.box{display:grid;gap:12px;padding:22px;background:var(--paper);border-radius:6px;box-shadow:inset 0 0 0 1px var(--line)}
+.dash{display:grid;gap:8px;font-size:16px}
+.dash li{display:flex;gap:10px}
+.dash li::before{content:"–";color:var(--graphite)}
+.q{display:grid;gap:14px;counter-reset:q}
+.q li{display:grid;gap:4px;padding:16px 18px;background:var(--paper);border:2px solid var(--ink);border-radius:6px;counter-increment:q}
+.q li b{font:700 17px/1.3 var(--f-disp)}
+.q li b::before{content:"Q" counter(q) " · ";color:var(--graphite)}
+.q li span{color:var(--ink-soft);font-size:15.5px}
+</style>
+
+<main class="wrap">
+
+<header class="hero">
+  <span class="num" aria-hidden="true">01<svg viewBox="0 0 400 300" preserveAspectRatio="none"><path d="M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26"/></svg><span class="hand">para revisar</span></span>
+  <h1>Roteiro do Encontro 1: Como a IA funciona</h1>
+  <div class="intro">
+    <p class="label">Terça, 20/10 · 20h às 21h30 · ao vivo · rascunho para o João</p>
+    <p class="soft">Moldura de <em>The Adaptation Advantage</em>: a IA mexe em tarefas, não no seu propósito. Quem entende a ferramenta redesenha o próprio trabalho. A aula sai do medo e chega a "quais tarefas eu quero delegar?".</p>
+  </div>
+</header>
+
+<div class="band">
+  <div><b>90 min</b><span>ao vivo</span></div>
+  <div><b>4</b><span>conceitos animados</span></div>
+  <div><b>5</b><span>exercícios (3 em aula)</span></div>
+  <div><b>R$ 0</b><span>tudo no plano grátis</span></div>
+</div>
+
+<!-- MINUTO A MINUTO -->
+<section class="sec" aria-labelledby="t-tl">
+  <div class="sec-head">
+    <p class="label">1 · Minuto a minuto</p>
+    <h2 id="t-tl">Seis blocos. O E1 é o encontro com mais conceito; os próximos compensam na prática</h2>
+  </div>
+  <div class="bar" role="img" aria-label="Divisão do tempo: 40 minutos de conceito, 35 de prática, 15 de abertura e fecho">
+    <i class="o" style="width:5.6%"></i><i class="c" style="width:44.4%"></i><i class="p" style="width:38.9%"></i><i class="o" style="width:11.1%"></i>
+  </div>
+  <div class="legend"><span><i style="background:var(--graphite)"></i>Conceito · 40 min</span><span><i style="background:var(--orange)"></i>Prática · 35 min</span><span><i style="background:var(--paper)"></i>Abertura e fecho · 15 min</span></div>
+  <ol class="tl">
+    <li><time>0–5</time><div class="what"><b>Boas-vindas</b><span class="soft">Enquete no chat: "o que você já tentou fazer com IA, e o que deu errado?". As respostas viram exemplos ao longo da aula.</span></div><span class="why">quebra o gelo com dados reais</span></li>
+    <li><time>5–14</time><div class="what"><b>Medo e adaptação (5 slides)</b><span class="soft">Das revoluções industriais até "a IA mexe em tarefas". Versão completa de 13 slides fica na Consulta e volta no E4.</span></div><span class="why">tira o medo antes da técnica</span></li>
+    <li><time>14–38</time><div class="what"><b>O que acontece quando você aperta enviar</b><span class="soft">Token → próxima palavra → por que alucina → janela de contexto. Uma animação e uma pergunta para a turma em cada etapa. Vetores e raciocínio ficam anunciados para o E2 e o E3.</span></div><span class="why">o "porquê" de cada regra do pedido</span></li>
+    <li><time>38–46</time><div class="what"><b>Quem é quem + privacidade ao vivo</b><span class="soft">Empresa → modelo → aplicativo (diagrama). Depois, todo mundo abre as configurações e decide sobre o treinamento com os próprios dados. Regra do cartão-postal.</span></div><span class="why">antes de colar o primeiro dado</span></li>
+    <li><time>46–80</time><div class="what"><b>O pedido em 5 partes + exercícios 1, 2 e 3</b><span class="soft">Método em 4 minutos, depois prática: curto × completo, duas IAs, pegar a IA errando. Comentário coletivo a cada exercício.</span></div><span class="why">30 min de mão na massa</span></li>
+    <li><time>80–90</time><div class="what"><b>Fecho e tarefa de casa</b><span class="soft">"Quais tarefas você quer delegar para ficar com o que importa?" Exercícios 4 e 5 para casa. Dúvidas.</span></div><span class="why">o E4 começa aqui</span></li>
+  </ol>
+</section>
+
+<!-- ABERTURA -->
+<section class="sec" aria-labelledby="t-open">
+  <div class="sec-head">
+    <p class="label">2 · Abertura · 9 min</p>
+    <h2 id="t-open">Medo e adaptação em 5 slides</h2>
+    <p class="soft">Recorte dos 13 slides da pesquisa. Os de borda tracejada são o contrapeso honesto e ficam mesmo se o tempo apertar.</p>
+  </div>
+  <div class="slides">
+    <article class="slide"><p class="label"><span>Slide 1</span><span>1 min</span></p><h3>Você tem medo da IA?</h3><p>Se tem, está em boa companhia: toda tecnologia grande começou assim.</p><p class="fact">Keynes, 1930, chamou de "nova doença": o desemprego tecnológico.</p><p class="hand">isso foi há 96 anos</p></article>
+    <article class="slide"><p class="label"><span>Slide 2</span><span>2 min</span></p><h3>98% menos trabalho, mais tecelões</h3><p>A máquina fez o pano ficar barato, e pano barato fez todo mundo querer mais pano.</p><p class="fact">Tear mecânico: −98% de trabalho por jarda, e as vagas de tecelagem em fábrica cresceram (Bessen, FMI 2015).</p><p class="hand">preço cai, demanda sobe</p></article>
+    <article class="slide honest"><p class="label"><span>Slide 3</span><span>2 min</span></p><h3>Mas não para as mesmas pessoas</h3><p>O total cresceu, mas quem tecia à mão perdeu o ofício.</p><p class="fact">Tecelões manuais britânicos: 240 mil em 1820, 10 mil em 1860 (Allen 2018).</p><p class="hand">a transição tem rosto</p></article>
+    <article class="slide"><p class="label"><span>Slide 4 · novo</span><span>2 min</span></p><h3>A IA mexe em tarefas</h3><p>Toda tecnologia faz três coisas com o trabalho: aumenta o que você faz, fatia o trabalho em pedaços e automatiza alguns deles. Seu propósito continua seu.</p><p class="fact">McGowan & Shipley, <em>The Adaptation Advantage</em> (2020): aumentar, fatiar, automatizar.</p><p class="hand">cargo ≠ propósito</p></article>
+    <article class="slide"><p class="label"><span>Slide 5</span><span>2 min</span></p><h3>Você está aqui</h3><p>Quem aprende a ferramenta e redesenha o próprio trabalho atravessa a transição melhor.</p><p class="fact">~60% dos empregos dos EUA em 2018 tinham nomes que não existiam em 1940 (Autor et al., QJE 2024).</p><p class="hand">é para isso que estamos aqui</p></article>
+  </div>
+</section>
+
+<!-- CONCEITOS -->
+<section class="sec" aria-labelledby="t-con">
+  <div class="sec-head">
+    <p class="label">3 · Conceitos · 24 min</p>
+    <h2 id="t-con">O que acontece quando você aperta enviar</h2>
+    <p class="soft">Cada etapa: animação (1–2 min), explicação, uma pergunta para a turma. A página de conceito no site traz definição, analogia, "na prática", erro comum e teste rápido.</p>
+  </div>
+  <div class="concepts">
+    <article class="concept"><p class="label">Etapa 1 · 5 min</p><h3>Token: a IA lê em pedaços</h3><p>O texto é cortado em pedaços de 3 a 4 letras. Limite e preço são contados em tokens.</p><p class="anim"><b>Animação</b>pronta: a frase de 6 palavras vira 9 tokens.</p><p class="hand">conversa longa = mais tokens = mais custo</p></article>
+    <article class="concept"><p class="label">Etapa 2 · 7 min</p><h3>Próxima palavra: a IA aposta</h3><p>O modelo calcula a chance de cada pedaço vir a seguir, escolhe um e repete. A resposta inteira é uma sequência de apostas.</p><p class="anim"><b>Animação</b>"O café da manhã ideal tem ___": barras de probabilidade (pão 41%, café 33%, fruta 12%…), a palavra escolhida desce para a frase, e o ciclo se repete.</p><p class="hand">ela escreve um pedaço por vez</p></article>
+    <article class="concept"><p class="label">Etapa 3 · 7 min</p><h3>Por que alucina</h3><p>A aposta escolhe o provável, não o verdadeiro. O modelo não consulta uma lista de fatos, e quando não sabe a continuação provável continua soando confiante.</p><p class="anim"><b>Animação</b>"A padaria Estrela, de Itu, foi fundada em ___": as barras mostram anos todos plausíveis; a IA escolhe 1987 com o mesmo tom seguro. Ninguém sabe se a padaria existe.</p><p class="hand">provável ≠ verdadeiro</p></article>
+    <article class="concept"><p class="label">Etapa 4 · 5 min</p><h3>Janela de contexto: a memória tem tamanho</h3><p>A IA só enxerga um tanto de texto por vez. Numa conversa longa, o começo sai da janela e ela passa a ignorá-lo.</p><p class="anim"><b>Animação</b>uma conversa rola dentro de uma moldura; as primeiras mensagens saem pelo topo e ficam cinzas. A pergunta "qual era meu nome?" fica sem resposta.</p><p class="hand">um assunto, uma conversa</p></article>
+  </div>
+  <div class="cols">
+    <div class="box"><p class="label">Quem é quem · 3 min</p><p>Empresa → modelo → aplicativo: Anthropic → Claude → claude.ai · OpenAI → GPT → ChatGPT · Google → Gemini → app Gemini. Modelos rápidos e baratos × modelos caprichados e lentos. Diagrama parado; detalhes de custo na Consulta.</p></div>
+    <div class="box"><p class="label">Privacidade ao vivo · 5 min</p><p>Pagar não desliga o treinamento. Todo mundo abre as configurações juntos: Claude (Privacidade), ChatGPT (Controles de dados), Gemini (Atividade). Cada um decide. Fecha com a regra do cartão-postal: o que você não escreveria num cartão-postal, não cola na IA.</p></div>
+  </div>
+</section>
+
+<!-- EXERCÍCIOS -->
+<section class="sec" aria-labelledby="t-ex">
+  <div class="sec-head">
+    <p class="label">4 · Exercícios</p>
+    <h2 id="t-ex">Três em aula, dois para casa</h2>
+    <p class="soft">Formato do ticket 04. A caixinha laranja em "deu certo se…" é a checagem humana: a parte que não se delega.</p>
+  </div>
+  <div class="exs">
+
+    <article class="ex">
+      <div class="ex-l"><div class="tags"><span class="tag o">Em aula · 10 min</span><span class="tag">Grátis · qualquer IA</span></div><h3>1 · Organize sua semana</h3><p class="soft">Situação: uma semana cheia de reuniões e tarefas soltas. Primeiro peça só "organize minha semana". Depois mande o pedido completo e compare.</p><p class="soft">Exemplo pronto para baixar: a lista de 12 tarefas da Ana, analista de RH.</p><p class="hand">a diferença está no pedido</p></div>
+      <div class="ex-r">
+        <div class="prompt"><span><b>Contexto</b>Trabalho em <span class="f">[equipe pequena, muitas reuniões]</span>.</span><span><b>Objetivo</b>Não deixar nada importante para sexta.</span><span><b>Referências</b><span class="f">[cole sua lista de tarefas]</span></span><span><b>Restrições</b>No máximo <span class="f">[2h]</span> livres por dia, nada depois das <span class="f">[18h]</span>.</span><span><b>Formato</b>Uma tabela por dia, 3 prioridades em cada.</span></div>
+        <p class="label">Deu certo se…</p>
+        <ul class="checks"><li>Tem uma tabela para cada dia útil</li><li>Nenhum dia passa do limite de horas</li><li>Tarefas com prazo vêm antes de sexta</li><li class="human">Você concorda com as prioridades, ou sabe dizer qual mudaria e por quê</li></ul>
+        <p class="fail"><b>Não deu certo?</b>Resposta genérica quase sempre é falta de contexto ou de restrição. Releia: o pedido em 5 partes.</p>
+        <p class="soft">Desafio: peça para a IA explicar o critério que usou para priorizar.</p>
+      </div>
+    </article>
+
+    <article class="ex">
+      <div class="ex-l"><div class="tags"><span class="tag o">Em aula · 10 min</span><span class="tag">Grátis · duas IAs</span></div><h3>2 · Pergunte duas vezes</h3><p class="soft">Situação: jantar para 6 amigos no sábado. Mande o mesmo pedido para duas IAs diferentes (Claude, ChatGPT ou Gemini) e compare.</p><p class="hand">modelos diferentes, apostas diferentes</p></div>
+      <div class="ex-r">
+        <div class="prompt"><span><b>Contexto</b>Vou receber <span class="f">[6]</span> amigos para jantar no sábado; <span class="f">[um é vegetariano]</span>.</span><span><b>Objetivo</b>Um cardápio simples que agrade todo mundo.</span><span><b>Referências</b>Orçamento de <span class="f">[R$ 200]</span>; tenho forno e fogão.</span><span><b>Restrições</b>Nada que leve mais de 1h de preparo.</span><span><b>Formato</b>Entrada, prato e sobremesa, mais lista de compras com preço estimado.</span></div>
+        <p class="label">Deu certo se…</p>
+        <ul class="checks"><li>As duas respeitaram a restrição alimentar e o tempo</li><li>Você anotou pelo menos 2 diferenças entre as respostas</li><li class="human">Você conferiu um preço num app de mercado e sabe qual estimativa errou mais</li></ul>
+        <p class="fail"><b>Não deu certo?</b>Respostas quase iguais acontecem em pedidos muito fechados. Releia: a próxima palavra.</p>
+        <p class="soft">Desafio: peça para cada IA criticar o cardápio da outra.</p>
+      </div>
+    </article>
+
+    <article class="ex">
+      <div class="ex-l"><div class="tags"><span class="tag o">Em aula · 12 min</span><span class="tag">Grátis · qualquer IA</span></div><h3>3 · Pegue a IA errando</h3><p class="soft">Situação: você precisa de referências sobre um tema que conhece bem. Peça, e depois confira cada item fora da IA.</p><p class="hand">confie, mas confira</p></div>
+      <div class="ex-r">
+        <div class="prompt"><span><b>Contexto</b>Trabalho com <span class="f">[sua área]</span>.</span><span><b>Objetivo</b>Encontrar leituras sobre <span class="f">[um tema bem específico da sua área]</span>.</span><span><b>Referências</b>Prefiro material em português.</span><span><b>Restrições</b>Só livros ou artigos que existem de verdade.</span><span><b>Formato</b>Lista de 5 itens com autor, ano, editora ou revista, e link.</span></div>
+        <p class="label">Deu certo se…</p>
+        <ul class="checks"><li>Você procurou cada item numa busca comum</li><li>Você perguntou "tem certeza?" e viu se a IA se corrigiu</li><li class="human">Você sabe dizer quais itens existem e quais foram inventados</li></ul>
+        <p class="fail"><b>Não achou nenhum erro?</b>Ótimo sinal, mas repita com um tema mais de nicho. Se a IA buscou na web, compare com uma resposta sem busca. Releia: por que alucina.</p>
+        <p class="soft">Desafio: peça para a IA dizer o quanto confia em cada item, de 0 a 100%.</p>
+      </div>
+    </article>
+
+    <article class="ex">
+      <div class="ex-l"><div class="tags"><span class="tag">Para casa · 15 min</span><span class="tag">Grátis · qualquer IA</span></div><h3>4 · Seu primeiro pedido de verdade</h3><p class="soft">Escolha uma tarefa real desta semana e escreva o pedido em 5 partes do zero, sem modelo.</p><p class="hand">o método vira hábito</p></div>
+      <div class="ex-r">
+        <p class="label">Deu certo se…</p>
+        <ul class="checks"><li>Seu pedido tem as 5 partes</li><li>A resposta poupou tempo de verdade</li><li class="human">Você anotou o que mudou na resposta depois de ajustar uma das partes</li></ul>
+        <p class="fail"><b>Não deu certo?</b>Traga o pedido para o E2: a aula começa por ele.</p>
+      </div>
+    </article>
+
+    <article class="ex">
+      <div class="ex-l"><div class="tags"><span class="tag">Para casa · 15 min</span><span class="tag">Novo · semente do E4</span></div><h3>5 · Por que você faz o que faz?</h3><p class="soft">Moldura do <em>Adaptation Advantage</em>. Escreva em 2 frases por que seu trabalho existe: para quem, e que problema resolve. Liste 5 tarefas da semana e marque cada uma: a IA pode <strong>aumentar</strong>, <strong>fatiar</strong>, <strong>automatizar</strong>, ou <strong>só eu</strong>.</p><p class="hand">vira sua base no E4</p></div>
+      <div class="ex-r">
+        <div class="prompt"><span><b>Contexto</b>Este é o porquê do meu trabalho: <span class="f">[suas 2 frases]</span>.</span><span><b>Objetivo</b>Quero saber onde a IA pode me ajudar sem eu perder o que importa.</span><span><b>Referências</b><span class="f">[suas 5 tarefas, já marcadas]</span></span><span><b>Restrições</b>Discorde de mim quando achar que errei.</span><span><b>Formato</b>Para cada tarefa: concorda ou não, e por quê, em uma linha.</span></div>
+        <p class="label">Deu certo se…</p>
+        <ul class="checks"><li>Seu porquê não cita o nome do cargo</li><li>Cada tarefa tem uma marcação</li><li class="human">Você discordou da IA em pelo menos um ponto, e sabe por quê</li></ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ENTREGÁVEIS -->
+<section class="sec" aria-labelledby="t-del">
+  <div class="sec-head">
+    <p class="label">5 · O que vou construir</p>
+    <h2 id="t-del">No ar até segunda, 19/10</h2>
+  </div>
+  <div class="cols">
+    <div class="box"><p class="label">Encontro 1</p><ul class="dash"><li>Página de estudo (revisão pós-aula, com "Antes da aula · 5 min")</li><li>Página de exercícios (os 5 acima, com progresso salvo)</li><li>Slides (reveal.js, modo apresentador, PDF)</li><li>4 animações + diagrama "quem é quem"</li></ul></div>
+    <div class="box"><p class="label">Consulta</p><ul class="dash"><li>Conceitos: token, próxima palavra, alucinação, janela de contexto, modelos e custo</li><li>O pedido em 5 partes</li><li>Segurança e privacidade (checklist, data da verificação)</li><li>IA e trabalho: as revoluções (13 slides completos)</li><li>Fique com o volante (dívida cognitiva)</li></ul></div>
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section class="sec" aria-labelledby="t-q">
+  <div class="sec-head">
+    <p class="label">6 · Para você decidir</p>
+    <h2 id="t-q">Três perguntas antes de eu construir</h2>
+  </div>
+  <ol class="q">
+    <li><b>Plataforma da aula</b><span>Zoom, Google Meet ou outra? Muda como faço a enquete de abertura e como os alunos compartilham resultados. Recomendo usar o próprio chat da plataforma, sem ferramenta extra.</span></li>
+    <li><b>Exemplos dos exercícios</b><span>A "Ana, analista de RH" (Ex. 1) e o jantar para 6 (Ex. 2) servem para o seu público, ou prefere situações de outra área?</span></li>
+    <li><b>Slide de risco existencial</b><span>Ficou fora do E1 para caber no tempo; aparece na Consulta e no fechamento do E4. Se alguém perguntar ao vivo, você responde com o slide 12 da Consulta. Concorda?</span></li>
+  </ol>
+</section>
+
+</main>
