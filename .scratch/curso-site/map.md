@@ -31,6 +31,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Rebranding: direção visual](issues/02-rebranding-direcoes.md) — E · Rascunho técnico: concreto + tinta + laranja sinal, cor de apoio grafite; Schibsted Grotesk / Instrument Sans / Kalam / Plex Mono.
 - [Voz da marca](issues/08-voz.md) — Especialista que simplifica: fato primeiro, um número por ideia, anotações curtas com consequência nova, sem exagero.
 - [Arquitetura de informação](issues/03-arquitetura-informacao.md) — por encontro + Consulta; conceitos como núcleo, com anatomia fixa; sem biblioteca de prompts (índice automático); PDF de slides + Kit após E4.
+- [Repo e deploy](issues/07-repo-deploy.md) — no ar em jrtedeschi.github.io/ia-na-vida-real, deploy automático a cada push na main.
 
 ## Not yet specified
 
