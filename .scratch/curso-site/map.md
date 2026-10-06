@@ -38,11 +38,11 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Segurança e privacidade](issues/11-seguranca-privacidade.md) — pagar não desliga treino; Claude opt-in, ChatGPT e Gemini treinam por padrão; checklist de 1 página; bloco de configuração ao vivo no E1.
 - [Distribuição do conteúdo](issues/14-distribuicao-conteudo.md) — um arco por aula; E1 = jornada do "enviar" + privacidade ao vivo; vetores e estudo no E2; raciocínio, checagem e golpes no E3; futuro do trabalho fecha o E4; profundidade na Consulta.
 - [Estudar com IA](issues/13-estudar-com-ia.md) — "para aprender, use a IA para te perguntar"; Gemini Notebook Studio + modos tutor grátis; 7 práticas com evidência; exercício apostila → quiz no E2.
+- [IA e trabalho: revoluções](issues/12-mindset-revolucoes.md) — 8 paralelos verificados (luditas, pausa de Engels, eletricidade, caixa eletrônico, planilha, bancários no Brasil), dados de hoje (OIT, FGV) e risco como debate aberto; otimista e honesto.
 
 ## Not yet specified
 
 
-- Sequência "IA e trabalho": 3–4 slides na abertura do E1 + fechamento do E4 + página completa na Consulta, depende de 12.
 
 - Kit de animação compartilhado + 7 animações da jornada do "enviar" (token, próxima palavra, alucinação, vetores, janela de contexto, raciocínio, quem é quem).
 
