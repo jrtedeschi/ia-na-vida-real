@@ -9,7 +9,6 @@ ivr-token-split {
 	--_soft: var(--ivr-ink-soft, #50524c);
 	--_line: var(--ivr-line, #c9cac3);
 	--_orange: var(--ivr-orange, #ff5a1f);
-	--_orange-ink: var(--ivr-orange-ink, #c23a08);
 	--_graphite: var(--ivr-graphite, #5b5f57);
 	--_graphite-ink: var(--ivr-graphite-ink, #4a4d46);
 	--_dot: var(--ivr-dot, rgba(18, 19, 17, 0.13));
@@ -112,7 +111,7 @@ ivr-token-split .ts-circle {
 	stroke-width: 3.5;
 }
 ivr-token-split .ts-arrow {
-	stroke: var(--_orange-ink);
+	stroke: var(--_orange);
 	stroke-width: 2.2;
 }
 ivr-token-split .ts-underline {
@@ -123,7 +122,7 @@ ivr-token-split .ts-underline {
 ivr-token-split .ts-note {
 	position: absolute;
 	font: 700 clamp(16px, 2.4cqi, 24px) / 1.1 var(--_hand);
-	color: var(--_orange-ink);
+	color: var(--_graphite-ink);
 	white-space: nowrap;
 	transform: rotate(-3deg);
 }

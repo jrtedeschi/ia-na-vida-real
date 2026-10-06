@@ -4,8 +4,8 @@
 	--sl-font-mono: var(--ivr-font-mono);
 
 	--sl-color-accent-low: #4d2615;
-	--sl-color-accent: #ff6a33;
-	--sl-color-accent-high: #ffb596;
+	--sl-color-accent: #edeee8;
+	--sl-color-accent-high: #edeee8;
 	--sl-color-white: #edeee8;
 	--sl-color-gray-1: #d6d7d0;
 	--sl-color-gray-2: #a6a89f;
@@ -18,8 +18,8 @@
 
 :root[data-theme='light'] {
 	--sl-color-accent-low: #ffd6c4;
-	--sl-color-accent: #c23a08;
-	--sl-color-accent-high: #7a2404;
+	--sl-color-accent: #121311;
+	--sl-color-accent-high: #121311;
 	--sl-color-white: #121311;
 	--sl-color-gray-1: #24251f;
 	--sl-color-gray-2: #3a3c36;
@@ -49,4 +49,15 @@ h1#_top,
 	font-family: var(--ivr-font-hand);
 	font-weight: 700;
 	color: var(--ivr-graphite-ink);
+}
+
+/* Texto nunca é laranja: links em tinta, sublinhado laranja. */
+.sl-markdown-content a {
+	color: var(--ivr-ink);
+	text-decoration-color: var(--ivr-orange);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+.sl-markdown-content a:hover {
+	text-decoration-thickness: 3px;
 }

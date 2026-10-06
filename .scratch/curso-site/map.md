@@ -10,7 +10,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 
 - **Override de "plan, don't do"**: a execução (construir e publicar) faz parte deste mapa.
 - Domínio: conteúdo educacional pt-BR para leigos. Público não técnico, sem programação.
-- Fontes: landing (artefato https://claude.ai/artifact/Fta87vm3mPG9r9dqr13kkE), que traz os 4 encontros, o método C-O-R-R-F, o Kit e o FAQ; e `~/Downloads/Designing Agent Skills — Research Notes.md`, que alimenta o Encontro 4 (processos → rotinas = skills explicadas para leigos) e o método de produção (critério "deu certo se…" verificável, progressive disclosure, anti-slop).
+- Fontes: landing (artefato https://claude.ai/artifact/Fta87vm3mPG9r9dqr13kkE), que traz os 4 encontros, o método das 5 partes, o Kit e o FAQ; e `~/Downloads/Designing Agent Skills — Research Notes.md`, que alimenta o Encontro 4 (processos → rotinas = skills explicadas para leigos) e o método de produção (critério "deu certo se…" verificável, progressive disclosure, anti-slop).
 - Conteúdo: Claude redige a partir da landing; João revisa por encontro.
 - Exercícios: caminho gratuito obrigatório + caminho "plano pago" opcional.
 - A landing atual NÃO é rebrandada nem migrada (é só ela; o site do curso é separado).
@@ -33,6 +33,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Arquitetura de informação](issues/03-arquitetura-informacao.md) — por encontro + Consulta; conceitos como núcleo, com anatomia fixa; sem biblioteca de prompts (índice automático); PDF de slides + Kit após E4.
 - [Repo e deploy](issues/07-repo-deploy.md) — no ar em jrtedeschi.github.io/ia-na-vida-real, deploy automático a cada push na main.
 - [Animações nos conceitos](issues/09-animacoes-conceitos.md) — animação web nativa (custom element + Web Animations API + traço à mão), mesma peça na página e no slide; estado final = poster do PDF.
+- [Formato do exercício](issues/04-formato-exercicio.md) — situação real → pedido em 5 partes copiável → "deu certo se…" → "não deu certo?" apontando o conceito; grátis por padrão; em aula/para casa.
 
 ## Not yet specified
 

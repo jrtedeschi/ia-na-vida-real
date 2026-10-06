@@ -4,9 +4,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;600&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-:root{--ivr-font-display:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;--ivr-font-body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;--ivr-font-hand:'Kalam','Comic Sans MS',cursive;--ivr-font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;--ivr-bg:#edeeea;--ivr-paper:#f8f8f5;--ivr-ink:#121311;--ivr-ink-soft:#50524c;--ivr-line:#c9cac3;--ivr-orange:#ff5a1f;--ivr-orange-ink:#c23a08;--ivr-graphite:#5b5f57;--ivr-graphite-ink:#4a4d46;--ivr-dot:rgba(18,19,17,.13);}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-orange-ink:#ff8c5e;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}}
-:root[data-theme="dark"]{color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-orange-ink:#ff8c5e;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}
+:root{--ivr-font-display:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;--ivr-font-body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;--ivr-font-hand:'Kalam','Comic Sans MS',cursive;--ivr-font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;--ivr-bg:#edeeea;--ivr-paper:#f8f8f5;--ivr-ink:#121311;--ivr-ink-soft:#50524c;--ivr-line:#c9cac3;--ivr-orange:#ff5a1f;--ivr-graphite:#5b5f57;--ivr-graphite-ink:#4a4d46;--ivr-dot:rgba(18,19,17,.13);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}}
+:root[data-theme="dark"]{color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}
 
 body{margin:0;background:var(--ivr-bg);color:var(--ivr-ink);font:17px/1.6 var(--ivr-font-body);padding-inline:16px}
 main{max-width:760px;margin-inline:auto;padding-block:32px 80px;display:grid;gap:22px}
@@ -25,7 +25,6 @@ ivr-token-split {
 	--_soft: var(--ivr-ink-soft, #50524c);
 	--_line: var(--ivr-line, #c9cac3);
 	--_orange: var(--ivr-orange, #ff5a1f);
-	--_orange-ink: var(--ivr-orange-ink, #c23a08);
 	--_graphite: var(--ivr-graphite, #5b5f57);
 	--_graphite-ink: var(--ivr-graphite-ink, #4a4d46);
 	--_dot: var(--ivr-dot, rgba(18, 19, 17, 0.13));
@@ -128,7 +127,7 @@ ivr-token-split .ts-circle {
 	stroke-width: 3.5;
 }
 ivr-token-split .ts-arrow {
-	stroke: var(--_orange-ink);
+	stroke: var(--_orange);
 	stroke-width: 2.2;
 }
 ivr-token-split .ts-underline {
@@ -139,7 +138,7 @@ ivr-token-split .ts-underline {
 ivr-token-split .ts-note {
 	position: absolute;
 	font: 700 clamp(16px, 2.4cqi, 24px) / 1.1 var(--_hand);
-	color: var(--_orange-ink);
+	color: var(--_graphite-ink);
 	white-space: nowrap;
 	transform: rotate(-3deg);
 }

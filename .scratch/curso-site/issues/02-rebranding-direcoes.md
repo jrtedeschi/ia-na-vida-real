@@ -20,3 +20,5 @@ Direção **E · Rascunho técnico, cor de apoio Grafite** (rodada 3, #grafite).
 - Tipografia: Schibsted Grotesk 900 (números/títulos), Instrument Sans (texto), Kalam 700 (anotações à mão), IBM Plex Mono (rótulos).
 - Estrutura: número gigante circulado à mão, grid de 12 colunas, faixa de números, papel pontilhado, cartões com borda de tinta e divisórias tracejadas.
 - Voz: segue para o ticket 08.
+
+**Emenda (06/10):** João não gostou do laranja escuro #C23A08. Regra nova: laranja vivo só em traço, círculo, sublinhado, etiqueta e número grande; **texto nunca é laranja** (tinta ou grafite); links em tinta com sublinhado laranja. Token `--ivr-orange-ink` removido.
