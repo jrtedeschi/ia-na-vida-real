@@ -1,0 +1,203 @@
+/*
+ * <ivr-token-split> — estilos.
+ * Consome os tokens de src/styles/tokens.css (--ivr-*). Os fallbacks são o tema claro,
+ * para a animação funcionar sozinha (ex.: página de demo sem tokens).
+ */
+ivr-token-split {
+	--_bg: var(--ivr-paper, #f8f8f5);
+	--_ink: var(--ivr-ink, #121311);
+	--_soft: var(--ivr-ink-soft, #50524c);
+	--_line: var(--ivr-line, #c9cac3);
+	--_orange: var(--ivr-orange, #ff5a1f);
+	--_orange-ink: var(--ivr-orange-ink, #c23a08);
+	--_graphite: var(--ivr-graphite, #5b5f57);
+	--_graphite-ink: var(--ivr-graphite-ink, #4a4d46);
+	--_dot: var(--ivr-dot, rgba(18, 19, 17, 0.13));
+	--_display: var(--ivr-font-display, 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif);
+	--_hand: var(--ivr-font-hand, 'Kalam', 'Comic Sans MS', cursive);
+	--_mono: var(--ivr-font-mono, 'IBM Plex Mono', ui-monospace, Menlo, monospace);
+
+	display: block;
+	container-type: inline-size;
+	color: var(--_ink);
+}
+
+ivr-token-split .ts-frame {
+	position: relative;
+	display: grid;
+	gap: 0.9rem;
+	padding: clamp(16px, 4cqi, 40px);
+	background-color: var(--_bg);
+	background-image: radial-gradient(var(--_dot) 1.5px, transparent 1.5px);
+	background-size: 22px 22px;
+	border: 2px solid var(--_ink);
+	border-radius: 6px;
+}
+
+ivr-token-split .ts-labels {
+	display: grid;
+	min-height: 1.5em;
+	font: 700 clamp(17px, 2.6cqi, 26px) / 1.2 var(--_hand);
+	color: var(--_graphite-ink);
+}
+ivr-token-split .ts-labels > * {
+	grid-area: 1 / 1;
+	transform: rotate(-2deg);
+	transform-origin: left center;
+}
+
+/* Linha final (tokens separados) e espelho (frase junta) ocupam a mesma célula. */
+ivr-token-split .ts-stage {
+	position: relative;
+	display: grid;
+	font: 700 clamp(20px, 3.3cqi, 46px) / 1 var(--_display);
+	letter-spacing: -0.02em;
+	padding-block: 0.4em 2.3em;
+}
+ivr-token-split .ts-row,
+ivr-token-split .ts-mirror {
+	grid-area: 1 / 1;
+	align-self: start;
+}
+ivr-token-split .ts-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* Entre linhas cabe a anotação quando a frase quebra (telas estreitas). */
+	gap: 2.3em 0.26em;
+}
+ivr-token-split .ts-mirror {
+	text-align: center;
+	white-space: pre-wrap;
+	visibility: hidden;
+	pointer-events: none;
+}
+ivr-token-split .ts-mirror span {
+	display: inline-block;
+}
+
+ivr-token-split .ts-token {
+	position: relative;
+	display: inline-block;
+	padding: 0.2em 0.16em;
+	will-change: transform;
+}
+ivr-token-split .ts-box {
+	position: absolute;
+	inset: 0;
+	border: 1.5px dashed var(--_graphite);
+	border-radius: 3px;
+	background: color-mix(in srgb, var(--_bg) 70%, transparent);
+	z-index: -1;
+}
+ivr-token-split .ts-token-text {
+	position: relative;
+}
+
+ivr-token-split svg.ts-ink {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	pointer-events: none;
+}
+ivr-token-split svg.ts-ink path {
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+ivr-token-split .ts-circle {
+	stroke: var(--_orange);
+	stroke-width: 3.5;
+}
+ivr-token-split .ts-arrow {
+	stroke: var(--_orange-ink);
+	stroke-width: 2.2;
+}
+ivr-token-split .ts-underline {
+	stroke: var(--_orange);
+	stroke-width: 4;
+}
+
+ivr-token-split .ts-note {
+	position: absolute;
+	font: 700 clamp(16px, 2.4cqi, 24px) / 1.1 var(--_hand);
+	color: var(--_orange-ink);
+	white-space: nowrap;
+	transform: rotate(-3deg);
+}
+
+ivr-token-split .ts-tally {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.3em 0.6em;
+	padding-top: 0.8rem;
+	border-top: 1.5px dashed var(--_line);
+	font: 900 clamp(26px, 5.6cqi, 56px) / 1 var(--_display);
+	letter-spacing: -0.045em;
+}
+ivr-token-split .ts-tally .ts-arrow-text {
+	font: 700 0.6em / 1 var(--_hand);
+	color: var(--_graphite-ink);
+	letter-spacing: 0;
+}
+ivr-token-split .ts-tally .ts-tokens {
+	position: relative;
+}
+
+ivr-token-split .ts-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-end;
+}
+ivr-token-split .ts-controls button {
+	font: 600 13px / 1 var(--_mono);
+	letter-spacing: 0.04em;
+	padding: 9px 14px;
+	border-radius: 999px;
+	border: 1.5px solid var(--_ink);
+	background: transparent;
+	color: var(--_ink);
+	cursor: pointer;
+	transition: background-color 150ms, color 150ms;
+}
+ivr-token-split .ts-controls button:hover {
+	background: var(--_ink);
+	color: var(--_bg);
+}
+ivr-token-split .ts-controls button:focus-visible {
+	outline: 3px solid var(--_orange);
+	outline-offset: 2px;
+}
+
+ivr-token-split figcaption {
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--_soft);
+	max-width: 62ch;
+}
+
+/* Sem JS ou ao imprimir: só o estado final (vira o "poster" do PDF). */
+@media print {
+	ivr-token-split .ts-controls {
+		display: none;
+	}
+}
+
+/* O rótulo "antes" só aparece durante a animação; no estado final fica o "depois". */
+ivr-token-split .ts-before {
+	opacity: 0;
+}
+
+/* hide-caption: transcrição só para leitor de tela (ex.: no slide, as notas do apresentador já a têm). */
+ivr-token-split[hide-caption] figcaption {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

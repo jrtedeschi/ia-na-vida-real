@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- PoC (ticket 09): a mesma <ivr-token-split> dentro de um deck reveal.js 6 (CDN só na demo;
+     no site vem do npm). Teste também ?print-pdf (Chrome → Imprimir) para ver o "poster". -->
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoC · Token (slide reveal.js)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;600&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.css">
+<link rel="stylesheet" href="../../src/styles/tokens.css">
+<link rel="stylesheet" href="token-split.css">
+<style>
+	/* Tema reveal mínimo a partir dos tokens (o real fica em src/styles/reveal-theme.css). */
+	.reveal-viewport { background: var(--ivr-bg); }
+	.reveal {
+		color: var(--ivr-ink);
+		font-family: var(--ivr-font-body);
+		font-size: 30px;
+	}
+	.reveal .slides section { text-align: left; }
+	.reveal .label {
+		font: 500 16px/1 var(--ivr-font-mono);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.reveal h2 {
+		margin: 12px 0 24px;
+		font: 900 64px/0.95 var(--ivr-font-display);
+		letter-spacing: -0.05em;
+	}
+</style>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<p class="label">01 · Tokens</p>
+			<h2>A IA lê em pedaços.</h2>
+			<p>→ próximo slide</p>
+		</section>
+		<section>
+			<ivr-token-split hide-caption
+				trigger="manual"
+				tokens="Organ|ize| minha| sem|ana| com| 3| prior|idades"
+				circle="0,1"
+				note="1 palavra, 2 tokens">
+			</ivr-token-split>
+			<aside class="notes">Deixe a animação rodar. Pergunte: quantos tokens vocês acham que a frase tem?</aside>
+		</section>
+	</div>
+</div>
+<script type="module">
+	import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.mjs';
+	import '../token-split/token-split.js';
+
+	const deck = new Reveal({ hash: true, width: 1280, height: 720, margin: 0.06 });
+	const playIn = (slide) => slide?.querySelectorAll('ivr-token-split').forEach((a) => a.play());
+	deck.on('ready', (e) => playIn(e.currentSlide));
+	deck.on('slidechanged', (e) => playIn(e.currentSlide));
+	deck.initialize();
+</script>
+</body>
+</html>

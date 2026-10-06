@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- PoC (ticket 09): <ivr-token-split> numa página de conceito. Servir a partir da raiz do projeto:
+     npx serve .  →  http://localhost:3000/animations/token-split/  -->
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoC · Token (página de conceito)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;600&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../../src/styles/tokens.css">
+<link rel="stylesheet" href="token-split.css">
+<style>
+	body {
+		margin: 0;
+		background: var(--ivr-bg);
+		color: var(--ivr-ink);
+		font: 17px/1.6 var(--ivr-font-body);
+	}
+	main {
+		max-width: 760px;
+		margin-inline: auto;
+		padding: 32px 16px 80px;
+		display: grid;
+		gap: 22px;
+	}
+	.label {
+		font: 500 12px/1 var(--ivr-font-mono);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	h1 {
+		margin: 0;
+		font: 900 clamp(2rem, 6vw, 3.2rem)/0.95 var(--ivr-font-display);
+		letter-spacing: -0.05em;
+	}
+	p { margin: 0; color: var(--ivr-ink-soft); }
+	.lead { color: var(--ivr-ink); font-size: 20px; }
+	.demo-bar { display: flex; flex-wrap: wrap; gap: 8px; }
+	.demo-bar button {
+		font: 500 12px/1 var(--ivr-font-mono);
+		padding: 8px 12px;
+		border-radius: 999px;
+		border: 1px solid var(--ivr-line);
+		background: var(--ivr-paper);
+		color: var(--ivr-ink);
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+<main>
+	<nav class="demo-bar" aria-label="Controles da demo">
+		<button type="button" data-theme-set="light">Tema claro</button>
+		<button type="button" data-theme-set="dark">Tema escuro</button>
+		<button type="button" id="final">Estado final (poster)</button>
+		<a class="label" href="slides.html">→ mesma animação num slide reveal.js</a>
+	</nav>
+
+	<p class="label">Consulta · Conceito · Token</p>
+	<h1>A IA lê em pedaços, não em palavras.</h1>
+	<p class="lead">Um modelo de linguagem quebra o texto em tokens: pedaços de mais ou menos 3 a 4 letras em português.</p>
+
+	<ivr-token-split
+		tokens="Organ|ize| minha| sem|ana| com| 3| prior|idades"
+		circle="0,1"
+		note="1 palavra, 2 tokens">
+	</ivr-token-split>
+
+	<p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Por isso vale começar uma conversa nova para cada assunto.</p>
+	<p class="label">A divisão é ilustrativa: cada modelo tem o seu próprio "dicionário" de tokens.</p>
+</main>
+<script type="module">
+	import './token-split.js';
+	const root = document.documentElement;
+	document.querySelectorAll('[data-theme-set]').forEach((b) =>
+		b.addEventListener('click', () => (root.dataset.theme = b.dataset.themeSet)),
+	);
+	document.getElementById('final').addEventListener('click', () =>
+		document.querySelector('ivr-token-split').showFinal(),
+	);
+</script>
+</body>
+</html>

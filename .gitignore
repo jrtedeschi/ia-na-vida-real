@@ -6,4 +6,6 @@ node_modules/
 .DS_Store
 animations/.venv/
 animations/media/
+animations/_comparativo-manim/fonts/
 __pycache__/
+animations/out/manim/

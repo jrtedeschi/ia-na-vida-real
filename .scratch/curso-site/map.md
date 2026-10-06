@@ -32,6 +32,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Voz da marca](issues/08-voz.md) — Especialista que simplifica: fato primeiro, um número por ideia, anotações curtas com consequência nova, sem exagero.
 - [Arquitetura de informação](issues/03-arquitetura-informacao.md) — por encontro + Consulta; conceitos como núcleo, com anatomia fixa; sem biblioteca de prompts (índice automático); PDF de slides + Kit após E4.
 - [Repo e deploy](issues/07-repo-deploy.md) — no ar em jrtedeschi.github.io/ia-na-vida-real, deploy automático a cada push na main.
+- [Animações nos conceitos](issues/09-animacoes-conceitos.md) — animação web nativa (custom element + Web Animations API + traço à mão), mesma peça na página e no slide; estado final = poster do PDF.
 
 ## Not yet specified
 

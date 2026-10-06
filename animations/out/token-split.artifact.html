@@ -1,0 +1,704 @@
+<title>Animação do token</title>
+<!-- PoC do ticket 09 empacotada num arquivo só (fonte: animations/token-split/). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;600&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--ivr-font-display:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;--ivr-font-body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;--ivr-font-hand:'Kalam','Comic Sans MS',cursive;--ivr-font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;--ivr-bg:#edeeea;--ivr-paper:#f8f8f5;--ivr-ink:#121311;--ivr-ink-soft:#50524c;--ivr-line:#c9cac3;--ivr-orange:#ff5a1f;--ivr-orange-ink:#c23a08;--ivr-graphite:#5b5f57;--ivr-graphite-ink:#4a4d46;--ivr-dot:rgba(18,19,17,.13);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-orange-ink:#ff8c5e;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}}
+:root[data-theme="dark"]{color-scheme:dark;--ivr-bg:#121311;--ivr-paper:#1b1c19;--ivr-ink:#edeee8;--ivr-ink-soft:#a6a89f;--ivr-line:#34362f;--ivr-orange:#ff6a33;--ivr-orange-ink:#ff8c5e;--ivr-graphite:#a9aca2;--ivr-graphite-ink:#c4c7bd;--ivr-dot:rgba(237,238,232,.1);}
+
+body{margin:0;background:var(--ivr-bg);color:var(--ivr-ink);font:17px/1.6 var(--ivr-font-body);padding-inline:16px}
+main{max-width:760px;margin-inline:auto;padding-block:32px 80px;display:grid;gap:22px}
+.label{font:500 12px/1.4 var(--ivr-font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ivr-ink-soft)}
+h1{margin:0;font:900 clamp(2rem,6vw,3.2rem)/.95 var(--ivr-font-display);letter-spacing:-.05em;text-wrap:balance}
+p{margin:0;color:var(--ivr-ink-soft)}
+.lead{color:var(--ivr-ink);font-size:20px}
+/*
+ * <ivr-token-split> — estilos.
+ * Consome os tokens de src/styles/tokens.css (--ivr-*). Os fallbacks são o tema claro,
+ * para a animação funcionar sozinha (ex.: página de demo sem tokens).
+ */
+ivr-token-split {
+	--_bg: var(--ivr-paper, #f8f8f5);
+	--_ink: var(--ivr-ink, #121311);
+	--_soft: var(--ivr-ink-soft, #50524c);
+	--_line: var(--ivr-line, #c9cac3);
+	--_orange: var(--ivr-orange, #ff5a1f);
+	--_orange-ink: var(--ivr-orange-ink, #c23a08);
+	--_graphite: var(--ivr-graphite, #5b5f57);
+	--_graphite-ink: var(--ivr-graphite-ink, #4a4d46);
+	--_dot: var(--ivr-dot, rgba(18, 19, 17, 0.13));
+	--_display: var(--ivr-font-display, 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif);
+	--_hand: var(--ivr-font-hand, 'Kalam', 'Comic Sans MS', cursive);
+	--_mono: var(--ivr-font-mono, 'IBM Plex Mono', ui-monospace, Menlo, monospace);
+
+	display: block;
+	container-type: inline-size;
+	color: var(--_ink);
+}
+
+ivr-token-split .ts-frame {
+	position: relative;
+	display: grid;
+	gap: 0.9rem;
+	padding: clamp(16px, 4cqi, 40px);
+	background-color: var(--_bg);
+	background-image: radial-gradient(var(--_dot) 1.5px, transparent 1.5px);
+	background-size: 22px 22px;
+	border: 2px solid var(--_ink);
+	border-radius: 6px;
+}
+
+ivr-token-split .ts-labels {
+	display: grid;
+	min-height: 1.5em;
+	font: 700 clamp(17px, 2.6cqi, 26px) / 1.2 var(--_hand);
+	color: var(--_graphite-ink);
+}
+ivr-token-split .ts-labels > * {
+	grid-area: 1 / 1;
+	transform: rotate(-2deg);
+	transform-origin: left center;
+}
+
+/* Linha final (tokens separados) e espelho (frase junta) ocupam a mesma célula. */
+ivr-token-split .ts-stage {
+	position: relative;
+	display: grid;
+	font: 700 clamp(20px, 3.3cqi, 46px) / 1 var(--_display);
+	letter-spacing: -0.02em;
+	padding-block: 0.4em 2.3em;
+}
+ivr-token-split .ts-row,
+ivr-token-split .ts-mirror {
+	grid-area: 1 / 1;
+	align-self: start;
+}
+ivr-token-split .ts-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* Entre linhas cabe a anotação quando a frase quebra (telas estreitas). */
+	gap: 2.3em 0.26em;
+}
+ivr-token-split .ts-mirror {
+	text-align: center;
+	white-space: pre-wrap;
+	visibility: hidden;
+	pointer-events: none;
+}
+ivr-token-split .ts-mirror span {
+	display: inline-block;
+}
+
+ivr-token-split .ts-token {
+	position: relative;
+	display: inline-block;
+	padding: 0.2em 0.16em;
+	will-change: transform;
+}
+ivr-token-split .ts-box {
+	position: absolute;
+	inset: 0;
+	border: 1.5px dashed var(--_graphite);
+	border-radius: 3px;
+	background: color-mix(in srgb, var(--_bg) 70%, transparent);
+	z-index: -1;
+}
+ivr-token-split .ts-token-text {
+	position: relative;
+}
+
+ivr-token-split svg.ts-ink {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	pointer-events: none;
+}
+ivr-token-split svg.ts-ink path {
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+ivr-token-split .ts-circle {
+	stroke: var(--_orange);
+	stroke-width: 3.5;
+}
+ivr-token-split .ts-arrow {
+	stroke: var(--_orange-ink);
+	stroke-width: 2.2;
+}
+ivr-token-split .ts-underline {
+	stroke: var(--_orange);
+	stroke-width: 4;
+}
+
+ivr-token-split .ts-note {
+	position: absolute;
+	font: 700 clamp(16px, 2.4cqi, 24px) / 1.1 var(--_hand);
+	color: var(--_orange-ink);
+	white-space: nowrap;
+	transform: rotate(-3deg);
+}
+
+ivr-token-split .ts-tally {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.3em 0.6em;
+	padding-top: 0.8rem;
+	border-top: 1.5px dashed var(--_line);
+	font: 900 clamp(26px, 5.6cqi, 56px) / 1 var(--_display);
+	letter-spacing: -0.045em;
+}
+ivr-token-split .ts-tally .ts-arrow-text {
+	font: 700 0.6em / 1 var(--_hand);
+	color: var(--_graphite-ink);
+	letter-spacing: 0;
+}
+ivr-token-split .ts-tally .ts-tokens {
+	position: relative;
+}
+
+ivr-token-split .ts-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-end;
+}
+ivr-token-split .ts-controls button {
+	font: 600 13px / 1 var(--_mono);
+	letter-spacing: 0.04em;
+	padding: 9px 14px;
+	border-radius: 999px;
+	border: 1.5px solid var(--_ink);
+	background: transparent;
+	color: var(--_ink);
+	cursor: pointer;
+	transition: background-color 150ms, color 150ms;
+}
+ivr-token-split .ts-controls button:hover {
+	background: var(--_ink);
+	color: var(--_bg);
+}
+ivr-token-split .ts-controls button:focus-visible {
+	outline: 3px solid var(--_orange);
+	outline-offset: 2px;
+}
+
+ivr-token-split figcaption {
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--_soft);
+	max-width: 62ch;
+}
+
+/* Sem JS ou ao imprimir: só o estado final (vira o "poster" do PDF). */
+@media print {
+	ivr-token-split .ts-controls {
+		display: none;
+	}
+}
+
+/* O rótulo "antes" só aparece durante a animação; no estado final fica o "depois". */
+ivr-token-split .ts-before {
+	opacity: 0;
+}
+
+/* hide-caption: transcrição só para leitor de tela (ex.: no slide, as notas do apresentador já a têm). */
+ivr-token-split[hide-caption] figcaption {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+</style>
+<main>
+	<p class="label">Consulta · Conceito · Token</p>
+	<h1>A IA lê em pedaços, não em palavras.</h1>
+	<p class="lead">Um modelo de linguagem quebra o texto em tokens: pedaços de mais ou menos 3 a 4 letras em português.</p>
+	<ivr-token-split tokens="Organ|ize| minha| sem|ana| com| 3| prior|idades" circle="0,1" note="1 palavra, 2 tokens"></ivr-token-split>
+	<p>O limite de uma conversa e o preço dos planos pagos são contados em tokens. Por isso vale começar uma conversa nova para cada assunto.</p>
+	<p class="label">A divisão é ilustrativa: cada modelo tem o seu próprio "dicionário" de tokens.</p>
+</main>
+<script>
+// Traços "à mão" em SVG, gerados em coordenadas de pixel (sem preserveAspectRatio="none",
+// então a espessura do traço não deforma). Determinístico: mesma semente = mesmo traço.
+
+const TAU = Math.PI * 2;
+
+/** Pseudo-aleatório determinístico (mulberry32). */
+function seeded(seed) {
+	let a = seed >>> 0;
+	return () => {
+		a = (a + 0x6d2b79f5) >>> 0;
+		let t = a;
+		t = Math.imul(t ^ (t >>> 15), t | 1);
+		t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+		return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+	};
+}
+
+/** Catmull-Rom -> Bézier cúbica: curva suave passando por todos os pontos. */
+function smoothPath(points) {
+	if (points.length < 2) return '';
+	const f = (n) => n.toFixed(1);
+	const parts = [`M${f(points[0][0])} ${f(points[0][1])}`];
+	for (let i = 0; i < points.length - 1; i++) {
+		const p0 = points[i - 1] ?? points[i];
+		const p1 = points[i];
+		const p2 = points[i + 1];
+		const p3 = points[i + 2] ?? p2;
+		const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+		const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+		parts.push(`C${f(c1[0])} ${f(c1[1])} ${f(c2[0])} ${f(c2[1])} ${f(p2[0])} ${f(p2[1])}`);
+	}
+	return parts.join('');
+}
+
+/** Elipse rabiscada em volta de um retângulo, com sobreposição no fim (como caneta). */
+function roughEllipse(rect, { seed = 7, pad = 14, overshoot = 0.55, steps = 30 } = {}) {
+	const rand = seeded(seed);
+	const cx = rect.x + rect.width / 2;
+	const cy = rect.y + rect.height / 2;
+	const rx = rect.width / 2 + pad;
+	const ry = rect.height / 2 + pad * 0.8;
+	const start = -2.2 + rand() * 0.3; // começa no alto, à esquerda
+	const wobble = [rand() * TAU, rand() * TAU];
+	const points = [];
+	for (let i = 0; i <= steps; i++) {
+		const t = i / steps;
+		const a = start + t * (TAU + overshoot);
+		const grow = 1 + 0.12 * t; // espiral leve: a volta final não fecha exatamente
+		const noise = 1 + 0.035 * Math.sin(3 * a + wobble[0]) + 0.02 * Math.sin(5 * a + wobble[1]);
+		points.push([cx + Math.cos(a) * rx * grow * noise, cy + Math.sin(a) * ry * grow * noise]);
+	}
+	return smoothPath(points);
+}
+
+/**
+ * Seta curva de `from` até `to`. Devolve haste e ponta separadas: o tracejado
+ * (stroke-dasharray) que "desenha" o traço funciona melhor com um subcaminho por path.
+ */
+function roughArrow(from, to, { bend = 0.25, head = 10 } = {}) {
+	const [x0, y0] = from;
+	const [x1, y1] = to;
+	const mx = (x0 + x1) / 2 - (y1 - y0) * bend;
+	const my = (y0 + y1) / 2 + (x1 - x0) * bend;
+	const angle = Math.atan2(y1 - my, x1 - mx);
+	const leg = (da) => [x1 - head * Math.cos(angle + da), y1 - head * Math.sin(angle + da)];
+	const [l1, l2] = [leg(0.5), leg(-0.5)];
+	const f = (n) => n.toFixed(1);
+	return {
+		shaft: `M${f(x0)} ${f(y0)}Q${f(mx)} ${f(my)} ${f(x1)} ${f(y1)}`,
+		head: `M${f(l1[0])} ${f(l1[1])}L${f(x1)} ${f(y1)}L${f(l2[0])} ${f(l2[1])}`,
+	};
+}
+
+/** Sublinhado ondulado, ida e volta, sob um retângulo. */
+function roughUnderline(rect, { seed = 3, y = 6 } = {}) {
+	const rand = seeded(seed);
+	const base = rect.y + rect.height + y;
+	const left = rect.x - 4;
+	const right = rect.x + rect.width + 6;
+	const points = [
+		[left, base + rand() * 3],
+		[right, base - 2 + rand() * 3],
+		[left + rect.width * 0.25, base + 6 + rand() * 3],
+		[right - rect.width * 0.1, base + 5 + rand() * 2],
+	];
+	return smoothPath(points);
+}
+
+// <ivr-token-split>: frase que se quebra em tokens, com anotação "à mão".
+// Web Animations API (sem dependências). Funciona igual numa página Starlight e num slide reveal.js.
+//
+// Atributos:
+//   tokens   "Organ|ize| minha|..."  (espaço inicial = começo de palavra)
+//   circle   "0,1"                    índices dos tokens circulados em laranja
+//   note     "1 palavra, 2 tokens"    anotação ao lado do círculo
+//   before / after                    rótulos à mão antes e depois da quebra
+//   trigger  "visible" (padrão) | "manual"   (manual: quem chama .play() é o reveal.js)
+//
+// Acessibilidade: prefers-reduced-motion e impressão (?print-pdf, beforeprint) mostram só o
+// estado final; pausar/repetir por botão; transcrição no <figcaption>.
+
+
+
+const EASE_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const EASE_PEN = 'cubic-bezier(0.6, 0, 0.2, 1)';
+const T = {
+	sentenceIn: 0,
+	labelSwap: 1500,
+	split: 1900,
+	splitStagger: 45,
+	splitDur: 950,
+	box: 2300,
+	boxStagger: 110,
+	circle: 4000,
+	note: 4900,
+	words: 6000,
+	tokens: 6500,
+	underline: 6900,
+};
+const VISIBLE_THRESHOLD = 0.4;
+
+const beforeKeyframes = (total) => [
+	{ opacity: 0, offset: 0 },
+	{ opacity: 0, offset: 300 / total },
+	{ opacity: 1, offset: 700 / total },
+	{ opacity: 1, offset: T.labelSwap / total },
+	{ opacity: 0, offset: 1 },
+];
+
+const el = (tag, cls, text) => {
+	const node = document.createElement(tag);
+	if (cls) node.className = cls;
+	if (text != null) node.textContent = text;
+	return node;
+};
+const svgEl = (tag, cls) => {
+	const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+	if (cls) node.setAttribute('class', cls);
+	return node;
+};
+// `origin.scale`: o reveal.js escala o slide com transform; medidas de tela viram px locais.
+const relRect = (node, origin) => {
+	const r = node.getBoundingClientRect();
+	const k = origin.scale || 1;
+	return { x: (r.left - origin.left) / k, y: (r.top - origin.top) / k, width: r.width / k, height: r.height / k };
+};
+const originOf = (node) => {
+	const r = node.getBoundingClientRect();
+	const scale = node.offsetWidth ? r.width / node.offsetWidth : 1;
+	return { left: r.left, top: r.top, scale };
+};
+const union = (rects) => {
+	const x = Math.min(...rects.map((r) => r.x));
+	const y = Math.min(...rects.map((r) => r.y));
+	const right = Math.max(...rects.map((r) => r.x + r.width));
+	const bottom = Math.max(...rects.map((r) => r.y + r.height));
+	return { x, y, width: right - x, height: bottom - y };
+};
+
+class IvrTokenSplit extends HTMLElement {
+	#parts = null;
+	#anims = [];
+	#ready = Promise.resolve();
+	/** 'start' (preparada, parada no quadro 0) | 'running' | 'final'. Começa em 'start'. */
+	#state = 'start';
+
+	get reducedMotion() {
+		return matchMedia('(prefers-reduced-motion: reduce)').matches;
+	}
+
+	get isPrintView() {
+		return /print-pdf/.test(location.search) || matchMedia('print').matches;
+	}
+
+	async connectedCallback() {
+		// Pode ser chamado de novo: o reveal.js move os slides no DOM (ex.: ?print-pdf).
+		if (!this.#parts) {
+			this.#parts = this.#build(this.#readConfig());
+			this.#ready = this.#fontsReady();
+		}
+		await this.#ready;
+		if (!this.isConnected) return;
+		const still = this.reducedMotion || this.isPrintView;
+		if (still || this.#state === 'final') this.showFinal();
+		else if (this.#state === 'start') this.#prepare();
+		this.#observe({ autoplay: !still });
+	}
+
+	disconnectedCallback() {
+		this.#io?.disconnect();
+		this.#ro?.disconnect();
+		window.removeEventListener('beforeprint', this.#onPrint);
+	}
+
+	/**
+	 * Toca do começo (chamado pelo IntersectionObserver ou pelo reveal.js com trigger="manual").
+	 * Respeita reduced-motion e impressão; o botão "Ver de novo" força (ação explícita da pessoa).
+	 */
+	async play({ force = false } = {}) {
+		await this.#ready;
+		if (this.isPrintView || (this.reducedMotion && !force)) return this.showFinal();
+		this.#prepare();
+		const anims = this.#anims;
+		anims.forEach((a) => a.play());
+		this.#state = 'running';
+		this.#setPlaying(true);
+		Promise.all(anims.map((a) => a.finished))
+			// Fim: troca os efeitos pelo estado final "de verdade" (mesmo visual, re-mede no resize).
+			.then(() => this.showFinal())
+			.catch(() => {}); // cancelada por play()/showFinal(): o estado já foi tratado lá
+	}
+
+	togglePause() {
+		const running = this.#anims.some((a) => a.playState === 'running');
+		this.#anims.forEach((a) => (running ? a.pause() : a.play()));
+		this.#parts.pause.textContent = running ? 'Continuar' : 'Pausar';
+	}
+
+	/** Estado final, sem movimento: poster do PDF, reduced-motion e redimensionamento. */
+	showFinal() {
+		this.#cancel();
+		this.#layout();
+		this.#state = 'final';
+		this.#setPlaying(false);
+	}
+
+	// ---------- montagem ----------
+
+	#readConfig() {
+		const tokens = (this.getAttribute('tokens') ?? '').split('|').filter(Boolean);
+		const circle = (this.getAttribute('circle') ?? '').split(',').filter(Boolean).map(Number);
+		const words = 1 + tokens.filter((t) => t.startsWith(' ')).length;
+		return {
+			tokens,
+			circle,
+			words,
+			note: this.getAttribute('note') ?? '',
+			before: this.getAttribute('before') ?? 'você escreve:',
+			after: this.getAttribute('after') ?? 'a IA lê assim:',
+			caption: this.querySelector('figcaption')?.textContent.trim(),
+		};
+	}
+
+	#build(cfg) {
+		const sentence = cfg.tokens.join('');
+		const figure = el('figure');
+		figure.style.margin = '0';
+		figure.style.display = 'grid';
+		figure.style.gap = '10px';
+
+		const frame = el('div', 'ts-frame');
+		frame.setAttribute('role', 'img');
+		frame.setAttribute('aria-label', `Animação: "${sentence}" vira ${cfg.tokens.length} tokens.`);
+
+		const labels = el('div', 'ts-labels');
+		const before = el('span', 'ts-before', cfg.before);
+		const after = el('span', null, cfg.after);
+		labels.append(before, after);
+
+		const stage = el('div', 'ts-stage');
+		const row = el('div', 'ts-row');
+		const mirror = el('div', 'ts-mirror');
+		mirror.setAttribute('aria-hidden', 'true');
+		const tokens = cfg.tokens.map((raw) => {
+			const tok = el('span', 'ts-token');
+			const box = el('span', 'ts-box');
+			tok.append(box, el('span', 'ts-token-text', raw.trim()));
+			row.append(tok);
+			if (raw.startsWith(' ')) mirror.append(' ');
+			const ghost = el('span', null, raw.trim());
+			mirror.append(ghost);
+			return { tok, box, ghost };
+		});
+		const ink = svgEl('svg', 'ts-ink');
+		ink.setAttribute('aria-hidden', 'true');
+		const circlePath = svgEl('path', 'ts-circle');
+		const arrowShaft = svgEl('path', 'ts-arrow');
+		const arrowHead = svgEl('path', 'ts-arrow');
+		ink.append(circlePath, arrowShaft, arrowHead);
+		const note = el('span', 'ts-note', cfg.note);
+		stage.append(row, mirror, ink, note);
+
+		const tally = el('div', 'ts-tally');
+		const wordsEl = el('span', null, `${cfg.words} palavras`);
+		const arrowText = el('span', 'ts-arrow-text', '→');
+		const tokensEl = el('span', 'ts-tokens', `${cfg.tokens.length} tokens`);
+		const tallyInk = svgEl('svg', 'ts-ink');
+		tallyInk.setAttribute('aria-hidden', 'true');
+		const underline = svgEl('path', 'ts-underline');
+		tallyInk.append(underline);
+		tally.style.position = 'relative';
+		tally.append(wordsEl, arrowText, tokensEl, tallyInk);
+
+		frame.append(labels, stage, tally);
+
+		const controls = el('div', 'ts-controls');
+		const replay = el('button', null, 'Ver de novo');
+		const pause = el('button', null, 'Pausar');
+		replay.type = pause.type = 'button';
+		pause.hidden = true;
+		replay.addEventListener('click', () => this.play({ force: true }));
+		pause.addEventListener('click', () => this.togglePause());
+		controls.append(pause, replay);
+
+		const caption = el('figcaption', null, cfg.caption ?? this.#transcript(cfg));
+		this.querySelector('figcaption')?.remove();
+		figure.append(frame, controls, caption);
+		this.replaceChildren(figure);
+
+		const pathsOf = { circlePath, arrowShaft, arrowHead, underline };
+		return { cfg, frame, labels, before, after, stage, row, tokens, note, tally, wordsEl, arrowText, tokensEl, replay, pause, ...pathsOf };
+	}
+
+	#transcript(cfg) {
+		const list = cfg.tokens.map((t) => t.trim()).join(' | ');
+		const circled = cfg.circle.map((i) => cfg.tokens[i]?.trim()).join('');
+		const noteText = circled ? ` A palavra "${circled}" virou ${cfg.circle.length} tokens.` : '';
+		return `Transcrição: a frase "${cfg.tokens.join('')}" se quebra em pedaços chamados tokens: ${list}.${noteText} Resultado: ${cfg.words} palavras, ${cfg.tokens.length} tokens.`;
+	}
+
+	async #fontsReady() {
+		try {
+			await Promise.all([
+				document.fonts.load('700 1em "Schibsted Grotesk"'),
+				document.fonts.load('900 1em "Schibsted Grotesk"'),
+				document.fonts.load('700 1em "Kalam"'),
+			]);
+			await document.fonts.ready;
+		} catch {
+			// Sem fontes da marca: segue com os fallbacks; a geometria é medida do mesmo jeito.
+		}
+	}
+
+	#io = null;
+	#ro = null;
+	#onPrint = () => this.showFinal();
+
+	#observe({ autoplay }) {
+		this.disconnectedCallback(); // idempotente em reconexões
+		window.addEventListener('beforeprint', this.#onPrint);
+		// Observa palco e tokens: no reveal (?print-pdf, escala) a fonte muda sem mudar a largura do palco.
+		let queued = false;
+		this.#ro = new ResizeObserver(() => {
+			if (queued) return;
+			queued = true;
+			requestAnimationFrame(() => {
+				queued = false;
+				if (this.#state === 'final') this.showFinal();
+				else if (this.#state === 'start') this.#prepare();
+			});
+		});
+		[this.#parts.stage, ...this.#parts.tokens.map((t) => t.tok)].forEach((n) => this.#ro.observe(n));
+		if (!autoplay || this.getAttribute('trigger') === 'manual') return;
+		this.#io = new IntersectionObserver(
+			(entries) => {
+				if (!entries.some((e) => e.isIntersecting) || this.#state !== 'start') return;
+				this.#io.disconnect();
+				this.play();
+			},
+			{ threshold: VISIBLE_THRESHOLD },
+		);
+		this.#io.observe(this);
+	}
+
+	// ---------- geometria (medida no layout final, sem transforms) ----------
+
+	#layout() {
+		const p = this.#parts;
+		const origin = originOf(p.stage);
+		const finals = p.tokens.map(({ tok }) => relRect(tok, origin));
+		const circled = p.cfg.circle.map((i) => finals[i]).filter(Boolean);
+		let circleRect = null;
+		if (circled.length) {
+			circleRect = union(circled);
+			p.circlePath.setAttribute('d', roughEllipse(circleRect, { seed: 11 }));
+			const noteX = circleRect.x + circleRect.width * 0.62;
+			const noteY = circleRect.y + circleRect.height + 8;
+			p.note.style.left = `${noteX}px`;
+			p.note.style.top = `${noteY}px`;
+			const arrow = roughArrow([noteX - 5, noteY + 14], [circleRect.x + circleRect.width * 0.36, circleRect.y + circleRect.height + 6], { bend: -0.3, head: 8 });
+			p.arrowShaft.setAttribute('d', arrow.shaft);
+			p.arrowHead.setAttribute('d', arrow.head);
+		}
+		const tallyOrigin = originOf(p.tally);
+		p.underline.setAttribute('d', roughUnderline(relRect(p.tokensEl, tallyOrigin), { seed: 5, y: 2 }));
+		return { origin, finals, circleRect };
+	}
+
+	#flipDeltas(origin, finals) {
+		return this.#parts.tokens.map(({ tok, ghost }, i) => {
+			const g = relRect(ghost, origin);
+			const cs = getComputedStyle(tok);
+			const padX = parseFloat(cs.paddingLeft);
+			const padY = parseFloat(cs.paddingTop);
+			return { dx: g.x - (finals[i].x + padX), dy: g.y - (finals[i].y + padY) };
+		});
+	}
+
+	// ---------- linha do tempo ----------
+
+	#prepare() {
+		this.#cancel();
+		const { origin, finals } = this.#layout();
+		const deltas = this.#flipDeltas(origin, finals);
+		const specs = [...this.#introSpecs(), ...this.#splitSpecs(deltas), ...this.#inkSpecs(), ...this.#tallySpecs()];
+		this.#anims = specs.map(([node, keyframes, opts]) => {
+			const a = node.animate(keyframes, { fill: 'both', easing: EASE_OUT, ...opts });
+			a.pause();
+			return a;
+		});
+		this.#state = 'start';
+	}
+
+	#introSpecs() {
+		const p = this.#parts;
+		return [
+			[p.row, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 500, delay: T.sentenceIn }],
+			// Um só efeito por propriedade: dois efeitos com fill 'both' no mesmo nó se sobrepõem.
+			[p.before, beforeKeyframes(T.labelSwap + 300), { duration: T.labelSwap + 300, easing: 'linear' }],
+			[p.after, [{ opacity: 0, transform: 'rotate(-2deg) translateX(-8px)' }, { opacity: 1, transform: 'rotate(-2deg)' }], { duration: 400, delay: T.labelSwap + 300 }],
+		];
+	}
+
+	#splitSpecs(deltas) {
+		return this.#parts.tokens.flatMap(({ tok, box }, i) => [
+			[tok, [{ transform: `translate(${deltas[i].dx}px, ${deltas[i].dy}px)` }, { transform: 'none' }], { duration: T.splitDur, delay: T.split + i * T.splitStagger }],
+			[box, [{ opacity: 0, transform: 'scale(0.88)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: T.box + i * T.boxStagger }],
+		]);
+	}
+
+	#drawSpec(path, delay, duration) {
+		if (!path.getAttribute('d')) return [];
+		const len = Math.ceil(path.getTotalLength()) + 1;
+		path.style.strokeDasharray = `${len} ${len}`;
+		return [[path, [{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration, delay, easing: EASE_PEN }]];
+	}
+
+	#inkSpecs() {
+		const p = this.#parts;
+		return [
+			...this.#drawSpec(p.circlePath, T.circle, 1100),
+			...this.#drawSpec(p.arrowShaft, T.note - 200, 400),
+			...this.#drawSpec(p.arrowHead, T.note + 150, 200),
+			[p.note, [{ opacity: 0, transform: 'rotate(-3deg) translateY(6px)' }, { opacity: 1, transform: 'rotate(-3deg)' }], { duration: 450, delay: T.note }],
+		];
+	}
+
+	#tallySpecs() {
+		const p = this.#parts;
+		const pop = [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }];
+		return [
+			[p.tally, [{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: T.words - 100 }],
+			[p.wordsEl, pop, { duration: 450, delay: T.words }],
+			[p.arrowText, [{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: T.words + 300 }],
+			[p.tokensEl, pop, { duration: 450, delay: T.tokens }],
+			...this.#drawSpec(p.underline, T.underline, 700),
+		];
+	}
+
+	#cancel() {
+		this.#anims.forEach((a) => a.cancel());
+		this.#anims = [];
+	}
+
+	#setPlaying(on) {
+		const p = this.#parts;
+		p.pause.hidden = !on;
+		p.pause.textContent = 'Pausar';
+	}
+}
+
+if (!customElements.get('ivr-token-split')) customElements.define('ivr-token-split', IvrTokenSplit);
+
+</script>
