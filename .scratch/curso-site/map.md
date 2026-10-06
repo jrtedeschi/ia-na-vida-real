@@ -36,14 +36,14 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Formato do exercício](issues/04-formato-exercicio.md) — situação real → pedido em 5 partes copiável → "deu certo se…" → "não deu certo?" apontando o conceito; grátis por padrão; em aula/para casa.
 - [Dívida cognitiva](issues/10-offloading-divida-cognitiva.md) — "delegue a tarefa, não o julgamento"; base em Bastani 2025 (PNAS); MIT só como gancho; Storey = dívida de equipes.
 - [Segurança e privacidade](issues/11-seguranca-privacidade.md) — pagar não desliga treino; Claude opt-in, ChatGPT e Gemini treinam por padrão; checklist de 1 página; bloco de configuração ao vivo no E1.
+- [Distribuição do conteúdo](issues/14-distribuicao-conteudo.md) — um arco por aula; E1 = jornada do "enviar" + privacidade ao vivo; vetores e estudo no E2; raciocínio, checagem e golpes no E3; futuro do trabalho fecha o E4; profundidade na Consulta.
 
 ## Not yet specified
 
-- Seção "Estudar com IA" (Gemini Notebook + boas práticas): onde entra e formato, depende de 13 e 10.
+- Página "Estudar com IA" e exercício do E2: conteúdo, depende de 13.
 
-- Abertura do E1 "mudar o mindset" (paralelos com revoluções industriais), depende de 12; encaixe no tempo da aula.
+- Sequência "IA e trabalho": 3–4 slides na abertura do E1 + fechamento do E4 + página completa na Consulta, depende de 12.
 
-- Onde entram dívida cognitiva e segurança/privacidade no curso (E1? fio em todos os encontros? página de Consulta?), depende de 10 e 11.
 - Kit de animação compartilhado + 7 animações da jornada do "enviar" (token, próxima palavra, alucinação, vetores, janela de contexto, raciocínio, quem é quem).
 
 - Conteúdo detalhado de E2, E3 e E4 (depende da arquitetura de informação e do formato de exercício).

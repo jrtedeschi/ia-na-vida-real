@@ -1,7 +1,7 @@
 # Conteúdo do Encontro 1 — Como a IA funciona
 Type: grilling
 Status: open
-Blocked by: 03, 04, 06
+Blocked by: 03, 04, 06, 12, 14
 
 ## Question
 
