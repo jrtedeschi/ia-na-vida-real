@@ -37,6 +37,8 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 
 ## Not yet specified
 
+- Seção "Estudar com IA" (Gemini Notebook + boas práticas): onde entra e formato, depende de 13 e 10.
+
 - Abertura do E1 "mudar o mindset" (paralelos com revoluções industriais), depende de 12; encaixe no tempo da aula.
 
 - Onde entram dívida cognitiva e segurança/privacidade no curso (E1? fio em todos os encontros? página de Consulta?), depende de 10 e 11.
