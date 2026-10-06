@@ -37,6 +37,11 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 
 ## Not yet specified
 
+- Abertura do E1 "mudar o mindset" (paralelos com revoluções industriais), depende de 12; encaixe no tempo da aula.
+
+- Onde entram dívida cognitiva e segurança/privacidade no curso (E1? fio em todos os encontros? página de Consulta?), depende de 10 e 11.
+- Kit de animação compartilhado + 7 animações da jornada do "enviar" (token, próxima palavra, alucinação, vetores, janela de contexto, raciocínio, quem é quem).
+
 - Conteúdo detalhado de E2, E3 e E4 (depende da arquitetura de informação e do formato de exercício).
 - Página de conceito: componente e template (anatomia definida em 03), incluindo onde entram as animações (09).
 - Gerar PDF do Kit a partir das páginas.
