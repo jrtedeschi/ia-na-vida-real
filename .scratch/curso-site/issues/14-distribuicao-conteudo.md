@@ -38,3 +38,9 @@ Princípios: um arco por aula; cada conceito entra na aula em que o aluno vai us
 **Consulta (sempre disponível)**: Conceitos (todos, com animação) · Pedido em 5 partes · Segurança e privacidade (checklist, data da verificação) · Estudar com IA · Fique com o volante (dívida cognitiva, "e aquele estudo do MIT?") · IA e trabalho: a história das revoluções (sequência completa) · Ferramentas grátis × pago (custo e modelos em detalhe) · Glossário · Modelo de base de conhecimento.
 
 **Animações por prazo**: até 20/10 token, próxima palavra, alucinação, janela de contexto (+ diagrama "quem é quem"); até 27/10 vetores; até 03/11 raciocínio.
+
+**Emenda (06/10), moldura do E1:** tom de *The Adaptation Advantage* (McGowan & Shipley, Wiley 2020; https://heathermcgowan.com/books/the-adaptation-advantage/).
+- Identidade ancorada no porquê (propósito), não no cargo; aprender, desaprender, se adaptar; a tecnologia aumenta, fatia e automatiza tarefas; pessoas no centro.
+- Abertura: as revoluções como prova histórica, mantendo o contrapeso honesto.
+- Exercício novo para casa (semente do E4): "Por que você faz o que faz?" + 5 tarefas da semana marcadas como aumentar/fatiar/automatizar.
+- Fecho do E1: "quais tarefas você quer delegar para ficar com o que importa?"; o E4 retoma.
