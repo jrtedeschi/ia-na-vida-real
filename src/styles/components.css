@@ -1,0 +1,261 @@
+/* Componentes do curso. Cores só pelos tokens --ivr-* (tokens.css). Laranja só em traço e etiqueta. */
+
+.ivr-label {
+	display: block;
+	font: 500 12px/1.4 var(--ivr-font-mono);
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+
+.ivr-hand {
+	display: inline-block;
+	font: 700 1.1rem/1.2 var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+	transform: rotate(-2deg);
+	transform-origin: left center;
+}
+
+/* ---------- Definição ---------- */
+.ivr-def {
+	display: grid;
+	gap: 6px;
+	margin-block: 1rem 1.5rem;
+	padding: 18px 20px;
+	background: var(--ivr-paper);
+	border-left: 4px solid var(--ivr-orange);
+}
+.ivr-def-text {
+	font: 700 clamp(1.2rem, 2.4vw, 1.5rem) / 1.25 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+	color: var(--ivr-ink);
+	text-wrap: balance;
+}
+
+/* ---------- Pedido em 5 partes ---------- */
+.ivr-prompt {
+	display: grid;
+	gap: 10px;
+	padding: 16px;
+	background: var(--ivr-bg);
+	border-radius: 4px;
+	box-shadow: inset 0 0 0 1px var(--ivr-line);
+}
+.ivr-prompt-body {
+	display: grid;
+	gap: 4px;
+	font-size: 15.5px;
+	line-height: 1.55;
+	color: var(--ivr-ink);
+}
+.ivr-prompt-body p {
+	margin: 0;
+}
+.ivr-prompt-body b {
+	font: 500 11px/1 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-right: 8px;
+	color: var(--ivr-ink-soft);
+}
+.ivr-field {
+	background: var(--ivr-hl);
+	padding: 0 0.2em;
+	border-radius: 2px;
+}
+.ivr-prompt button,
+.ivr-ex button {
+	justify-self: start;
+	font: 600 13px/1 var(--ivr-font-body);
+	letter-spacing: 0.03em;
+	padding: 11px 16px;
+	border: 0;
+	border-radius: 999px;
+	background: var(--ivr-ink);
+	color: var(--ivr-bg);
+	cursor: pointer;
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.ivr-prompt button:hover {
+	box-shadow: 0 0 0 3px var(--ivr-orange);
+}
+.ivr-prompt button:active {
+	transform: scale(0.97);
+}
+.ivr-prompt button:focus-visible,
+.ivr-ex input:focus-visible,
+.ivr-ex textarea:focus-visible {
+	outline: 3px solid var(--ivr-orange);
+	outline-offset: 2px;
+}
+
+/* ---------- Exercício ---------- */
+.ivr-ex {
+	display: grid;
+	margin-block: 2rem;
+	background: var(--ivr-paper);
+	border: 2px solid var(--ivr-ink);
+	border-radius: 6px;
+	color: var(--ivr-ink);
+	scroll-margin-top: 5rem;
+}
+@media (min-width: 72rem) {
+	.ivr-ex {
+		grid-template-columns: 0.8fr 1.2fr;
+	}
+}
+.ivr-ex[data-done] {
+	box-shadow: 5px 5px 0 var(--ivr-orange);
+}
+.ivr-ex-l,
+.ivr-ex-r {
+	padding: 22px;
+	display: grid;
+	gap: 14px;
+	align-content: start;
+}
+.ivr-ex-l {
+	border-bottom: 2px dashed var(--ivr-line);
+}
+@media (min-width: 72rem) {
+	.ivr-ex-l {
+		border-bottom: 0;
+		border-right: 2px dashed var(--ivr-line);
+	}
+}
+.ivr-ex h3 {
+	margin: 0;
+	font: 900 clamp(1.3rem, 2.4vw, 1.6rem) / 1.08 var(--ivr-font-display);
+	letter-spacing: -0.035em;
+	color: var(--ivr-ink);
+}
+.ivr-ex-sit {
+	display: grid;
+	gap: 8px;
+	color: var(--ivr-ink-soft);
+	font-size: 16px;
+}
+.ivr-ex-sit p {
+	margin: 0;
+}
+.ivr-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+.ivr-tag {
+	font: 600 12px/1 var(--ivr-font-body);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 7px 10px;
+	border-radius: 999px;
+	box-shadow: inset 0 0 0 1.5px var(--ivr-ink);
+}
+.ivr-tag-o {
+	background: var(--ivr-orange);
+	color: #121311;
+	box-shadow: none;
+}
+.ivr-checks {
+	display: grid;
+	gap: 4px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 15.5px;
+}
+.ivr-checks li {
+	margin: 0;
+}
+.ivr-checks label {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	padding-block: 4px;
+	cursor: pointer;
+}
+.ivr-checks input {
+	flex: none;
+	width: 18px;
+	height: 18px;
+	margin-top: 4px;
+	accent-color: var(--ivr-ink);
+}
+.ivr-checks li.human input {
+	accent-color: var(--ivr-orange);
+	outline: 2px solid var(--ivr-orange);
+	outline-offset: 1px;
+	border-radius: 2px;
+}
+ivr-checklist {
+	display: grid;
+	gap: 8px;
+}
+.ivr-note-label {
+	font-size: 14px;
+	color: var(--ivr-ink-soft);
+}
+.ivr-note-label small {
+	font-size: 12px;
+}
+ivr-checklist textarea {
+	width: 100%;
+	max-width: 100%;
+	font: 15px/1.5 var(--ivr-font-body);
+	padding: 10px 12px;
+	border: 1.5px solid var(--ivr-line);
+	border-radius: 4px;
+	background: var(--ivr-bg);
+	color: var(--ivr-ink);
+	resize: vertical;
+}
+.ivr-fail,
+.ivr-challenge {
+	margin: 0;
+	font-size: 15.5px;
+	color: var(--ivr-ink);
+}
+.ivr-fail {
+	padding: 12px 14px;
+	border: 1.5px dashed var(--ivr-line);
+	border-radius: 4px;
+}
+.ivr-fail b,
+.ivr-challenge b {
+	font: 500 11px/1.6 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-right: 8px;
+}
+.ivr-fail a {
+	color: var(--ivr-ink);
+	text-decoration-color: var(--ivr-orange);
+	text-decoration-thickness: 2px;
+}
+
+/* ---------- Progresso ---------- */
+.ivr-progress {
+	margin-block: 1rem;
+}
+ivr-progress {
+	--ivr-pct: 0%;
+	display: block;
+	padding: 10px 14px;
+	font: 500 13px/1.3 var(--ivr-font-mono);
+	color: var(--ivr-ink);
+	background: linear-gradient(90deg, var(--ivr-hl) var(--ivr-pct), var(--ivr-paper) var(--ivr-pct));
+	border: 1.5px solid var(--ivr-ink);
+	border-radius: 4px;
+	transition: background 300ms ease;
+}
+
+/* ---------- Animações dentro de páginas ---------- */
+.ivr-anim {
+	margin-block: 1.5rem 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ivr-hand {
+		transform: none;
+	}
+}

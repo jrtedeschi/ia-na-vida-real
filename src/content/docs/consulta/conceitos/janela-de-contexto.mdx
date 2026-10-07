@@ -1,0 +1,35 @@
+---
+title: Janela de contexto
+description: A IA só enxerga um tanto de texto por vez. Numa conversa longa, o começo sai de vista.
+sidebar:
+  order: 4
+---
+import Definition from '../../../../components/Definition.astro';
+import Hand from '../../../../components/Hand.astro';
+import ContextWindow from '../../../../components/anim/ContextWindow.astro';
+import { CONTEXT_WINDOW } from '../../../../components/anim/presets';
+
+<Definition>Janela de contexto é o tanto de texto que a IA consegue considerar de uma vez: sua conversa, os arquivos enviados e as instruções, tudo somado em tokens.</Definition>
+
+<ContextWindow {...CONTEXT_WINDOW} />
+
+## Analogia
+
+É uma mesa de trabalho. Cabe um tanto de papel em cima dela. Quando você coloca mais, os primeiros papéis caem no chão. A IA não está "esquecendo" por descuido: aquele texto simplesmente não está mais na mesa.
+
+## Na prática
+
+- **Um assunto, uma conversa.** Mudou de assunto, abra uma conversa nova.
+- **Repita o essencial.** Em conversas longas, relembre o contexto importante ("lembrando: sou nutricionista e o paciente é celíaco").
+- **Arquivos grandes ocupam a janela.** Um PDF de 200 páginas pode deixar pouco espaço para a conversa.
+- **Os aplicativos escondem isso de você.** Alguns resumem o começo da conversa automaticamente; detalhes podem se perder no resumo.
+
+<Hand>um assunto, uma conversa</Hand>
+
+## Erro comum
+
+Achar que a IA lembra de conversas antigas. Por padrão, cada conversa começa do zero. Recursos de "memória" e os Projetos (que você vê no Encontro 2) guardam algumas informações, mas elas também ocupam a janela.
+
+## Teste rápido · 1 minuto
+
+Numa conversa longa que você já tem, pergunte algo que você disse logo no começo. Veja se a IA acerta.

@@ -1,0 +1,324 @@
+---
+/**
+ * Deck do Encontro 1 (reveal.js 6). Roteiro: .scratch/curso-site/e1-roteiro.html.
+ * Teclas: S = modo apresentador (notas + cronômetro) · F = tela cheia · T = tema claro/escuro.
+ * PDF: abrir com ?print-pdf e imprimir no Chrome.
+ */
+import 'reveal.js/reset.css';
+import 'reveal.js/reveal.css';
+import '../../styles/tokens.css';
+import '../../styles/components.css';
+import '../../styles/slides.css';
+import TokenSplit from '../../components/anim/TokenSplit.astro';
+import NextWord from '../../components/anim/NextWord.astro';
+import ContextWindow from '../../components/anim/ContextWindow.astro';
+import QuemEQuem from '../../components/anim/QuemEQuem.astro';
+import Prompt from '../../components/Prompt.astro';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../components/anim/presets';
+
+const site = `${import.meta.env.SITE}${import.meta.env.BASE_URL}`.replace(/\/$/, '');
+const siteLabel = site.replace(/^https?:\/\//, '');
+---
+<html lang="pt-BR" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Encontro 1 · Como a IA funciona · IA na Vida Real</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+		/>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- ABERTURA -->
+				<section class="s-title">
+					<p class="s-kicker">IA na Vida Real · Encontro 01</p>
+					<h1><span class="s-circled">01<svg viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26" /></svg></span> Como a IA funciona</h1>
+					<p class="s-sub">O que acontece quando você aperta enviar, e como pedir melhor.</p>
+					<p class="s-hand">terça, 20/10 · 20h</p>
+					<aside class="notes">Boas-vindas. Câmera ligada se puder. Avisar que a aula fica gravada e que o material está no site.</aside>
+				</section>
+
+				<section class="s-split">
+					<div>
+						<p class="s-kicker">Quem conduz</p>
+						<h2>João Rafael</h2>
+						<p class="s-sub">Engenheiro de dados sênior</p>
+					</div>
+					<ul class="s-list">
+						<li>Mais de 8 anos construindo soluções de dados em nuvem</li>
+						<li>Montou a infraestrutura de dados de uma grande instituição financeira, para 8 times de engenharia</li>
+						<li>Hoje lidera integrações de dados da área de pagamentos na DoorDash</li>
+						<li>Usa agentes de IA todo dia para acelerar e automatizar o trabalho</li>
+						<li class="s-hand">e ainda confere tudo</li>
+					</ul>
+					<aside class="notes">Apresentação curta, 1 minuto. A frase final planta o "fique com o volante".</aside>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">No chat, agora</p>
+					<h2>O que você já tentou fazer com IA, e o que deu errado?</h2>
+					<p class="s-hand">suas respostas viram exemplos hoje</p>
+					<aside class="notes">Ler 3 ou 4 respostas em voz alta. Anotar as que servem de exemplo nos exercícios.</aside>
+				</section>
+
+				<section>
+					<p class="s-kicker">Hoje</p>
+					<h2>Seis blocos, 90 minutos</h2>
+					<ol class="s-agenda">
+						<li><b>Medo e adaptação</b><span>o que a história ensina</span></li>
+						<li><b>O que acontece quando você aperta enviar</b><span>4 ideias, 4 animações</span></li>
+						<li><b>Quem é quem e seus dados</b><span>configuração ao vivo</span></li>
+						<li><b>O pedido em 5 partes</b><span>o método</span></li>
+						<li><b>Mão na massa</b><span>3 exercícios</span></li>
+						<li><b>Para casa</b><span>2 exercícios</span></li>
+					</ol>
+				</section>
+
+				<!-- MEDO E ADAPTAÇÃO -->
+				<section class="s-big">
+					<p class="s-kicker">Medo e adaptação</p>
+					<h2>Você tem medo da IA?</h2>
+					<p class="s-sub">Se tem, está em boa companhia: toda tecnologia grande começou assim.</p>
+					<blockquote class="fragment">"Estamos sendo atingidos por uma nova doença: o desemprego tecnológico." <cite>John Maynard Keynes, 1930</cite></blockquote>
+					<p class="s-hand fragment">isso foi há 96 anos</p>
+					<aside class="notes">Original: "We are being afflicted with a new disease ... namely, technological unemployment." (Economic Possibilities for our Grandchildren, 1930)</aside>
+				</section>
+
+				<section>
+					<p class="s-kicker">Inglaterra, século 19</p>
+					<h2>98% menos trabalho, mais tecelões</h2>
+					<div class="s-bars">
+						<div><span>Trabalho para fazer um metro de tecido</span><i class="s-bar"><b style="--w:100%"></b></i><i class="s-bar fragment"><b class="o" style="--w:2%"></b></i></div>
+						<div class="fragment"><span>Vagas de tecelagem em fábrica</span><b class="s-up">↑ cresceram</b></div>
+					</div>
+					<p class="s-hand fragment">preço cai, demanda sobe</p>
+					<p class="s-source">Bessen, FMI, 2015</p>
+					<aside class="notes">A máquina deixou o pano barato, e pano barato fez todo mundo querer mais pano.</aside>
+				</section>
+
+				<section class="s-honest">
+					<p class="s-kicker">O outro lado</p>
+					<h2>Mas não para as mesmas pessoas</h2>
+					<div class="s-versus">
+						<div><b>240 mil</b><span>tecelões manuais em 1820</span></div>
+						<div class="fragment"><b>10 mil</b><span>em 1860</span></div>
+					</div>
+					<p class="s-hand fragment">a transição tem rosto</p>
+					<p class="s-source">Allen, 2018</p>
+					<aside class="notes">Não pular este slide. É o que dá credibilidade ao otimismo. O total de empregos cresceu, mas quem tecia à mão perdeu o ofício. Por isso aprender cedo importa.</aside>
+				</section>
+
+				<section>
+					<p class="s-kicker">The Adaptation Advantage</p>
+					<h2>A IA mexe em tarefas</h2>
+					<div class="s-three">
+						<div class="fragment"><b>Aumenta</b><span>o que você já faz</span></div>
+						<div class="fragment"><b>Fatia</b><span>o trabalho em pedaços</span></div>
+						<div class="fragment"><b>Automatiza</b><span>alguns desses pedaços</span></div>
+					</div>
+					<p class="s-hand fragment">cargo ≠ propósito</p>
+					<p class="s-source">McGowan e Shipley, 2020</p>
+					<aside class="notes">A tese do livro: ancorar a identidade no porquê do trabalho, não no cargo. A IA mexe em tarefas; o propósito continua seu. Volta no exercício 5 e no Encontro 4.</aside>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">Você está aqui</p>
+					<h2><span class="s-num">60%</span> dos empregos de 2018 nos EUA não existiam em 1940</h2>
+					<p class="s-sub">Quem aprende a ferramenta e redesenha o próprio trabalho atravessa a transição melhor.</p>
+					<p class="s-hand">é para isso que estamos aqui</p>
+					<p class="s-source">Autor et al., QJE 2024</p>
+				</section>
+
+				<!-- JORNADA DO ENVIAR -->
+				<section class="s-section">
+					<p class="s-kicker">Parte 2</p>
+					<h2>O que acontece quando você aperta enviar</h2>
+					<ol class="s-steps"><li>Seu texto vira pedaços</li><li>A IA aposta na próxima palavra</li><li>Por isso às vezes inventa</li><li>A memória tem tamanho</li></ol>
+				</section>
+
+				<section class="s-anim">
+					<p class="s-kicker">1 · Token</p>
+					<h2>A IA lê em pedaços</h2>
+					<TokenSplit {...TOKEN} trigger="manual" hideCaption />
+					<aside class="notes">Deixar a animação rodar. Perguntar: alguém acha que a IA conta palavras? Ela conta tokens. Limite e preço são em tokens.</aside>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">Teste rápido</p>
+					<h2>Pergunte a uma IA: quantas letras R tem "arrozeiro"?</h2>
+					<p class="s-hand fragment">ela nunca viu as letras, só os pedaços</p>
+				</section>
+
+				<section class="s-anim">
+					<p class="s-kicker">2 · Próxima palavra</p>
+					<h2>A IA aposta</h2>
+					<NextWord {...NEXT_WORD} trigger="manual" hideCaption />
+					<aside class="notes">É o corretor do celular, treinado com uma quantidade enorme de texto. Cada resposta é uma sequência de apostas: por isso a mesma pergunta dá respostas diferentes.</aside>
+				</section>
+
+				<section class="s-anim">
+					<p class="s-kicker">3 · Alucinação</p>
+					<h2>O provável não é o verdadeiro</h2>
+					<NextWord {...HALLUCINATION} trigger="manual" hideCaption />
+					<aside class="notes">Ninguém sabe se a padaria Estrela existe. Todos os anos parecem plausíveis e a IA escolhe um com segurança. Ela não consulta uma lista de fatos.</aside>
+				</section>
+
+				<section>
+					<p class="s-kicker">Onde a IA mais inventa</p>
+					<h2>Desconfie de detalhes</h2>
+					<ul class="s-list">
+						<li class="fragment">Referências: livros, artigos, links, leis</li>
+						<li class="fragment">Datas, números e citações exatas</li>
+						<li class="fragment">Pessoas e lugares pouco conhecidos</li>
+						<li class="fragment">Perguntas com premissa falsa</li>
+					</ul>
+					<p class="s-hand fragment">texto bonito não é texto certo</p>
+				</section>
+
+				<section class="s-anim s-tight">
+					<p class="s-kicker">4 · Janela de contexto</p>
+					<h2>A memória tem tamanho</h2>
+					<ContextWindow {...CONTEXT_WINDOW} trigger="manual" hideCaption />
+					<aside class="notes">Analogia da mesa de trabalho: cabe um tanto de papel, o resto cai no chão.</aside>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">Regra prática</p>
+					<h2>Um assunto, uma conversa</h2>
+					<p class="s-sub">E repita o essencial quando a conversa ficar longa.</p>
+					<p class="s-teaser">Nos próximos encontros: <b>como a IA encontra o trecho certo nos seus documentos</b> (E2) e <b>modelos que pensam antes de responder</b> (E3).</p>
+				</section>
+
+				<!-- QUEM É QUEM E DADOS -->
+				<section>
+					<p class="s-kicker">Parte 3</p>
+					<h2>Quem é quem</h2>
+					<QuemEQuem />
+					<p class="s-sub">Cada empresa tem modelos rápidos e baratos e modelos caprichados e lentos.</p>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">Seus dados</p>
+					<h2>Pagar não desliga o treinamento</h2>
+					<p class="s-sub">Vamos configurar juntos, agora.</p>
+					<ol class="s-config">
+						<li class="fragment"><b>Claude</b>Configurações → Privacidade</li>
+						<li class="fragment"><b>ChatGPT</b>Configurações → Controles de dados</li>
+						<li class="fragment"><b>Gemini</b>Configurações e ajuda → Atividade</li>
+					</ol>
+					<aside class="notes">Compartilhar a tela e fazer junto. Cada um decide se liga ou desliga; o importante é decidir. Avisar: 👍/👎 pode mandar a conversa para treino mesmo desligado.</aside>
+				</section>
+
+				<section class="s-big">
+					<p class="s-kicker">Antes de colar</p>
+					<h2>Você escreveria isso num cartão-postal?</h2>
+					<p class="s-sub">Senha, dado bancário, saúde, dado de cliente: não cole. Na dúvida, troque o nome por "Cliente A".</p>
+					<p class="s-hand">checklist completo no site</p>
+				</section>
+
+				<!-- MÉTODO -->
+				<section>
+					<p class="s-kicker">Parte 4</p>
+					<h2>O pedido em 5 partes</h2>
+					<ol class="s-five">
+						<li class="fragment"><b>Contexto</b>quem é você e qual é a situação</li>
+						<li class="fragment"><b>Objetivo</b>o que você quer alcançar</li>
+						<li class="fragment"><b>Referências</b>com base em quê</li>
+						<li class="fragment"><b>Restrições</b>limites e o que evitar</li>
+						<li class="fragment"><b>Formato</b>como você quer receber</li>
+					</ol>
+					<p class="s-hand fragment">pedido melhor, apostas melhores</p>
+					<aside class="notes">Ligar com a próxima palavra: cada parte muda as apostas da IA.</aside>
+				</section>
+
+				<!-- EXERCÍCIOS -->
+				<section class="s-ex">
+					<p class="s-kicker">Exercício 1 · 10 min</p>
+					<h2>Organize sua semana</h2>
+					<p class="s-sub">Primeiro só "organize minha semana". Depois o pedido completo. Compare.</p>
+					<Prompt id="s-ex1" contexto="Trabalho em [uma equipe pequena, com muitas reuniões]." objetivo="Não deixar nada importante para sexta." referencias="[Cole sua lista de tarefas]" restricoes="No máximo [2h] livres por dia, nada depois das [18h]." formato="Uma tabela por dia, com 3 prioridades em cada." />
+					<aside class="notes">Quem não tiver lista usa a da Ana (está no site). Debrief: o que mudou entre as duas respostas?</aside>
+				</section>
+
+				<section class="s-ex">
+					<p class="s-kicker">Exercício 2 · 10 min</p>
+					<h2>Pergunte duas vezes</h2>
+					<p class="s-sub">O mesmo pedido em duas IAs diferentes. Anote 2 diferenças.</p>
+					<Prompt id="s-ex2" contexto="Vou receber [6] amigos para jantar no sábado; [um é vegetariano]." objetivo="Um cardápio simples que agrade todo mundo." referencias="Orçamento de [R$ 200]; tenho forno e fogão." restricoes="Nada que leve mais de 1h de preparo." formato="Entrada, prato e sobremesa, mais lista de compras com preço estimado." />
+				</section>
+
+				<section class="s-ex">
+					<p class="s-kicker">Exercício 3 · 12 min</p>
+					<h2>Pegue a IA errando</h2>
+					<p class="s-sub">Peça leituras sobre um tema que você domina. Confira cada item numa busca comum.</p>
+					<Prompt id="s-ex3" contexto="Trabalho com [sua área]." objetivo="Encontrar leituras sobre [um tema bem específico da sua área]." referencias="Prefiro material em português." restricoes="Só livros ou artigos que existem de verdade." formato="Lista de 5 itens com autor, ano, editora ou revista, e link." />
+					<aside class="notes">Pedir no chat: quantos itens inventados cada um achou? Se a IA buscou na web, comparar com uma sem busca.</aside>
+				</section>
+
+				<!-- FECHO -->
+				<section class="s-big">
+					<p class="s-kicker">Para levar</p>
+					<h2>Quais tarefas você quer delegar para ficar com o que importa?</h2>
+					<p class="s-hand">delegue a tarefa, não o julgamento</p>
+				</section>
+
+				<section>
+					<p class="s-kicker">Para casa</p>
+					<h2>Dois exercícios</h2>
+					<div class="s-three s-two">
+						<div><b>4 · Seu primeiro pedido de verdade</b><span>Uma tarefa real da semana, em 5 partes, do zero.</span></div>
+						<div><b>5 · Por que você faz o que faz?</b><span>Seu porquê em 2 frases e 5 tarefas marcadas: aumentar, fatiar, automatizar ou só sua.</span></div>
+					</div>
+					<p class="s-hand">o exercício 5 vira sua base no Encontro 4</p>
+				</section>
+
+				<section class="s-title">
+					<p class="s-kicker">Material, exercícios e consulta</p>
+					<h2 class="s-url">{siteLabel}</h2>
+					<p class="s-sub">Próximo encontro: terça, 27/10, 20h · Contexto é tudo</p>
+					<p class="s-hand">obrigado!</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script>
+			import Reveal from 'reveal.js';
+			import Notes from 'reveal.js/plugin/notes';
+
+			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; showFinal?: () => void };
+			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window';
+
+			const deck = new Reveal({
+				width: 1280,
+				height: 720,
+				margin: 0.06,
+				hash: true,
+				controls: true,
+				progress: true,
+				slideNumber: 'c/t',
+				transition: 'fade',
+				center: false,
+				plugins: [Notes],
+			});
+
+			const playIn = (slide: Element | undefined) =>
+				slide?.querySelectorAll<Playable>(ANIMS).forEach((a) => a.play?.());
+
+			deck.initialize().then(() => {
+				playIn(deck.getCurrentSlide());
+				deck.on('slidechanged', (event) => playIn((event as unknown as { currentSlide: Element }).currentSlide));
+				deck.addKeyBinding({ keyCode: 84, key: 'T', description: 'Tema claro/escuro' }, () => {
+					const root = document.documentElement;
+					root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+				});
+			});
+		</script>
+	</body>
+</html>

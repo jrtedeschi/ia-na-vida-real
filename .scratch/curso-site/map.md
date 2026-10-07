@@ -39,6 +39,7 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 - [Distribuição do conteúdo](issues/14-distribuicao-conteudo.md) — um arco por aula; E1 = jornada do "enviar" + privacidade ao vivo; vetores e estudo no E2; raciocínio, checagem e golpes no E3; futuro do trabalho fecha o E4; profundidade na Consulta.
 - [Estudar com IA](issues/13-estudar-com-ia.md) — "para aprender, use a IA para te perguntar"; Gemini Notebook Studio + modos tutor grátis; 7 práticas com evidência; exercício apostila → quiz no E2.
 - [IA e trabalho: revoluções](issues/12-mindset-revolucoes.md) — 8 paralelos verificados (luditas, pausa de Engels, eletricidade, caixa eletrônico, planilha, bancários no Brasil), dados de hoje (OIT, FGV) e risco como debate aberto; otimista e honesto.
+- [Conteúdo do Encontro 1](issues/05-conteudo-encontro-1.md) — roteiro aprovado: abertura medo e adaptação, 4 conceitos animados, privacidade ao vivo, 5 exercícios.
 
 ## Not yet specified
 

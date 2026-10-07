@@ -1,0 +1,36 @@
+---
+title: Token
+description: A IA lê o texto em pedaços chamados tokens. É neles que se contam o limite da conversa e o preço.
+sidebar:
+  order: 1
+---
+import Definition from '../../../../components/Definition.astro';
+import Hand from '../../../../components/Hand.astro';
+import TokenSplit from '../../../../components/anim/TokenSplit.astro';
+import { TOKEN } from '../../../../components/anim/presets';
+
+<Definition>Token é o pedaço de texto que a IA lê de cada vez: em português, mais ou menos 3 a 4 letras.</Definition>
+
+<TokenSplit {...TOKEN} />
+
+## Analogia
+
+Pense num caixa de supermercado que só aceita produtos em embalagens de tamanho padrão. Antes de passar sua compra, tudo é reembalado nesses pacotes. A IA faz o mesmo com o texto: corta em pedaços de tamanho parecido, e só então "lê".
+
+## Na prática
+
+- **O limite da conversa é contado em tokens.** Cada modelo aguenta um número máximo de tokens por conversa (veja [janela de contexto](/consulta/conceitos/janela-de-contexto/)).
+- **O preço também.** Planos pagos e serviços para empresas cobram por token lido e escrito.
+- **Português gasta mais tokens que inglês** para dizer a mesma coisa, porque os modelos foram treinados com mais texto em inglês.
+
+<Hand>conversa longa = mais tokens = mais custo</Hand>
+
+## Erro comum
+
+Achar que a IA conta palavras. Ela não conta. Por isso pedidos como "escreva exatamente 100 palavras" ou "quantas letras tem esta frase?" costumam sair errados: a IA nunca viu as letras, só os pedaços.
+
+## Teste rápido · 1 minuto
+
+Peça a uma IA: *"Quantas letras R tem a palavra 'arrozeiro'?"*. Depois conte você. Se ela errar, você acabou de ver um token em ação.
+
+<p class="ivr-label">A divisão em pedaços acima é ilustrativa: cada modelo tem o seu próprio "dicionário" de tokens.</p>

@@ -1,0 +1,39 @@
+---
+title: O pedido em 5 partes
+description: Contexto, objetivo, referências, restrições e formato. A lógica que transforma uma resposta genérica numa resposta útil.
+---
+import Definition from '../../../components/Definition.astro';
+import Hand from '../../../components/Hand.astro';
+import Prompt from '../../../components/Prompt.astro';
+
+<Definition>Um bom pedido diz à IA quem você é, o que quer, com base em quê, dentro de quais limites e em que formato.</Definition>
+
+| Parte | A pergunta que ela responde | Exemplo |
+|---|---|---|
+| **Contexto** | Quem é você e qual é a situação? | Trabalho numa equipe pequena, com muitas reuniões. |
+| **Objetivo** | O que você quer alcançar? | Não deixar nada importante para sexta. |
+| **Referências** | Com base em quê a IA deve responder? | Minha lista de tarefas e os horários das reuniões. |
+| **Restrições** | Quais são os limites e o que evitar? | No máximo 2h livres por dia, nada depois das 18h. |
+| **Formato** | Como você quer receber? | Uma tabela por dia, com 3 prioridades em cada. |
+
+<Prompt
+	id="modelo-5-partes"
+	contexto="[Quem é você e qual é a situação]"
+	objetivo="[O que você quer alcançar com a resposta]"
+	referencias="[Cole aqui materiais, exemplos ou dados]"
+	restricoes="[Limites, cuidados e o que evitar]"
+	formato="[Tabela, lista, e-mail, tamanho, tom]"
+/>
+
+## Por que funciona
+
+A IA escreve apostando na [próxima palavra](/consulta/conceitos/proxima-palavra/). Cada parte do pedido muda as apostas: o contexto descarta respostas genéricas, as referências dão fatos para ela não [inventar](/consulta/conceitos/alucinacao/), e o formato evita que você precise reescrever a resposta.
+
+<Hand>a diferença está no pedido</Hand>
+
+## Dicas
+
+- **Não precisa ser em ordem nem com os nomes das partes.** O que importa é que as cinco informações estejam lá.
+- **Comece pelo que falta.** Resposta genérica? Quase sempre falta contexto ou restrição.
+- **Converse.** Se a primeira resposta não serviu, diga o que mudar ("mais curto", "sem jargão", "considere que…"). O pedido em 5 partes é o começo, não o fim.
+- **Guarde os pedidos que funcionaram.** No Encontro 4, eles viram rotinas.

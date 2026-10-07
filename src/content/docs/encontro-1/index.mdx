@@ -1,0 +1,72 @@
+---
+title: 'Encontro 1 · Como a IA funciona'
+description: O que acontece quando você aperta enviar. Revisão do Encontro 1, com os conceitos e o método.
+---
+import { Aside, LinkCard, CardGrid } from '@astrojs/starlight/components';
+import Hand from '../../../components/Hand.astro';
+import TokenSplit from '../../../components/anim/TokenSplit.astro';
+import NextWord from '../../../components/anim/NextWord.astro';
+import ContextWindow from '../../../components/anim/ContextWindow.astro';
+import QuemEQuem from '../../../components/anim/QuemEQuem.astro';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../../components/anim/presets';
+
+<p class="ivr-label">Terça, 20/10 · 20h às 21h30 · ao vivo</p>
+
+<Aside type="tip" title="Antes da aula · 5 minutos">
+1. Crie conta grátis em pelo menos duas destas: [claude.ai](https://claude.ai), [chatgpt.com](https://chatgpt.com), [gemini.google.com](https://gemini.google.com).
+2. Pense numa tarefa da sua semana que você gostaria de delegar.
+3. Pense num tema que você conhece bem: vamos usá-lo para pegar a IA errando.
+</Aside>
+
+## A IA mexe em tarefas, não no seu propósito
+
+Toda grande tecnologia trouxe o medo do fim dos empregos, e o padrão histórico foi de tarefas sumindo e trabalhos mudando, com uma transição dura para quem estava no meio. A tecnologia **aumenta** o que você faz, **fatia** o trabalho em pedaços e **automatiza** alguns deles. O porquê do seu trabalho continua seu. A história completa, com os números, está em [IA e trabalho](/consulta/ia-e-trabalho/).
+
+<Hand>cargo ≠ propósito</Hand>
+
+## O que acontece quando você aperta enviar
+
+### 1. Seu texto vira pedaços
+
+<TokenSplit {...TOKEN} />
+
+A IA lê em [tokens](/consulta/conceitos/token/), pedaços de 3 a 4 letras. O limite da conversa e o preço dos planos são contados neles.
+
+### 2. A IA aposta na próxima palavra
+
+<NextWord {...NEXT_WORD} />
+
+O modelo calcula a chance de cada pedaço vir a seguir, escolhe um e repete. A resposta inteira é uma sequência de apostas. Mais em [próxima palavra](/consulta/conceitos/proxima-palavra/).
+
+### 3. Por isso ela às vezes inventa
+
+<NextWord {...HALLUCINATION} />
+
+A aposta escolhe o provável, não o verdadeiro. Quando a IA não sabe, a continuação provável continua soando confiante. Mais em [alucinação](/consulta/conceitos/alucinacao/).
+
+### 4. A memória tem tamanho
+
+<ContextWindow {...CONTEXT_WINDOW} />
+
+A IA só enxerga um tanto de texto por vez. Numa conversa longa, o começo sai da [janela de contexto](/consulta/conceitos/janela-de-contexto/). Um assunto, uma conversa.
+
+## Quem é quem
+
+<QuemEQuem />
+
+Cada empresa tem modelos rápidos e modelos caprichados. O que cada plano grátis faz está em [modelos e custo](/consulta/conceitos/modelos-e-custo/).
+
+## Seus dados
+
+Pagar não desliga o uso das suas conversas para treinar modelos. Se você não configurou na aula, faça agora: [Segurança e privacidade](/consulta/seguranca-e-privacidade/). E antes de colar qualquer coisa, a regra do cartão-postal: você escreveria isso num cartão-postal?
+
+## O pedido em 5 partes
+
+**Contexto, objetivo, referências, restrições e formato.** A diferença entre uma resposta genérica e uma resposta útil está no pedido. Veja o modelo pronto em [O pedido em 5 partes](/consulta/pedido-em-5-partes/).
+
+## Agora pratique
+
+<CardGrid>
+	<LinkCard title="Exercícios do Encontro 1" description="3 em aula e 2 para casa, com o seu progresso salvo." href="/encontro-1/exercicios/" />
+	<LinkCard title="Fique com o volante" description="Delegue a tarefa, não o julgamento: 5 hábitos." href="/consulta/fique-com-o-volante/" />
+</CardGrid>

@@ -1,0 +1,388 @@
+/* Tema reveal.js "Rascunho técnico + grafite". Cores só pelos tokens --ivr-*; laranja só em traço e destaque. */
+
+html,
+body {
+	background-color: var(--ivr-bg);
+	color: var(--ivr-ink);
+}
+.reveal-viewport {
+	background-color: var(--ivr-bg);
+	background-image: radial-gradient(var(--ivr-dot) 1.6px, transparent 1.6px);
+	background-size: 24px 24px;
+}
+.reveal {
+	--r-main-font: var(--ivr-font-body);
+	--r-main-color: var(--ivr-ink);
+	--r-heading-font: var(--ivr-font-display);
+	--r-heading-color: var(--ivr-ink);
+	--r-link-color: var(--ivr-ink);
+	--r-selection-background-color: var(--ivr-hl);
+	--r-selection-color: var(--ivr-ink);
+	--r-progress-color: var(--ivr-orange);
+	--r-controls-color: var(--ivr-ink);
+	font: 400 30px/1.45 var(--ivr-font-body);
+	color: var(--ivr-ink);
+}
+.reveal .controls {
+	color: var(--ivr-ink);
+}
+.reveal .progress {
+	color: var(--ivr-orange);
+}
+.reveal .slide-number {
+	background: transparent;
+	color: var(--ivr-ink-soft);
+	font: 500 14px/1 var(--ivr-font-mono);
+}
+
+.reveal .slides section {
+	text-align: left;
+	padding: 24px 40px;
+	height: 100%;
+	box-sizing: border-box;
+}
+.reveal .slides > section:not(.stack) {
+	display: flex !important;
+	flex-direction: column;
+	gap: 22px;
+}
+.reveal .slides > section[hidden] {
+	display: none !important;
+}
+
+.reveal h1,
+.reveal h2 {
+	margin: 0;
+	font-family: var(--ivr-font-display);
+	font-weight: 900;
+	letter-spacing: -0.045em;
+	line-height: 0.98;
+	text-transform: none;
+	text-wrap: balance;
+	color: var(--ivr-ink);
+}
+.reveal h1 {
+	font-size: 104px;
+}
+.reveal h2 {
+	font-size: 64px;
+	max-width: 22ch;
+}
+.reveal p,
+.reveal ul,
+.reveal ol {
+	margin: 0;
+}
+
+.s-kicker {
+	font: 500 18px/1.3 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.s-sub {
+	font-size: 32px;
+	line-height: 1.35;
+	color: var(--ivr-ink-soft);
+	max-width: 46ch;
+}
+.reveal .s-hand {
+	font: 700 34px/1.15 var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+	transform: rotate(-2deg);
+	transform-origin: left center;
+}
+.s-source {
+	margin-top: auto !important;
+	font: 500 15px/1 var(--ivr-font-mono);
+	color: var(--ivr-ink-soft);
+}
+
+/* Título com o "01" circulado */
+.s-title {
+	justify-content: center;
+}
+.s-circled {
+	position: relative;
+	display: inline-block;
+	margin-right: 0.15em;
+}
+.s-circled svg {
+	position: absolute;
+	inset: -14% -16% -20% -12%;
+	width: 128%;
+	height: 134%;
+	overflow: visible;
+}
+.s-circled path {
+	fill: none;
+	stroke: var(--ivr-orange);
+	stroke-width: 5;
+	stroke-linecap: round;
+}
+.s-url {
+	font-size: 56px !important;
+	max-width: none !important;
+	word-break: break-word;
+}
+
+.s-big {
+	justify-content: center;
+}
+.s-big h2 {
+	font-size: 76px;
+}
+.s-num {
+	color: var(--ivr-ink);
+	box-shadow: inset 0 -0.18em 0 var(--ivr-orange);
+}
+.reveal blockquote {
+	margin: 0;
+	width: auto;
+	max-width: 40ch;
+	padding: 0 0 0 24px;
+	border-left: 6px solid var(--ivr-orange);
+	box-shadow: none;
+	background: none;
+	font: 700 34px/1.3 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+	font-style: normal;
+}
+.reveal blockquote cite {
+	display: block;
+	margin-top: 10px;
+	font: 500 16px/1 var(--ivr-font-mono);
+	font-style: normal;
+	color: var(--ivr-ink-soft);
+}
+
+.reveal .slides > section.s-split {
+	display: grid !important;
+	grid-template-columns: 0.8fr 1.2fr;
+	align-items: center;
+	gap: 48px !important;
+}
+.s-list {
+	display: grid;
+	gap: 14px;
+	padding: 0;
+	list-style: none;
+	font-size: 30px;
+}
+.s-list li {
+	display: flex;
+	gap: 14px;
+}
+.s-list li:not(.s-hand)::before {
+	content: '–';
+	color: var(--ivr-graphite);
+}
+
+.s-agenda,
+.s-steps {
+	display: grid;
+	gap: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: ag;
+	border-top: 2px solid var(--ivr-ink);
+}
+.s-agenda li,
+.s-steps li {
+	counter-increment: ag;
+	display: grid;
+	grid-template-columns: 56px 1fr auto;
+	gap: 16px;
+	align-items: baseline;
+	padding: 12px 0;
+	border-bottom: 1px dashed var(--ivr-line);
+	font-size: 30px;
+}
+.s-agenda li::before,
+.s-steps li::before {
+	content: counter(ag, decimal-leading-zero);
+	font: 500 18px/1 var(--ivr-font-mono);
+	color: var(--ivr-ink-soft);
+}
+.s-agenda b {
+	font-family: var(--ivr-font-display);
+}
+.s-agenda span {
+	font: 700 24px/1 var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+}
+.s-steps li {
+	grid-template-columns: 56px 1fr;
+	font: 700 38px/1.1 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+}
+
+/* Barras e comparações */
+.s-bars {
+	display: grid;
+	gap: 28px;
+	max-width: 900px;
+}
+.s-bars > div {
+	display: grid;
+	gap: 10px;
+	font-size: 26px;
+}
+.s-bar {
+	display: block;
+	height: 34px;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 3px;
+	background: var(--ivr-paper);
+}
+.s-bar b {
+	display: block;
+	height: 100%;
+	width: var(--w);
+	background: var(--ivr-graphite);
+}
+.s-bar b.o {
+	background: var(--ivr-orange);
+	min-width: 10px;
+}
+.s-up {
+	font: 900 44px/1 var(--ivr-font-display);
+}
+.s-versus,
+.s-three {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+.s-three {
+	grid-template-columns: repeat(3, 1fr);
+}
+.s-three.s-two {
+	grid-template-columns: repeat(2, 1fr);
+}
+.s-versus > div,
+.s-three > div {
+	display: grid;
+	gap: 8px;
+	align-content: start;
+	padding: 24px;
+	background: var(--ivr-paper);
+	border: 2px solid var(--ivr-ink);
+	border-radius: 6px;
+}
+.s-versus b {
+	font: 900 96px/0.9 var(--ivr-font-display);
+	letter-spacing: -0.06em;
+	font-variant-numeric: tabular-nums;
+}
+.s-three b {
+	font: 900 44px/1 var(--ivr-font-display);
+	letter-spacing: -0.04em;
+}
+.s-three.s-two b {
+	font-size: 34px;
+}
+.s-versus span,
+.s-three span {
+	font-size: 24px;
+	color: var(--ivr-ink-soft);
+}
+.s-honest .s-versus > div:last-child {
+	border-style: dashed;
+}
+
+.s-section {
+	justify-content: center;
+}
+.s-teaser {
+	font-size: 24px;
+	color: var(--ivr-ink-soft);
+	padding-top: 16px;
+	border-top: 1.5px dashed var(--ivr-line);
+	max-width: 52ch;
+}
+
+.s-config,
+.s-five {
+	display: grid;
+	gap: 12px;
+	padding: 0;
+	list-style: none;
+}
+.s-config li,
+.s-five li {
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	gap: 16px;
+	align-items: baseline;
+	padding: 12px 18px;
+	background: var(--ivr-paper);
+	border-left: 5px solid var(--ivr-orange);
+	font-size: 28px;
+}
+.s-config b,
+.s-five b {
+	font: 900 34px/1 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+}
+
+/* Slides com animação ou pedido: título menor, componente em destaque */
+.s-anim h2,
+.s-ex h2 {
+	font-size: 52px;
+}
+.s-anim .ivr-anim {
+	margin: 0;
+	flex: 1;
+	min-height: 0;
+}
+.s-ex .ivr-prompt-body {
+	font-size: 24px;
+}
+.s-ex .ivr-prompt button {
+	font-size: 16px;
+}
+
+.reveal .qq {
+	margin: 0;
+}
+.reveal .qq-row {
+	font-size: 28px;
+}
+.reveal .qq-row b {
+	font-size: 36px;
+}
+.reveal .qq .ivr-hand {
+	font-size: 30px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal .slides section {
+		transition: none !important;
+	}
+}
+
+/* Janela de contexto no slide: versão compacta para caber em 720px. */
+.s-tight .s-kicker {
+	display: none;
+}
+.s-tight {
+	gap: 12px !important;
+}
+.s-tight .ivr-anim-frame {
+	padding: 14px 18px;
+}
+.s-tight ivr-context-window .cw-stage {
+	--cw-win: 12rem;
+	--cw-label: 20px;
+}
+.s-tight ivr-context-window .cw-msg {
+	padding: 4px 10px;
+	font-size: 14px;
+}
+.s-tight ivr-context-window .cw-msg small {
+	margin-bottom: 2px;
+}
+.s-tight ivr-context-window .cw-column {
+	gap: 5px;
+}

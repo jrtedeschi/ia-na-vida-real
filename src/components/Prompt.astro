@@ -1,0 +1,30 @@
+---
+/** Pedido em 5 partes, copiável. Trechos entre [colchetes] são campos que o aluno troca. */
+interface Props {
+	id: string;
+	contexto: string;
+	objetivo: string;
+	referencias: string;
+	restricoes: string;
+	formato: string;
+}
+const { id, ...parts } = Astro.props;
+const rows = [
+	['Contexto', parts.contexto],
+	['Objetivo', parts.objetivo],
+	['Referências', parts.referencias],
+	['Restrições', parts.restricoes],
+	['Formato', parts.formato],
+] as const;
+const plain = rows.map(([k, v]) => `${k}: ${v}`).join('\n');
+const fields = (text: string) => text.split(/(\[[^\]]+\])/g).filter(Boolean);
+---
+<div class="ivr-prompt not-content">
+	<div class="ivr-prompt-body" id={id} data-copy={plain}>
+		{rows.map(([k, v]) => (
+			<p><b>{k}</b>{fields(v).map((t) => (t.startsWith('[') ? <span class="ivr-field">{t}</span> : t))}</p>
+		))}
+	</div>
+	<ivr-copy data-target={id}><button type="button">Copiar pedido</button></ivr-copy>
+</div>
+<script>import './ivr-elements';</script>

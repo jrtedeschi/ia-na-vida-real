@@ -1,0 +1,93 @@
+---
+title: 'Encontro 1 · Exercícios'
+description: Três exercícios em aula e dois para casa. Tudo funciona no plano grátis.
+---
+import Exercise from '../../../components/Exercise.astro';
+import Prompt from '../../../components/Prompt.astro';
+import Progress from '../../../components/Progress.astro';
+
+Marque o que deu certo: o progresso fica salvo neste navegador. A caixinha laranja é a checagem que só você pode fazer.
+
+<Progress />
+
+<Exercise
+	id="e1-ex1" n={1} title="Organize sua semana" when="Em aula" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Tem uma tabela para cada dia útil', 'Nenhum dia passa do seu limite de horas', 'Tarefas com prazo vêm antes de sexta']}
+	human="Você concorda com as prioridades, ou sabe dizer qual mudaria e por quê"
+	fail="Resposta genérica quase sempre é falta de contexto ou de restrição." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
+	challenge="Peça para a IA explicar o critério que usou para priorizar."
+	hand="a diferença está no pedido"
+>
+<p>Uma semana cheia de reuniões e tarefas soltas. Primeiro peça só <strong>"organize minha semana"</strong>. Depois mande o pedido completo abaixo e compare as duas respostas.</p>
+<p>Sem lista à mão? Use a da Ana, analista de RH: revisar 3 currículos, preparar a integração de 2 pessoas novas, fechar a folha de ponto, responder a pesquisa de clima, agendar 4 entrevistas, atualizar a planilha de férias, montar o treinamento de quinta, ligar para o plano de saúde, revisar o manual de onboarding, enviar o relatório mensal, organizar o arquivo de contratos e preparar a reunião de sexta.</p>
+<Prompt slot="prompt" id="e1-ex1-p"
+	contexto="Trabalho em [uma equipe pequena, com muitas reuniões]."
+	objetivo="Não deixar nada importante para sexta."
+	referencias="[Cole sua lista de tarefas]"
+	restricoes="No máximo [2h] livres por dia, nada depois das [18h]."
+	formato="Uma tabela por dia, com 3 prioridades em cada."
+/>
+</Exercise>
+
+<Exercise
+	id="e1-ex2" n={2} title="Pergunte duas vezes" when="Em aula" minutes={10} tool="Grátis · duas IAs"
+	checks={['As duas respeitaram a restrição alimentar e o tempo de preparo', 'Você anotou pelo menos 2 diferenças entre as respostas']}
+	human="Você conferiu um preço num app de mercado e sabe qual estimativa errou mais"
+	fail="Respostas quase iguais acontecem em pedidos muito fechados." failHref="/consulta/conceitos/proxima-palavra/" failLabel="a próxima palavra"
+	challenge="Peça para cada IA criticar o cardápio da outra."
+	hand="modelos diferentes, apostas diferentes"
+>
+<p>Jantar para 6 amigos no sábado. Mande o mesmo pedido para duas IAs diferentes (Claude, ChatGPT ou Gemini) e compare.</p>
+<Prompt slot="prompt" id="e1-ex2-p"
+	contexto="Vou receber [6] amigos para jantar no sábado; [um é vegetariano]."
+	objetivo="Um cardápio simples que agrade todo mundo."
+	referencias="Orçamento de [R$ 200]; tenho forno e fogão."
+	restricoes="Nada que leve mais de 1h de preparo."
+	formato="Entrada, prato e sobremesa, mais lista de compras com preço estimado."
+/>
+</Exercise>
+
+<Exercise
+	id="e1-ex3" n={3} title="Pegue a IA errando" when="Em aula" minutes={12} tool="Grátis · qualquer IA"
+	checks={['Você procurou cada item numa busca comum', 'Você perguntou "tem certeza?" e viu se a IA se corrigiu']}
+	human="Você sabe dizer quais itens existem e quais foram inventados"
+	fail="Não achou nenhum erro? Ótimo sinal, mas repita com um tema mais de nicho. Se a IA buscou na web, compare com uma resposta sem busca." failHref="/consulta/conceitos/alucinacao/" failLabel="alucinação"
+	challenge="Peça para a IA dizer o quanto confia em cada item, de 0 a 100%."
+	hand="confie, mas confira"
+>
+<p>Você precisa de leituras sobre um tema que conhece bem. Peça, e depois confira cada item fora da IA.</p>
+<Prompt slot="prompt" id="e1-ex3-p"
+	contexto="Trabalho com [sua área]."
+	objetivo="Encontrar leituras sobre [um tema bem específico da sua área]."
+	referencias="Prefiro material em português."
+	restricoes="Só livros ou artigos que existem de verdade."
+	formato="Lista de 5 itens com autor, ano, editora ou revista, e link."
+/>
+</Exercise>
+
+<Exercise
+	id="e1-ex4" n={4} title="Seu primeiro pedido de verdade" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['Seu pedido tem as 5 partes', 'A resposta poupou tempo de verdade']}
+	human="Você anotou o que mudou na resposta depois de ajustar uma das partes"
+	fail="Traga o pedido para o Encontro 2: a aula começa por ele."
+	hand="o método vira hábito"
+>
+<p>Escolha uma tarefa real desta semana e escreva o pedido em 5 partes do zero, sem modelo.</p>
+</Exercise>
+
+<Exercise
+	id="e1-ex5" n={5} title="Por que você faz o que faz?" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['Seu porquê não cita o nome do cargo', 'Cada uma das 5 tarefas tem uma marcação']}
+	human="Você discordou da IA em pelo menos um ponto, e sabe por quê"
+	hand="vira sua base no Encontro 4"
+>
+<p>Escreva em 2 frases por que seu trabalho existe: para quem, e que problema resolve. Depois liste 5 tarefas da sua semana e marque cada uma: a IA pode <strong>aumentar</strong>, <strong>fatiar</strong>, <strong>automatizar</strong>, ou é <strong>só sua</strong>.</p>
+<p>Guarde o resultado: no Encontro 4 ele vira a primeira página da sua base de conhecimento.</p>
+<Prompt slot="prompt" id="e1-ex5-p"
+	contexto="Este é o porquê do meu trabalho: [suas 2 frases]."
+	objetivo="Quero saber onde a IA pode me ajudar sem eu perder o que importa."
+	referencias="[Suas 5 tarefas, já marcadas]"
+	restricoes="Discorde de mim quando achar que errei."
+	formato="Para cada tarefa: concorda ou não, e por quê, em uma linha."
+/>
+</Exercise>

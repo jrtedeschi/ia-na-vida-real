@@ -1,0 +1,97 @@
+ivr-next-word {
+	display: block;
+}
+ivr-next-word .ivr-anim-frame {
+	display: grid;
+	gap: 1rem;
+}
+ivr-next-word .nw-label {
+	margin: 0;
+	font: 500 12px/1.3 var(--ivr-font-mono);
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+ivr-next-word .nw-sentence {
+	margin: 0;
+	font: 700 clamp(20px, 4cqi, 40px) / 1.15 var(--ivr-font-display);
+	letter-spacing: -0.025em;
+	color: var(--ivr-ink);
+}
+ivr-next-word .nw-prompt {
+	color: var(--ivr-ink-soft);
+}
+ivr-next-word .nw-word {
+	display: inline-block;
+	white-space: pre;
+}
+ivr-next-word .nw-cursor {
+	display: inline-block;
+	width: 0.08em;
+	height: 0.95em;
+	margin-left: 0.06em;
+	vertical-align: -0.1em;
+	background: var(--ivr-orange);
+	animation: nw-blink 1s steps(1) infinite;
+}
+@keyframes nw-blink {
+	50% {
+		opacity: 0;
+	}
+}
+ivr-next-word .nw-stage {
+	display: grid;
+}
+ivr-next-word .nw-group {
+	grid-area: 1 / 1;
+	position: relative;
+	display: grid;
+	gap: 8px;
+}
+ivr-next-word .nw-row {
+	display: grid;
+	grid-template-columns: minmax(5.5em, auto) 1fr 3.4em;
+	gap: 12px;
+	align-items: center;
+	font: 500 clamp(14px, 2.2cqi, 18px) / 1.2 var(--ivr-font-mono);
+}
+ivr-next-word .nw-cand {
+	justify-self: start;
+	padding: 2px 4px;
+}
+ivr-next-word .nw-track {
+	height: 14px;
+	border: 1.5px solid var(--ivr-line);
+	border-radius: 2px;
+	overflow: hidden;
+}
+ivr-next-word .nw-fill {
+	display: block;
+	height: 100%;
+	background: var(--ivr-graphite);
+	transform-origin: left center;
+}
+ivr-next-word .nw-fill.nw-pick {
+	background: var(--ivr-ink);
+}
+ivr-next-word .nw-pct {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--ivr-ink-soft);
+}
+ivr-next-word .nw-foot {
+	display: grid;
+	gap: 6px;
+	padding-top: 0.8rem;
+	border-top: 1.5px dashed var(--ivr-line);
+}
+ivr-next-word .nw-verdict {
+	margin: 0;
+	font: 700 clamp(17px, 3cqi, 26px) / 1.2 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+}
+@media (prefers-reduced-motion: reduce) {
+	ivr-next-word .nw-cursor {
+		animation: none;
+	}
+}

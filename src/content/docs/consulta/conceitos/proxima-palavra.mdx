@@ -1,0 +1,34 @@
+---
+title: Próxima palavra
+description: Um modelo de linguagem escreve apostando, pedaço por pedaço, no que é mais provável vir a seguir.
+sidebar:
+  order: 2
+---
+import Definition from '../../../../components/Definition.astro';
+import Hand from '../../../../components/Hand.astro';
+import NextWord from '../../../../components/anim/NextWord.astro';
+import { NEXT_WORD } from '../../../../components/anim/presets';
+
+<Definition>Um modelo de linguagem calcula a chance de cada pedaço de texto vir a seguir, escolhe um, e repete até terminar a resposta.</Definition>
+
+<NextWord {...NEXT_WORD} />
+
+## Analogia
+
+É o corretor do celular que sugere a próxima palavra, só que treinado com uma quantidade enorme de textos. Ele aprendeu tão bem os padrões da escrita que consegue continuar uma frase, um e-mail ou um relatório inteiro.
+
+## Na prática
+
+- **Cada resposta é uma sequência de apostas.** Por isso a mesma pergunta, feita duas vezes, pode dar respostas diferentes.
+- **O seu pedido muda as apostas.** Contexto, objetivo e exemplos deixam as continuações certas mais prováveis. É por isso que [o pedido em 5 partes](/consulta/pedido-em-5-partes/) funciona.
+- **Modelos diferentes apostam diferente.** Foram treinados com textos e ajustes diferentes.
+
+<Hand>pedido melhor, apostas melhores</Hand>
+
+## Erro comum
+
+Achar que a IA "procura a resposta" num banco de dados. Ela não procura: ela escreve o que é provável. Quando a IA usa busca na web, ela primeiro procura páginas e depois escreve com base nelas, mas a escrita continua sendo aposta.
+
+## Teste rápido · 1 minuto
+
+Faça a mesma pergunta aberta duas vezes, em conversas novas: *"Me dê uma ideia de presente para minha mãe."* Compare. As respostas diferentes são apostas diferentes.

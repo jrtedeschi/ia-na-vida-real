@@ -1,9 +1,35 @@
 ---
-title: IA na Vida Real
+title: Comece aqui
 description: Material de estudo, consulta e exercícios do curso IA na Vida Real.
-template: splash
-hero:
-  tagline: Material de estudo, consulta e exercícios práticos dos 4 encontros ao vivo.
 ---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import Hand from '../../components/Hand.astro';
 
-<p class="hand">site em construção · Encontro 1 chega antes de 20/10</p>
+Este é o material do curso **IA na Vida Real**: o que vimos em cada encontro, os exercícios com o seu progresso salvo, e uma consulta para usar depois do curso.
+
+## Próximo encontro
+
+<LinkCard title="Encontro 1 · Como a IA funciona" description="Terça, 20/10, das 20h às 21h30, ao vivo. Veja o que preparar antes da aula." href="/encontro-1/" />
+
+<Hand>cada encontro abre na véspera da aula</Hand>
+
+## Consulta
+
+<CardGrid>
+	<LinkCard title="O pedido em 5 partes" description="Contexto, objetivo, referências, restrições e formato." href="/consulta/pedido-em-5-partes/" />
+	<LinkCard title="Conceitos" description="Token, próxima palavra, alucinação, janela de contexto, modelos e custo." href="/consulta/conceitos/token/" />
+	<LinkCard title="Segurança e privacidade" description="Configure o treinamento com seus dados e evite golpes." href="/consulta/seguranca-e-privacidade/" />
+	<LinkCard title="Fique com o volante" description="Delegue a tarefa, não o julgamento." href="/consulta/fique-com-o-volante/" />
+	<LinkCard title="IA e trabalho" description="O que as revoluções anteriores ensinam." href="/consulta/ia-e-trabalho/" />
+</CardGrid>
+
+## Calendário
+
+| Encontro | Data | Tema |
+|---|---|---|
+| 1 | terça, 20/10 | Como a IA funciona |
+| 2 | terça, 27/10 | Contexto é tudo |
+| 3 | terça, 03/11 | IA no seu trabalho |
+| 4 | terça, 10/11 | Sua base de conhecimento |
+
+Todas as aulas são das 20h às 21h30, ao vivo, e ficam gravadas.

@@ -1,0 +1,17 @@
+---
+import './anim-base.css';
+import './next-word.css';
+interface Props {
+	prompt: string;
+	steps: [string, number][][];
+	note?: string;
+	verdict?: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { prompt, steps, note, verdict, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-next-word prompt={prompt} steps={JSON.stringify(steps)} note={note} verdict={verdict} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-next-word>
+</div>
+<script>import './next-word.js';</script>

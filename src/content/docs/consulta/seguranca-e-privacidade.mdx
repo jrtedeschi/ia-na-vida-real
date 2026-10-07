@@ -1,0 +1,66 @@
+---
+title: Segurança e privacidade
+description: Configure o treinamento com seus dados, saiba o que nunca colar na IA e reconheça os golpes que usam IA.
+---
+import Hand from '../../../components/Hand.astro';
+import { Steps } from '@astrojs/starlight/components';
+
+<p class="ivr-label">Verificado em 06/10/2026 nas páginas oficiais. Os menus mudam com frequência: se não achar, procure por "privacidade" nas configurações.</p>
+
+## Pagar não desliga o treinamento
+
+As três empresas podem usar suas conversas para melhorar os modelos. Isso vale no plano grátis e também nos planos individuais pagos. Só contas de trabalho ou de empresa mudam esse padrão.
+
+| | Usa suas conversas para treinar? | Onde decidir |
+|---|---|---|
+| **Claude** | Só se a opção estiver ligada. O aviso de 2025 pode ter vindo com ela ligada: confira. | Configurações → Privacidade → "Help improve our AI models" |
+| **ChatGPT** | Sim, por padrão. | Configurações → Controles de dados → "Melhorar o modelo para todos" |
+| **Gemini** | Sim, por padrão, com revisão de pessoas. | Configurações e ajuda → Atividade |
+| **Gemini Notebook** (conta pessoal) | Não, a menos que você dê feedback. | — |
+
+Dois detalhes que pegam muita gente:
+
+- **Dar 👍 ou 👎 numa resposta** pode enviar a conversa inteira para revisão ou treino, mesmo com a opção desligada (ChatGPT e Gemini Notebook). Não faça isso em conversa sensível.
+- **Apagar não apaga na hora.** As empresas guardam por até 30 dias. No Gemini, o que já foi lido por revisores humanos fica até 3 anos, desvinculado da sua conta.
+
+## Configure uma vez · 5 minutos
+
+<Steps>
+
+1. **Claude:** Configurações → Privacidade. Decida sobre "Help improve our AI models".
+2. **ChatGPT:** Configurações → Controles de dados. Decida sobre "Melhorar o modelo para todos".
+3. **Gemini:** Configurações e ajuda → Atividade. Escolha entre manter e desativar. Se mantiver, ajuste a exclusão automática (o padrão é 18 meses; dá para pôr 3).
+4. Ative a **verificação em duas etapas** nas contas Google, OpenAI e Anthropic.
+5. Use só os endereços oficiais: claude.ai · chatgpt.com · gemini.google.com.
+
+</Steps>
+
+## A regra do cartão-postal
+
+Antes de colar qualquer coisa, pergunte: **eu escreveria isto num cartão-postal?**
+
+- Senha, código, cartão ou dado bancário: **não cole.**
+- Nome, CPF, telefone ou dado de saúde de outra pessoa: troque por "Cliente A".
+- Documento sigiloso do trabalho: só em conta da empresa, com aval dela.
+- Assunto delicado: use o **chat temporário** (Claude: ícone de fantasma · ChatGPT: "Temporário" · Gemini: chat temporário). Ainda fica guardado por alguns dias.
+
+<Hand>na dúvida, troque o nome</Hand>
+
+## Quando a IA lê coisas de outras pessoas
+
+Um PDF, um site ou um e-mail podem trazer **instruções escondidas** para a IA, escritas para mudar a resposta dela. Isso se chama *prompt injection*. Em decisões importantes, confira no documento original, e dê à IA só os acessos de que ela precisa.
+
+## Golpes que usam IA
+
+- Voz ou vídeo de parente pedindo dinheiro com urgência: **desligue e ligue de volta** no número que você já tem.
+- Combine uma **palavra-código** com a família.
+- Texto perfeito não prova nada: confira o link, o remetente e quem recebe o Pix.
+- Nunca passe código de SMS para ninguém.
+
+## Fontes
+
+- [Claude: seus dados são usados para treinar?](https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training)
+- [OpenAI: como seus dados melhoram os modelos](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)
+- [Google: Central de privacidade dos apps Gemini](https://support.google.com/gemini/answer/13594961)
+- [Cartilhas de segurança do CERT.br](https://cartilha.cert.br/)
+- [ANPD: temas prioritários 2026–2027](https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-publica-mapa-de-temas-prioritarios-para-o-bienio-2026-2027-e-atualiza-agenda-regulatoria-2025-2026)

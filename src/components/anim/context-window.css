@@ -1,0 +1,98 @@
+ivr-context-window {
+	display: block;
+}
+ivr-context-window .cw-stage {
+	/* --cw-out é calculado no JS para caber todas as mensagens que saíram da janela. */
+	--cw-label: 24px;
+	--cw-out: 9rem;
+	--cw-win: 17rem;
+	position: relative;
+	height: calc(var(--cw-label) * 2 + var(--cw-out) + var(--cw-win) + 10px);
+	overflow: hidden;
+}
+ivr-context-window .cw-outside,
+ivr-context-window .cw-window {
+	position: absolute;
+	left: 0;
+	right: 0;
+	border-radius: 4px;
+}
+ivr-context-window .cw-outside {
+	top: var(--cw-label);
+	height: var(--cw-out);
+	border: 1.5px dashed var(--ivr-line);
+}
+ivr-context-window .cw-window {
+	top: calc(var(--cw-label) + var(--cw-out) + 10px);
+	height: var(--cw-win);
+	border: 2.5px solid var(--ivr-ink);
+	background: color-mix(in srgb, var(--ivr-paper) 70%, transparent);
+}
+ivr-context-window .cw-zone-label {
+	position: absolute;
+	left: 2px;
+	font: 500 11px/1.2 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+	white-space: nowrap;
+}
+ivr-context-window .cw-outside .cw-zone-label {
+	top: calc(-1 * var(--cw-label) + 4px);
+}
+ivr-context-window .cw-window .cw-zone-label {
+	top: calc(100% + 8px);
+}
+ivr-context-window .cw-column {
+	position: absolute;
+	left: 14px;
+	right: 32px;
+	top: 0;
+	display: grid;
+	gap: 8px;
+	z-index: 1;
+}
+ivr-context-window .cw-msg {
+	margin: 0;
+	max-width: 78%;
+	padding: 8px 12px;
+	border-radius: 10px;
+	font-size: clamp(13px, 2.1cqi, 16px);
+	line-height: 1.35;
+	transition: opacity 200ms;
+}
+ivr-context-window .cw-msg small {
+	display: block;
+	font: 500 10px/1 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+	color: var(--ivr-ink-soft);
+}
+ivr-context-window .cw-voce {
+	justify-self: end;
+	background: var(--ivr-ink);
+	color: var(--ivr-paper);
+	border-bottom-right-radius: 3px;
+}
+ivr-context-window .cw-voce small {
+	color: inherit;
+	opacity: 0.7;
+}
+ivr-context-window .cw-ia {
+	justify-self: start;
+	background: var(--ivr-bg);
+	box-shadow: inset 0 0 0 1px var(--ivr-line);
+	border-bottom-left-radius: 3px;
+}
+ivr-context-window .cw-msg.cw-out {
+	opacity: 0.35;
+}
+ivr-context-window .ivr-anim-ink {
+	z-index: 2;
+}
+ivr-context-window .cw-note {
+	position: absolute;
+	z-index: 3;
+	white-space: nowrap;
+}

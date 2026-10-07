@@ -61,3 +61,14 @@ h1#_top,
 .sl-markdown-content a:hover {
 	text-decoration-thickness: 3px;
 }
+
+/* Caixas (Aside) do Starlight nas cores da marca: papel + traço laranja (dica) ou grafite (nota). */
+:root,
+:root[data-theme='light'] {
+	--sl-color-purple-low: var(--ivr-paper);
+	--sl-color-purple: var(--ivr-orange);
+	--sl-color-purple-high: var(--ivr-ink);
+	--sl-color-blue-low: var(--ivr-paper);
+	--sl-color-blue: var(--ivr-graphite);
+	--sl-color-blue-high: var(--ivr-ink);
+}

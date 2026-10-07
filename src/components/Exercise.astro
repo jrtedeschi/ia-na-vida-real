@@ -1,0 +1,55 @@
+---
+/**
+ * Exercício (formato do ticket 04): situação → pedido → "deu certo se…" → "não deu certo?" → desafio.
+ * `human` é a checagem que não se delega (marcada em laranja).
+ */
+interface Props {
+	id: string;
+	n: number;
+	title: string;
+	when: 'Em aula' | 'Para casa';
+	minutes: number;
+	tool: string;
+	checks: string[];
+	human: string;
+	fail?: string;
+	failHref?: string;
+	failLabel?: string;
+	challenge?: string;
+	hand?: string;
+}
+const { id, n, title, when, minutes, tool, checks, human, fail, failHref, failLabel, challenge, hand } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<article class="ivr-ex not-content" id={id}>
+	<div class="ivr-ex-l">
+		<div class="ivr-tags">
+			<span class:list={['ivr-tag', when === 'Em aula' && 'ivr-tag-o']}>{when} · {minutes} min</span>
+			<span class="ivr-tag">{tool}</span>
+		</div>
+		<h3>{n} · {title}</h3>
+		<div class="ivr-ex-sit"><slot /></div>
+		{hand && <span class="ivr-hand">{hand}</span>}
+	</div>
+	<div class="ivr-ex-r">
+		<slot name="prompt" />
+		<ivr-checklist data-key={id}>
+			<p class="ivr-label">Deu certo se…</p>
+			<ul class="ivr-checks">
+				{checks.map((c, i) => (
+					<li><label><input type="checkbox" id={`${id}-c${i}`} /> <span>{c}</span></label></li>
+				))}
+				<li class="human"><label><input type="checkbox" id={`${id}-h`} /> <span>{human}</span></label></li>
+			</ul>
+			<label class="ivr-note-label" for={`${id}-note`}>O que mudou na resposta? <small>(fica salvo só neste navegador)</small></label>
+			<textarea id={`${id}-note`} rows="2"></textarea>
+		</ivr-checklist>
+		{fail && (
+			<p class="ivr-fail">
+				<b>Não deu certo?</b>{fail}{failHref && <> Releia: <a href={`${base}${failHref}`}>{failLabel}</a>.</>}
+			</p>
+		)}
+		{challenge && <p class="ivr-challenge"><b>Desafio</b>{challenge}</p>}
+	</div>
+</article>
+<script>import './ivr-elements';</script>

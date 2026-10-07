@@ -1,0 +1,15 @@
+---
+import './token-split.css';
+interface Props {
+	tokens: string;
+	circle?: string;
+	note?: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { tokens, circle, note, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-token-split tokens={tokens} circle={circle} note={note} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-token-split>
+</div>
+<script>import './token-split.js';</script>

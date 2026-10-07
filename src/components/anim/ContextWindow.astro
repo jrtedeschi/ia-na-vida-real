@@ -1,0 +1,16 @@
+---
+import './anim-base.css';
+import './context-window.css';
+interface Props {
+	messages: ['voce' | 'ia', string][];
+	lost?: number;
+	note?: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { messages, lost = 0, note, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-context-window messages={JSON.stringify(messages)} lost={lost} note={note} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-context-window>
+</div>
+<script>import './context-window.js';</script>

@@ -1,0 +1,44 @@
+---
+title: Alucinação
+description: Por que a IA às vezes inventa, com toda a segurança. E como se proteger.
+sidebar:
+  order: 3
+---
+import Definition from '../../../../components/Definition.astro';
+import Hand from '../../../../components/Hand.astro';
+import NextWord from '../../../../components/anim/NextWord.astro';
+import { HALLUCINATION } from '../../../../components/anim/presets';
+
+<Definition>Alucinação é quando a IA escreve algo falso com a mesma segurança de algo verdadeiro, porque ela escolhe o provável, não o verdadeiro.</Definition>
+
+<NextWord {...HALLUCINATION} />
+
+## Por que acontece
+
+A IA escreve apostando na [próxima palavra](/consulta/conceitos/proxima-palavra/). Ela não consulta uma lista de fatos antes de responder. Quando a pergunta é sobre algo que ela viu muitas vezes no treino, o provável costuma coincidir com o verdadeiro. Quando é sobre algo raro, específico ou que nem existe, a aposta continua soando confiante, só que sem base.
+
+Na animação, ninguém sabe se a padaria Estrela existe. Todos os anos parecem plausíveis, e a IA escolhe um como se soubesse.
+
+<Hand>provável ≠ verdadeiro</Hand>
+
+## Onde é mais comum
+
+- Referências: livros, artigos, links, leis e números de processo.
+- Datas, números e citações exatas.
+- Pessoas e lugares pouco conhecidos.
+- Perguntas com uma premissa falsa ("por que a padaria Estrela fechou em 2010?").
+
+## Na prática
+
+- **Confira fora da IA** tudo o que for usar para decidir, publicar ou mandar para alguém.
+- **Peça a fonte**, e abra a fonte. Link que não abre é sinal de invenção.
+- **Use busca na web ou seus próprios documentos** quando o assunto for específico. A IA erra menos quando tem o texto na frente.
+- **Pergunte "o quanto você tem certeza?"**. Não é garantia, mas às vezes ela recua.
+
+## Erro comum
+
+Achar que um texto bem escrito é um texto correto. A IA escreve bem até quando inventa.
+
+## Teste rápido · 1 minuto
+
+Pergunte: *"Quem foi o prefeito da sua cidade em 1987?"*. Depois confira numa busca comum.
