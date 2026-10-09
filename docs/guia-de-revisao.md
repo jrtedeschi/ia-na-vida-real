@@ -27,7 +27,7 @@ Adultos brasileiros, não técnicos, parte com medo da IA. Querem entender e sai
 ## Slides
 
 1. **Fonte e autor ficam nas notas do apresentador**, nunca na tela. Exceção: citação literal, com o nome de quem disse.
-2. **Letra à mão (Kalam) só para anotar um diagrama** (apontar, medir, rotular). Nunca como bordão no fim do slide.
+2. **Letra à mão (Kalam) só para anotar um diagrama** (apontar, medir, rotular). Nunca como bordão, nem nos slides nem nas páginas.
 3. **Rótulo em cima do título só quando informa** (ex.: "Exercício 1 · 10 minutos"). Se não informa nada, apague.
 4. **Interação vem da fala do professor**, escrita nas notas, não de slides de pergunta.
 5. **Um slide, uma ideia.** Se precisa de lista de mais de 5 itens, são dois slides.

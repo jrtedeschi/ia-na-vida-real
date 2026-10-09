@@ -1,9 +1,8 @@
 ---
 title: 'Encontro 1 · Como a IA funciona'
-description: O que acontece quando você aperta enviar. Revisão do Encontro 1, com os conceitos e o método.
+description: Como a IA chega a uma resposta, por que ela erra, e como pedir para ela trabalhar bem para você.
 ---
 import { Aside, LinkCard, CardGrid } from '@astrojs/starlight/components';
-import Hand from '../../../components/Hand.astro';
 import TokenSplit from '../../../components/anim/TokenSplit.astro';
 import NextWord from '../../../components/anim/NextWord.astro';
 import ContextWindow from '../../../components/anim/ContextWindow.astro';
@@ -14,53 +13,63 @@ import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../../compon
 
 <Aside type="tip" title="Antes da aula · 5 minutos">
 1. Crie conta grátis em pelo menos duas destas: [claude.ai](https://claude.ai), [chatgpt.com](https://chatgpt.com), [gemini.google.com](https://gemini.google.com).
-2. Pense numa tarefa da sua semana que você gostaria de delegar.
-3. Pense num tema que você conhece bem: vamos usá-lo para pegar a IA errando.
+2. Deixe as duas abertas e logadas, em abas separadas do navegador.
+3. Pense num tema que você conhece bem. Vamos usá-lo para conferir o que a IA afirma.
 </Aside>
 
-## A IA mexe em tarefas, não no seu propósito
+## Tecnologia que poupa trabalho cria riqueza
 
-Toda grande tecnologia trouxe o medo do fim dos empregos, e o padrão histórico foi de tarefas sumindo e trabalhos mudando, com uma transição dura para quem estava no meio. A tecnologia **aumenta** o que você faz, **fatia** o trabalho em pedaços e **automatiza** alguns deles. O porquê do seu trabalho continua seu. A história completa, com os números, está em [IA e trabalho](/consulta/ia-e-trabalho/).
+Cada revolução industrial começou com medo de desemprego e terminou com mais prosperidade. O mecanismo se repete: a máquina faz mais com menos gente, o produto fica mais barato, as pessoas compram mais e compram coisas novas, e surgem trabalhos que não existiam.
 
-## O que acontece quando você aperta enviar
+Em duzentos anos, a parcela da população mundial em pobreza extrema caiu de 79% para 9%, a expectativa de vida passou de 32 para 73 anos, e as horas de trabalho por ano nos países ricos caíram pela metade. A transição pode ser dura para quem está no meio dela, e é por isso que vale começar cedo. Números e fontes em [IA e trabalho](/consulta/ia-e-trabalho/).
 
-### 1. Seu texto vira pedaços
+## O valor está no sistema
+
+A eletricidade levou quarenta anos para aumentar a produtividade das fábricas. O ganho não veio de trocar o motor a vapor pelo elétrico: veio de redesenhar a fábrica em volta do motor. Com a IA acontece o mesmo.
+
+> O valor da IA não vem só do modelo, nem só do pedido. Vem do sistema em volta dela, e da disciplina de melhorar esse sistema quando ela não funciona. (Arvind Jain, CEO da Glean)
+
+Neste encontro você conhece a peça central desse sistema, o modelo. Nos próximos, montamos o resto: o contexto (Encontro 2), o trabalho (Encontro 3) e a rotina (Encontro 4).
+
+## Por dentro da IA
+
+### Ela lê em pedaços
 
 <TokenSplit {...TOKEN} />
 
-A IA lê em [tokens](/consulta/conceitos/token/), pedaços de 3 a 4 letras. O limite da conversa e o preço dos planos são contados neles.
+Esses pedaços se chamam [tokens](/consulta/conceitos/token/). O limite da conversa e o preço dos planos são contados neles, e o português gasta mais pedaços que o inglês para dizer a mesma coisa.
 
-### 2. A IA aposta na próxima palavra
+### Ela escreve escolhendo a palavra mais provável
 
 <NextWord {...NEXT_WORD} />
 
-O modelo calcula a chance de cada pedaço vir a seguir, escolhe um e repete. A resposta inteira é uma sequência de apostas. Mais em [próxima palavra](/consulta/conceitos/proxima-palavra/).
+O modelo calcula a chance de cada pedaço vir a seguir, escolhe um e repete até terminar. Por isso a mesma pergunta pode dar respostas diferentes. Mais em [próxima palavra](/consulta/conceitos/proxima-palavra/).
 
-### 3. Por isso ela às vezes inventa
+### Por isso, às vezes, inventa
 
 <NextWord {...HALLUCINATION} />
 
-A aposta escolhe o provável, não o verdadeiro. Quando a IA não sabe, a continuação provável continua soando confiante. Mais em [alucinação](/consulta/conceitos/alucinacao/).
+A escolha segue o provável, não o verdadeiro. A IA não consulta uma lista de fatos antes de responder, então, quando não sabe, a resposta continua soando confiante. Referências, datas, números e pessoas pouco conhecidas são os pontos mais arriscados. Mais em [alucinação](/consulta/conceitos/alucinacao/).
 
-### 4. A memória tem tamanho
+### Ela só enxerga um trecho da conversa
 
 <ContextWindow {...CONTEXT_WINDOW} />
 
-A IA só enxerga um tanto de texto por vez. Numa conversa longa, o começo sai da [janela de contexto](/consulta/conceitos/janela-de-contexto/). Um assunto, uma conversa.
+Esse trecho é a [janela de contexto](/consulta/conceitos/janela-de-contexto/). Em conversas longas, o começo sai de vista. Vale abrir uma conversa nova para cada assunto e repetir o essencial quando a conversa crescer.
 
-## Quem é quem
+## Empresa, modelo e aplicativo
 
 <QuemEQuem />
 
-Cada empresa tem modelos rápidos e modelos caprichados. O que cada plano grátis faz está em [modelos e custo](/consulta/conceitos/modelos-e-custo/).
+Cada empresa tem modelos rápidos e baratos e modelos mais lentos e mais capazes. O que cada plano grátis oferece está em [modelos e custo](/consulta/conceitos/modelos-e-custo/).
 
 ## Seus dados
 
-Pagar não desliga o uso das suas conversas para treinar modelos. Se você não configurou na aula, faça agora: [Segurança e privacidade](/consulta/seguranca-e-privacidade/). E antes de colar qualquer coisa, a regra do cartão-postal: você escreveria isso num cartão-postal?
+As três empresas podem usar suas conversas para treinar modelos, e pagar não muda isso. Se você não ajustou na aula, faça agora em [Segurança e privacidade](/consulta/seguranca-e-privacidade/). Antes de colar qualquer coisa, pense se você escreveria aquilo num cartão-postal.
 
 ## O pedido em 5 partes
 
-**Contexto, objetivo, referências, restrições e formato.** A diferença entre uma resposta genérica e uma resposta útil está no pedido. Veja o modelo pronto em [O pedido em 5 partes](/consulta/pedido-em-5-partes/).
+Contexto, objetivo, referências, restrições e formato. Cada parte muda as escolhas da IA, e juntas elas são a primeira peça do sistema em volta do modelo. O modelo pronto está em [O pedido em 5 partes](/consulta/pedido-em-5-partes/).
 
 ## Agora pratique
 

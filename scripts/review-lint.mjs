@@ -55,6 +55,7 @@ function lint(file) {
 		if (!lower.includes('em inglês')) ENGLISH_TERMS.filter((w) => lower.includes(w)).forEach((w) =>
 			out.push(`${at} termo em inglês "${w}": use o português primeiro (aceitável só se vier depois do equivalente)`),
 		);
+		if (!isSlides && /<Hand>/.test(line)) out.push(`${at} frase à mão solta: letra à mão só para anotar diagramas`);
 		if (isSlides) {
 			if (/class="s-kicker"/.test(line) && GIMMICK_LABELS.some((r) => r.test(plain))) out.push(`${at} rótulo de efeito: apague ou troque por algo informativo`);
 			if (AUTHOR_YEAR.test(plain) && !/class="s-cite"/.test(line)) out.push(`${at} autor e ano na tela: mova para as notas do apresentador`);
