@@ -43,6 +43,8 @@ Site do curso publicado no GitHub Pages (Astro + Starlight, repo público `jrted
 
 ## Not yet specified
 
+- E4: "escada da automação" virou ticket 16; demais conteúdos do E4 (base de conhecimento, OKF, processo → rotina) seguem em aberto.
+
 
 
 - Kit de animação compartilhado + 7 animações da jornada do "enviar" (token, próxima palavra, alucinação, vetores, janela de contexto, raciocínio, quem é quem).
