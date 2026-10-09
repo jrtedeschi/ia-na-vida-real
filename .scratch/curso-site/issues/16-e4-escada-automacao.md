@@ -1,4 +1,4 @@
-# E4: a escada da automação (de instruções fixas a hooks e subagentes)
+# E4: a escada da automação (prompt, skill, hooks e ferramentas, micro apps)
 Type: grilling
 Status: open
 Blocked by: 14
@@ -19,3 +19,12 @@ Rascunho (João, 08/10):
 A tese liga tudo: o valor vem do sistema em volta da IA e da disciplina de melhorá-lo.
 
 Pendente: pesquisa dos nomes de menu e do que é grátis em cada degrau (out/2026); Gemini CLI não aceita mais login pessoal (migração para Antigravity, visto em 08/10).
+
+## Comments
+
+08/10, João: a progressão ideal é **prompt → skill → hooks e ferramentas → micro apps**. Substitui os três degraus do rascunho:
+1. **Prompt**: o pedido em 5 partes (E1).
+2. **Skill**: o pedido que funcionou vira instrução reutilizável (Projeto, Gem, instruções fixas; nas ferramentas de terminal, skills de verdade).
+3. **Hooks e ferramentas**: conferências automáticas e acesso a ferramentas (conectores, agentes nos apps; no terminal: hooks, revisão adversarial, subagentes em paralelo).
+4. **Micro apps**: pequenas aplicações que a IA monta para você (ex.: uma página com checklist, um painel simples).
+Os degraus 3 e 4 têm caminho sem código e caminho de terminal (opcional). A pesquisa de nomes de menu e do plano grátis segue pendente.

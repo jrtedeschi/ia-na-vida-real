@@ -42,6 +42,11 @@ function lint(file) {
 	const text = visibleText(file, raw);
 	const isSlides = SLIDES_RE.test(file);
 	const out = [];
+	if (CONTENT_RE.test(file)) {
+		raw.split('\n').forEach((line, i) => {
+			if (/="[^"]*\\"/.test(line)) out.push(`${rel}:${i + 1} aspas escapadas (\\") dentro de atributo: quebra o build do MDX; use aspas simples no texto`);
+		});
+	}
 	text.split('\n').forEach((line, i) => {
 		const plain = line.replace(/<[^>]+>/g, ' ').replace(/\{[^}]*\}/g, ' ').replace(/https?:\/\/\S+/g, ' ').trim();
 		if (!plain) return;

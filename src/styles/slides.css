@@ -445,3 +445,12 @@ body {
 	letter-spacing: 0.04em;
 	color: var(--ivr-ink-soft);
 }
+.reveal .pv-row {
+	font-size: 24px;
+}
+.reveal .pv-head b {
+	font-size: 34px;
+}
+.reveal .pv-use {
+	font-size: 16px;
+}
