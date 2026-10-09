@@ -20,6 +20,7 @@ import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../component
 
 const site = `${import.meta.env.SITE}${import.meta.env.BASE_URL}`.replace(/\/$/, '');
 const siteLabel = site.replace(/^https?:\/\//, '');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <html lang="pt-BR" data-theme="light">
 	<head>
@@ -205,6 +206,19 @@ const siteLabel = site.replace(/^https?:\/\//, '');
 					<h2>Os modelos de cada empresa</h2>
 					<Modelos />
 					<aside class="notes">Verificado em 08/10/2026, por família. Anthropic: Haiku, Sonnet, Opus e Fable (topo); Opus e Sonnet ajustam o esforço de raciocínio; não gera imagem. OpenAI: família GPT-6, com Luna (rápido), Sol (equilibrado) e Astra (topo), níveis de raciocínio; ChatGPT Images 2.5 (08/09/2026). Google: Gemini 3.5 Flash (padrão no app), 3.1 Pro (mais capaz), Deep Think (raciocínio, planos pagos); Nano Banana 2.1 para imagens. A partir de 09/10/2026 o Gemini grátis perde acesso a alguns modelos: conferir antes da aula. Versões mudam a cada poucos meses.</aside>
+				</section>
+
+				<section class="s-split s-photo">
+					<img src={`${base}/img/submarino-3d.jpg`} alt="Submarino amarelo: a imagem gerada por IA, a peça sendo impressa na impressora 3D e duas peças prontas" width="900" height="1600" loading="lazy" />
+					<div>
+						<h2>Não é só texto</h2>
+						<ol class="s-flow">
+							<li>Descrevi um submarino para o Gemini e ele gerou a imagem</li>
+							<li>Uma IA da Bambu Lab transformou a imagem num modelo 3D</li>
+							<li>A impressora 3D imprimiu a decoração da festa do meu filho</li>
+						</ol>
+					</div>
+					<aside class="notes">Exemplo pessoal do João. Contar em 1 minuto: da descrição à peça na mesa. Mostra que a IA também cria imagem, modelo 3D e, com a ferramenta certa, objetos físicos. Liga com a tabela anterior: modelos de imagem (Nano Banana no Gemini).</aside>
 				</section>
 
 				<section class="s-big">

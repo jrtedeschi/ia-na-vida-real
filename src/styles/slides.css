@@ -496,3 +496,18 @@ body {
 .reveal .md-use {
 	font-size: 14px;
 }
+.reveal .slides > section.s-photo {
+	grid-template-columns: 0.55fr 1.45fr;
+	gap: 40px !important;
+}
+.s-photo img {
+	max-height: 640px;
+	width: auto;
+	max-width: 100%;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 6px;
+	justify-self: center;
+}
+.s-photo .s-flow li {
+	font-size: 32px;
+}
