@@ -386,3 +386,62 @@ body {
 .s-tight ivr-context-window .cw-column {
 	gap: 5px;
 }
+
+/* Revisão de 08/10: abertura sóbria, tese, fluxo e números. */
+.s-bio {
+	display: grid;
+	gap: 16px;
+	font-size: 34px;
+	line-height: 1.4;
+	color: var(--ivr-ink);
+	max-width: 30ch;
+}
+.s-flow {
+	display: grid;
+	gap: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: fl;
+	max-width: 980px;
+}
+.s-flow li {
+	counter-increment: fl;
+	display: grid;
+	grid-template-columns: 64px 1fr;
+	align-items: baseline;
+	padding: 16px 0;
+	border-bottom: 1px dashed var(--ivr-line);
+	font: 700 40px/1.15 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+}
+.s-flow li::before {
+	content: counter(fl);
+	font: 500 20px/1 var(--ivr-font-mono);
+	color: var(--ivr-ink-soft);
+}
+.s-flow li + li::before {
+	content: '→ ' counter(fl);
+	color: var(--ivr-orange);
+}
+.s-stats b {
+	font-size: 64px !important;
+	font-variant-numeric: tabular-nums;
+}
+.s-thesis h2 {
+	font-size: 58px !important;
+	max-width: 28ch !important;
+	line-height: 1.08;
+	box-shadow: inset 6px 0 0 var(--ivr-orange);
+	padding-left: 28px;
+}
+.s-caveat {
+	font-size: 24px;
+	color: var(--ivr-ink-soft);
+	max-width: 52ch;
+}
+.s-cite {
+	padding-left: 34px;
+	font: 500 18px/1.3 var(--ivr-font-mono);
+	letter-spacing: 0.04em;
+	color: var(--ivr-ink-soft);
+}
