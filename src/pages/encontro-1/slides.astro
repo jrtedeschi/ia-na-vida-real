@@ -14,6 +14,7 @@ import NextWord from '../../components/anim/NextWord.astro';
 import ContextWindow from '../../components/anim/ContextWindow.astro';
 import QuemEQuem from '../../components/anim/QuemEQuem.astro';
 import Provedores from '../../components/anim/Provedores.astro';
+import Modelos from '../../components/anim/Modelos.astro';
 import Prompt from '../../components/Prompt.astro';
 import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../components/anim/presets';
 
@@ -97,6 +98,17 @@ const siteLabel = site.replace(/^https?:\/\//, '');
 				</section>
 
 				<section>
+					<h2>Do pedido ao sistema, em quatro encontros</h2>
+					<ol class="s-arc">
+						<li><b>Encontro 1 · Prompt</b><span>Como a IA funciona e como pedir bem.</span></li>
+						<li><b>Encontro 2 · Skill</b><span>Dar contexto fixo: seus documentos e instruções que se repetem.</span></li>
+						<li><b>Encontro 3 · Hooks e ferramentas</b><span>A IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas.</span></li>
+						<li><b>Encontro 4 · Micro apps</b><span>Rotinas e pequenos aplicativos feitos com a IA para o seu dia a dia.</span></li>
+					</ol>
+					<aside class="notes">Cada encontro sobe um degrau: prompt, skill, hooks e ferramentas, micro apps. Os degraus mais altos têm um caminho sem código (Projetos, Gems, tarefas agendadas, agentes nos apps) e um caminho opcional com ferramentas de terminal (Claude Code, Codex, Gemini CLI) para quem se sentir à vontade. Este curso foi produzido assim: instruções fixas, um hook que confere cada página e revisão por um agente sem contexto.</aside>
+				</section>
+
+				<section>
 					<h2>O que a IA faz com o seu trabalho</h2>
 					<div class="s-three">
 						<div class="fragment"><b>Aumenta</b><span>Você faz o mesmo, mais rápido.</span></div>
@@ -110,7 +122,7 @@ const siteLabel = site.replace(/^https?:\/\//, '');
 				<!-- POR DENTRO DA IA -->
 				<section class="s-section">
 					<h2>Por dentro da IA</h2>
-					<ol class="s-steps"><li>Ela lê em pedaços</li><li>Ela escreve escolhendo a palavra mais provável</li><li>Por isso, às vezes, inventa</li><li>Ela só enxerga um trecho da conversa</li></ol>
+					<ol class="s-steps"><li>Ela lê em pedaços</li><li>Ela escreve escolhendo a palavra mais provável</li><li>Por isso, às vezes, inventa</li><li>Ela só enxerga um trecho da conversa</li><li>Alguns modelos pensam antes de responder</li></ol>
 				</section>
 
 				<section class="s-anim">
@@ -153,6 +165,18 @@ const siteLabel = site.replace(/^https?:\/\//, '');
 					<aside class="notes">Esse trecho é a janela de contexto. As janelas de hoje são grandes; a animação encurta para mostrar a ideia. Na prática: um assunto por conversa, e repetir o essencial em conversas longas.</aside>
 				</section>
 
+				<section>
+					<h2>Alguns modelos pensam antes de responder</h2>
+					<ol class="s-flow">
+						<li class="fragment">Você faz a pergunta</li>
+						<li class="fragment">O modelo escreve um rascunho de etapas, que você nem sempre vê</li>
+						<li class="fragment">Ele confere o rascunho e corrige o caminho</li>
+						<li class="fragment">Só então escreve a resposta</li>
+					</ol>
+					<p class="s-caveat fragment">Isso se chama raciocínio. Demora mais e gasta mais, mas erra menos em contas, planos e problemas com várias etapas.</p>
+					<aside class="notes">É a mesma escolha de palavra provável, só que o modelo primeiro escreve para si mesmo. Nos apps aparece como "pensar mais", "Thinking", níveis de raciocínio ou "Deep Think". Para pergunta simples, não precisa. Para conta, planejamento ou comparação com muitos critérios, vale ligar.</aside>
+				</section>
+
 				<!-- MODELOS E DADOS -->
 				<section>
 					<h2>Empresa, modelo e aplicativo</h2>
@@ -164,6 +188,23 @@ const siteLabel = site.replace(/^https?:\/\//, '');
 					<h2>As três maiores e suas ferramentas</h2>
 					<Provedores />
 					<aside class="notes">Verificado em 08/10/2026. Mudanças recentes: o Sora (vídeo da OpenAI) foi encerrado; o Codex foi para dentro do app do ChatGPT para computador e continua como ferramenta de terminal; o NotebookLM virou Gemini Notebook (16/07/2026); o Claude Cowork chegou à extensão do Chrome. A linha "Programar e automatizar" é o degrau mais alto da escada de automação do Encontro 4: opcional, para quem se sentir à vontade. Conferir de novo antes da aula, e o que entra no plano grátis de cada uma.</aside>
+				</section>
+
+				<section>
+					<h2>Modelos diferentes para tarefas diferentes</h2>
+					<div class="s-three s-four">
+						<div><b>Rápido</b><span>Perguntas simples, resumos, textos curtos. Gasta menos do seu limite.</span></div>
+						<div><b>Mais capaz</b><span>Textos longos, análise, assuntos difíceis.</span></div>
+						<div><b>Com raciocínio</b><span>Contas, planos, problemas com várias etapas.</span></div>
+						<div><b>De imagem</b><span>Criar e editar imagens a partir de uma descrição.</span></div>
+					</div>
+					<aside class="notes">No plano grátis, o app escolhe o modelo por você e os mais capazes têm limite de uso. Trocar de modelo é uma das peças do sistema: tarefa simples no rápido, tarefa difícil no mais capaz ou com raciocínio.</aside>
+				</section>
+
+				<section class="s-wide">
+					<h2>Os modelos de cada empresa</h2>
+					<Modelos />
+					<aside class="notes">Verificado em 08/10/2026, por família. Anthropic: Haiku, Sonnet, Opus e Fable (topo); Opus e Sonnet ajustam o esforço de raciocínio; não gera imagem. OpenAI: família GPT-6, com Luna (rápido), Sol (equilibrado) e Astra (topo), níveis de raciocínio; ChatGPT Images 2.5 (08/09/2026). Google: Gemini 3.5 Flash (padrão no app), 3.1 Pro (mais capaz), Deep Think (raciocínio, planos pagos); Nano Banana 2.1 para imagens. A partir de 09/10/2026 o Gemini grátis perde acesso a alguns modelos: conferir antes da aula. Versões mudam a cada poucos meses.</aside>
 				</section>
 
 				<section class="s-big">

@@ -1,0 +1,32 @@
+---
+/**
+ * Tipos de modelo por empresa, pelos nomes de família (mudam menos que as versões).
+ * Verificado em 08/10/2026; versões exatas nas notas do slide e na página de modelos.
+ */
+const tipos = ['Rápido', 'Mais capaz', 'Com raciocínio', 'De imagem'];
+const empresas = [
+	{ nome: 'Anthropic', itens: ['Haiku', 'Sonnet, Opus e Fable', 'Ajuste de raciocínio no Sonnet e no Opus', 'Não cria imagens'] },
+	{ nome: 'OpenAI', itens: ['Luna', 'Sol e Astra', 'Níveis de raciocínio no ChatGPT', 'ChatGPT Images'] },
+	{ nome: 'Google', itens: ['Flash', 'Pro', 'Deep Think (planos pagos)', 'Nano Banana'] },
+];
+---
+<div class="md not-content" role="table" aria-label="Tipos de modelo de cada empresa">
+	<div class="md-row md-head" role="row">
+		<span role="columnheader"></span>
+		{empresas.map((e) => <b role="columnheader">{e.nome}</b>)}
+	</div>
+	{tipos.map((t, i) => (
+		<div class="md-row" role="row">
+			<span class="md-use" role="rowheader">{t}</span>
+			{empresas.map((e) => <span role="cell" class:list={[e.itens[i].startsWith('Não') && 'md-none']}>{e.itens[i]}</span>)}
+		</div>
+	))}
+</div>
+<style>
+	.md { display: grid; background: var(--ivr-paper); border: 2px solid var(--ivr-ink); border-radius: 6px; overflow-x: auto; color: var(--ivr-ink); }
+	.md-row { display: grid; grid-template-columns: minmax(10rem, 1.1fr) repeat(3, minmax(9rem, 1.2fr)); gap: 12px; align-items: baseline; padding: 10px 16px; border-top: 1px dashed var(--ivr-line); }
+	.md-head { border-top: 0; border-bottom: 2px solid var(--ivr-ink); }
+	.md-head b { font: 900 1.3rem/1 var(--ivr-font-display); letter-spacing: -0.03em; }
+	.md-use { font: 500 12px/1.3 var(--ivr-font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ivr-ink-soft); }
+	.md-none { color: var(--ivr-ink-soft); font-style: italic; }
+</style>

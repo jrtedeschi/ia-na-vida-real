@@ -44,3 +44,5 @@ Princípios: um arco por aula; cada conceito entra na aula em que o aluno vai us
 - Abertura: as revoluções como prova histórica, mantendo o contrapeso honesto.
 - Exercício novo para casa (semente do E4): "Por que você faz o que faz?" + 5 tarefas da semana marcadas como aumentar/fatiar/automatizar.
 - Fecho do E1: "quais tarefas você quer delegar para ficar com o que importa?"; o E4 retoma.
+
+**Emenda (08/10):** raciocínio passa do E3 para o E1, junto com tipos de modelo (rápido, mais capaz, raciocínio, imagem) e uma tabela por empresa. O E1 ganha também o slide do arco do curso: prompt (E1) → skill (E2) → hooks e ferramentas (E3) → micro apps (E4), alinhado ao ticket 16. Encaixar no tempo do E1 na próxima revisão de cronometragem.

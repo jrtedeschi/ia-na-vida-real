@@ -454,3 +454,45 @@ body {
 .reveal .pv-use {
 	font-size: 16px;
 }
+.s-arc {
+	display: grid;
+	gap: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 2px solid var(--ivr-ink);
+}
+.s-arc li {
+	display: grid;
+	grid-template-columns: 420px 1fr;
+	gap: 24px;
+	align-items: baseline;
+	padding: 18px 0;
+	border-bottom: 1px dashed var(--ivr-line);
+	font-size: 26px;
+	color: var(--ivr-ink-soft);
+}
+.s-arc li:first-child b {
+	box-shadow: inset 0 -0.2em 0 var(--ivr-orange);
+}
+.s-arc b {
+	justify-self: start;
+	font: 900 34px/1.1 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+	color: var(--ivr-ink);
+}
+.s-three.s-four {
+	grid-template-columns: repeat(4, 1fr);
+}
+.s-four b {
+	font-size: 36px !important;
+}
+.reveal .md-row {
+	font-size: 22px;
+	padding-block: 8px;
+}
+.reveal .md-head b {
+	font-size: 30px;
+}
+.reveal .md-use {
+	font-size: 14px;
+}
