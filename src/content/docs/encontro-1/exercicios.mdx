@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 1 · Exercícios'
-description: Três exercícios em aula e dois para casa. Tudo funciona no plano grátis.
+description: Cinco exercícios para casa. Tudo funciona no plano grátis.
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -11,7 +11,7 @@ Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o qu
 <Progress />
 
 <Exercise
-	id="e1-ex1" n={1} title="Organize sua semana" when="Em aula" minutes={10} tool="Grátis · qualquer IA"
+	id="e1-ex1" n={1} title="Organize sua semana" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
 	checks={['Tem uma tabela para cada dia útil', 'Nenhum dia passa do seu limite de horas', 'Tarefas com prazo vêm antes de sexta']}
 	human="Você concorda com as prioridades, ou sabe dizer qual mudaria e por quê"
 	fail="Resposta genérica quase sempre é falta de contexto ou de restrição." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
@@ -34,7 +34,7 @@ Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o qu
 </Exercise>
 
 <Exercise
-	id="e1-ex2" n={2} title="A mesma pergunta em duas IAs" when="Em aula" minutes={10} tool="Grátis · duas IAs"
+	id="e1-ex2" n={2} title="A mesma pergunta em duas IAs" when="Para casa" minutes={10} tool="Grátis · duas IAs"
 	checks={['As duas respeitaram a restrição alimentar e o tempo de preparo', 'Você anotou pelo menos 2 diferenças entre as respostas']}
 	human="Você conferiu um preço num app de mercado e sabe qual estimativa errou mais"
 	fail="Respostas quase iguais acontecem em pedidos muito fechados." failHref="/consulta/conceitos/proxima-palavra/" failLabel="a próxima palavra"
@@ -51,7 +51,7 @@ Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o qu
 </Exercise>
 
 <Exercise
-	id="e1-ex3" n={3} title="Confira o que a IA afirma" when="Em aula" minutes={10} tool="Grátis · qualquer IA"
+	id="e1-ex3" n={3} title="Confira o que a IA afirma" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
 	checks={['Você procurou cada item numa busca comum', 'Você perguntou "tem certeza?" e viu se a IA se corrigiu']}
 	human="Você sabe dizer quais itens existem e quais foram inventados"
 	fail="Não achou nenhum erro? Se a IA buscou na web, peça de novo num chat sem busca, ou pergunte algo com premissa falsa, como 'por que a padaria Estrela, da minha rua, fechou em 2015?'." failHref="/consulta/conceitos/alucinacao/" failLabel="alucinação"

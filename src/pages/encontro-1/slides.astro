@@ -62,51 +62,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<section class="s-big">
 					<h2>Tecnologia que poupa trabalho cria riqueza</h2>
 					<p class="s-sub">Cada revolução industrial começou com medo de desemprego e terminou com mais prosperidade.</p>
-					<aside class="notes">Perguntar à turma se alguém tem medo de perder o emprego para a IA. Ouvir. A resposta vem nos próximos slides, com o mecanismo e os números.</aside>
-				</section>
-
-				<section>
-					<h2>Como isso acontece</h2>
-					<ol class="s-flow">
-						<li class="fragment">A máquina faz mais com menos gente</li>
-						<li class="fragment">O produto fica mais barato</li>
-						<li class="fragment">As pessoas compram mais, e compram coisas novas</li>
-						<li class="fragment">Surgem trabalhos que não existiam</li>
-					</ol>
-					<aside class="notes">Exemplo do caixa eletrônico (Bessen, FMI 2015): abrir agência ficou mais barato, os bancos abriram mais agências, e o bancário passou de contar dinheiro a atender. Exemplo da planilha: menos auxiliares de contabilidade, mais contadores.</aside>
-				</section>
-
-				<section>
-					<h2>Duzentos anos depois</h2>
-					<div class="s-three s-stats">
-						<div class="fragment"><b>79% → 9%</b><span>da população mundial em pobreza extrema, de 1820 a 2018</span></div>
-						<div class="fragment"><b>32 → 73</b><span>anos de expectativa de vida, de 1900 a 2023</span></div>
-						<div class="fragment"><b>−50%</b><span>de horas de trabalho por ano nos países ricos, desde 1870</span></div>
-					</div>
-					<aside class="notes">Fontes: Our World in Data (pobreza extrema, expectativa de vida, horas de trabalho). Em 1870, mais de 3.000 horas por ano: 60 a 70 horas por semana.</aside>
-				</section>
-
-				<section class="s-big">
-					<h2>A eletricidade levou 40 anos para render</h2>
-					<p class="s-sub">As fábricas trocaram o motor a vapor pelo elétrico e continuaram iguais. O ganho só veio quando redesenharam a fábrica em volta do motor.</p>
-					<aside class="notes">Paul David, "The Dynamo and the Computer" (1990): em 1899, menos de 5% da força das fábricas americanas era elétrica; a produtividade só subiu nos anos 1920.</aside>
-				</section>
-
-				<section class="s-big s-thesis">
-					<h2>O valor da IA não vem só do modelo, nem só do pedido. Vem do sistema em volta dela, e da disciplina de melhorar esse sistema quando ela não funciona.</h2>
-					<p class="s-cite">Arvind Jain, CEO da Glean</p>
-					<aside class="notes">Tradução livre de um post de Arvind Jain (LinkedIn, outubro de 2026): "AI value isn't created by a model or a prompt alone. It depends on the system around it, and on the discipline to improve that system when AI isn't working." É a tese do curso: E1 o modelo e o pedido, E2 o contexto, E3 o trabalho, E4 a rotina.</aside>
-				</section>
-
-				<section>
-					<h2>Do pedido ao sistema, em quatro encontros</h2>
-					<ol class="s-arc">
-						<li><b>Encontro 1 · Prompt</b><span>Como a IA funciona e como pedir bem.</span></li>
-						<li><b>Encontro 2 · Skill</b><span>Dar contexto fixo: seus documentos e instruções que se repetem.</span></li>
-						<li><b>Encontro 3 · Hooks e ferramentas</b><span>A IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas.</span></li>
-						<li><b>Encontro 4 · Micro apps</b><span>Rotinas e pequenos aplicativos feitos com a IA para o seu dia a dia.</span></li>
-					</ol>
-					<aside class="notes">Cada encontro sobe um degrau: prompt, skill, hooks e ferramentas, micro apps. Os degraus mais altos têm um caminho sem código (Projetos, Gems, tarefas agendadas, agentes nos apps) e um caminho opcional com ferramentas de terminal (Claude Code, Codex, Gemini CLI) para quem se sentir à vontade. Este curso foi produzido assim: instruções fixas, um hook que confere cada página e revisão por um agente sem contexto.</aside>
+					<aside class="notes">Perguntar à turma se alguém tem medo de perder o emprego para a IA. Ouvir. O mecanismo: a máquina faz mais com menos gente, o produto fica mais barato, as pessoas compram mais e compram coisas novas, e surgem trabalhos que não existiam. Exemplo do caixa eletrônico (Bessen, FMI 2015): abrir agência ficou mais barato, os bancos abriram mais agências, e o bancário passou de contar dinheiro a atender. Se quiser um número: a pobreza extrema caiu de 79% para 9% da população mundial entre 1820 e 2018 (Our World in Data). Detalhes e fontes na página "IA e trabalho" do site.</aside>
 				</section>
 
 				<section>
@@ -120,10 +76,94 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					<aside class="notes">Ideia de "The Adaptation Advantage" (Heather McGowan e Chris Shipley, 2020): a tecnologia mexe em tarefas; quem ancora a identidade no porquê do trabalho, e não no cargo, se adapta melhor. Volta no exercício 5 e no Encontro 4. Se perguntarem do custo: no Brasil, os bancários caíram de 730 mil para 393 mil entre 1990 e 2001 (DIEESE), não só por tecnologia.</aside>
 				</section>
 
+				<!-- PROGRAMA -->
+				<section class="s-big s-thesis">
+					<h2>O valor da IA não vem só do modelo, nem só do pedido. Vem do sistema em volta dela, e da disciplina de melhorar esse sistema quando ela não funciona.</h2>
+					<p class="s-cite">Arvind Jain, CEO da Glean</p>
+					<aside class="notes">Tradução livre de um post de Arvind Jain (LinkedIn, outubro de 2026): "AI value isn't created by a model or a prompt alone. It depends on the system around it, and on the discipline to improve that system when AI isn't working." Paralelo histórico, se der tempo: a eletricidade levou 40 anos para aumentar a produtividade das fábricas, porque o ganho só veio quando redesenharam a fábrica em volta do motor (Paul David, "The Dynamo and the Computer", 1990). É a tese do curso: E1 o modelo e o pedido, E2 o contexto, E3 o trabalho, E4 a rotina.</aside>
+				</section>
+
+				<section>
+					<h2>Do pedido ao sistema, em quatro encontros</h2>
+					<ol class="s-arc">
+						<li><b>Encontro 1 · Prompt</b><span>Como a IA funciona e como pedir bem.</span></li>
+						<li><b>Encontro 2 · Skill</b><span>Dar contexto fixo: seus documentos e instruções que se repetem.</span></li>
+						<li><b>Encontro 3 · Hooks e ferramentas</b><span>A IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas.</span></li>
+						<li><b>Encontro 4 · Micro apps</b><span>Rotinas e pequenos aplicativos feitos com a IA para o seu dia a dia.</span></li>
+					</ol>
+					<aside class="notes">Cada encontro sobe um degrau: prompt, skill, hooks e ferramentas, micro apps. Os degraus mais altos têm um caminho sem código (Projetos, Gems, tarefas agendadas, agentes nos apps) e um caminho opcional com ferramentas de terminal (Claude Code, Codex, Gemini CLI) para quem se sentir à vontade. Este curso foi produzido assim: instruções fixas, um hook que confere cada página e revisão por um agente sem contexto.</aside>
+				</section>
+
+				<!-- IA NA SUA VIDA -->
+				<section class="s-section">
+					<h2>A IA na sua vida</h2>
+					<ol class="s-steps"><li>Aprender um assunto ou uma habilidade nova</li><li>Ter uma base de conhecimento só sua</li><li>Criar programas para suas tarefas pessoais</li><li>Levar seus hobbies mais longe</li></ol>
+					<aside class="notes">O curso é sobre a vida, não só sobre o trabalho. Os exemplos a seguir são reais, da minha casa.</aside>
+				</section>
+
+				<section class="s-big">
+					<h2>Aprender algo novo</h2>
+					<p class="s-sub">A IA explica do zero, dá exemplos do seu dia a dia e faz perguntas para ver se você entendeu. Ela explica de novo, de outro jeito, quantas vezes você precisar.</p>
+					<aside class="notes">Contar um exemplo seu de algo que aprendeu com IA: [completar]. Pedido que funciona: "Me explique [assunto] como se eu nunca tivesse ouvido falar, e no fim me faça 3 perguntas para conferir." Avisar que ela também erra ensinando: daqui a pouco veremos por quê.</aside>
+				</section>
+
+				<section class="s-big">
+					<h2>Uma base de conhecimento só sua</h2>
+					<p class="s-sub">Seus documentos, anotações e manuais num lugar só. A IA responde com base no que é seu, não só no que ela aprendeu.</p>
+					<aside class="notes">Exemplos: manual dos eletrodomésticos, contrato do aluguel, receitas da família, anotações do trabalho. Nos apps: Projetos no Claude e no ChatGPT, Gems e Gemini Notebook. É o tema do Encontro 2.</aside>
+				</section>
+
+				<section>
+					<h2>Um app de finanças feito para a minha família</h2>
+					<ol class="s-flow">
+						<li class="fragment">As finanças da casa viviam numa planilha, atualizada todo mês</li>
+						<li class="fragment">Descrevi para a IA como a gente controla o dinheiro</li>
+						<li class="fragment">Construímos juntos um app: fechamento do mês, contas fixas e projeção do patrimônio</li>
+					</ol>
+					<aside class="notes">Exemplo pessoal. Feito com Claude Code em cerca de duas semanas, a partir de 26/09/2026. Não mostrar valores reais na tela: se abrir o app, use dados de exemplo. A ideia não é que todos programem: é que um programa pequeno, feito para uma pessoa só, ficou barato. No Encontro 4 há caminhos sem código.</aside>
+				</section>
+
+				<section class="s-split s-photo">
+					<img src={`${base}/img/submarino-3d.jpg`} alt="Submarino amarelo: a imagem gerada por IA, a peça sendo impressa na impressora 3D e duas peças prontas" width="900" height="1600" loading="lazy" />
+					<div>
+						<h2>Não é só texto</h2>
+						<ol class="s-flow">
+							<li>Descrevi um submarino para o Gemini e ele gerou a imagem</li>
+							<li>Uma IA da Bambu Lab transformou a imagem num modelo 3D</li>
+							<li>A impressora 3D imprimiu a decoração da festa do meu filho</li>
+						</ol>
+					</div>
+					<aside class="notes">Exemplo pessoal. Contar em 1 minuto: da descrição à peça na mesa. Mostra que a IA também cria imagem, modelo 3D e, com a ferramenta certa, objetos físicos. Os modelos de imagem voltam no fim da aula (Nano Banana, no Gemini).</aside>
+				</section>
+
+				<section class="s-big">
+					<h2>As decorações que minha esposa cria</h2>
+					<p class="s-sub">[Completar: o que ela cria e onde a IA entra]</p>
+					<aside class="notes">[Completar: história em 1 minuto. Se tiver foto, trocar este slide pelo formato do submarino, com imagem ao lado.]</aside>
+				</section>
+
 				<!-- POR DENTRO DA IA -->
 				<section class="s-section">
 					<h2>Por dentro da IA</h2>
-					<ol class="s-steps"><li>Ela lê em fragmentos</li><li>Ela escreve escolhendo a palavra mais provável</li><li>Por isso, às vezes, inventa</li><li>Ela só enxerga um trecho da conversa</li><li>Alguns modelos pensam antes de responder</li></ol>
+					<ol class="s-steps"><li>O que é um modelo</li><li>Ela lê em fragmentos</li><li>Ela responde ao seu pedido, palavra por palavra</li><li>Por isso, às vezes, inventa</li><li>Alguns modelos pensam antes de responder</li></ol>
+				</section>
+
+				<section class="s-big">
+					<h2>Um modelo é um programa que aprendeu com muito texto</h2>
+					<p class="s-sub">Ele leu uma parte enorme da internet, de livros e de códigos, e aprendeu quais palavras costumam vir depois de quais. Esse tipo se chama modelo de linguagem grande, em inglês LLM.</p>
+					<aside class="notes">LLM vem de Large Language Model. Não é um banco de dados nem um buscador: é um padrão aprendido. Claude, GPT e Gemini são LLMs. Guarde a frase "quais palavras costumam vir depois de quais": ela explica tudo o que vem a seguir, inclusive os erros.</aside>
+				</section>
+
+				<section>
+					<h2>Empresa, modelo e aplicativo</h2>
+					<QuemEQuem />
+					<p class="s-sub">Cada empresa tem modelos rápidos e baratos e modelos mais lentos e mais capazes.</p>
+				</section>
+
+				<section class="s-wide">
+					<h2>As três maiores e suas ferramentas</h2>
+					<Provedores />
+					<aside class="notes">Verificado em 08/10/2026. Mudanças recentes: o Sora (vídeo da OpenAI) foi encerrado; o Codex foi para dentro do app do ChatGPT para computador e continua como ferramenta de terminal; o NotebookLM virou Gemini Notebook (16/07/2026); o Claude Cowork chegou à extensão do Chrome. A linha "Programar e automatizar" é o degrau mais alto da escada de automação do Encontro 4: opcional, para quem se sentir à vontade. Conferir de novo antes da aula, e o que entra no plano grátis de cada uma.</aside>
 				</section>
 
 				<section class="s-anim">
@@ -138,6 +178,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					<aside class="notes">Demonstração rápida no tokenizer: colar a mesma frase em português e em inglês e comparar o número de tokens. Isso ajuda a entender por que o contexto e o limite do modelo importam.</aside>
 				</section>
 
+				<section class="s-big">
+					<h2>Tudo começa pelo seu pedido</h2>
+					<p class="s-sub">O texto que você manda se chama, em inglês, prompt. A IA só tem o que está escrito ali e na conversa até agora. Ela não lê sua mente.</p>
+					<aside class="notes">O app também coloca instruções próprias antes do seu pedido, que você não vê. O jeito de escrever o pedido muda o que ela responde: é o pedido em 5 partes, no fim da aula.</aside>
+				</section>
+
 				<section class="s-anim">
 					<h2>Ela escreve escolhendo a palavra mais provável</h2>
 					<NextWord {...NEXT_WORD} trigger="manual" hideCaption />
@@ -147,7 +193,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<section class="s-anim">
 					<h2>Por isso, às vezes, inventa</h2>
 					<NextWord {...HALLUCINATION} trigger="manual" hideCaption />
-					<aside class="notes">Antes de mostrar a animação, faça ao vivo, num chat sem busca na web: "Por que a padaria Estrela, da rua [rua perto de você], fechou em 2015?" (ela não existe). Mostre a resposta confiante. Depois a animação: o provável não é o verdadeiro; ela não consulta uma lista de fatos.</aside>
+					<aside class="notes">Antes de mostrar a animação, faça ao vivo, num chat sem busca na web: "Por que a padaria Estrela, da rua [rua perto de você], fechou em 2015?" (ela não existe). Mostre a resposta confiante. Plano B, se ela não inventar: peça 3 livros sobre um tema bem específico da sua área, com autor, ano e editora, e procure um deles ao vivo. Depois a animação: o provável não é o verdadeiro; ela não consulta uma lista de fatos.</aside>
 				</section>
 
 				<section>
@@ -178,19 +224,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					<aside class="notes">É a mesma escolha de palavra provável, só que o modelo primeiro escreve para si mesmo. Nos apps aparece como "pensar mais", "Thinking", níveis de raciocínio ou "Deep Think". Para pergunta simples, não precisa. Para conta, planejamento ou comparação com muitos critérios, vale ligar.</aside>
 				</section>
 
-				<!-- MODELOS E DADOS -->
-				<section>
-					<h2>Empresa, modelo e aplicativo</h2>
-					<QuemEQuem />
-					<p class="s-sub">Cada empresa tem modelos rápidos e baratos e modelos mais lentos e mais capazes.</p>
-				</section>
-
-				<section class="s-wide">
-					<h2>As três maiores e suas ferramentas</h2>
-					<Provedores />
-					<aside class="notes">Verificado em 08/10/2026. Mudanças recentes: o Sora (vídeo da OpenAI) foi encerrado; o Codex foi para dentro do app do ChatGPT para computador e continua como ferramenta de terminal; o NotebookLM virou Gemini Notebook (16/07/2026); o Claude Cowork chegou à extensão do Chrome. A linha "Programar e automatizar" é o degrau mais alto da escada de automação do Encontro 4: opcional, para quem se sentir à vontade. Conferir de novo antes da aula, e o que entra no plano grátis de cada uma.</aside>
-				</section>
-
+				<!-- MODELOS -->
 				<section>
 					<h2>Modelos diferentes para tarefas diferentes</h2>
 					<div class="s-three s-four">
@@ -208,33 +242,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					<aside class="notes">Verificado em 08/10/2026, por família. Anthropic: Haiku, Sonnet, Opus e Fable (topo); Opus e Sonnet ajustam o esforço de raciocínio; não gera imagem. OpenAI: família GPT-6, com Luna (rápido), Sol (equilibrado) e Astra (topo), níveis de raciocínio; ChatGPT Images 2.5 (08/09/2026). Google: Gemini 3.5 Flash (padrão no app), 3.1 Pro (mais capaz), Deep Think (raciocínio, planos pagos); Nano Banana 2.1 para imagens. A partir de 09/10/2026 o Gemini grátis perde acesso a alguns modelos: conferir antes da aula. Versões mudam a cada poucos meses.</aside>
 				</section>
 
-				<section class="s-split s-photo">
-					<img src={`${base}/img/submarino-3d.jpg`} alt="Submarino amarelo: a imagem gerada por IA, a peça sendo impressa na impressora 3D e duas peças prontas" width="900" height="1600" loading="lazy" />
-					<div>
-						<h2>Não é só texto</h2>
-						<ol class="s-flow">
-							<li>Descrevi um submarino para o Gemini e ele gerou a imagem</li>
-							<li>Uma IA da Bambu Lab transformou a imagem num modelo 3D</li>
-							<li>A impressora 3D imprimiu a decoração da festa do meu filho</li>
-						</ol>
-					</div>
-					<aside class="notes">Exemplo pessoal do João. Contar em 1 minuto: da descrição à peça na mesa. Mostra que a IA também cria imagem, modelo 3D e, com a ferramenta certa, objetos físicos. Liga com a tabela anterior: modelos de imagem (Nano Banana no Gemini).</aside>
-				</section>
-
 				<section class="s-big">
 					<h2>Pagar não desliga o treinamento</h2>
-					<p class="s-sub">As três empresas podem usar suas conversas para treinar modelos. Vamos ajustar agora.</p>
-					<ol class="s-config">
-						<li><b>Claude</b>Configurações → Privacidade</li>
-						<li><b>ChatGPT</b>Configurações → Controles de dados</li>
-						<li><b>Gemini</b>Configurações e ajuda → Atividade</li>
-					</ol>
-					<aside class="notes">Compartilhar a tela e fazer junto. Cada um decide se liga ou desliga. Avisar: dar 👍/👎 pode mandar a conversa para treino mesmo com a opção desligada.</aside>
-				</section>
-
-				<section class="s-big">
-					<h2>O que não colar</h2>
-					<p class="s-sub">Senhas, dados bancários, dados de saúde, dados de clientes. Se você não escreveria num cartão-postal, não cole. Na dúvida, troque o nome por "Cliente A".</p>
+					<p class="s-sub">As três empresas podem usar suas conversas para treinar modelos. O passo a passo para ajustar está no site. E não cole o que você não escreveria num cartão-postal.</p>
+					<aside class="notes">Nota lateral, 1 minuto, sem fazer junto. Menus: Claude, Configurações → Privacidade; ChatGPT, Configurações → Controles de dados; Gemini, Configurações e ajuda → Atividade. Não colar senhas, dados bancários, de saúde ou de clientes; na dúvida, troque o nome por "Cliente A". Dar 👍/👎 pode mandar a conversa para treino mesmo com a opção desligada. Página completa: "Segurança e privacidade".</aside>
 				</section>
 
 				<!-- MÉTODO -->
@@ -247,31 +258,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 						<li><b>Restrições</b>limites e o que evitar</li>
 						<li><b>Formato</b>como você quer receber</li>
 					</ol>
-					<aside class="notes">Cada parte muda as apostas da IA. É a primeira peça do sistema em volta do modelo.</aside>
+					<aside class="notes">Cada parte muda as apostas da IA. É a primeira peça do sistema em volta do modelo. Os exercícios para casa usam esse formato.</aside>
 				</section>
 
-				<!-- EXERCÍCIOS -->
 				<section class="s-ex">
-					<p class="s-kicker">Exercício 1 · 10 minutos</p>
+					<p class="s-kicker">Demonstração · 5 minutos</p>
 					<h2>Organize sua semana</h2>
-					<p class="s-sub">Peça primeiro só "organize minha semana". Depois mande o pedido completo e compare. Troque o que está entre colchetes pela sua situação.</p>
+					<p class="s-sub">Primeiro só "organize minha semana". Depois o pedido completo. Compare.</p>
 					<Prompt id="s-ex1" contexto="Trabalho em [uma equipe pequena, com muitas reuniões]." objetivo="Não deixar nada importante para sexta." referencias="[Cole sua lista de tarefas]" restricoes="No máximo [2h] livres por dia, nada depois das [18h]." formato="Uma tabela por dia, com 3 prioridades em cada." />
-					<aside class="notes">Quem não tiver lista usa uma das listas prontas do site. Ao fim: o que mudou entre as duas respostas?</aside>
-				</section>
-
-				<section class="s-ex">
-					<p class="s-kicker">Exercício 2 · 10 minutos</p>
-					<h2>A mesma pergunta em duas IAs</h2>
-					<p class="s-sub">Mande o mesmo pedido para duas IAs diferentes e anote duas diferenças.</p>
-					<Prompt id="s-ex2" contexto="Vou receber [6] amigos para jantar no sábado; [um é vegetariano]." objetivo="Um cardápio simples que agrade todo mundo." referencias="Orçamento de [R$ 200]; tenho forno e fogão." restricoes="Nada que leve mais de 1h de preparo." formato="Entrada, prato e sobremesa, mais lista de compras com preço estimado." />
-				</section>
-
-				<section class="s-ex">
-					<p class="s-kicker">Exercício 3 · 10 minutos</p>
-					<h2>Confira o que a IA afirma</h2>
-					<p class="s-sub">Peça três leituras sobre um tema que você domina. Procure cada uma numa busca comum.</p>
-					<Prompt id="s-ex3" contexto="Trabalho com [sua área]." objetivo="Encontrar leituras sobre [um tema bem específico da sua área]." referencias="Prefiro material em português." restricoes="Só livros ou artigos que existem de verdade." formato="Lista de 3 itens com autor, ano, editora ou revista, e link." />
-					<aside class="notes">Se a IA buscou na web e acertou tudo, ótimo sinal: peça de novo num chat sem busca, ou use a pergunta com premissa falsa. Perguntar no chat quantos itens inventados cada um achou.</aside>
+					<aside class="notes">Fazer ao vivo, na sua tela, com uma das listas prontas do site. Mostrar a diferença entre as duas respostas. A turma repete em casa, no exercício 1.</aside>
 				</section>
 
 				<!-- FECHO -->
@@ -281,11 +276,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				</section>
 
 				<section>
+					<p class="s-kicker">No site, com o pedido pronto · 10 a 15 minutos cada</p>
 					<h2>Para casa</h2>
-					<div class="s-three s-two">
-						<div><b>Seu primeiro pedido de verdade</b><span>Uma tarefa real da semana, em 5 partes, do zero.</span></div>
-						<div><b>Por que você faz o que faz?</b><span>O porquê do seu trabalho em 2 frases, e 5 tarefas marcadas: aumentar, fatiar, automatizar ou só sua.</span></div>
-					</div>
+					<ol class="s-list">
+						<li>Organize sua semana</li>
+						<li>A mesma pergunta em duas IAs</li>
+						<li>Confira o que a IA afirma</li>
+						<li>Seu primeiro pedido de verdade</li>
+						<li>Por que você faz o que faz?</li>
+					</ol>
+					<aside class="notes">O exercício 3 é o mais importante: é onde cada um vê a IA inventar com os próprios olhos. O 4 abre o Encontro 2.</aside>
 				</section>
 
 				<section class="s-title">

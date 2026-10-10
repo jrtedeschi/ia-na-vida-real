@@ -14,7 +14,7 @@ import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../../../compon
 <Aside type="tip" title="Antes da aula · 5 minutos">
 1. Crie conta grátis em pelo menos duas destas: [claude.ai](https://claude.ai), [chatgpt.com](https://chatgpt.com), [gemini.google.com](https://gemini.google.com).
 2. Deixe as duas abertas e logadas, em abas separadas do navegador.
-3. Pense num tema que você conhece bem. Vamos usá-lo para conferir o que a IA afirma.
+3. Pense num tema que você conhece bem. Você vai usá-lo no exercício 3, para conferir o que a IA afirma.
 </Aside>
 
 ## Tecnologia que poupa trabalho cria riqueza
@@ -31,13 +31,52 @@ A eletricidade levou quarenta anos para aumentar a produtividade das fábricas. 
 
 O curso sobe um degrau por encontro: **prompt** (Encontro 1), **skill**, ou seja, contexto e instruções fixas (Encontro 2), **hooks e ferramentas** (Encontro 3) e **micro apps** e rotinas (Encontro 4).
 
+## A IA na sua vida
+
+O curso é sobre a vida inteira, não só sobre o trabalho. Quatro usos que valem para qualquer pessoa:
+
+### Aprender algo novo
+
+A IA explica do zero, dá exemplos do seu dia a dia e faz perguntas para ver se você entendeu. Ela explica de novo, de outro jeito, quantas vezes você precisar. Um pedido que funciona: "Me explique [assunto] como se eu nunca tivesse ouvido falar, e no fim me faça 3 perguntas para conferir."
+
+### Uma base de conhecimento só sua
+
+Seus documentos, anotações e manuais num lugar só, para a IA responder com base no que é seu. Nos apps, isso aparece como Projetos (Claude e ChatGPT), Gems e Gemini Notebook. É o tema do Encontro 2.
+
+### Programas para suas tarefas pessoais
+
+As finanças da família do João viviam numa planilha atualizada todo mês. Ele descreveu para a IA como a casa controla o dinheiro, e os dois construíram um app com o fechamento do mês, as contas fixas e a projeção do patrimônio. Um programa pequeno, feito para uma família só, ficou barato. O Encontro 4 mostra caminhos sem código.
+
+### Não é só texto
+
+<figure class="not-content" style="margin:1.5rem 0;display:grid;gap:10px;justify-items:start">
+	<img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/submarino-3d.jpg`} alt="Submarino amarelo: a imagem gerada por IA, a peça sendo impressa na impressora 3D e duas peças prontas" width="900" height="1600" loading="lazy" style="max-width:min(100%,320px);height:auto;border:2px solid var(--ivr-ink);border-radius:6px" />
+</figure>
+
+O João descreveu um submarino para o Gemini, que gerou a imagem. Uma IA da Bambu Lab transformou a imagem num modelo 3D, e a impressora 3D imprimiu a decoração da festa do filho dele. Modelos de imagem, de 3D e de vídeo seguem a mesma lógica dos modelos de texto: você descreve, a IA cria, e você confere e ajusta.
+
 ## Por dentro da IA
+
+### Um modelo é um programa que aprendeu com muito texto
+
+Ele leu uma parte enorme da internet, de livros e de códigos, e aprendeu quais palavras costumam vir depois de quais. Esse tipo se chama modelo de linguagem grande, em inglês LLM. Não é um banco de dados nem um buscador: é um padrão aprendido.
+
+### Empresa, modelo e aplicativo
+
+<QuemEQuem />
+
+Cada empresa tem modelos rápidos, modelos mais capazes, modelos com raciocínio e, no caso da OpenAI e do Google, modelos que criam imagens. Escolher o modelo certo para a tarefa é parte do sistema. Os nomes e o que cada plano grátis oferece estão em [modelos e custo](/consulta/conceitos/modelos-e-custo/).
+
 
 ### Ela lê em pedaços
 
 <TokenSplit {...TOKEN} />
 
 Esses pedaços se chamam [tokens](/consulta/conceitos/token/). O limite da conversa e o preço dos planos são contados neles, e o português gasta mais pedaços que o inglês para dizer a mesma coisa.
+
+### Tudo começa pelo seu pedido
+
+O texto que você manda se chama, em inglês, prompt. A IA só tem o que está escrito ali e na conversa até agora: ela não lê sua mente. O jeito de escrever o pedido muda a resposta, e é por isso que existe o [pedido em 5 partes](/consulta/pedido-em-5-partes/).
 
 ### Ela escreve escolhendo a palavra mais provável
 
@@ -61,20 +100,6 @@ Esse trecho é a [janela de contexto](/consulta/conceitos/janela-de-contexto/). 
 
 Esses modelos escrevem um rascunho de etapas, conferem o caminho e só então respondem. Isso se chama raciocínio: demora mais, mas erra menos em contas e problemas com várias etapas.
 
-## Empresa, modelo e aplicativo
-
-<QuemEQuem />
-
-Cada empresa tem modelos rápidos, modelos mais capazes, modelos com raciocínio e, no caso da OpenAI e do Google, modelos que criam imagens. Escolher o modelo certo para a tarefa é parte do sistema. Os nomes e o que cada plano grátis oferece estão em [modelos e custo](/consulta/conceitos/modelos-e-custo/).
-
-## Não é só texto
-
-<figure class="not-content" style="margin:1.5rem 0;display:grid;gap:10px;justify-items:start">
-	<img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/submarino-3d.jpg`} alt="Submarino amarelo: a imagem gerada por IA, a peça sendo impressa na impressora 3D e duas peças prontas" width="900" height="1600" loading="lazy" style="max-width:min(100%,320px);height:auto;border:2px solid var(--ivr-ink);border-radius:6px" />
-</figure>
-
-O João descreveu um submarino para o Gemini, que gerou a imagem. Uma IA da Bambu Lab transformou a imagem num modelo 3D, e a impressora 3D imprimiu a decoração da festa do filho dele. Modelos de imagem, de 3D e de vídeo seguem a mesma lógica dos modelos de texto: você descreve, a IA cria, e você confere e ajusta.
-
 ## Seus dados
 
 As três empresas podem usar suas conversas para treinar modelos, e pagar não muda isso. Se você não ajustou na aula, faça agora em [Segurança e privacidade](/consulta/seguranca-e-privacidade/). Antes de colar qualquer coisa, pense se você escreveria aquilo num cartão-postal.
@@ -86,6 +111,6 @@ Contexto, objetivo, referências, restrições e formato. Cada parte muda as esc
 ## Agora pratique
 
 <CardGrid>
-	<LinkCard title="Exercícios do Encontro 1" description="3 em aula e 2 para casa, com o seu progresso salvo." href="/encontro-1/exercicios/" />
+	<LinkCard title="Exercícios do Encontro 1" description="5 para casa, com o seu progresso salvo." href="/encontro-1/exercicios/" />
 	<LinkCard title="Fique com o volante" description="Delegue a tarefa, não o julgamento: 5 hábitos." href="/consulta/fique-com-o-volante/" />
 </CardGrid>
