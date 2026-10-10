@@ -71,11 +71,12 @@ export class IvrContextWindow extends IvrAnim {
 			m.classList.toggle('cw-out', r.y + r.height < winTop + 4);
 		});
 		const target = items[lost];
+		items.forEach((m) => m.classList.toggle('cw-lost', m === target));
 		if (target) {
 			const r = relRect(target, stage);
-			circle.setAttribute('d', roughEllipse(r, { seed: 4, pad: 8 }));
-			note.style.left = `${Math.min(r.x + r.width * 0.55, stage.offsetWidth - 150)}px`;
-			note.style.top = `${r.y + r.height + 4}px`;
+			circle.setAttribute('d', roughEllipse(r, { seed: 4, pad: 12 }));
+			note.style.left = `${Math.min(r.x + r.width * 0.55, stage.offsetWidth - 160)}px`;
+			note.style.top = `${r.y + r.height + 8}px`;
 		}
 	}
 
