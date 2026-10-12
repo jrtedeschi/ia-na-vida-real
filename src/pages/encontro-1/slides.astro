@@ -53,11 +53,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					<aside class="notes">Um minuto, em tom de conversa. Bom momento para uma história real sua de IA acertando ou errando no trabalho.</aside>
 				</section>
 
-				<section class="s-big">
-					<h2>Admirável Mundo "Novo"</h2>
-					<p class="s-sub">Hoje, a peça central: o modelo. Nos próximos encontros, o sistema em volta dele.</p>
-				</section>
-
 				<!-- PROSPERIDADE -->
 				<section class="s-big">
 					<h2>Tecnologia que poupa trabalho cria riqueza</h2>
@@ -77,19 +72,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				</section>
 
 				<!-- PROGRAMA -->
+				<section class="s-big">
+					<h2>Admirável Mundo "Novo"</h2>
+					<p class="s-sub">Hoje, a peça central: o modelo. Nos próximos encontros, o sistema em volta dele.</p>
+				</section>
+
 				<section class="s-big s-thesis">
 					<h2>O valor da IA não vem só do modelo, nem só do pedido. Vem do sistema em volta dela, e da disciplina de melhorar esse sistema quando ela não funciona.</h2>
 					<p class="s-cite">Arvind Jain, CEO da Glean</p>
-					<aside class="notes">Tradução livre de um post de Arvind Jain (LinkedIn, outubro de 2026): "AI value isn't created by a model or a prompt alone. It depends on the system around it, and on the discipline to improve that system when AI isn't working." Paralelo histórico, se der tempo: a eletricidade levou 40 anos para aumentar a produtividade das fábricas, porque o ganho só veio quando redesenharam a fábrica em volta do motor (Paul David, "The Dynamo and the Computer", 1990). É a tese do curso: E1 o modelo e o pedido, E2 o contexto, E3 o trabalho, E4 a rotina.</aside>
+					<aside class="notes">Tradução livre de um post de Arvind Jain (LinkedIn, outubro de 2026): "AI value isn't created by a model or a prompt alone. It depends on the system around it, and on the discipline to improve that system when AI isn't working." Paralelo histórico, se der tempo: a eletricidade levou 40 anos para aumentar a produtividade das fábricas, porque o ganho só veio quando redesenharam a fábrica em volta do motor (Paul David, "The Dynamo and the Computer", 1990). É a tese do curso: E1 o modelo e o pedido, E2 o contexto, E3 as ferramentas, E4 a rotina.</aside>
 				</section>
 
 				<section>
 					<h2>Do pedido ao sistema, em quatro encontros</h2>
 					<ol class="s-arc">
-						<li><b>Encontro 1 · Prompt</b><span>Como a IA funciona e como pedir bem.</span></li>
-						<li><b>Encontro 2 · Skill</b><span>Dar contexto fixo: seus documentos e instruções que se repetem.</span></li>
-						<li><b>Encontro 3 · Hooks e ferramentas</b><span>A IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas.</span></li>
-						<li><b>Encontro 4 · Micro apps</b><span>Rotinas e pequenos aplicativos feitos com a IA para o seu dia a dia.</span></li>
+						<li><b>Encontro 1 · Pedido</b><span>Prompt: como a IA funciona e como pedir bem.</span></li>
+						<li><b>Encontro 2 · Contexto</b><span>Skills: seus documentos e instruções que se repetem.</span></li>
+						<li><b>Encontro 3 · Ferramentas</b><span>Hooks: a IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas.</span></li>
+						<li><b>Encontro 4 · Rotina</b><span>Micro apps: pequenos aplicativos feitos com a IA para o seu dia a dia.</span></li>
 					</ol>
 					<aside class="notes">Cada encontro sobe um degrau: prompt, skill, hooks e ferramentas, micro apps. Os degraus mais altos têm um caminho sem código (Projetos, Gems, tarefas agendadas, agentes nos apps) e um caminho opcional com ferramentas de terminal (Claude Code, Codex, Gemini CLI) para quem se sentir à vontade. Este curso foi produzido assim: instruções fixas, um hook que confere cada página e revisão por um agente sem contexto.</aside>
 				</section>
@@ -173,8 +173,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				</section>
 
 				<section class="s-big">
-					<h2>Ela lê em fragmentos</h2>
-					<p class="s-sub">Em português, a mesma frase costuma consumir mais fragmentos do que em inglês.</p>
+					<h2>Em português, gasta mais</h2>
+					<p class="s-sub">A mesma frase costuma consumir mais fragmentos em português do que em inglês.</p>
 					<aside class="notes">Demonstração rápida no tokenizer: colar a mesma frase em português e em inglês e comparar o número de tokens. Isso ajuda a entender por que o contexto e o limite do modelo importam.</aside>
 				</section>
 
@@ -204,6 +204,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 						<li>Pessoas e lugares pouco conhecidos</li>
 						<li>Perguntas com uma premissa falsa</li>
 					</ul>
+					<p class="s-caveat">Conferir é a disciplina: nesses casos, peça a fonte e verifique.</p>
 				</section>
 
 				<section class="s-anim s-tight">
@@ -258,7 +259,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 						<li><b>Restrições</b>limites e o que evitar</li>
 						<li><b>Formato</b>como você quer receber</li>
 					</ol>
-					<aside class="notes">Cada parte muda as apostas da IA. É a primeira peça do sistema em volta do modelo. Os exercícios para casa usam esse formato.</aside>
+					<p class="s-caveat">Ela não lê sua mente: o que não está no pedido, ela adivinha.</p>
+					<aside class="notes">Retomar o slide "Tudo começa pelo seu pedido". Cada parte muda as apostas da IA. É a primeira peça do sistema em volta do modelo. Os exercícios para casa usam esse formato.</aside>
 				</section>
 
 				<section class="s-ex">
