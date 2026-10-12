@@ -1,0 +1,40 @@
+---
+/** Os `items:` de um slide, desenhados conforme o layout. */
+import { inline, itemTitle, itemText, type Item } from './inline';
+
+interface Props {
+	layout: string;
+	items: Item[];
+	fragments: boolean;
+}
+
+const { layout, items, fragments } = Astro.props;
+const frag = fragments ? 'fragment' : undefined;
+const title = (item: Item) => inline(itemTitle(item));
+const text = (item: Item) => inline(itemText(item) ?? '');
+---
+{layout === 'section' && (
+	<ol class="s-steps">{items.map((i) => <li class={frag} set:html={title(i)} />)}</ol>
+)}
+{layout === 'list' && (
+	<ul class="s-list">{items.map((i) => <li class={frag} set:html={title(i)} />)}</ul>
+)}
+{(layout === 'flow' || layout === 'photo') && (
+	<ol class="s-flow">{items.map((i) => <li class={frag} set:html={title(i)} />)}</ol>
+)}
+{layout === 'cards' && (
+	<div class:list={['s-three', { 's-four': items.length === 4, 's-two': items.length === 2 }]}>
+		{items.map((i) => <div class={frag}><b set:html={title(i)} /><span set:html={text(i)} /></div>)}
+	</div>
+)}
+{layout === 'five' && (
+	<ol class="s-five">{items.map((i) => <li class={frag}><b set:html={title(i)} /><Fragment set:html={text(i)} /></li>)}</ol>
+)}
+{layout === 'arc' && (
+	<ol class="s-arc">{items.map((i) => <li class={frag}><b set:html={title(i)} /><span set:html={text(i)} /></li>)}</ol>
+)}
+{layout === 'numbers' && (
+	<div class:list={['s-numbers', { 's-one': items.length === 1 }]}>
+		{items.map((i) => <div class={frag}><b set:html={title(i)} /><span set:html={text(i)} /></div>)}
+	</div>
+)}

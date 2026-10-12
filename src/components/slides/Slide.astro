@@ -1,0 +1,70 @@
+---
+/** Um slide do reveal.js a partir de um .md de src/content/slides/. Formato em src/content/slides/LEIA-ME.md. */
+import { render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Prompt from '../Prompt.astro';
+import SlideItems from './SlideItems.astro';
+import { getVisual } from './visuals';
+import { inline } from './inline';
+
+interface Props {
+	slide: CollectionEntry<'slides'>;
+	siteLabel: string;
+}
+
+const { slide, siteLabel } = Astro.props;
+const d = slide.data;
+const { Content } = await render(slide);
+const hasBody = Boolean(slide.body?.trim());
+const visual = d.visual ? getVisual(d.visual) : undefined;
+
+const LAYOUT_CLASS: Record<string, string> = {
+	title: 's-title',
+	end: 's-title',
+	bio: 's-split',
+	big: 's-big',
+	thesis: 's-big s-thesis',
+	section: 's-section',
+	numbers: 's-big',
+	photo: 's-split s-photo',
+	demo: 's-ex',
+};
+const sectionClass = [LAYOUT_CLASS[d.layout], visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
+const title = inline(d.title.replace('{site}', siteLabel));
+const frag = d.fragments ? 'fragment' : undefined;
+const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
+---
+<section class={sectionClass}>
+	{d.layout === 'photo' && d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" />}
+	<Fragment>
+		{d.layout === 'photo' ? (
+			<div>
+				<h2 set:html={title} />
+				{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
+				{hasBody && <div class="s-sub"><Content /></div>}
+			</div>
+		) : (
+			<Fragment>
+				{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
+				{d.layout === 'title' ? (
+					<h1>
+						{d.circle && (
+							<span class="s-circled">{d.circle}<svg viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26" /></svg></span>
+						)}
+						<Fragment set:html={` ${title}`} />
+					</h1>
+				) : (
+					<h2 class={d.layout === 'end' ? 's-url' : undefined} set:html={title} />
+				)}
+				{d.cite && <p class="s-cite" set:html={inline(d.cite)} />}
+				{d.items && <SlideItems layout={d.layout} items={d.items} fragments={d.fragments} />}
+				{visual && <visual.Comp {...visual.props} {...d.visualProps} />}
+				{hasBody && <div class={bodyClass}><Content /></div>}
+				{d.prompt && <Prompt id={`p-${slide.id.replace(/\W/g, '-')}`} {...d.prompt} />}
+				{d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" class="s-image" />}
+			</Fragment>
+		)}
+	</Fragment>
+	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
+	{d.notes && <aside class="notes" set:html={inline(d.notes)} />}
+</section>
