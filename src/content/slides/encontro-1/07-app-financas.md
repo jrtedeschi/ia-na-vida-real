@@ -1,7 +1,6 @@
 ---
 layout: flow
 title: Um micro aplicativo específico pra minha realidade
-fragments: true
 class: s-side
 image: ./img/app-financas.png
 alt: "Tela do app de finanças da família: aba Gastos de outubro de 2026, com gastos por categoria e os lançamentos do mercado; os valores aparecem escondidos"
