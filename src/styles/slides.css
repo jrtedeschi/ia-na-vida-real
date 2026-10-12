@@ -505,9 +505,13 @@ body {
 	gap: 40px !important;
 }
 .s-photo img {
-	max-height: 640px;
+	/* largura e altura acompanham a proporção da foto: nunca esticar nem achatar */
 	width: auto;
+	height: auto;
 	max-width: 100%;
+	max-height: 640px;
+	align-self: center;
+	object-fit: contain;
 	border: 2px solid var(--ivr-ink);
 	border-radius: 6px;
 	justify-self: center;
@@ -759,7 +763,7 @@ body {
 
 /* layout photo com `image2:`: fotos do processo à esquerda, texto no meio, segunda foto à direita. */
 .reveal .slides > section.s-photo.s-photo-3 {
-	grid-template-columns: 0.5fr 1.2fr 0.72fr;
+	grid-template-columns: 0.62fr 1.1fr 0.78fr;
 	gap: 30px !important;
 }
 .s-photo-3 h2 {
