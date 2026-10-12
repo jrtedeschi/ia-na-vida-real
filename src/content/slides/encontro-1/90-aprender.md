@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: big
 title: Aprender algo novo
 notes: |

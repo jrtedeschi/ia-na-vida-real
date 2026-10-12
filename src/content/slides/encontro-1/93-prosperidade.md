@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: big
 title: Tecnologia que poupa trabalho cria riqueza
 notes: |
