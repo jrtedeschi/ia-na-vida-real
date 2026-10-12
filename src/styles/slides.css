@@ -416,15 +416,9 @@ body {
 	letter-spacing: -0.03em;
 }
 .s-flow li::before {
-	content: counter(fl);
-	/* números alinhados à direita: "1" e "→ 2" ficam na mesma coluna, a seta entra antes */
-	justify-self: end;
-	padding-right: 18px;
+	/* todos os passos iguais: 01, 02, 03, na mesma cor (sem seta só a partir do segundo) */
+	content: counter(fl, decimal-leading-zero);
 	font: 500 20px/1 var(--ivr-font-mono);
-	color: var(--ivr-ink-soft);
-}
-.s-flow li + li::before {
-	content: '→ ' counter(fl);
 	color: var(--ivr-orange);
 }
 .s-stats b {
@@ -813,5 +807,29 @@ body {
 }
 .s-gallery-n {
 	font: 500 16px/1 var(--ivr-font-mono);
-	color: var(--ivr-ink-soft);
+	color: var(--ivr-orange);
+}
+
+/* class: s-side-card — variante do s-side para foto quadrada de produto: texto mais largo e a foto
+   como um cartão branco inclinado, com sombra sólida (receita pregada na geladeira). */
+.reveal .slides > section.s-side.s-side-card {
+	grid-template-columns: 1.35fr 0.85fr;
+	/* título e passos formam um bloco centralizado na altura da foto */
+	grid-template-rows: auto auto;
+	align-content: center;
+	column-gap: 56px;
+}
+.s-side-card > h2 {
+	font-size: 60px !important;
+}
+.s-side-card .s-flow li {
+	font-size: 32px;
+}
+.reveal .s-side-card > .s-image {
+	max-height: 440px;
+	width: auto;
+	justify-self: center;
+	background: #fff;
+	transform: rotate(2.5deg);
+	box-shadow: 10px 10px 0 var(--ivr-line);
 }
