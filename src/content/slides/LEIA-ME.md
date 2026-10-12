@@ -41,9 +41,17 @@ Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frent
 | `visual` | Animação ou diagrama | `visual:` (nome), `visualProps:` (opcional) |
 | `demo` | Demonstração com pedido copiável | `kicker:`, `prompt:` (contexto, objetivo, referencias, restricoes, formato) |
 | `end` | Encerramento | `title: "{site}"` mostra o endereço do site |
+| `roteiro` | O fio da aula: lista os capítulos | `items:` com `title` (nome do capítulo) e `text` |
+| `ponte` | Abre um capítulo, com o mapa no topo | `chapter:` (número), título = a pergunta do capítulo, texto = "Até aqui / Agora" |
 
 Campos que servem em qualquer layout: `kicker:` (linha pequena acima do título), `caveat:` (observação no fim),
 `fragments: true` (itens aparecem um por vez), `image:` (imagem abaixo do texto), `class:` (classe CSS extra).
+
+## Espinha dorsal
+
+O slide `roteiro` define os capítulos da aula. Cada `ponte` abre um capítulo (`chapter: 3`) e mostra o mapa,
+com o capítulo atual circulado. Os slides seguintes ganham o nome do capítulo no canto, sozinhos.
+Para mudar o nome de um capítulo, mude só o `roteiro`.
 
 ## Exemplos
 
@@ -78,7 +86,8 @@ items:
 ## Animações
 
 Nomes disponíveis em `visual:` (lista em `src/components/slides/visuals.ts`):
-`fragmentos`, `proxima-palavra`, `alucinacao`, `janela-de-contexto`, `quem-e-quem`, `provedores`, `modelos`.
+`fragmentos`, `proxima-palavra`, `alucinacao`, `janela-de-contexto`, `quem-e-quem`, `provedores`, `modelos`,
+`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide).
 
 Para trocar o texto de uma animação só neste slide, use `visualProps:`:
 

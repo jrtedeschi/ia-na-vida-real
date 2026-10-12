@@ -1,0 +1,24 @@
+---
+import './anim-base.css';
+import './evolution.css';
+interface Step {
+	year: number;
+	label: string;
+	name: string;
+	text: string;
+}
+interface Props {
+	from: number;
+	to: number;
+	ticks: number[];
+	steps: Step[];
+	note?: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { from, to, ticks, steps, note, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-evolution from={from} to={to} ticks={ticks.join(',')} steps={JSON.stringify(steps)} note={note} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-evolution>
+</div>
+<script>import './evolution.js';</script>

@@ -7,6 +7,8 @@ import { IvrAnim, el, svgEl, relRect, drawSpec } from './anim-base.js';
 
 const MSG_EVERY = 900;
 const MSG_IN = 380;
+const PAD = 12; // folga entre a última mensagem e o fundo da janela
+const OUT_OPACITY = 0.3;
 
 export class IvrContextWindow extends IvrAnim {
 	build(frame) {
@@ -31,9 +33,10 @@ export class IvrContextWindow extends IvrAnim {
 		const circle = svgEl('path');
 		ink.append(circle);
 		const note = el('span', 'ivr-anim-note cw-note', noteText);
+		const size = Number(this.getAttribute('window') ?? 4);
 		stage.append(outside, win, column, ink, note);
 		frame.append(stage);
-		return { messages, lost, stage, win, column, items, circle, note };
+		return { messages, lost, size, stage, win, column, items, circle, note };
 	}
 
 	/** Deslocamento da coluna para a mensagem k (inclusive) encostar no fundo da janela. */
@@ -42,20 +45,25 @@ export class IvrContextWindow extends IvrAnim {
 		column.style.transform = 'none';
 		const winR = relRect(win, stage);
 		const colR = relRect(column, stage);
-		const pad = 12;
 		return items.map((m) => {
 			const r = relRect(m, column);
-			return winR.y + winR.height - pad - (colR.y + r.y + r.height);
+			return winR.y + winR.height - PAD - (colR.y + r.y + r.height);
 		});
 	}
 
-	/** Ajusta a zona "fora da janela" à altura do que saiu dela, para a primeira mensagem ficar visível. */
+	/**
+	 * A janela tem a altura exata das últimas `size` mensagens: a borda de cima cai no meio do vão
+	 * entre duas mensagens, nunca cortando uma. A zona de fora cabe todas as que saíram.
+	 */
 	#sizeStage() {
-		const { stage, win, column } = this.parts;
+		const { stage, column, items, size } = this.parts;
 		column.style.transform = 'none';
-		const colH = column.offsetHeight;
-		const winInner = win.clientHeight - 24;
-		stage.style.setProperty('--cw-out', `${Math.max(colH - winInner + 16, 48)}px`);
+		const gap = parseFloat(getComputedStyle(column).rowGap) || 12;
+		const inside = items.slice(-size);
+		const block = inside.reduce((h, m) => h + m.offsetHeight, 0) + gap * (inside.length - 1);
+		const outside = column.offsetHeight - block - gap;
+		stage.style.setProperty('--cw-win', `${block + PAD + gap / 2}px`);
+		stage.style.setProperty('--cw-out', `${Math.max(outside + gap / 2 + 10, 0)}px`);
 	}
 
 	layout() {
@@ -75,8 +83,9 @@ export class IvrContextWindow extends IvrAnim {
 		if (target) {
 			const r = relRect(target, stage);
 			circle.setAttribute('d', roughEllipse(r, { seed: 4, pad: 12 }));
-			note.style.left = `${Math.min(r.x + r.width * 0.55, stage.offsetWidth - 160)}px`;
-			note.style.top = `${r.y + r.height + 8}px`;
+			// Nota à esquerda do círculo (a mensagem perdida é sua, alinhada à direita).
+			note.style.right = `${stage.offsetWidth - r.x + 30}px`;
+			note.style.top = `${r.y + r.height / 2 - 12}px`;
 		}
 	}
 
@@ -85,9 +94,15 @@ export class IvrContextWindow extends IvrAnim {
 		const n = items.length;
 		const total = n * MSG_EVERY + 1600;
 		const winTop = relRect(win, stage).y;
-		// Coluna: um degrau por mensagem.
-		const colFrames = [{ transform: `translateY(${offsets[0]}px)`, offset: 0 }];
-		offsets.forEach((y, i) => colFrames.push({ transform: `translateY(${y}px)`, offset: Math.min((i * MSG_EVERY + MSG_IN) / total, 1) }));
+		// Coluna: parada entre mensagens; sobe um degrau quando a próxima entra (easing por degrau).
+		const at = (ms) => Math.min(ms / total, 1);
+		const step = 'cubic-bezier(0.4, 0, 0.2, 1)';
+		const colFrames = [{ transform: `translateY(${offsets[0]}px)`, offset: 0, easing: step }];
+		offsets.slice(1).forEach((y, k) => {
+			const i = k + 1;
+			colFrames.push({ transform: `translateY(${offsets[i - 1]}px)`, offset: at(i * MSG_EVERY), easing: step });
+			colFrames.push({ transform: `translateY(${y}px)`, offset: at(i * MSG_EVERY + MSG_IN), easing: step });
+		});
 		colFrames.push({ transform: `translateY(${offsets[n - 1]}px)`, offset: 1 });
 		// Base sem deslocamento para calcular quando cada mensagem cruza o topo da janela.
 		column.style.transform = 'none';
@@ -104,17 +119,17 @@ export class IvrContextWindow extends IvrAnim {
 			];
 			if (exitStep >= 0) {
 				const t = Math.min((exitStep * MSG_EVERY + MSG_IN) / total, 1);
-				frames.push({ opacity: 1, offset: Math.max(t - 0.02, appear + MSG_IN / total) }, { opacity: 0.35, offset: t });
-				frames.push({ opacity: 0.35, offset: 1 });
+				frames.push({ opacity: 1, offset: Math.max(t - 0.02, appear + MSG_IN / total) }, { opacity: OUT_OPACITY, offset: t });
+				frames.push({ opacity: OUT_OPACITY, offset: 1 });
 			} else frames.push({ opacity: 1, offset: 1 });
-			m.classList.remove('cw-out'); // durante a animação quem manda é o keyframe
+			m.classList.remove('cw-out', 'cw-lost'); // durante a animação quem manda é o keyframe; o destaque só no fim
 			return [m, frames, { duration: total, easing: 'linear' }];
 		});
 		return [
-			[column, colFrames, { duration: total, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }],
+			[column, colFrames, { duration: total, easing: 'linear' }],
 			...msgSpecs,
 			...drawSpec(circle, n * MSG_EVERY + 200, 700),
-			[note, [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: n * MSG_EVERY + 800 }],
+			[note, [{ opacity: 0, transform: 'rotate(-2deg) translateY(6px)' }, { opacity: 1, transform: 'rotate(-2deg)' }], { duration: 450, delay: n * MSG_EVERY + 800 }],
 		];
 	}
 

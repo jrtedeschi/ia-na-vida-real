@@ -1,0 +1,9 @@
+---
+import './mundo-novo.css';
+interface Props {
+	caption: string;
+}
+const { caption } = Astro.props;
+---
+<ivr-mundo-novo caption={caption}></ivr-mundo-novo>
+<script>import './mundo-novo.js';</script>

@@ -2,14 +2,14 @@
 layout: arc
 title: Do pedido ao sistema, em quatro encontros
 items:
-  - title: Encontro 1 · Pedido
-    text: "Prompt: como a IA funciona e como pedir bem."
-  - title: Encontro 2 · Contexto
-    text: "Skills: seus documentos e instruções que se repetem."
-  - title: Encontro 3 · Ferramentas
-    text: "Hooks: a IA trabalhando com outras ferramentas, e conferências que acontecem sozinhas."
-  - title: Encontro 4 · Rotina
-    text: "Micro apps: pequenos aplicativos feitos com a IA para o seu dia a dia."
+  - title: 1 · Como a IA funciona
+    text: Modelo de linguagem, tokens, custo, modelos diferentes e raciocínio. E o método para fazer bons pedidos.
+  - title: 2 · Contexto é tudo
+    text: Projetos no Claude e Gemini Notebook. Seus documentos e instruções para a IA responder sobre a sua realidade.
+  - title: 3 · IA no seu trabalho
+    text: Revisar textos, criar documentos, analisar planilhas e pesquisar com deep research, sempre checando as fontes.
+  - title: 4 · Sua base de conhecimento
+    text: Uma base estruturada, que qualquer IA consegue ler, e o que você sabe virando processos da sua rotina.
 notes: |
-  Cada encontro sobe um degrau: prompt, skill, hooks e ferramentas, micro apps. Os degraus mais altos têm um caminho sem código (Projetos, Gems, tarefas agendadas, agentes nos apps) e um caminho opcional com ferramentas de terminal (Claude Code, Codex, Gemini CLI) para quem se sentir à vontade. Este curso foi produzido assim: instruções fixas, um hook que confere cada página e revisão por um agente sem contexto.
+  Cada encontro sobe um degrau: o pedido, o contexto, o trabalho, a rotina. Os exercícios para casa de cada encontro preparam o seguinte.
 ---

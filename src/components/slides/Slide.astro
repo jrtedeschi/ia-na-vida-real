@@ -4,15 +4,19 @@ import { render, type CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import Prompt from '../Prompt.astro';
 import SlideItems from './SlideItems.astro';
+import SpineStrip from './SpineStrip.astro';
 import { getVisual } from './visuals';
 import { inline } from './inline';
 
 interface Props {
 	slide: CollectionEntry<'slides'>;
 	siteLabel: string;
+	/** Capítulo em que o slide está (0 = antes do roteiro) e nomes dos capítulos, do slide `roteiro`. */
+	chapter?: number;
+	spine?: string[];
 }
 
-const { slide, siteLabel } = Astro.props;
+const { slide, siteLabel, chapter = 0, spine = [] } = Astro.props;
 const d = slide.data;
 const { Content } = await render(slide);
 const hasBody = Boolean(slide.body?.trim());
@@ -28,7 +32,11 @@ const LAYOUT_CLASS: Record<string, string> = {
 	numbers: 's-big',
 	photo: 's-split s-photo',
 	demo: 's-ex',
+	roteiro: 's-roteiro',
+	ponte: 's-ponte',
 };
+const NO_MARKER = ['title', 'end', 'roteiro', 'ponte'];
+const marker = chapter > 0 && spine[chapter - 1] && !NO_MARKER.includes(d.layout) ? `${chapter} · ${spine[chapter - 1]}` : undefined;
 const sectionClass = [LAYOUT_CLASS[d.layout], visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
 const title = inline(d.title.replace('{site}', siteLabel));
 const frag = d.fragments ? 'fragment' : undefined;
@@ -39,10 +47,18 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 	<Fragment>
 		{d.layout === 'photo' ? (
 			<div>
+				{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
 				<h2 set:html={title} />
 				{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
 				{hasBody && <div class="s-sub"><Content /></div>}
 			</div>
+		) : d.layout === 'ponte' ? (
+			<Fragment>
+				<SpineStrip spine={spine} current={d.chapter ?? chapter} />
+				<p class="s-kicker" set:html={inline(d.kicker ?? `Capítulo ${d.chapter ?? chapter} · ${spine[(d.chapter ?? chapter) - 1] ?? ''}`)} />
+				<h2 set:html={title} />
+				{hasBody && <div class="s-sub"><Content /></div>}
+			</Fragment>
 		) : (
 			<Fragment>
 				{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
@@ -58,13 +74,15 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 				)}
 				{d.cite && <p class="s-cite" set:html={inline(d.cite)} />}
 				{d.items && <SlideItems layout={d.layout} items={d.items} fragments={d.fragments} />}
-				{visual && <visual.Comp {...visual.props} {...d.visualProps} />}
+				{visual && !visual.overlay && <visual.Comp {...visual.props} {...d.visualProps} />}
 				{hasBody && <div class={bodyClass}><Content /></div>}
 				{d.prompt && <Prompt id={`p-${slide.id.replace(/\W/g, '-')}`} {...d.prompt} />}
 				{d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" class="s-image" />}
 			</Fragment>
 		)}
 	</Fragment>
+	{visual?.overlay && <div class="fragment s-overlay"><visual.Comp {...visual.props} {...d.visualProps} /></div>}
 	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
+	{marker && <p class="s-chapter" aria-hidden="true">{marker}</p>}
 	{d.notes && <aside class="notes" set:html={inline(d.notes)} />}
 </section>

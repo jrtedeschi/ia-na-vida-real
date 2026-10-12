@@ -373,18 +373,19 @@ body {
 	padding: 14px 18px;
 }
 .s-tight ivr-context-window .cw-stage {
-	--cw-win: 12rem;
 	--cw-label: 20px;
 }
+/* No slide, o rótulo "Você/IA" vai na mesma linha: a conversa inteira cabe em 720px. */
 .s-tight ivr-context-window .cw-msg {
-	padding: 4px 10px;
-	font-size: 14px;
+	padding: 5px 12px;
+	font-size: 17px;
 }
 .s-tight ivr-context-window .cw-msg small {
-	margin-bottom: 2px;
+	display: inline;
+	margin: 0 8px 0 0;
 }
 .s-tight ivr-context-window .cw-column {
-	gap: 5px;
+	gap: 10px;
 }
 
 /* Revisão de 08/10: abertura sóbria, tese, fluxo e números. */
@@ -552,4 +553,150 @@ body {
 	align-self: flex-start;
 	border: 2px solid var(--ivr-ink);
 	border-radius: 6px;
+}
+
+/* Vitrine "feita com um pedido": a moldura ocupa a altura que sobra no slide. */
+.s-art ivr-prompt-art .pa-frame {
+	aspect-ratio: auto;
+	height: 470px;
+}
+
+/* Espinha dorsal: roteiro, pontes entre capítulos e marcador do capítulo no canto. */
+.s-roteiro,
+.s-ponte {
+	justify-content: center;
+}
+.s-roteiro .s-arc li {
+	grid-template-columns: 420px 1fr;
+	padding: 12px 0;
+	font-size: 24px;
+}
+.s-roteiro .s-arc li:first-child b {
+	box-shadow: none;
+}
+.s-roteiro .s-arc b {
+	font-size: 30px;
+}
+.s-spine {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	margin: 0 0 28px !important;
+	padding: 0;
+	list-style: none;
+	counter-reset: none;
+}
+.s-spine li {
+	position: relative;
+	display: grid;
+	justify-items: start;
+	gap: 10px;
+	padding-right: 12px;
+	color: var(--ivr-ink-soft);
+}
+/* trilho que liga as estações */
+.s-spine li::before {
+	content: '';
+	position: absolute;
+	top: 19px;
+	left: 0;
+	right: 0;
+	border-top: 2px dashed var(--ivr-line);
+	z-index: -1;
+}
+.s-spine li.s-spine-done::before,
+.s-spine li.s-spine-now::before {
+	border-top: 2px solid var(--ivr-ink);
+}
+.s-spine li.s-spine-now::before {
+	right: 100%;
+}
+.s-spine b {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border: 2px solid var(--ivr-line);
+	border-radius: 50%;
+	background: var(--ivr-bg);
+	font: 500 18px/1 var(--ivr-font-mono);
+}
+.s-spine-done b {
+	border-color: var(--ivr-ink);
+	background: var(--ivr-ink);
+	color: var(--ivr-bg);
+}
+.s-spine-now b {
+	border: 4px solid var(--ivr-orange);
+	color: var(--ivr-ink);
+	transform: scale(1.25);
+}
+.s-spine span {
+	font: 600 17px/1.25 var(--ivr-font-body);
+	max-width: 14ch;
+}
+.s-spine-now span {
+	font: 900 21px/1.1 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+	color: var(--ivr-ink);
+}
+.s-ponte h2 {
+	font-size: 72px;
+	max-width: 20ch;
+}
+.s-chapter {
+	position: absolute;
+	top: 22px;
+	right: 40px;
+	font: 500 14px/1 var(--ivr-font-mono) !important;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.s-ponte .s-sub strong {
+	font-weight: 700;
+	color: var(--ivr-ink);
+}
+.s-roteiro .s-arc {
+	counter-reset: cap;
+}
+.s-roteiro .s-arc b::before {
+	counter-increment: cap;
+	content: counter(cap);
+	display: inline-grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	margin-right: 14px;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 50%;
+	font: 500 16px/1 var(--ivr-font-mono);
+	vertical-align: 0.15em;
+}
+
+/* "Admirável Mundo Novo": no clique, o mundo em pixel art se abre atrás do título. */
+.reveal .slides section .s-overlay {
+	position: absolute;
+	/* sangra além do slide para cobrir as margens do reveal.js */
+	inset: -12% -12%;
+	z-index: 0;
+	transition: none;
+}
+.s-mundo h2 {
+	position: relative;
+	z-index: 1;
+	transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s;
+}
+.s-mundo.mn-open .s-chapter {
+	opacity: 0;
+}
+.s-mundo.mn-open h2 {
+	transform: translateY(-210px);
+	color: #fff6e0;
+	text-shadow: 5px 5px 0 #2b1b5a;
+}
+@media (prefers-reduced-motion: reduce) {
+	.s-mundo h2 {
+		transition: none;
+	}
 }

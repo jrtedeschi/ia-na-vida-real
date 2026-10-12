@@ -13,10 +13,11 @@ const slides = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			layout: z
-				.enum(['title', 'bio', 'big', 'thesis', 'section', 'list', 'flow', 'cards', 'five', 'arc', 'numbers', 'photo', 'visual', 'demo', 'end'])
+				.enum(['title', 'bio', 'big', 'thesis', 'section', 'list', 'flow', 'cards', 'five', 'arc', 'numbers', 'photo', 'visual', 'demo', 'end', 'roteiro', 'ponte'])
 				.default('big'),
 			title: z.string(),
 			circle: z.string().optional(),
+			chapter: z.number().int().positive().optional(),
 			kicker: z.string().optional(),
 			items: z.array(item).optional(),
 			fragments: z.boolean().default(false),

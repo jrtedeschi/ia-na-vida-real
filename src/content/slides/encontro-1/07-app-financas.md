@@ -1,6 +1,6 @@
 ---
 layout: flow
-title: Um app de finanças feito para a minha família
+title: Um micro aplicativo específico pra minha realidade
 fragments: true
 items:
   - As finanças da casa viviam numa planilha, atualizada todo mês

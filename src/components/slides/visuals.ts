@@ -3,6 +3,7 @@
  * Animação nova: crie o componente em components/anim/ e acrescente uma entrada aqui.
  * `slideClass` = classe padrão do slide (o .md pode trocar com `class:`).
  * `visualProps:` no .md substitui os textos do preset (ex.: outra frase no NextWord).
+ * `overlay` = o visual cobre o slide inteiro e só aparece no próximo clique (fragmento).
  */
 import TokenSplit from '../anim/TokenSplit.astro';
 import NextWord from '../anim/NextWord.astro';
@@ -10,7 +11,11 @@ import ContextWindow from '../anim/ContextWindow.astro';
 import QuemEQuem from '../anim/QuemEQuem.astro';
 import Provedores from '../anim/Provedores.astro';
 import Modelos from '../anim/Modelos.astro';
-import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW } from '../anim/presets';
+import Evolucao from '../anim/Evolucao.astro';
+import Transformer from '../anim/Transformer.astro';
+import PromptArt from '../anim/PromptArt.astro';
+import MundoNovo from '../anim/MundoNovo.astro';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
 
@@ -19,6 +24,7 @@ interface VisualEntry {
 	Comp: (props: any) => unknown;
 	props: Record<string, unknown>;
 	slideClass: string;
+	overlay?: boolean;
 }
 
 export const VISUALS: Record<string, VisualEntry> = {
@@ -29,6 +35,10 @@ export const VISUALS: Record<string, VisualEntry> = {
 	'quem-e-quem': { Comp: QuemEQuem, props: {}, slideClass: '' },
 	provedores: { Comp: Provedores, props: {}, slideClass: 's-wide' },
 	modelos: { Comp: Modelos, props: {}, slideClass: 's-wide' },
+	'feita-com-um-pedido': { Comp: PromptArt, props: { ...PROMPT_ART, ...PLAYED }, slideClass: 's-anim s-art' },
+	evolucao: { Comp: Evolucao, props: { ...EVOLUTION, ...PLAYED }, slideClass: 's-anim' },
+	'mundo-novo': { Comp: MundoNovo, props: { ...MUNDO_NOVO }, slideClass: 's-mundo', overlay: true },
+	'por-dentro-do-modelo': { Comp: Transformer, props: { ...TRANSFORMER, ...PLAYED }, slideClass: 's-anim' },
 };
 
 export function getVisual(name: string): VisualEntry {

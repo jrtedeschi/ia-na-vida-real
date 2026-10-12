@@ -1,0 +1,44 @@
+ivr-prompt-art {
+	display: block;
+}
+ivr-prompt-art .pa-frame {
+	padding: 0;
+	aspect-ratio: 16 / 7;
+}
+ivr-prompt-art .pa-canvas {
+	position: absolute;
+	inset: 0;
+	display: block;
+}
+ivr-prompt-art .pa-prompt {
+	position: absolute;
+	left: clamp(12px, 2.4cqi, 28px);
+	bottom: clamp(12px, 2.4cqi, 28px);
+	max-width: min(62ch, 70%);
+	display: grid;
+	gap: 6px;
+	padding: 12px 16px;
+	background: color-mix(in srgb, var(--ivr-paper) 88%, transparent);
+	border: 1.5px solid var(--ivr-ink);
+	border-left: 5px solid var(--ivr-orange);
+	border-radius: 4px;
+}
+ivr-prompt-art .pa-prompt-label {
+	font: 500 clamp(10px, 1.2cqi, 13px) / 1 var(--ivr-font-mono);
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+ivr-prompt-art .pa-prompt p {
+	margin: 0;
+	font: 400 clamp(12px, 1.55cqi, 17px) / 1.4 var(--ivr-font-mono);
+	color: var(--ivr-ink);
+}
+ivr-prompt-art[hide-caption] figcaption {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

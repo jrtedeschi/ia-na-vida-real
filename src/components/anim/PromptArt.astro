@@ -1,0 +1,15 @@
+---
+import './anim-base.css';
+import './prompt-art.css';
+interface Props {
+	prompt: string;
+	word: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { prompt, word, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-prompt-art prompt={prompt} word={word} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-prompt-art>
+</div>
+<script>import './prompt-art.js';</script>

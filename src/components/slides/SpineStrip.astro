@@ -1,0 +1,16 @@
+---
+/** Mapa dos capítulos no topo de um slide `ponte`: os já vistos, o atual (circulado) e os próximos. */
+interface Props {
+	spine: string[];
+	current: number;
+}
+const { spine, current } = Astro.props;
+---
+<ol class="s-spine" aria-label={`Capítulo ${current} de ${spine.length}`}>
+	{spine.map((name, i) => (
+		<li class:list={[{ 's-spine-done': i + 1 < current, 's-spine-now': i + 1 === current }]} aria-current={i + 1 === current ? 'step' : undefined}>
+			<b>{i + 1}</b>
+			<span>{name}</span>
+		</li>
+	))}
+</ol>

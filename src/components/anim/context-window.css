@@ -7,7 +7,7 @@ ivr-context-window .cw-stage {
 	--cw-out: 9rem;
 	--cw-win: 17rem;
 	position: relative;
-	height: calc(var(--cw-label) * 2 + var(--cw-out) + var(--cw-win) + 10px);
+	height: calc(var(--cw-label) * 2 + var(--cw-out) + var(--cw-win));
 	overflow: hidden;
 }
 ivr-context-window .cw-outside,
@@ -21,10 +21,12 @@ ivr-context-window .cw-outside {
 	top: var(--cw-label);
 	height: var(--cw-out);
 	border: 1.5px dashed color-mix(in srgb, var(--ivr-line) 70%, var(--ivr-ink-soft));
+	border-bottom: 0;
+	border-radius: 8px 8px 0 0;
 	background: color-mix(in srgb, var(--ivr-paper) 78%, transparent);
 }
 ivr-context-window .cw-window {
-	top: calc(var(--cw-label) + var(--cw-out) + 10px);
+	top: calc(var(--cw-label) + var(--cw-out));
 	height: var(--cw-win);
 	border: 2.5px solid var(--ivr-ink);
 	background: linear-gradient(180deg, color-mix(in srgb, var(--ivr-paper) 90%, transparent), color-mix(in srgb, var(--ivr-paper) 78%, transparent));
@@ -51,7 +53,7 @@ ivr-context-window .cw-column {
 	right: 32px;
 	top: 0;
 	display: grid;
-	gap: 8px;
+	gap: 12px;
 	z-index: 1;
 }
 ivr-context-window .cw-msg {
@@ -88,7 +90,7 @@ ivr-context-window .cw-ia {
 	border-bottom-left-radius: 3px;
 }
 ivr-context-window .cw-msg.cw-out {
-	opacity: 0.28;
+	opacity: 0.3;
 	filter: grayscale(0.2);
 }
 ivr-context-window .cw-msg.cw-lost {
@@ -105,12 +107,4 @@ ivr-context-window .cw-note {
 	position: absolute;
 	z-index: 3;
 	white-space: nowrap;
-	padding: 6px 10px;
-	border-radius: 999px;
-	font: 500 11px/1 var(--ivr-font-mono);
-	letter-spacing: 0.06em;
-	text-transform: lowercase;
-	background: color-mix(in srgb, var(--ivr-paper) 86%, var(--ivr-orange) 14%);
-	border: 1px solid color-mix(in srgb, var(--ivr-orange) 70%, var(--ivr-line));
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }

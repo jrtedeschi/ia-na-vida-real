@@ -1,0 +1,86 @@
+ivr-evolution {
+	display: block;
+}
+ivr-evolution .ev-stage {
+	position: relative;
+	display: grid;
+	gap: clamp(64px, 14cqi, 150px);
+	padding-bottom: 3.2em;
+}
+ivr-evolution .ev-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+	gap: clamp(8px, 1.4cqi, 16px);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ivr-evolution .ev-card {
+	display: grid;
+	align-content: start;
+	gap: 6px;
+	padding: 12px 14px;
+	background: var(--ivr-paper);
+	border: 1.5px solid var(--ivr-ink);
+	border-radius: 4px;
+}
+ivr-evolution .ev-card.ev-last {
+	border: 2.5px solid var(--ivr-orange);
+}
+ivr-evolution .ev-year {
+	font: 500 clamp(11px, 1.3cqi, 14px) / 1.2 var(--ivr-font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+ivr-evolution .ev-name {
+	font: 900 clamp(16px, 2.1cqi, 24px) / 1.05 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+	color: var(--ivr-ink);
+}
+ivr-evolution .ev-text {
+	font-size: clamp(13px, 1.5cqi, 17px);
+	line-height: 1.3;
+	color: var(--ivr-ink-soft);
+}
+ivr-evolution .ev-axis {
+	position: relative;
+	height: 0;
+}
+ivr-evolution .ev-tick {
+	position: absolute;
+	top: 14px;
+	transform: translateX(-50%);
+	font: 500 clamp(11px, 1.3cqi, 14px) / 1 var(--ivr-font-mono);
+	color: var(--ivr-ink-soft);
+}
+ivr-evolution .ev-tick:first-child {
+	transform: none;
+}
+ivr-evolution .ev-ink .ev-axis-line {
+	stroke: var(--ivr-ink);
+	stroke-width: 2;
+}
+ivr-evolution .ev-ink .ev-link {
+	stroke: var(--ivr-graphite);
+	stroke-width: 1.5;
+}
+ivr-evolution .ev-ink .ev-dot {
+	fill: var(--ivr-ink);
+	stroke: var(--ivr-paper);
+	stroke-width: 2;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+ivr-evolution .ev-ink .ev-dot-open {
+	fill: var(--ivr-paper);
+	stroke: var(--ivr-ink);
+}
+ivr-evolution .ev-ink .ev-cluster {
+	stroke: var(--ivr-orange);
+	stroke-width: 3;
+}
+ivr-evolution .ev-note {
+	position: absolute;
+	white-space: nowrap;
+}

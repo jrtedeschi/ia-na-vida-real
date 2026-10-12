@@ -1,0 +1,121 @@
+ivr-transformer {
+	display: block;
+}
+ivr-transformer .tf-stage {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto auto minmax(8rem, 1fr) minmax(14rem, 1.3fr);
+	column-gap: clamp(16px, 3.5cqi, 44px);
+	row-gap: 6px;
+	align-items: center;
+}
+ivr-transformer .tf-head {
+	grid-row: 1;
+	align-self: end;
+	padding-bottom: 6px;
+	font: 500 clamp(10px, 1.25cqi, 13px) / 1.2 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+ivr-transformer .tf-c1 { grid-column: 1; }
+ivr-transformer .tf-c2 { grid-column: 2; }
+ivr-transformer .tf-c3 { grid-column: 3; }
+ivr-transformer .tf-c4 { grid-column: 4; }
+ivr-transformer .tf-chip {
+	grid-column: 1;
+	justify-self: start;
+	padding: 3px 10px;
+	border: 1.5px dashed var(--ivr-graphite);
+	border-radius: 3px;
+	background: var(--ivr-paper);
+	font: 700 clamp(15px, 2.1cqi, 24px) / 1.15 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+}
+ivr-transformer .tf-chip.tf-new {
+	border: 2px solid var(--ivr-orange);
+}
+ivr-transformer .tf-vec {
+	grid-column: 2;
+	display: flex;
+	gap: 3px;
+}
+ivr-transformer .tf-vec i {
+	display: block;
+	width: clamp(9px, 1.4cqi, 16px);
+	height: clamp(16px, 2.4cqi, 26px);
+	background: var(--ivr-ink);
+	border-radius: 2px;
+	transform-origin: bottom;
+}
+ivr-transformer .tf-layers {
+	grid-column: 3;
+	align-self: stretch;
+	position: relative;
+}
+ivr-transformer .tf-layers span {
+	position: absolute;
+	inset: 0;
+	border: 1.5px solid var(--ivr-graphite);
+	border-radius: 6px;
+	background: var(--ivr-paper);
+}
+ivr-transformer .tf-layers span:nth-child(1) { transform: translate(12px, -12px); opacity: 0.5; }
+ivr-transformer .tf-layers span:nth-child(2) { transform: translate(6px, -6px); opacity: 0.75; }
+ivr-transformer .tf-bets {
+	grid-column: 4;
+	display: grid;
+	gap: 8px;
+	align-content: center;
+}
+ivr-transformer .tf-bet {
+	display: grid;
+	grid-template-columns: minmax(4.2em, auto) 1fr 3em;
+	gap: 10px;
+	align-items: center;
+	font: 500 clamp(13px, 1.8cqi, 18px) / 1.2 var(--ivr-font-mono);
+}
+ivr-transformer .tf-bet-word {
+	justify-self: start;
+	padding: 2px 4px;
+}
+ivr-transformer .tf-track {
+	height: 12px;
+	border: 1.5px solid var(--ivr-line);
+	border-radius: 2px;
+	overflow: hidden;
+}
+ivr-transformer .tf-fill {
+	display: block;
+	height: 100%;
+	background: var(--ivr-graphite);
+	transform-origin: left center;
+}
+ivr-transformer .tf-fill.tf-pick {
+	background: var(--ivr-ink);
+}
+ivr-transformer .tf-pct {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--ivr-ink-soft);
+}
+ivr-transformer .tf-ink {
+	z-index: 1;
+}
+ivr-transformer .tf-ink .tf-arc {
+	stroke: var(--ivr-orange);
+	opacity: 0.85;
+}
+ivr-transformer .tf-ink .tf-flow {
+	stroke: var(--ivr-ink);
+	stroke-width: 2;
+}
+ivr-transformer .tf-ink .tf-circle,
+ivr-transformer .tf-ink .tf-loop {
+	stroke: var(--ivr-orange);
+	stroke-width: 2.5;
+}
+ivr-transformer .tf-note {
+	position: absolute;
+	white-space: nowrap;
+}

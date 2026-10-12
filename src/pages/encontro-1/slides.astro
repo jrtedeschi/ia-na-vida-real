@@ -11,6 +11,7 @@ import '../../styles/components.css';
 import '../../styles/slides.css';
 import { getCollection } from 'astro:content';
 import Slide from '../../components/slides/Slide.astro';
+import { withChapters } from '../../components/slides/spine';
 
 const site = `${import.meta.env.SITE}${import.meta.env.BASE_URL}`.replace(/\/$/, '');
 const siteLabel = site.replace(/^https?:\/\//, '');
@@ -33,7 +34,7 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				{slides.map((slide) => <Slide slide={slide} siteLabel={siteLabel} />)}
+				{withChapters(slides).map(({ slide, chapter, spine }) => <Slide slide={slide} siteLabel={siteLabel} chapter={chapter} spine={spine} />)}
 			</div>
 		</div>
 
@@ -41,8 +42,8 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 			import Reveal from 'reveal.js';
 			import Notes from 'reveal.js/plugin/notes';
 
-			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; showFinal?: () => void };
-			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window';
+			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; pause?: () => void; reset?: () => void };
+			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window, ivr-evolution, ivr-transformer, ivr-prompt-art, ivr-mundo-novo';
 
 			const deck = new Reveal({
 				width: 1280,
@@ -57,12 +58,23 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 				plugins: [Notes],
 			});
 
-			const playIn = (slide: Element | undefined) =>
-				slide?.querySelectorAll<Playable>(ANIMS).forEach((a) => a.play?.());
+			// Animação dentro de um fragmento só toca quando o fragmento aparece (clique).
+			const waiting = (a: Element) => Boolean(a.closest('.fragment:not(.visible)'));
+			const playIn = (root: Element | undefined) =>
+				root?.querySelectorAll<Playable>(ANIMS).forEach((a) => !waiting(a) && a.play?.());
+			const pauseIn = (root: Element | undefined) => root?.querySelectorAll<Playable>(ANIMS).forEach((a) => a.pause?.());
 
 			deck.initialize().then(() => {
 				playIn(deck.getCurrentSlide());
-				deck.on('slidechanged', (event) => playIn((event as unknown as { currentSlide: Element }).currentSlide));
+				deck.on('slidechanged', (event) => {
+					const { currentSlide, previousSlide } = event as unknown as { currentSlide: Element; previousSlide?: Element };
+					pauseIn(previousSlide);
+					playIn(currentSlide);
+				});
+				deck.on('fragmentshown', (event) => playIn((event as unknown as { fragment: Element }).fragment));
+				deck.on('fragmenthidden', (event) =>
+					(event as unknown as { fragment: Element }).fragment.querySelectorAll<Playable>(ANIMS).forEach((a) => a.reset?.()),
+				);
 				deck.addKeyBinding({ keyCode: 84, key: 'T', description: 'Tema claro/escuro' }, () => {
 					const root = document.documentElement;
 					root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';

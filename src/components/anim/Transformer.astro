@@ -1,0 +1,17 @@
+---
+import './anim-base.css';
+import './transformer.css';
+interface Props {
+	tokens: string[];
+	attention: number[];
+	bets: [string, number][];
+	note?: string;
+	trigger?: 'visible' | 'manual';
+	hideCaption?: boolean;
+}
+const { tokens, attention, bets, note, trigger, hideCaption } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-transformer tokens={JSON.stringify(tokens)} attention={JSON.stringify(attention)} bets={JSON.stringify(bets)} note={note} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-transformer>
+</div>
+<script>import './transformer.js';</script>
