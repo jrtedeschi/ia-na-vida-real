@@ -40,7 +40,8 @@ Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frent
 | `five` | Linhas com barra laranja (pedido em 5 partes) | `items:` com `title` e `text` |
 | `arc` | Etapas com descrição (os 4 encontros) | `items:` com `title` e `text` |
 | `numbers` | Números grandes (1 a 3) | `items:` com `title` (o número) e `text` (legenda) |
-| `photo` | Foto à esquerda, passos à direita | `image:`, `alt:`, `items:`; opcional `image2:` + `alt2:` (segunda foto, à direita do texto) |
+| `photo` | Foto à esquerda, passos à direita | `image:`, `alt:`, `items:` |
+| `gallery` | Processo em fotos: 2 a 4 fotos lado a lado, com setas e legenda numerada | `items:` com `title` (legenda), `image` e `alt` |
 | `visual` | Animação ou diagrama | `visual:` (nome), `visualProps:` (opcional) |
 | `demo` | Demonstração com pedido copiável | `kicker:`, `prompt:` (contexto, objetivo, referencias, restricoes, formato) |
 | `end` | Encerramento | `title: "{site}"` mostra o endereço do site |

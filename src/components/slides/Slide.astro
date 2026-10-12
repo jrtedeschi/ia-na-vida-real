@@ -33,11 +33,12 @@ const LAYOUT_CLASS: Record<string, string> = {
 	photo: 's-split s-photo',
 	demo: 's-ex',
 	roteiro: 's-roteiro',
+	gallery: 's-gallery-slide',
 	ponte: 's-ponte',
 };
 const NO_MARKER = ['title', 'end', 'roteiro', 'ponte'];
 const marker = chapter > 0 && spine[chapter - 1] && !NO_MARKER.includes(d.layout) ? `${chapter} · ${spine[chapter - 1]}` : undefined;
-const sectionClass = [LAYOUT_CLASS[d.layout], d.layout === 'photo' && d.image2 && 's-photo-3', visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
+const sectionClass = [LAYOUT_CLASS[d.layout], visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
 const title = inline(d.title.replace('{site}', siteLabel));
 const frag = d.fragments ? 'fragment' : undefined;
 const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
@@ -46,15 +47,12 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 	{d.layout === 'photo' && d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" />}
 	<Fragment>
 		{d.layout === 'photo' ? (
-			<Fragment>
-				<div>
-					{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
-					<h2 set:html={title} />
-					{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
-					{hasBody && <div class="s-sub"><Content /></div>}
-				</div>
-				{d.image2 && <Image src={d.image2} alt={d.alt2 ?? ''} loading="lazy" />}
-			</Fragment>
+			<div>
+				{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
+				<h2 set:html={title} />
+				{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
+				{hasBody && <div class="s-sub"><Content /></div>}
+			</div>
 		) : d.layout === 'ponte' ? (
 			<Fragment>
 				<SpineStrip spine={spine} current={d.chapter ?? chapter} />

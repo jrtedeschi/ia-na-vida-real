@@ -1,5 +1,6 @@
 ---
 /** Os `items:` de um slide, desenhados conforme o layout. O texto vai num <span>: dentro dos <li> em grade, um link no meio do texto não vira uma célula à parte. */
+import { Image } from 'astro:assets';
 import { inline, itemTitle, itemText, type Item } from './inline';
 
 interface Props {
@@ -32,6 +33,18 @@ const text = (item: Item) => inline(itemText(item) ?? '');
 )}
 {(layout === 'arc' || layout === 'roteiro') && (
 	<ol class="s-arc">{items.map((i) => <li class={frag}><b set:html={title(i)} /><span set:html={text(i)} /></li>)}</ol>
+)}
+{layout === 'gallery' && (
+	<ol class="s-gallery">
+		{items.map((i, n) => (
+			<li class={frag}>
+				<figure>
+					{typeof i !== 'string' && i.image && <Image src={i.image} alt={i.alt ?? ''} widths={[420, 840]} sizes="420px" loading="lazy" />}
+					<figcaption><span class="s-gallery-n">{String(n + 1).padStart(2, '0')}</span><span set:html={title(i)} /></figcaption>
+				</figure>
+			</li>
+		))}
+	</ol>
 )}
 {layout === 'numbers' && (
 	<div class:list={['s-numbers', { 's-one': items.length === 1 }]}>
