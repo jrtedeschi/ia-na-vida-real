@@ -700,3 +700,33 @@ body {
 		transition: none;
 	}
 }
+
+/* class: s-side — texto à esquerda, imagem (`image:`) à direita, ocupando a altura do slide. */
+.reveal .slides > section.s-side {
+	display: grid !important;
+	grid-template-columns: 1fr 1.15fr;
+	grid-template-rows: auto 1fr;
+	column-gap: 40px;
+	row-gap: 22px;
+	align-content: center;
+}
+.s-side > h2 {
+	grid-column: 1;
+	font-size: 48px !important;
+}
+.s-side > .s-flow {
+	grid-column: 1;
+	align-self: start;
+}
+.s-side .s-flow li {
+	font-size: 28px;
+	grid-template-columns: 52px 1fr;
+}
+.reveal .s-side > .s-image {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+	align-self: center;
+	width: 100%;
+	height: auto;
+	max-height: 100%;
+}

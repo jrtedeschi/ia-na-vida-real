@@ -1,6 +1,6 @@
 ---
 layout: section
-title: A IA melhorando a sua vida
+title: Você melhorando a sua vida com IA
 items:
   - Criar um programa para uma tarefa da casa
   - Decorar uma festa com imagem e impressão 3D
