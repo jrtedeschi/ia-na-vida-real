@@ -1,0 +1,39 @@
+ivr-submarino {
+	display: block;
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+ivr-submarino canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	image-rendering: pixelated;
+}
+@media print {
+	ivr-submarino {
+		display: none;
+	}
+}
+/* "Perguntas até aqui?": abre do centro para as bordas no fim da cena. */
+ivr-submarino .sb-header {
+	position: absolute;
+	/* a camada sangra 12% (= 9,68% do seu tamanho): a faixa fica dentro do slide */
+	top: calc(12% / 1.24 + 56px);
+	left: calc(12% / 1.24 + 40px);
+	right: calc(12% / 1.24 + 40px);
+	display: grid;
+	place-items: center;
+	padding: 22px 32px;
+	background: rgba(8, 52, 92, 0.55);
+	border-top: 5px solid #ffd23c;
+	border-bottom: 5px solid #ffd23c;
+}
+ivr-submarino .sb-header p {
+	margin: 0;
+	font: 900 84px/1 var(--ivr-font-display);
+	letter-spacing: -0.04em;
+	color: #fffbe6;
+	text-shadow: 6px 6px 0 #0b3a5c;
+}

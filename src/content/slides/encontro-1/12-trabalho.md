@@ -5,7 +5,7 @@ fragments: true
 items:
   - title: Aumenta
     text: A mesma pessoa faz mais, mais rápido.
-  - title: Fatia
+  - title: Segmenta
     text: O trabalho vira tarefas menores.
   - title: Automatiza
     text: Algumas tarefas, a máquina assume. E surgem outras.

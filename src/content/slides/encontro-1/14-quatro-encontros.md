@@ -2,7 +2,7 @@
 layout: arc
 title: Do pedido ao sistema, em quatro encontros
 items:
-  - title: 1 · Como a IA funciona
+  - title: 1 · Aprender a pedir
     text: Modelo de linguagem, tokens, custo, modelos diferentes e raciocínio. E o método para fazer bons pedidos.
   - title: 2 · Contexto é tudo
     text: Projetos no Claude e Gemini Notebook. Seus documentos e instruções para a IA responder sobre a sua realidade.

@@ -417,6 +417,9 @@ body {
 }
 .s-flow li::before {
 	content: counter(fl);
+	/* números alinhados à direita: "1" e "→ 2" ficam na mesma coluna, a seta entra antes */
+	justify-self: end;
+	padding-right: 18px;
 	font: 500 20px/1 var(--ivr-font-mono);
 	color: var(--ivr-ink-soft);
 }
@@ -720,7 +723,7 @@ body {
 }
 .s-side .s-flow li {
 	font-size: 28px;
-	grid-template-columns: 52px 1fr;
+	grid-template-columns: 60px 1fr;
 }
 .reveal .s-side > .s-image {
 	grid-column: 2;
@@ -729,4 +732,42 @@ body {
 	width: 100%;
 	height: auto;
 	max-height: 100%;
+}
+/* Transição de saída: por cima de tudo no slide, sem bloquear cliques. */
+.reveal .slides section .s-overlay.s-exit {
+	z-index: 20;
+	pointer-events: none;
+}
+
+/* Links no texto dos slides: mesma cor do texto, sublinhado laranja (laranja só em traço). */
+.reveal .slides section a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: var(--ivr-orange);
+	text-decoration-thickness: 0.09em;
+	text-underline-offset: 0.14em;
+	transition: text-decoration-thickness 150ms;
+}
+.reveal .slides section a:hover {
+	text-decoration-thickness: 0.16em;
+}
+.reveal .slides section a:focus-visible {
+	outline: 3px solid var(--ivr-orange);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* layout photo com `image2:`: fotos do processo à esquerda, texto no meio, segunda foto à direita. */
+.reveal .slides > section.s-photo.s-photo-3 {
+	grid-template-columns: 0.5fr 1.2fr 0.72fr;
+	gap: 30px !important;
+}
+.s-photo-3 h2 {
+	font-size: 58px !important;
+}
+.s-photo-3 .s-flow li {
+	font-size: 26px !important;
+}
+.s-photo-3 > img:last-of-type {
+	max-height: 520px;
 }

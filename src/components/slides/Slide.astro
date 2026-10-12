@@ -37,7 +37,7 @@ const LAYOUT_CLASS: Record<string, string> = {
 };
 const NO_MARKER = ['title', 'end', 'roteiro', 'ponte'];
 const marker = chapter > 0 && spine[chapter - 1] && !NO_MARKER.includes(d.layout) ? `${chapter} · ${spine[chapter - 1]}` : undefined;
-const sectionClass = [LAYOUT_CLASS[d.layout], visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
+const sectionClass = [LAYOUT_CLASS[d.layout], d.layout === 'photo' && d.image2 && 's-photo-3', visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
 const title = inline(d.title.replace('{site}', siteLabel));
 const frag = d.fragments ? 'fragment' : undefined;
 const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
@@ -46,12 +46,15 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 	{d.layout === 'photo' && d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" />}
 	<Fragment>
 		{d.layout === 'photo' ? (
-			<div>
-				{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
-				<h2 set:html={title} />
-				{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
-				{hasBody && <div class="s-sub"><Content /></div>}
-			</div>
+			<Fragment>
+				<div>
+					{d.kicker && <p class="s-kicker" set:html={inline(d.kicker)} />}
+					<h2 set:html={title} />
+					{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
+					{hasBody && <div class="s-sub"><Content /></div>}
+				</div>
+				{d.image2 && <Image src={d.image2} alt={d.alt2 ?? ''} loading="lazy" />}
+			</Fragment>
 		) : d.layout === 'ponte' ? (
 			<Fragment>
 				<SpineStrip spine={spine} current={d.chapter ?? chapter} />
@@ -81,7 +84,7 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 			</Fragment>
 		)}
 	</Fragment>
-	{visual?.overlay && <div class="fragment s-overlay"><visual.Comp {...visual.props} {...d.visualProps} /></div>}
+	{visual?.overlay && <div class:list={['fragment s-overlay', { 's-exit': visual.exit }]}><visual.Comp {...visual.props} {...d.visualProps} /></div>}
 	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
 	{marker && <p class="s-chapter" aria-hidden="true">{marker}</p>}
 	{d.notes && <aside class="notes" set:html={inline(d.notes)} />}

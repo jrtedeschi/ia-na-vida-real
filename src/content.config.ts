@@ -24,6 +24,9 @@ const slides = defineCollection({
 			caveat: z.string().optional(),
 			cite: z.string().optional(),
 			image: image().optional(),
+			// layout photo: segunda foto, numa coluna à direita do texto
+			image2: image().optional(),
+			alt2: z.string().optional(),
 			alt: z.string().optional(),
 			visual: z.string().optional(),
 			visualProps: z.record(z.string(), z.unknown()).optional(),

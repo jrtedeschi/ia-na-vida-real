@@ -20,6 +20,9 @@ Texto abaixo do título. Aceita **negrito**, *itálico* e vários parágrafos.
 ```
 
 Texto com `:` ou que começa com `[` ou `"` vai entre aspas: `title: "Pergunta: e agora?"`.
+
+**Links** em títulos, itens e textos curtos: `[Gemini](https://gemini.google.com/)` abre em outra aba;
+`[Janela de contexto](/consulta/conceitos/janela-de-contexto/)` aponta para uma página do site (o `/ia-na-vida-real` entra sozinho).
 Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frente.
 
 ## Layouts
@@ -37,7 +40,7 @@ Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frent
 | `five` | Linhas com barra laranja (pedido em 5 partes) | `items:` com `title` e `text` |
 | `arc` | Etapas com descrição (os 4 encontros) | `items:` com `title` e `text` |
 | `numbers` | Números grandes (1 a 3) | `items:` com `title` (o número) e `text` (legenda) |
-| `photo` | Foto à esquerda, passos à direita | `image:`, `alt:`, `items:` |
+| `photo` | Foto à esquerda, passos à direita | `image:`, `alt:`, `items:`; opcional `image2:` + `alt2:` (segunda foto, à direita do texto) |
 | `visual` | Animação ou diagrama | `visual:` (nome), `visualProps:` (opcional) |
 | `demo` | Demonstração com pedido copiável | `kicker:`, `prompt:` (contexto, objetivo, referencias, restricoes, formato) |
 | `end` | Encerramento | `title: "{site}"` mostra o endereço do site |
