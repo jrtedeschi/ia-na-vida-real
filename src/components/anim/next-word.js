@@ -1,4 +1,4 @@
-// <ivr-next-word>: a IA "aposta" na próxima palavra. Serve para dois conceitos:
+// <ivr-next-word>: a IA calcula a chance de cada próxima palavra e escolhe uma das mais prováveis. Serve para dois conceitos:
 // - próxima palavra: várias etapas, a frase cresce um pedaço por vez;
 // - alucinação: uma etapa só, com candidatas todas plausíveis e um "veredito" confiante.
 //
@@ -12,7 +12,7 @@
 import { roughEllipse } from './ink.js';
 import { IvrAnim, el, svgEl, relRect, drawSpec, EASE_OUT } from './anim-base.js';
 
-const STEP = 2600; // duração de cada aposta
+const STEP = 2600; // duração de cada escolha
 const BAR_IN = 380;
 const BAR_STAGGER = 110;
 const PICK = 1350;
@@ -36,7 +36,7 @@ export class IvrNextWord extends IvrAnim {
 		cursor.setAttribute('aria-hidden', 'true');
 		sentence.append(cursor);
 
-		const label = el('p', 'nw-label', 'próxima palavra: as apostas da IA');
+		const label = el('p', 'nw-label', 'próxima palavra: a chance de cada uma');
 		const stage = el('div', 'nw-stage');
 		const groups = steps.map((cands) => {
 			const group = el('div', 'nw-group');
@@ -77,7 +77,7 @@ export class IvrNextWord extends IvrAnim {
 			const r = relRect(rows[0].w, rows[0].w.closest('.nw-group'));
 			circle.setAttribute('d', roughEllipse(r, { seed: 9, pad: 10 }));
 		});
-		// Estado final: só a última aposta à vista.
+		// Estado final: só a última escolha à vista.
 		groups.forEach(({ group }, i) => (group.style.opacity = i === groups.length - 1 ? '1' : '0'));
 		stage.dataset.count = String(groups.length);
 	}
@@ -121,7 +121,7 @@ export class IvrNextWord extends IvrAnim {
 	transcript() {
 		const { prompt, steps } = this.parts;
 		const desc = steps
-			.map((c, i) => `aposta ${i + 1}: ${c.map(([w, p]) => `"${w}" ${p}%`).join(', ')}; escolhe "${c[0][0]}"`)
+			.map((c, i) => `escolha ${i + 1}: ${c.map(([w, p]) => `"${w}" ${p}%`).join(', ')}; escolhe "${c[0][0]}"`)
 			.join('. ');
 		const verdict = this.getAttribute('verdict');
 		return `Transcrição: a IA recebe "${prompt}". ${desc}.${verdict ? ` Resposta final: "${verdict}"` : ''} ${this.getAttribute('note') ?? ''}`;

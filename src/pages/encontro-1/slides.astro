@@ -44,7 +44,7 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 			import { playGlyphs, stopGlyphs } from '../../components/slides/glyphs.js';
 
 			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; pause?: () => void; reset?: () => void };
-			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window, ivr-evolution, ivr-transformer, ivr-prompt-art, ivr-mundo-novo, ivr-submarino';
+			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window, ivr-evolution, ivr-transformer, ivr-prompt-art, ivr-mundo-novo, ivr-submarino, ivr-difusao';
 
 			const deck = new Reveal({
 				width: 1280,

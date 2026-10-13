@@ -1,0 +1,141 @@
+---
+/**
+ * O harness: o modelo é o motor; o app em volta é o carro (instruções escondidas, memória, arquivos,
+ * busca, ferramentas). O pedido entra no carro, não direto no motor. Estático; no slide ativo, as
+ * peças entram em sequência (só CSS).
+ */
+const LEFT = ['Instruções escondidas', 'Memória', 'Seus arquivos'];
+const RIGHT = ['Busca na web', 'Ferramentas'];
+---
+<figure class="hn not-content" role="img" aria-label="O seu pedido entra no app, que funciona como um carro em volta do motor. O motor é o modelo, como Claude, GPT ou Gemini. Em volta dele, o app junta instruções escondidas, memória, os seus arquivos, busca na web e ferramentas. Só então sai a resposta. Em inglês, esse sistema em volta do modelo se chama harness.">
+	<p class="hn-io hn-in">Seu pedido <b>→</b></p>
+	<div class="hn-car">
+		<p class="hn-label">O app em volta · o carro</p>
+		<ul class="hn-parts hn-left">{LEFT.map((t, i) => <li style={`--i:${i}`}>{t}</li>)}</ul>
+		<div class="hn-engine">
+			<p class="hn-label">O modelo · o motor</p>
+			<b>Claude, GPT, Gemini</b>
+			<span>prevê o próximo fragmento</span>
+		</div>
+		<ul class="hn-parts hn-right">{RIGHT.map((t, i) => <li style={`--i:${i + LEFT.length}`}>{t}</li>)}</ul>
+	</div>
+	<p class="hn-io hn-out"><b>→</b> Resposta</p>
+	<figcaption class="hn-note" aria-hidden="true">é o “sistema em volta” da frase do Arvind</figcaption>
+</figure>
+<style>
+	.hn {
+		position: relative;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 18px;
+		margin: 0;
+		padding-bottom: 46px;
+	}
+	/* `.hn` na frente: o `.reveal p, ul { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.hn .hn-io {
+		margin: 0;
+		font: 700 24px/1.1 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink);
+		white-space: nowrap;
+	}
+	.hn-io b {
+		color: var(--ivr-orange);
+	}
+	.hn-car {
+		display: grid;
+		grid-template-columns: 1fr 1.15fr 1fr;
+		grid-template-rows: auto 1fr;
+		align-items: center;
+		gap: 14px 22px;
+		padding: 18px 22px 24px;
+		border: 2.5px solid var(--ivr-ink);
+		border-radius: 28px;
+		background: var(--ivr-paper);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.hn .hn-label {
+		grid-column: 1 / -1;
+		margin: 0;
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.hn .hn-parts {
+		display: grid;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.hn-parts li {
+		padding: 10px 14px;
+		border: 1.5px dashed var(--ivr-graphite);
+		border-radius: 6px;
+		font: 700 20px/1.15 var(--ivr-font-display);
+		letter-spacing: -0.01em;
+		color: var(--ivr-ink);
+		text-align: center;
+	}
+	.hn-engine {
+		display: grid;
+		gap: 8px;
+		justify-items: center;
+		padding: 26px 18px;
+		border-radius: 12px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		text-align: center;
+	}
+	.hn-engine .hn-label {
+		color: var(--ivr-orange);
+	}
+	.hn-engine b {
+		font: 900 28px/1.05 var(--ivr-font-display);
+		letter-spacing: -0.03em;
+	}
+	.hn-engine span {
+		font-size: 17px;
+		opacity: 0.8;
+	}
+	.hn .hn-note {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		font: 700 26px/1.1 var(--ivr-font-hand);
+		color: var(--ivr-graphite-ink);
+		transform: rotate(-2deg);
+	}
+	@keyframes hn-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	:global(.present) .hn-engine {
+		animation: hn-in 450ms 200ms both;
+	}
+	:global(.present) .hn-car {
+		animation: hn-in 450ms 700ms both;
+	}
+	:global(.present) .hn-parts li {
+		animation: hn-in 350ms both;
+		animation-delay: calc(1100ms + var(--i) * 180ms);
+	}
+	:global(.present) .hn-in {
+		animation: hn-in 400ms 2100ms both;
+	}
+	:global(.present) .hn-out {
+		animation: hn-in 400ms 2500ms both;
+	}
+	:global(.present) .hn-note {
+		animation: hn-in 450ms 3000ms both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .hn * {
+			animation: none !important;
+		}
+	}
+</style>

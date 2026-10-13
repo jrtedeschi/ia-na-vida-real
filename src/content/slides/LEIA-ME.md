@@ -92,14 +92,14 @@ items:
 
 Nomes disponíveis em `visual:` (lista em `src/components/slides/visuals.ts`):
 `fragmentos`, `proxima-palavra`, `alucinacao`, `janela-de-contexto`, `quem-e-quem`, `provedores`, `modelos`,
-`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide).
+`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl`, `harness`, `combustivel`, `difusao`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide).
 
 Para trocar o texto de uma animação só neste slide, use `visualProps:`:
 
 ```md
 ---
 layout: visual
-title: Ela aposta na próxima palavra
+title: Ela escreve a palavra mais provável
 visual: proxima-palavra
 visualProps:
   prompt: O melhor time do Brasil é o

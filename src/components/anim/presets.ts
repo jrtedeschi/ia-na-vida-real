@@ -58,10 +58,10 @@ export const EVOLUTION = {
 
 export const TRANSFORMER = {
 	tokens: ['O', ' café', ' da', ' manhã', ' ideal', ' tem'],
-	// Quanto o último fragmento "olha" para cada um dos anteriores (ilustrativo).
+	// Quanto o último token "olha" para cada um dos anteriores (ilustrativo).
 	attention: [0.05, 0.4, 0.05, 0.25, 0.3],
 	bets: NEXT_WORD.steps[0],
-	note: 'e recomeça, um fragmento por vez',
+	note: 'e recomeça, um token por vez',
 };
 
 export const PROMPT_ART = {

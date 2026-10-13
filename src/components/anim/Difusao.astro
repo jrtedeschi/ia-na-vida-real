@@ -1,0 +1,194 @@
+---
+/**
+ * E imagem, vídeo e som? Em cima, o caminho de um pedido num modelo de imagem: o pedido entra no
+ * modelo (vira tokens, que guiam a imagem) e a imagem se forma, de pixels aleatórios ao café da
+ * manhã descrito. Embaixo, imagem, vídeo e som em uma frase cada.
+ */
+const pedido = 'um café da manhã: xícara de café quente e um pão francês';
+const TOKENS = ['café', 'manhã', 'xícara', 'café', 'quente', 'pão', 'francês'];
+const ITENS: [string, string][] = [
+	['Imagem', 'Começa com pixels aleatórios e vai ajustando, passo a passo, guiada pelo pedido.'],
+	['Vídeo', 'A mesma ideia, quadro a quadro, mantendo tudo coerente.'],
+	['Som e voz', 'O som também vira tokens, e o modelo prevê o próximo.'],
+];
+---
+<div class="df not-content">
+	<ivr-difusao class="df-fluxo" role="img" aria-label={`O pedido "${pedido}" entra no modelo e vira tokens. Guiada por eles, a imagem começa com pixels aleatórios e, em 12 passos, ganha primeiro as formas grandes e depois os detalhes, até virar uma xícara de café fumegante e um pão francês sobre uma mesa de madeira.`}>
+		<p class="df-pedido"><small>Pedido</small>{pedido}</p>
+		<b class="df-seta df-seta-1" aria-hidden="true">→</b>
+		<div class="df-modelo" aria-hidden="true">
+			<p class="df-label">O modelo</p>
+			<ul>{TOKENS.map((t, i) => <li style={`--i:${i}`}>{t}</li>)}</ul>
+			<p class="df-modelo-texto">o pedido vira tokens, que guiam a imagem</p>
+		</div>
+		<b class="df-seta df-seta-2" aria-hidden="true">→</b>
+		<div class="df-tela">
+			<canvas aria-hidden="true"></canvas>
+			<p class="df-passo" data-passo aria-hidden="true">passo 0 de 12</p>
+		</div>
+	</ivr-difusao>
+	<ol class="df-itens">
+		{ITENS.map(([t, d]) => (
+			<li>
+				<b>{t}</b>
+				<span>{d}</span>
+			</li>
+		))}
+	</ol>
+</div>
+<script>import './difusao.js';</script>
+<style>
+	.df {
+		display: grid;
+		gap: 22px;
+	}
+	.df-fluxo {
+		display: grid;
+		grid-template-columns: 1fr auto 1.15fr auto auto;
+		align-items: center;
+		gap: 14px;
+	}
+	/* `.df` na frente: o `.reveal p, ul, ol { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.df .df-pedido {
+		margin: 0;
+		padding: 10px 14px;
+		border-radius: 10px 10px 10px 3px;
+		background: #3f6fd0;
+		font: 500 19px/1.3 var(--ivr-font-body);
+		color: #fff;
+	}
+	.df-pedido small {
+		display: block;
+		margin-bottom: 4px;
+		font: 500 11px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+	.df-seta {
+		font: 700 30px/1 var(--ivr-font-display);
+		color: var(--ivr-orange);
+	}
+	.df-modelo {
+		display: grid;
+		gap: 10px;
+		padding: 16px 16px 18px;
+		border-radius: 12px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+	}
+	.df .df-label {
+		margin: 0;
+		font: 500 12px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-orange);
+	}
+	.df .df-modelo ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.df-modelo li {
+		padding: 4px 9px;
+		border: 1.5px dashed rgba(255, 255, 255, 0.45);
+		border-radius: 4px;
+		font: 700 16px/1.1 var(--ivr-font-display);
+	}
+	.df .df-modelo-texto {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.3;
+		opacity: 0.8;
+	}
+	.df-tela {
+		display: grid;
+		gap: 8px;
+		justify-items: start;
+	}
+	.df canvas {
+		width: 288px;
+		height: 288px;
+		image-rendering: pixelated;
+		border: 2.5px solid var(--ivr-ink);
+		border-radius: 6px;
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.df .df-passo {
+		margin: 0;
+		font: 500 14px/1 var(--ivr-font-mono);
+		color: var(--ivr-ink-soft);
+	}
+	.df .df-itens {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 22px;
+		margin: 0;
+		padding: 16px 0 0;
+		list-style: none;
+		border-top: 1.5px dashed var(--ivr-line);
+	}
+	.df-itens li {
+		display: grid;
+		gap: 4px;
+	}
+	.df-itens b {
+		font: 900 24px/1 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink);
+	}
+	.df-itens span {
+		font-size: 18px;
+		line-height: 1.35;
+		color: var(--ivr-ink-soft);
+	}
+	/* Sequência (classe `run`, posta pelo play): pedido → tokens entram no modelo → imagem. */
+	@keyframes df-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	@keyframes df-token {
+		0% {
+			opacity: 0;
+			transform: translateX(-24px);
+		}
+		60% {
+			opacity: 1;
+			border-color: var(--ivr-orange);
+			color: var(--ivr-orange);
+			transform: none;
+		}
+	}
+	.run .df-pedido {
+		animation: df-in 400ms 100ms both;
+	}
+	.run .df-seta-1 {
+		animation: df-in 300ms 500ms both;
+	}
+	.run .df-modelo {
+		animation: df-in 400ms 600ms both;
+	}
+	.run .df-modelo li {
+		animation: df-token 500ms both;
+		animation-delay: calc(900ms + var(--i) * 170ms);
+	}
+	.run .df-modelo-texto {
+		animation: df-in 400ms 2100ms both;
+	}
+	.run .df-seta-2 {
+		animation: df-in 300ms 2400ms both;
+	}
+	.run .df-tela {
+		animation: df-in 400ms 2500ms both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.run * {
+			animation: none !important;
+		}
+	}
+</style>

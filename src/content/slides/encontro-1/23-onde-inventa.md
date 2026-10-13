@@ -1,4 +1,5 @@
 ---
+hidden: true # entrou como faixa no slide "Por isso, às vezes, inventa"
 layout: list
 title: Onde ela mais inventa
 items:

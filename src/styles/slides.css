@@ -1204,3 +1204,53 @@ body {
 	-webkit-mask: var(--logo) center / contain no-repeat;
 	mask: var(--logo) center / contain no-repeat;
 }
+
+/* Nota de definição sob uma animação (caveat em slide s-anim): barra laranja e o termo em negrito. */
+.s-anim .s-caveat {
+	padding: 10px 16px;
+	border-left: 4px solid var(--ivr-orange);
+	background: var(--ivr-paper);
+	font-size: 21px;
+	max-width: none;
+}
+.s-anim .s-caveat b {
+	font-weight: 700;
+	color: var(--ivr-ink);
+}
+
+/* class: s-inventa — sob a animação da alucinação, "onde mais inventa" vira uma faixa de etiquetas. */
+.s-inventa .s-sub {
+	display: grid;
+	gap: 8px;
+	max-width: none;
+}
+.s-inventa .s-sub p {
+	margin: 0;
+	font: 500 13px/1 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.s-inventa .s-sub p strong {
+	font-weight: 500;
+}
+.s-inventa .s-sub ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.s-inventa .s-sub li {
+	padding: 6px 12px;
+	border: 1.5px dashed var(--ivr-orange);
+	border-radius: 6px;
+	white-space: nowrap;
+	font: 700 18px/1.1 var(--ivr-font-display);
+	color: var(--ivr-ink);
+}
+/* o botão "Ver de novo" ocuparia a linha das etiquetas; no slide, quem repete é o apresentador */
+.s-inventa .ivr-anim-controls {
+	display: none;
+}
