@@ -202,7 +202,8 @@ body {
 .s-steps li::before {
 	content: counter(ag, decimal-leading-zero);
 	font: 500 18px/1 var(--ivr-font-mono);
-	color: var(--ivr-ink-soft);
+	/* mesma cor dos passos numerados (s-flow) em todo o deck */
+	color: var(--ivr-orange);
 }
 .s-agenda b {
 	font-family: var(--ivr-font-display);
@@ -1010,4 +1011,16 @@ body {
 	grid-column: 2;
 	grid-row: 1 / -1;
 	align-self: center;
+}
+
+/* class: s-two-col — lista numerada (layout section) em duas colunas, para listas de 5+ itens. */
+.s-two-col .s-steps {
+	grid-template-columns: 1fr 1fr;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(3, auto);
+	column-gap: 56px;
+}
+.s-two-col .s-steps li {
+	font-size: 34px;
+	padding-block: 20px;
 }

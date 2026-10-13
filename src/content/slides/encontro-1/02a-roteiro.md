@@ -9,10 +9,10 @@ items:
     text: Em que se apoiar quando as ferramentas mudam a cada mês.
   - title: Por dentro do modelo
     text: O caminho do seu pedido até a resposta.
-  - title: O que ela enxerga
+  - title: O que a IA enxerga
     text: Janela, memória e raciocínio.
   - title: Qual modelo usar
-    text: Quem faz, que tipos existem e o que fica com os seus dados.
+    text: Quem faz, que tipos existem e o que acontece com os seus dados.
   - title: Como pedir bem
     text: O pedido em 5 partes, na prática.
 notes: |
