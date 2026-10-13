@@ -24,6 +24,7 @@ import Raciocinio from '../anim/Raciocinio.astro';
 import Combustivel from '../anim/Combustivel.astro';
 import VidaMelhor from '../anim/VidaMelhor.astro';
 import TarefasFundamentos from '../anim/TarefasFundamentos.astro';
+import Timer from '../anim/Timer.astro';
 import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
@@ -55,6 +56,7 @@ export const VISUALS: Record<string, VisualEntry> = {
 	harness: { Comp: Harness, props: {}, slideClass: 's-code' },
 	combustivel: { Comp: Combustivel, props: {}, slideClass: 's-code' },
 	'pipeline-etl': { Comp: PipelineEtl, props: {}, slideClass: 's-code' },
+	timer: { Comp: Timer, props: {}, slideClass: 's-timer' },
 	submarino: { Comp: Submarino, props: {}, slideClass: '', overlay: true, exit: true },
 	'mundo-novo': { Comp: MundoNovo, props: { ...MUNDO_NOVO }, slideClass: 's-mundo', overlay: true },
 	'por-dentro-do-modelo': { Comp: Transformer, props: { ...TRANSFORMER, ...PLAYED }, slideClass: 's-anim' },

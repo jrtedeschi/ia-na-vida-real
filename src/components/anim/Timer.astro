@@ -1,0 +1,254 @@
+---
+/**
+ * Cronômetro regressivo para pausas e exercícios (visual: timer). Começa sozinho na primeira vez
+ * que o slide aparece (ou, com `sozinho: false`, no primeiro clique) e continua contando se o
+ * apresentador sair e voltar. Clique no número pausa e retoma; "Recomeçar" volta ao tempo cheio.
+ * No último minuto fica laranja; no zero, mostra `fim`. `compacto` = pequeno, no canto superior
+ * direito, para não disputar espaço com as instruções de um exercício.
+ * Impressão e PDF mostram só o tempo cheio, parado.
+ */
+interface Props {
+	minutos?: number;
+	fim?: string;
+	sozinho?: boolean;
+	compacto?: boolean;
+}
+const { minutos = 5, fim = 'Hora de voltar!', sozinho = true, compacto = false } = Astro.props;
+const cheio = `${String(minutos).padStart(2, '0')}:00`;
+---
+<ivr-timer class:list={['tm not-content', { 'tm-compacto': compacto }]} data-segundos={minutos * 60} data-fim={fim} data-sozinho={String(sozinho)}>
+	<button type="button" class="tm-num" aria-label={`Cronômetro: ${minutos} minutos. Clique para pausar ou retomar.`}>
+		<span class="tm-tempo" aria-hidden="true">{cheio}</span>
+	</button>
+	<span class="tm-barra" aria-hidden="true"><i></i></span>
+	<span class="tm-rodape">
+		<span class="tm-estado" role="status" aria-live="polite"></span>
+		<button type="button" class="tm-recomecar">Recomeçar</button>
+	</span>
+</ivr-timer>
+<script>
+	const TICK_MS = 250;
+	const ULTIMO_MINUTO_S = 60;
+	const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+
+	class IvrTimer extends HTMLElement {
+		#total = 0;
+		#restanteMs = 0;
+		#fimEm: number | null = null; // instante (ms) em que zera; null = parado
+		#iniciado = false; // o slide já apareceu
+		#comecou = false; // já contou alguma vez
+		#tick: number | undefined;
+		#obs: MutationObserver | undefined;
+
+		connectedCallback() {
+			this.#total = Number(this.dataset.segundos) || 300;
+			this.#restanteMs = this.#total * 1000;
+			if (new URLSearchParams(location.search).has('print-pdf')) return;
+			this.querySelector('.tm-num')?.addEventListener('click', () => this.#alternar());
+			this.querySelector('.tm-recomecar')?.addEventListener('click', () => this.#recomecar());
+			// O reveal.js marca o slide ativo com `present`; o timer começa na primeira vez que ele aparece.
+			const slide = this.closest('section');
+			const verificar = () => {
+				if (!this.#iniciado && slide?.classList.contains('present')) {
+					this.#iniciado = true;
+					if (this.dataset.sozinho === 'false') this.#desenhar();
+					else this.#rodar();
+				}
+			};
+			if (slide) {
+				this.#obs = new MutationObserver(verificar);
+				this.#obs.observe(slide, { attributes: true, attributeFilter: ['class'] });
+			}
+			verificar();
+		}
+
+		disconnectedCallback() {
+			this.#obs?.disconnect();
+			clearInterval(this.#tick);
+		}
+
+		#restanteS() {
+			const ms = this.#fimEm === null ? this.#restanteMs : this.#fimEm - Date.now();
+			return Math.max(0, Math.ceil(ms / 1000));
+		}
+
+		#rodar() {
+			this.#comecou = true;
+			this.#fimEm = Date.now() + this.#restanteMs;
+			clearInterval(this.#tick);
+			this.#tick = window.setInterval(() => this.#desenhar(), TICK_MS);
+			this.#desenhar();
+		}
+
+		#parar() {
+			if (this.#fimEm !== null) this.#restanteMs = Math.max(0, this.#fimEm - Date.now());
+			this.#fimEm = null;
+			clearInterval(this.#tick);
+			this.#desenhar();
+		}
+
+		#alternar() {
+			if (this.#restanteS() === 0) return this.#recomecar();
+			if (this.#fimEm === null) this.#rodar();
+			else this.#parar();
+		}
+
+		#recomecar() {
+			this.#restanteMs = this.#total * 1000;
+			this.#rodar();
+		}
+
+		#desenhar() {
+			const s = this.#restanteS();
+			const acabou = s === 0;
+			const parado = this.#fimEm === null && !acabou && this.#comecou;
+			const esperando = !this.#comecou;
+			const tempo = this.querySelector('.tm-tempo');
+			const estado = this.querySelector('.tm-estado');
+			const barra = this.querySelector<HTMLElement>('.tm-barra i');
+			if (tempo) tempo.textContent = acabou ? '00:00' : fmt(s);
+			if (barra) barra.style.transform = `scaleX(${s / this.#total})`;
+			// Só anuncia mudanças de estado, não cada segundo.
+			const texto = acabou ? (this.dataset.fim ?? '') : parado ? 'Pausado' : esperando ? 'Clique para começar' : '';
+			if (estado && estado.textContent !== texto) estado.textContent = texto;
+			this.classList.toggle('tm-final', s <= ULTIMO_MINUTO_S);
+			this.classList.toggle('tm-zerou', acabou);
+			this.classList.toggle('tm-parado', parado);
+			this.classList.toggle('tm-esperando', esperando);
+			if (acabou) clearInterval(this.#tick);
+		}
+	}
+	if (!customElements.get('ivr-timer')) customElements.define('ivr-timer', IvrTimer);
+</script>
+<style>
+	.tm {
+		display: grid;
+		justify-items: start;
+		gap: 10px;
+		margin-top: 8px;
+	}
+	.tm button {
+		font: inherit;
+		color: inherit;
+		background: none;
+		border: 0;
+		padding: 0;
+		cursor: pointer;
+	}
+	.tm .tm-num {
+		font: 800 180px/0.9 var(--ivr-font-display);
+		letter-spacing: -0.04em;
+		font-variant-numeric: tabular-nums;
+		color: var(--ivr-ink);
+		border-radius: 8px;
+		transition: color var(--duration-normal, 300ms) ease;
+	}
+	.tm .tm-num:focus-visible,
+	.tm .tm-recomecar:focus-visible {
+		outline: 3px solid var(--ivr-orange);
+		outline-offset: 6px;
+	}
+	.tm-parado .tm-num {
+		opacity: 0.45;
+	}
+	.tm-final .tm-num {
+		color: var(--ivr-orange);
+	}
+	.tm-barra {
+		display: block;
+		width: min(560px, 100%);
+		height: 8px;
+		border-radius: 4px;
+		background: var(--ivr-line);
+		overflow: hidden;
+	}
+	.tm-barra i {
+		display: block;
+		height: 100%;
+		background: var(--ivr-orange);
+		transform-origin: left;
+		transition: transform 250ms linear;
+	}
+	.tm-rodape {
+		display: flex;
+		align-items: baseline;
+		gap: 24px;
+		min-height: 1.6em;
+		font: 500 20px/1.3 var(--ivr-font-body);
+	}
+	.tm-estado {
+		font-weight: 700;
+	}
+	.tm-estado:empty {
+		display: none;
+	}
+	/* Compacto: no canto superior direito, abaixo do marcador do capítulo. */
+	.tm-compacto {
+		position: absolute;
+		top: 72px;
+		right: 76px;
+		margin: 0;
+		grid-template-columns: auto auto;
+		align-items: center;
+		column-gap: 16px;
+		row-gap: 6px;
+		justify-items: end;
+	}
+	.tm-compacto .tm-num {
+		font-size: 64px;
+		grid-row: span 1;
+	}
+	.tm-compacto .tm-barra {
+		grid-column: 1 / -1;
+		grid-row: 2;
+		width: 100%;
+		height: 6px;
+	}
+	.tm-compacto .tm-rodape {
+		grid-column: 2;
+		grid-row: 1;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+		font-size: 16px;
+	}
+	.tm-compacto.tm-zerou .tm-estado {
+		font-size: 20px;
+	}
+	.tm-zerou .tm-estado {
+		color: var(--ivr-orange);
+		font-size: 30px;
+	}
+	.tm .tm-recomecar {
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		padding: 7px 12px;
+		border: 1.5px solid currentColor;
+		border-radius: 999px;
+		opacity: 0.6;
+		transition: opacity var(--duration-fast, 150ms) ease;
+	}
+	.tm .tm-recomecar:hover {
+		opacity: 1;
+	}
+	.tm-esperando .tm-recomecar {
+		display: none;
+	}
+	.tm-zerou .tm-num {
+		animation: tm-pulso 1.2s ease-in-out infinite;
+	}
+	@keyframes tm-pulso {
+		50% {
+			transform: scale(1.04);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.tm-zerou .tm-num {
+			animation: none;
+		}
+		.tm-barra i {
+			transition: none;
+		}
+	}
+</style>
