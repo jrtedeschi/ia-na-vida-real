@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head><base target="_top"><style>input,button{font-size:16px}</style></head>
+  <body style="font-family:sans-serif;max-width:420px;margin:16px auto;padding:0 12px">
+    <h2>Novo gasto</h2>
+    <form id="f">
+      <p><label>Data<br><input type="date" name="data" autocomplete="off" required></label></p>
+      <p><label>Descrição<br><input name="descricao" autocomplete="off"></label></p>
+      <p><label>Categoria<br><input name="categoria" autocomplete="on"></label></p>
+      <p><label>Valor (ex.: 45,90)<br><input name="valor" inputmode="decimal" autocomplete="off" required></label></p>
+      <button id="salvar">Salvar</button>
+    </form>
+    <p id="msg" role="status" aria-live="polite"></p>
+    <script>
+      const f = document.getElementById('f');
+      const msg = document.getElementById('msg');
+      const salvar = document.getElementById('salvar');
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (salvar.disabled) return;
+        salvar.disabled = true;
+        msg.textContent = 'Salvando...';
+        google.script.run
+          .withSuccessHandler(function (t) { msg.textContent = t; f.reset(); salvar.disabled = false; })
+          .withFailureHandler(function (err) { msg.textContent = 'Erro: ' + err.message; salvar.disabled = false; })
+          .registrarGasto(f);
+      });
+    </script>
+  </body>
+</html>

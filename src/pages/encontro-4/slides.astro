@@ -1,0 +1,88 @@
+---
+/**
+ * Deck do Encontro 4 (reveal.js 6). Cada slide é um .md em src/content/slides/encontro-4/ (formato: src/content/slides/LEIA-ME.md).
+ * Teclas: S = modo apresentador (notas + cronômetro) · F = tela cheia · T = tema claro/escuro.
+ * PDF: abrir com ?print-pdf e imprimir no Chrome.
+ */
+import 'reveal.js/reset.css';
+import 'reveal.js/reveal.css';
+import '../../styles/tokens.css';
+import '../../styles/components.css';
+import '../../styles/slides.css';
+import { getCollection } from 'astro:content';
+import Slide from '../../components/slides/Slide.astro';
+import { withChapters } from '../../components/slides/spine';
+
+const site = `${import.meta.env.SITE}${import.meta.env.BASE_URL}`.replace(/\/$/, '');
+const siteLabel = site.replace(/^https?:\/\//, '');
+const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-4/') && !s.data.hidden)).sort((a, b) =>
+	a.id.localeCompare(b.id, undefined, { numeric: true }),
+);
+---
+<html lang="pt-BR" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Encontro 4 · Sua rotina com IA · IA na Vida Real</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Kalam:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+		/>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				{withChapters(slides).map(({ slide, chapter, spine }) => <Slide slide={slide} siteLabel={siteLabel} chapter={chapter} spine={spine} />)}
+			</div>
+		</div>
+
+		<script>
+			import Reveal from 'reveal.js';
+			import Notes from 'reveal.js/plugin/notes';
+
+			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; pause?: () => void; reset?: () => void };
+			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window, ivr-evolution, ivr-transformer, ivr-prompt-art, ivr-mundo-novo, ivr-submarino';
+
+			const deck = new Reveal({
+				width: 1280,
+				height: 720,
+				margin: 0.06,
+				hash: true,
+				controls: true,
+				progress: true,
+				slideNumber: 'c/t',
+				transition: 'fade',
+				center: false,
+				plugins: [Notes],
+			});
+
+			// Animação dentro de um fragmento só toca quando o fragmento aparece (clique).
+			// Transição de saída (.s-exit) só toca pelo clique, nunca ao entrar no slide.
+			const waiting = (a: Element) => Boolean(a.closest('.fragment:not(.visible)'));
+			const playIn = (root: Element | undefined, { exits = false } = {}) =>
+				root?.querySelectorAll<Playable>(ANIMS).forEach((a) => !waiting(a) && (exits || !a.closest('.s-exit')) && a.play?.());
+			const pauseIn = (root: Element | undefined) => root?.querySelectorAll<Playable>(ANIMS).forEach((a) => a.pause?.());
+
+			deck.initialize().then(() => {
+				playIn(deck.getCurrentSlide());
+				deck.on('slidechanged', (event) => {
+					const { currentSlide, previousSlide } = event as unknown as { currentSlide: Element; previousSlide?: Element };
+					pauseIn(previousSlide);
+					// Voltando para um slide com saída já mostrada: recolhe a saída para ela poder tocar de novo.
+					if (currentSlide.querySelector('.s-exit.visible')) deck.prev();
+					playIn(currentSlide);
+				});
+				deck.on('fragmentshown', (event) => playIn((event as unknown as { fragment: Element }).fragment, { exits: true }));
+				deck.on('fragmenthidden', (event) =>
+					(event as unknown as { fragment: Element }).fragment.querySelectorAll<Playable>(ANIMS).forEach((a) => a.reset?.()),
+				);
+				deck.addKeyBinding({ keyCode: 84, key: 'T', description: 'Tema claro/escuro' }, () => {
+					const root = document.documentElement;
+					root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -9,8 +9,8 @@ items:
     text: A IA usando os seus documentos, as suas instruções salvas e as suas ferramentas. E como manter a conversa no rumo.
   - title: IA no seu trabalho
     text: Revisar, escrever, analisar planilhas e pesquisar a fundo, sempre checando as fontes.
-  - title: Sua base de conhecimento
-    text: O que você sabe, em textos simples que qualquer IA lê, e pequenos apps nas suas planilhas, feitos com a IA.
+  - title: Sua rotina com IA
+    text: Guardar o que deu certo, deixar a IA conferir por você e um pequeno app na sua planilha.
 notes: |
   Cada encontro sobe um degrau do sistema em volta da IA (a frase do Arvind): o pedido, o contexto, o trabalho, a rotina. A turma é leiga: na tela não há siglas; os nomes técnicos aparecem só quando cada encontro chegar.
   Encontro 2, os nomes que vão aparecer: Projetos (Claude, ChatGPT e Gemini Notebook), uma pasta com os seus documentos que a IA consulta; skills, instruções salvas que a IA reaproveita (como o /create-etl do slide da minha profissão); e conectores, chamados MCP, que deixam a IA usar as suas ferramentas, como agenda, e-mail e planilhas. Manter a conversa no rumo é gerenciar o contexto: o que pôr, o que tirar e quando começar uma conversa nova.
