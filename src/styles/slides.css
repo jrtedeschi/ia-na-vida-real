@@ -702,22 +702,29 @@ body {
 	}
 }
 
-/* class: s-side — texto à esquerda, imagem (`image:`) à direita, ocupando a altura do slide. */
+/* class: s-side — texto à esquerda, imagem (`image:`) à direita. Kicker, título e passos ficam em
+   linhas fixas, empilhados e centrados na altura da imagem (as linhas 1fr das pontas sobram). */
 .reveal .slides > section.s-side {
 	display: grid !important;
 	grid-template-columns: 1fr 1.15fr;
-	grid-template-rows: auto 1fr;
+	grid-template-rows: 1fr auto auto auto 1fr;
 	column-gap: 40px;
-	row-gap: 22px;
-	align-content: center;
+	row-gap: 0 !important;
+}
+.s-side > .s-kicker {
+	grid-column: 1;
+	grid-row: 2;
+	margin-bottom: 12px !important;
 }
 .s-side > h2 {
 	grid-column: 1;
+	grid-row: 3;
 	font-size: 48px !important;
 }
 .s-side > .s-flow {
 	grid-column: 1;
-	align-self: start;
+	grid-row: 4;
+	margin-top: 22px !important;
 }
 .s-side .s-flow li {
 	font-size: 28px;
@@ -725,7 +732,7 @@ body {
 }
 .reveal .s-side > .s-image {
 	grid-column: 2;
-	grid-row: 1 / span 2;
+	grid-row: 1 / -1;
 	align-self: center;
 	width: 100%;
 	height: auto;
@@ -814,9 +821,6 @@ body {
    como um cartão branco inclinado, com sombra sólida (receita pregada na geladeira). */
 .reveal .slides > section.s-side.s-side-card {
 	grid-template-columns: 1.35fr 0.85fr;
-	/* título e passos formam um bloco centralizado na altura da foto */
-	grid-template-rows: auto auto;
-	align-content: center;
 	column-gap: 56px;
 }
 .s-side-card > h2 {
@@ -832,4 +836,67 @@ body {
 	background: #fff;
 	transform: rotate(2.5deg);
 	box-shadow: 10px 10px 0 var(--ivr-line);
+}
+
+/* layout bio com `image:` — retrato à esquerda; à direita, empilhados e centrados na foto:
+   kicker, nome, identidades em etiquetas (`items:`) e uma frase. */
+.reveal .slides > section.s-split.s-bio-photo {
+	grid-template-columns: 0.72fr 1.28fr;
+	grid-template-rows: 1fr auto auto auto auto 1fr;
+	column-gap: 64px !important;
+	row-gap: 0 !important;
+}
+.s-bio-photo > .s-kicker {
+	grid-column: 2;
+	grid-row: 2;
+	margin-bottom: 10px !important;
+}
+.s-bio-photo > h2 {
+	grid-column: 2;
+	grid-row: 3;
+	font-size: 88px;
+}
+.s-bio-photo > .s-tags {
+	grid-column: 2;
+	grid-row: 4;
+	margin: 22px 0 14px !important;
+}
+.s-bio-photo > .s-bio {
+	grid-column: 2;
+	grid-row: 5;
+	font-size: 30px;
+	color: var(--ivr-ink-soft);
+}
+.reveal .s-bio-photo > .s-image {
+	grid-column: 1;
+	grid-row: 1 / -1;
+	align-self: center;
+	justify-self: center;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 540px;
+	flex: none;
+	box-shadow: 10px 10px 0 var(--ivr-line);
+}
+/* Identidades numa linha só, sem caixas: texto em negrito separado por barras laranja finas. */
+.s-tags {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 0;
+	padding: 0;
+	list-style: none;
+}
+.s-tags li {
+	font: 700 25px/1.2 var(--ivr-font-display);
+	letter-spacing: -0.02em;
+	color: var(--ivr-ink);
+	white-space: nowrap;
+}
+.s-tags li + li::before {
+	content: '/';
+	margin: 0 10px;
+	font-weight: 400;
+	color: var(--ivr-orange);
 }

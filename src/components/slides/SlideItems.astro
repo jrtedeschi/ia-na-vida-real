@@ -14,6 +14,9 @@ const frag = fragments ? 'fragment' : undefined;
 const title = (item: Item) => inline(itemTitle(item));
 const text = (item: Item) => inline(itemText(item) ?? '');
 ---
+{layout === 'bio' && (
+	<ul class="s-tags">{items.map((i) => <li class={frag}><span set:html={title(i)} /></li>)}</ul>
+)}
 {layout === 'section' && (
 	<ol class="s-steps">{items.map((i) => <li class={frag}><span set:html={title(i)} /></li>)}</ol>
 )}

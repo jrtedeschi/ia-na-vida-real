@@ -38,7 +38,7 @@ const LAYOUT_CLASS: Record<string, string> = {
 };
 const NO_MARKER = ['title', 'end', 'roteiro', 'ponte'];
 const marker = chapter > 0 && spine[chapter - 1] && !NO_MARKER.includes(d.layout) ? `${chapter} · ${spine[chapter - 1]}` : undefined;
-const sectionClass = [LAYOUT_CLASS[d.layout], visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
+const sectionClass = [LAYOUT_CLASS[d.layout], d.layout === 'bio' && d.image && 's-bio-photo', visual?.slideClass, d.class].filter(Boolean).join(' ') || undefined;
 const title = inline(d.title.replace('{site}', siteLabel));
 const frag = d.fragments ? 'fragment' : undefined;
 const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
