@@ -1,0 +1,137 @@
+---
+/**
+ * As tarefas mudam, os fundamentos ficam. Em cima, a camada provisória (cartões tracejados): as
+ * tarefas de escrever ao longo do tempo aparecem e vão sendo riscadas, até a de hoje. Embaixo, a
+ * base sólida: os fundamentos que valem em qualquer ferramenta. No slide ativo, a sequência anda
+ * sozinha (só CSS); sem movimento, mostra o estado final.
+ */
+const TASKS = ['Copiar à mão', 'Datilografar', 'Digitar no editor', 'Escrever SQL', 'Pedir para a IA'];
+const BASE = ['Saber o que você quer', 'Explicar bem', 'Conferir o resultado'];
+---
+<div class="tf2 not-content" role="img" aria-label="Tarefas mudam: copiar à mão, datilografar, digitar no editor, escrever SQL e, hoje, pedir para a IA. Fundamentos ficam: saber o que você quer, explicar bem e conferir o resultado. Com eles, a IA amplia o seu impacto.">
+	<div class="tf2-tasks">
+		<p class="tf2-label">Tarefas · mudam a cada ferramenta</p>
+		<ol>
+			{TASKS.map((t, i) => <li class:list={[{ 'tf2-now': i === TASKS.length - 1 }]} style={`--i:${i}`}>{t}</li>)}
+		</ol>
+	</div>
+	<div class="tf2-base">
+		<p class="tf2-label">Fundamentos · ficam</p>
+		<ol>
+			{BASE.map((b, i) => <li style={`--i:${i}`}><b>{String(i + 1).padStart(2, '0')}</b>{b}</li>)}
+		</ol>
+		<p class="tf2-gain">Com eles, a IA amplia o seu impacto.</p>
+	</div>
+</div>
+<style>
+	.tf2 {
+		display: grid;
+		gap: 18px;
+	}
+	/* `.tf2` na frente: o `.reveal p, ol { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.tf2 .tf2-label {
+		margin: 0 0 14px;
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.tf2 ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	/* Camada provisória: tracejada, as tarefas antigas ficam riscadas. */
+	.tf2-tasks {
+		padding: 20px 22px 22px;
+		border: 2px dashed var(--ivr-graphite);
+		border-radius: 8px;
+	}
+	.tf2-tasks .tf2-label {
+		color: var(--ivr-ink-soft);
+	}
+	.tf2-tasks li {
+		padding: 10px 16px;
+		border: 1.5px dashed var(--ivr-graphite);
+		border-radius: 6px;
+		font: 700 24px/1 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink-soft);
+		text-decoration: line-through;
+		text-decoration-color: var(--ivr-orange);
+		text-decoration-thickness: 3px;
+	}
+	.tf2-tasks li.tf2-now {
+		border: 2px solid var(--ivr-orange);
+		color: var(--ivr-ink);
+		text-decoration: none;
+	}
+	/* Base sólida: os fundamentos. */
+	.tf2-base {
+		padding: 22px 24px 24px;
+		border-radius: 8px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.tf2-base .tf2-label {
+		color: var(--ivr-orange);
+	}
+	.tf2-base ol {
+		gap: 14px 40px;
+	}
+	.tf2-base li {
+		display: flex;
+		align-items: baseline;
+		gap: 10px;
+		font: 900 34px/1.05 var(--ivr-font-display);
+		letter-spacing: -0.03em;
+	}
+	.tf2-base li b {
+		font: 500 16px/1 var(--ivr-font-mono);
+		color: var(--ivr-orange);
+	}
+	.tf2 .tf2-gain {
+		margin: 18px 0 0;
+		font: 600 22px/1.3 var(--ivr-font-body);
+		opacity: 0.85;
+	}
+	/* Sequência: as tarefas surgem e são riscadas uma a uma; a de hoje fica; depois a base aparece. */
+	@keyframes tf2-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	@keyframes tf2-strike {
+		from {
+			text-decoration-color: transparent;
+			color: var(--ivr-ink);
+		}
+	}
+	:global(.present) .tf2-tasks li {
+		animation: tf2-in 350ms both, tf2-strike 300ms both;
+		animation-delay: calc(400ms + var(--i) * 600ms), calc(900ms + var(--i) * 600ms);
+	}
+	:global(.present) .tf2-tasks li.tf2-now {
+		animation: tf2-in 350ms both;
+		animation-delay: calc(400ms + var(--i) * 600ms);
+	}
+	:global(.present) .tf2-base {
+		animation: tf2-in 500ms 3600ms both cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	:global(.present) .tf2-base li {
+		animation: tf2-in 350ms both;
+		animation-delay: calc(3900ms + var(--i) * 250ms);
+	}
+	:global(.present) .tf2-gain {
+		animation: tf2-in 400ms 4800ms both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .tf2 * {
+			animation: none !important;
+		}
+	}
+</style>

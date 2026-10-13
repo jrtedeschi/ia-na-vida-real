@@ -1024,3 +1024,54 @@ body {
 	font-size: 34px;
 	padding-block: 20px;
 }
+
+/* visual: tarefas-fundamentos */
+.s-fund {
+	justify-content: center;
+	gap: 18px !important;
+}
+.s-fund h2 {
+	font-size: 60px;
+	max-width: none;
+}
+
+/* class: s-bedrock (layout cards) — as tarefas em cartões tracejados ligados por setas e, embaixo,
+   o texto do slide como faixa sólida: o que fica com você. Mesma linguagem do slide dos fundamentos. */
+.s-bedrock {
+	justify-content: center;
+}
+.s-bedrock .s-three {
+	gap: 48px;
+}
+.s-bedrock .s-three > div {
+	position: relative;
+	border-style: dashed;
+	border-color: var(--ivr-graphite);
+	background: transparent;
+}
+.s-bedrock .s-three > div + div::before {
+	content: '→';
+	position: absolute;
+	left: -38px;
+	top: 50%;
+	transform: translateY(-50%);
+	font: 700 30px/1 var(--ivr-font-display);
+	color: var(--ivr-orange);
+}
+.s-bedrock .s-sub {
+	max-width: none;
+	margin-top: 6px !important;
+	padding: 22px 26px;
+	border-radius: 8px;
+	background: var(--ivr-ink);
+	color: var(--ivr-bg);
+	font: 700 30px/1.3 var(--ivr-font-display);
+	letter-spacing: -0.015em;
+	box-shadow: 8px 8px 0 var(--ivr-line);
+}
+.s-bedrock .s-sub strong {
+	color: var(--ivr-orange);
+}
+.s-bedrock .s-caveat {
+	font-size: 22px;
+}

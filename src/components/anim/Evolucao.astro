@@ -13,12 +13,13 @@ interface Props {
 	ticks: number[];
 	steps: Step[];
 	note?: string;
+	base?: string;
 	trigger?: 'visible' | 'manual';
 	hideCaption?: boolean;
 }
-const { from, to, ticks, steps, note, trigger, hideCaption } = Astro.props;
+const { from, to, ticks, steps, note, base, trigger, hideCaption } = Astro.props;
 ---
 <div class="ivr-anim not-content">
-	<ivr-evolution from={from} to={to} ticks={ticks.join(',')} steps={JSON.stringify(steps)} note={note} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-evolution>
+	<ivr-evolution from={from} to={to} ticks={ticks.join(',')} steps={JSON.stringify(steps)} note={note} base={base} trigger={trigger} hide-caption={hideCaption || undefined}></ivr-evolution>
 </div>
 <script>import './evolution.js';</script>

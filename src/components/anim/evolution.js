@@ -14,7 +14,9 @@ import { IvrAnim, el, svgEl, relRect, drawSpec } from './anim-base.js';
 
 const AXIS_IN = 700;
 const STEP_START = 500;
-const STEP_EVERY = 620;
+// Intervalo entre um salto e o próximo: começa lento e acelera, como a própria história.
+const STEP_GAPS = [1100, 850, 600, 380, 240];
+const stepAt = (i) => STEP_START + STEP_GAPS.slice(0, i).reduce((a, b) => a + b, 0);
 const LAST_CLUSTER = 3; // quantos pontos do fim entram no círculo
 
 export class IvrEvolution extends IvrAnim {
@@ -50,9 +52,15 @@ export class IvrEvolution extends IvrAnim {
 		ink.append(axisLine, ...links, ...dots, cluster);
 
 		const note = el('span', 'ivr-anim-note ev-note', noteText);
+		// A base que não mudou em nenhum salto (atributo `base`).
+		const base = el('p', 'ev-base');
+		const baseText = this.getAttribute('base') ?? '';
+		const [baseLabel, ...baseRest] = baseText.split(':');
+		base.append(el('b', null, `${baseLabel}:`), el('span', null, baseRest.join(':').trim()));
+		base.hidden = !baseText;
 		stage.append(cards, axis, ink, note);
-		frame.append(stage);
-		return { from, to, steps, stage, items, axis, tickEls, axisLine, links, dots, cluster, note };
+		frame.append(stage, base);
+		return { from, to, steps, stage, items, axis, tickEls, axisLine, links, dots, cluster, note, base };
 	}
 
 	layout() {
@@ -81,14 +89,14 @@ export class IvrEvolution extends IvrAnim {
 	}
 
 	specs() {
-		const { items, links, dots, tickEls, axisLine, cluster, note } = this.parts;
-		const end = STEP_START + items.length * STEP_EVERY;
+		const { items, links, dots, tickEls, axisLine, cluster, note, base } = this.parts;
+		const end = stepAt(items.length - 1) + 700;
 		const pop = [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }];
 		return [
 			...drawSpec(axisLine, 0, AXIS_IN),
 			...tickEls.map((t) => [t, [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: AXIS_IN - 200 }]),
 			...items.flatMap((card, i) => {
-				const t0 = STEP_START + i * STEP_EVERY;
+				const t0 = stepAt(i);
 				return [
 					[card, pop, { duration: 450, delay: t0 }],
 					...drawSpec(links[i], t0 + 250, 450),
@@ -97,6 +105,7 @@ export class IvrEvolution extends IvrAnim {
 			}),
 			...drawSpec(cluster, end + 300, 900),
 			[note, [{ opacity: 0, transform: 'rotate(-2deg) translateY(6px)' }, { opacity: 1, transform: 'rotate(-2deg)' }], { duration: 450, delay: end + 1000 }],
+			[base, [{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, clipPath: 'inset(0 0 0 0)' }], { duration: 800, delay: end + 1700 }],
 		];
 	}
 

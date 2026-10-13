@@ -43,7 +43,7 @@ export const CONTEXT_WINDOW = {
 export const EVOLUTION = {
 	from: 1400,
 	to: 2030,
-	ticks: [1400, 1600, 1800, 2000],
+	ticks: [1400, 1600, 1800], // sem 2000: ali fica o círculo dos saltos recentes
 	steps: [
 		{ year: 1400, label: 'antes de 1450', name: 'Manuscrito', text: 'Copiar um livro levava meses' },
 		{ year: 1450, label: 'c. 1450', name: 'Prensa de Gutenberg', text: 'Centenas de cópias iguais' },
@@ -53,6 +53,7 @@ export const EVOLUTION = {
 		{ year: 2025, label: '2025', name: 'Agentes de IA', text: 'Você descreve, a máquina escreve e faz' },
 	],
 	note: 'os saltos ficam cada vez mais perto',
+	base: 'Em todos os saltos, o fundamento ficou: ter o que dizer, dizer bem e revisar.',
 };
 
 export const TRANSFORMER = {
