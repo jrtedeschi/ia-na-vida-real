@@ -78,6 +78,7 @@ export class IvrContextWindow extends IvrAnim {
 			const r = relRect(m, stage);
 			m.classList.toggle('cw-out', r.y + r.height < winTop + 4);
 		});
+		items.at(-1)?.classList.add('cw-answer');
 		const target = items[lost];
 		items.forEach((m) => m.classList.toggle('cw-lost', m === target));
 		if (target) {
@@ -118,15 +119,30 @@ export class IvrContextWindow extends IvrAnim {
 				{ opacity: 1, offset: Math.min(appear + MSG_IN / total, 1) },
 			];
 			if (exitStep >= 0) {
-				const t = Math.min((exitStep * MSG_EVERY + MSG_IN) / total, 1);
-				frames.push({ opacity: 1, offset: Math.max(t - 0.02, appear + MSG_IN / total) }, { opacity: OUT_OPACITY, offset: t });
+				// A saída nunca antes da entrada terminar (no mesmo degrau, as duas coincidem: sem inversão por arredondamento).
+				const shown = frames[2].offset;
+				const t = Math.max(Math.min((exitStep * MSG_EVERY + MSG_IN) / total, 1), shown);
+				frames.push({ opacity: 1, offset: Math.max(t - 0.02, shown) }, { opacity: OUT_OPACITY, offset: t });
 				frames.push({ opacity: OUT_OPACITY, offset: 1 });
 			} else frames.push({ opacity: 1, offset: 1 });
 			m.classList.remove('cw-out', 'cw-lost'); // durante a animação quem manda é o keyframe; o destaque só no fim
 			return [m, frames, { duration: total, easing: 'linear' }];
 		});
+		// A cada mensagem nova, a borda da janela pisca: a IA relê tudo o que está dentro.
+		const pulse = [{ boxShadow: '0 0 0 0 var(--ivr-orange)', offset: 0 }];
+		items.forEach((_, i) => {
+			const t = i * MSG_EVERY + MSG_IN;
+			pulse.push({ boxShadow: '0 0 0 0 var(--ivr-orange)', offset: at(t) });
+			pulse.push({ boxShadow: '0 0 0 5px var(--ivr-orange)', offset: at(t + 120) });
+			pulse.push({ boxShadow: '0 0 0 0 var(--ivr-orange)', offset: at(t + 520) });
+		});
+		pulse.push({ boxShadow: '0 0 0 0 var(--ivr-orange)', offset: 1 });
+		const answer = items[n - 1];
+		answer.classList.remove('cw-answer');
 		return [
 			[column, colFrames, { duration: total, easing: 'linear' }],
+			[win, pulse, { duration: total, easing: 'linear' }],
+			[answer, [{ outlineColor: 'transparent' }, { outlineColor: 'var(--ivr-orange)' }], { duration: 400, delay: n * MSG_EVERY + 1000 }],
 			...msgSpecs,
 			...drawSpec(circle, n * MSG_EVERY + 200, 700),
 			[note, [{ opacity: 0, transform: 'rotate(-2deg) translateY(6px)' }, { opacity: 1, transform: 'rotate(-2deg)' }], { duration: 450, delay: n * MSG_EVERY + 800 }],

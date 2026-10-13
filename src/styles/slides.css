@@ -382,15 +382,15 @@ body {
 }
 /* No slide, o rótulo "Você/IA" vai na mesma linha: a conversa inteira cabe em 720px. */
 .s-tight ivr-context-window .cw-msg {
-	padding: 5px 12px;
-	font-size: 17px;
+	padding: 7px 14px;
+	font-size: 20px;
 }
 .s-tight ivr-context-window .cw-msg small {
 	display: inline;
 	margin: 0 8px 0 0;
 }
 .s-tight ivr-context-window .cw-column {
-	gap: 10px;
+	gap: 12px;
 }
 
 /* Revisão de 08/10: abertura sóbria, tese, fluxo e números. */
@@ -1205,7 +1205,8 @@ body {
 	mask: var(--logo) center / contain no-repeat;
 }
 
-/* Nota de definição sob uma animação (caveat em slide s-anim): barra laranja e o termo em negrito. */
+/* Nota de definição sob uma animação (caveat em slide s-anim/s-code): barra laranja e o termo em negrito. */
+.s-code .s-caveat,
 .s-anim .s-caveat {
 	padding: 10px 16px;
 	border-left: 4px solid var(--ivr-orange);
@@ -1213,6 +1214,7 @@ body {
 	font-size: 21px;
 	max-width: none;
 }
+.s-code .s-caveat b,
 .s-anim .s-caveat b {
 	font-weight: 700;
 	color: var(--ivr-ink);

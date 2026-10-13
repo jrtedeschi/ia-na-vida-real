@@ -13,5 +13,5 @@ items:
   - title: Formato
     text: como você quer receber
 caveat: "Ela não lê sua mente: o que não está no pedido, ela adivinha."
-notes: Retomar o slide "Tudo começa pelo seu pedido". Cada parte muda a chance de cada palavra que a IA escreve. É a primeira peça do sistema em volta do modelo. Os exercícios para casa usam esse formato.
+notes: "Ao vivo, 3 minutos. Cada parte muda o que ela escreve, porque muda o que entra na janela. É a primeira peça do sistema em volta do modelo. Em seguida a turma escreve o dela. Não voltar na teoria do token."
 ---

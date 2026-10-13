@@ -8,5 +8,5 @@ items:
   - Confira a história do seu bairro
   - Entenda uma conta da casa
   - Escreva uma mensagem difícil
-notes: "Exercícios do dia a dia, um por conceito da aula: o pedido em 5 partes, modelos diferentes, a IA inventa, privacidade e o julgamento que fica com você. O 3 é o mais importante: é onde cada um vê a IA inventar com os próprios olhos. O 4 lembra de apagar os dados pessoais antes de colar."
+notes: "Cinco tarefas, 10 a 15 minutos cada. O jantar repete as 5 partes, agora com o que tem em casa. O passeio compara duas IAs (não deu tempo em aula). A história do bairro aprofunda o que já viram no exercício de inventar; se esse exercício não rolou, o bairro passa a ser o obrigatório. A conta lembra de apagar os dados pessoais antes de colar. A mensagem difícil fica com o julgamento da pessoa."
 ---

@@ -108,3 +108,9 @@ ivr-context-window .cw-note {
 	z-index: 3;
 	white-space: nowrap;
 }
+
+/* A resposta final (a prova de que esqueceu) ganha contorno laranja no fim. */
+ivr-context-window .cw-msg.cw-answer {
+	outline: 2.5px solid var(--ivr-orange);
+	outline-offset: 3px;
+}

@@ -1,14 +1,9 @@
 ---
-layout: flow
-kicker: "ReAct: raciocinar e agir"
-title: Pensar, agir, observar, repetir
-fragments: true
-items:
-  - "Pensa: escreve o que ainda precisa descobrir"
-  - "Age: busca na web, abre um arquivo, faz uma conta"
-  - "Observa: o resultado entra na janela"
-  - Repete até ter o suficiente para responder
-caveat: É assim que funcionam a pesquisa aprofundada e os agentes. Cada volta gera mais contexto.
+layout: visual
+title: Um erro no começo vira base para o resto
+visual: raciocinio-erro
+caveat: "**Na prática:** confira cedo. Se ela errou, corrija na hora ou comece uma conversa nova: o erro sai da janela."
 notes: |
-  ReAct vem de Reasoning + Acting (Yao e colegas, 2022). O raciocínio do slide anterior ganha ferramentas: entre um pensamento e outro, o modelo usa uma ferramenta e lê o resultado. Tudo vira texto na janela. Deep research (Encontro 3) é esse ciclo repetido dezenas de vezes.
+  Ao vivo, 20 segundos. Erro no começo vira base do resto. Confira cedo, ou abra uma conversa nova.
+  Se perguntarem: cada passo se apoia no que já está na janela. Corrigir no fim refaz os passos e gasta os tokens de novo. Isso volta no Encontro 2, quando a turma aprender a gerenciar o contexto.
 ---

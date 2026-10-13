@@ -1,0 +1,227 @@
+---
+/**
+ * Raciocínio passo a passo, numa pergunta do dia a dia. À esquerda, os passos se empilham na janela
+ * (pensa, age, observa, responde). À direita, quantos tokens cada passo relê: a janela inteira, de
+ * novo, a cada passo. Com `erro`, um passo lê errado e os seguintes se apoiam nele, e o custo de
+ * refazer aparece. Estático; no slide ativo, a sequência anda sozinha (só CSS).
+ */
+interface Props {
+	erro?: boolean;
+}
+const { erro = false } = Astro.props;
+
+type Passo = { tipo: 'Você' | 'Pensa' | 'Age' | 'Observa' | 'Responde'; texto: string; tokens: number; marca?: 'erro' | 'apoio' };
+const PASSOS: Passo[] = [
+	{ tipo: 'Você', texto: 'Qual restaurante italiano perto de casa abre domingo à noite?', tokens: 40 },
+	{ tipo: 'Pensa', texto: 'Vou procurar restaurantes italianos no bairro.', tokens: 30 },
+	{ tipo: 'Age', texto: 'Busca na web: “restaurante italiano perto de mim”', tokens: 20 },
+	{ tipo: 'Observa', texto: '3 resultados, com endereço e horário de cada um.', tokens: 600 },
+	{
+		tipo: 'Pensa',
+		texto: 'A Trattoria Bella abre domingo à noite.',
+		tokens: 40,
+		marca: erro ? 'erro' : undefined,
+	},
+	{
+		tipo: 'Responde',
+		texto: erro ? 'Vá na Trattoria Bella: aberta domingo até as 23h!' : 'Vá na Trattoria Bella: aberta domingo até as 23h.',
+		tokens: 60,
+		marca: erro ? 'apoio' : undefined,
+	},
+];
+let janela = 0;
+const linhas = PASSOS.map((p) => ({ ...p, janela: (janela += p.tokens) }));
+const MAIOR = janela;
+const LIDOS = linhas.reduce((n, p) => n + p.janela, 0);
+const fmt = (n: number) => n.toLocaleString('pt-BR');
+const MARCA = { erro: 'leu errado: ela fecha aos domingos', apoio: 'apoiada no erro' };
+---
+<div
+	class:list={['rc not-content', { 'rc-erro': erro }]}
+	role="img"
+	aria-label={`Raciocínio passo a passo para a pergunta "${PASSOS[0].texto}": ${linhas.map((p) => `${p.tipo.toLowerCase()}, ${p.texto}${p.marca ? ` (${MARCA[p.marca]})` : ''}`).join('; ')}. A cada passo, o modelo relê a janela inteira: ${fmt(LIDOS)} tokens lidos no total.${erro ? ' Um passo leu errado e a resposta se apoiou no erro; corrigir gasta os tokens de novo.' : ''}`}
+>
+	<div class="rc-janela">
+		<p class="rc-label">Na janela, passo a passo</p>
+		<ol>
+			{linhas.map((p, i) => (
+				<li class:list={[`rc-${p.tipo === 'Você' ? 'voce' : 'ia'}`, p.marca && `rc-${p.marca}`]} style={`--i:${i}`}>
+					<b>{p.tipo}</b>
+					<span>{p.texto}</span>
+					{p.marca && <em>{MARCA[p.marca]}</em>}
+				</li>
+			))}
+		</ol>
+	</div>
+	<div class="rc-custo">
+		<p class="rc-label">Tokens que cada passo relê</p>
+		<ol>
+			{linhas.map((p, i) => (
+				<li style={`--i:${i}; --w:${(p.janela / MAIOR) * 100}%`}>
+					<span class="rc-n">{i + 1}</span>
+					<span class="rc-barra"><i></i></span>
+					<span class="rc-q">{fmt(p.janela)}</span>
+				</li>
+			))}
+		</ol>
+		<p class="rc-total">
+			{erro ? <>Para corrigir, gasta tudo de novo: <b>+{fmt(LIDOS)}</b></> : <>No total: <b>{fmt(LIDOS)} tokens</b> lidos</>}
+		</p>
+	</div>
+</div>
+<style>
+	.rc {
+		display: grid;
+		grid-template-columns: 1.55fr 1fr;
+		gap: 26px;
+		align-items: start;
+	}
+	/* `.rc` na frente: o `.reveal p, ol { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.rc .rc-label {
+		margin: 0 0 12px;
+		font: 500 13px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.rc .rc-janela ol,
+	.rc .rc-custo ol {
+		display: grid;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.rc-janela {
+		padding: 18px 20px;
+		border: 2px solid var(--ivr-ink);
+		border-radius: 8px;
+		background: var(--ivr-paper);
+	}
+	.rc-janela li {
+		display: grid;
+		grid-template-columns: 6.2rem 1fr;
+		align-items: baseline;
+		gap: 4px 12px;
+		padding: 8px 12px;
+		border-radius: 6px;
+		border: 1.5px solid var(--ivr-line);
+		background: var(--ivr-bg);
+	}
+	.rc-janela li b {
+		font: 500 13px/1 var(--ivr-font-mono);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.rc-janela li span {
+		font: 600 19px/1.25 var(--ivr-font-body);
+		color: var(--ivr-ink);
+	}
+	.rc-janela li.rc-voce {
+		background: #3f6fd0;
+		border-color: #3f6fd0;
+	}
+	.rc-janela li.rc-voce b,
+	.rc-janela li.rc-voce span {
+		color: #fff;
+	}
+	.rc-janela li em {
+		grid-column: 2;
+		font: 700 16px/1.2 var(--ivr-font-hand);
+		font-style: normal;
+		color: var(--ivr-orange);
+	}
+	.rc-janela li.rc-erro {
+		border: 2.5px solid var(--ivr-orange);
+	}
+	.rc-janela li.rc-apoio {
+		border: 2px dashed var(--ivr-orange);
+	}
+	.rc-custo {
+		padding: 18px 20px;
+		border-radius: 8px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.rc-custo .rc-label {
+		color: var(--ivr-orange);
+	}
+	.rc-custo li {
+		display: grid;
+		grid-template-columns: 22px 1fr 58px;
+		align-items: center;
+		gap: 10px;
+		font: 500 15px/1 var(--ivr-font-mono);
+	}
+	.rc-n {
+		opacity: 0.6;
+	}
+	.rc-barra {
+		height: 14px;
+		border-radius: 3px;
+		background: rgba(255, 255, 255, 0.12);
+		overflow: hidden;
+	}
+	.rc-barra i {
+		display: block;
+		width: var(--w);
+		min-width: 3px;
+		height: 100%;
+		border-radius: 3px;
+		background: var(--ivr-bg);
+		transform-origin: left center;
+	}
+	/* No slide do erro: os passos que releram o erro ficam laranja também no custo. */
+.rc-erro .rc-custo li:nth-child(n + 5) .rc-barra i {
+	background: var(--ivr-orange);
+}
+.rc-q {
+		text-align: right;
+		font-variant-numeric: tabular-nums;
+	}
+	.rc .rc-total {
+		margin: 16px 0 0;
+		padding-top: 12px;
+		border-top: 1px dashed rgba(255, 255, 255, 0.25);
+		font: 600 19px/1.3 var(--ivr-font-body);
+	}
+	.rc-total b {
+		color: var(--ivr-orange);
+		font-weight: 800;
+	}
+	/* Sequência: cada passo entra na janela e, junto, a barra do que ele relê cresce. */
+	@keyframes rc-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	@keyframes rc-grow {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	:global(.present) .rc-janela li,
+	:global(.present) .rc-custo li {
+		animation: rc-in 350ms both;
+		animation-delay: calc(400ms + var(--i) * 750ms);
+	}
+	:global(.present) .rc-barra i {
+		animation: rc-grow 600ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(500ms + var(--i) * 750ms);
+	}
+	:global(.present) .rc-janela li em {
+		animation: rc-in 400ms both;
+		animation-delay: calc(800ms + var(--i) * 750ms);
+	}
+	:global(.present) .rc-total {
+		animation: rc-in 450ms 5200ms both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .rc * {
+			animation: none !important;
+		}
+	}
+</style>

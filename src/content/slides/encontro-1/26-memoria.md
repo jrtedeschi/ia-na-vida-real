@@ -1,4 +1,5 @@
 ---
+hidden: true # entrou como nota no slide da janela
 layout: big
 title: A memória é texto que volta para a janela
 notes: |

@@ -1,13 +1,9 @@
 ---
-layout: flow
-title: Alguns modelos pensam escrevendo
-fragments: true
-items:
-  - Você faz a pergunta
-  - Antes de responder, o modelo escreve etapas para si mesmo
-  - Esse rascunho entra na janela e vira contexto
-  - Com mais contexto, a resposta final erra menos
-caveat: Isso se chama raciocínio. Demora mais e gasta mais tokens, mas ajuda em contas, planos e problemas com várias etapas.
+layout: visual
+title: Pensar é escrever mais tokens
+visual: raciocinio
+caveat: "Cada passo relê a janela inteira. É assim que funcionam o modo de **raciocínio**, a pesquisa aprofundada e os agentes."
 notes: |
-  É a mesma previsão do próximo token: o modelo só ganha mais texto útil na janela antes de responder. Nos apps aparece como "pensar mais", "Thinking", níveis de raciocínio ou "Deep Think". Para pergunta simples, não precisa.
+  Ao vivo, 40 segundos, junto com o próximo slide. Pensar é escrever um rascunho antes de responder. Vale para conta, plano e problema com várias etapas. Pergunta simples não precisa.
+  Se perguntarem: o rascunho entra na janela. Com ferramentas, o ciclo é pensar, agir e observar; em inglês, ReAct (Yao e colegas, 2022). Cada passo relê a janela, e o custo cresce. Nos apps: "pensar mais", "Thinking", "Deep Think". Pesquisa aprofundada, no Encontro 3, repete esse ciclo dezenas de vezes.
 ---

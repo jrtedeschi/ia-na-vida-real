@@ -39,6 +39,7 @@ export class IvrAnim extends HTMLElement {
 	#anims = [];
 	#ready = Promise.resolve();
 	#state = 'start';
+	#pending = false; // play() pedido antes de ter tamanho: toca quando o ResizeObserver preparar
 	#io = null;
 	#ro = null;
 	#onPrint = () => this.showFinal();
@@ -91,6 +92,8 @@ export class IvrAnim extends HTMLElement {
 		if (this.isPrintView || (this.reducedMotion && !force)) return this.showFinal();
 		this.#prepare();
 		const anims = this.#anims;
+		this.#pending = !this.parts.frame.offsetWidth;
+		if (this.#pending) return; // ainda sem tamanho: o slide aparece, o observador prepara e toca
 		anims.forEach((a) => a.play());
 		this.#state = 'running';
 		this.parts.pause.hidden = false;
@@ -107,6 +110,7 @@ export class IvrAnim extends HTMLElement {
 	}
 
 	showFinal() {
+		this.#pending = false;
 		this.#cancel();
 		this.layout();
 		this.#state = 'final';
@@ -115,13 +119,23 @@ export class IvrAnim extends HTMLElement {
 
 	#prepare() {
 		this.#cancel();
-		this.layout();
-		this.#anims = this.specs().map(([node, keyframes, opts]) => {
-			const a = node.animate(keyframes, { fill: 'both', easing: EASE_OUT, ...opts });
-			a.pause();
-			return a;
-		});
 		this.#state = 'start';
+		// Slide oculto (display: none no reveal.js): nada a medir. O ResizeObserver prepara quando ganhar tamanho.
+		if (!this.parts.frame.offsetWidth) return;
+		this.layout();
+		const anims = [];
+		try {
+			for (const [node, keyframes, opts] of this.specs()) {
+				const a = node.animate(keyframes, { fill: 'both', easing: EASE_OUT, ...opts });
+				a.pause();
+				anims.push(a);
+			}
+		} catch (err) {
+			// Nunca deixar animações órfãs (fill: 'both' presas no quadro 0 escondem o estado final).
+			anims.forEach((a) => a.cancel());
+			throw err;
+		}
+		this.#anims = anims;
 	}
 
 	#cancel() {
@@ -152,6 +166,7 @@ export class IvrAnim extends HTMLElement {
 			requestAnimationFrame(() => {
 				queued = false;
 				if (this.#state === 'final') this.showFinal();
+				else if (this.#pending) this.play();
 				else if (this.#state === 'start') this.#prepare();
 			});
 		});

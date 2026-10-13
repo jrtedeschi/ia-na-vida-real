@@ -16,5 +16,6 @@ items:
   - title: Como pedir bem
     text: O pedido em 5 partes, na prática.
 notes: |
+  Relógio: 90 minutos. A turma mexe na IA duas vezes: "Pegue a IA inventando" (8 min) e "Organize sua semana" (8 min). Se atrasar, corte nesta ordem: datas da evolução, nomes de modelo, imagem/vídeo/som, raciocínio, finanças e poke.
   A pergunta do título é o fio da aula inteira; cada capítulo responde um pedaço. Ela volta no começo de cada capítulo, com o mapa mostrando onde estamos. Os nomes dos capítulos saem daqui: mudar aqui muda o mapa em todos os slides.
 ---

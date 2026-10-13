@@ -20,6 +20,7 @@ import Submarino from '../anim/Submarino.astro';
 import PipelineEtl from '../anim/PipelineEtl.astro';
 import Harness from '../anim/Harness.astro';
 import Difusao from '../anim/Difusao.astro';
+import Raciocinio from '../anim/Raciocinio.astro';
 import Combustivel from '../anim/Combustivel.astro';
 import VidaMelhor from '../anim/VidaMelhor.astro';
 import TarefasFundamentos from '../anim/TarefasFundamentos.astro';
@@ -48,6 +49,8 @@ export const VISUALS: Record<string, VisualEntry> = {
 	evolucao: { Comp: Evolucao, props: { ...EVOLUTION, ...PLAYED }, slideClass: 's-anim' },
 	'tarefas-fundamentos': { Comp: TarefasFundamentos, props: {}, slideClass: 's-fund' },
 	'vida-melhor': { Comp: VidaMelhor, props: {}, slideClass: 's-stat' },
+	raciocinio: { Comp: Raciocinio, props: {}, slideClass: 's-code' },
+	'raciocinio-erro': { Comp: Raciocinio, props: { erro: true }, slideClass: 's-code' },
 	difusao: { Comp: Difusao, props: {}, slideClass: 's-code' },
 	harness: { Comp: Harness, props: {}, slideClass: 's-code' },
 	combustivel: { Comp: Combustivel, props: {}, slideClass: 's-code' },
