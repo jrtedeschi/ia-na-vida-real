@@ -694,7 +694,7 @@ body {
 .s-mundo.mn-open h2 {
 	transform: translateY(-210px);
 	color: #fff6e0;
-	text-shadow: 5px 5px 0 #2b1b5a;
+	text-shadow: 5px 5px 0 #173a6e;
 }
 @media (prefers-reduced-motion: reduce) {
 	.s-mundo h2 {

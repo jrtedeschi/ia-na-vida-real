@@ -21,15 +21,17 @@ ivr-mundo-novo .mn-caption {
 	left: calc(12% / 1.24 + 40px);
 	bottom: calc(12% / 1.24 + 36px);
 	margin: 0;
-	max-width: 30ch;
-	padding: 16px 22px;
-	background: rgba(20, 12, 40, 0.62);
-	border-left: 6px solid #ffc861;
-	border-radius: 4px;
-	font: 600 34px/1.25 var(--ivr-font-body);
-	letter-spacing: -0.01em;
-	color: #fff6e0;
-	text-shadow: 2px 2px 0 #24183f;
+	max-width: 32ch;
+	/* Caixa de diálogo à Stardew: papel creme, moldura de madeira dupla, cantos retos de pixel. */
+	padding: 16px 24px 18px;
+	background: #fbeec7;
+	border: 4px solid #7a4a22;
+	outline: 3px solid #c98a4a;
+	outline-offset: -9px;
+	box-shadow: 0 0 0 3px #3d2410, 6px 6px 0 3px rgba(20, 30, 10, 0.35);
+	font: 700 30px/1.3 var(--ivr-font-display);
+	letter-spacing: -0.015em;
+	color: #4a2c14;
 	text-wrap: balance;
 }
 ivr-mundo-novo .mn-sprite {

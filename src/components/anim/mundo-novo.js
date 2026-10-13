@@ -248,7 +248,8 @@ function clouds() {
 				if (blobs.some((b) => (x - b.dx) ** 2 + ((y - b.dy) * 1.6) ** 2 < b.r * b.r)) pts.push([x, y]);
 			}
 		}
-		return { x: 60 + i * 120 + rand() * 45, y: 27 + rand() * 39, speed: 0.006 + rand() * 0.006, pts };
+		// Faixa alta do céu (linhas ~4 a 40): as nuvens passam acima do título, não atrás dele.
+		return { x: 60 + i * 120 + rand() * 45, y: 18 + rand() * 20, speed: 0.006 + rand() * 0.006, pts };
 	});
 }
 
