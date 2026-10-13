@@ -1,12 +1,12 @@
 ---
 layout: flow
 title: Organizando as finanças da casa
-kicker: Aplicativos customizados para sua realidade
+kicker: Apps sob medida para a sua realidade
 class: s-side
 image: ./img/app-financas.png
 alt: "Tela do app de finanças da família: aba Gastos de outubro de 2026, com gastos por categoria e os lançamentos do mercado; os valores aparecem escondidos"
 items:
-  - As finanças da casa viviam numa planilha, atualizada todo mês
+  - Tudo vivia numa planilha, atualizada todo mês
   - Descrevi para a IA como a gente controla o dinheiro
   - "Construímos juntos um app: fechamento do mês, contas fixas e projeção do patrimônio"
 notes: |

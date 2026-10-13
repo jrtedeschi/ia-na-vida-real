@@ -2,7 +2,7 @@
 layout: gallery
 visual: submarino
 kicker: Onde o mundo virtual encontra o físico
-title: Um submarino para meu filho
+title: Um submarino para o meu filho
 items:
   - title: Imagem gerada no [Gemini](https://gemini.google.com/)
     image: ./img/sub-1-gemini.jpg
