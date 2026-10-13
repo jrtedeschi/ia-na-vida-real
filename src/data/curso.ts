@@ -41,7 +41,7 @@ export const ENCONTROS: Encontro[] = [
 	},
 	{
 		n: 4,
-		titulo: 'Sua base de conhecimento',
+		titulo: 'Sua rotina com IA',
 		dia: 'terça, 10/11',
 		fim: '2026-11-10T21:30:00-03:00',
 		texto: 'O que você sabe, em textos simples que qualquer IA lê, e pequenos apps nas suas planilhas, feitos com a IA.',
