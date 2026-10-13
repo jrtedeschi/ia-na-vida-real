@@ -24,6 +24,10 @@ const slides = defineCollection({
 			fragments: z.boolean().default(false),
 			caveat: z.string().optional(),
 			cite: z.string().optional(),
+			// logo ao lado da citação: caminho em public/ (ex.: /img/glean-wordmark.svg), pintado na cor do texto
+			citeLogo: z.string().optional(),
+			// foto redonda de quem disse a citação: caminho em public/ (ex.: /img/arvind-jain.jpg)
+			citePhoto: z.string().optional(),
 			image: image().optional(),
 			alt: z.string().optional(),
 			visual: z.string().optional(),

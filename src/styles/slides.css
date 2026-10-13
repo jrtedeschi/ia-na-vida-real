@@ -1075,3 +1075,86 @@ body {
 .s-bedrock .s-caveat {
 	font-size: 22px;
 }
+
+/* Destaque dentro de uma frase de efeito: **trecho** ganha sublinhado laranja (o que guardar). */
+.s-thesis h2 b {
+	font-weight: inherit;
+	box-shadow: inset 0 -0.16em 0 var(--ivr-orange);
+}
+
+/* class: s-stairs (layout arc) — os encontros como uma escada que sobe da esquerda para a direita;
+   o primeiro degrau é o de hoje. Cada degrau é uma camada a mais do sistema em volta da IA. */
+.s-stairs .s-arc {
+	grid-template-columns: repeat(4, 1fr);
+	align-items: end;
+	gap: 14px;
+	border-top: 0;
+	counter-reset: deg;
+}
+.s-stairs .s-arc li {
+	counter-increment: deg;
+	display: grid;
+	grid-template-columns: none;
+	align-content: start;
+	gap: 10px;
+	padding: 18px 18px 20px;
+	border: 2px solid var(--ivr-ink);
+	border-bottom: 0;
+	border-radius: 6px 6px 0 0;
+	background: var(--ivr-paper);
+	font-size: 20px;
+	line-height: 1.35;
+}
+/* Altura dos degraus: cada encontro sobe um pouco. */
+.s-stairs .s-arc li:nth-child(1) { min-height: 230px; }
+.s-stairs .s-arc li:nth-child(2) { min-height: 290px; }
+.s-stairs .s-arc li:nth-child(3) { min-height: 350px; }
+.s-stairs .s-arc li:nth-child(4) { min-height: 410px; }
+.s-stairs .s-arc li::before {
+	content: 'Encontro ' counter(deg);
+	font: 500 14px/1 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-orange);
+}
+.s-stairs .s-arc li:first-child::before {
+	content: 'Encontro 1 · hoje';
+}
+.s-stairs .s-arc li:first-child {
+	border: 3px solid var(--ivr-orange);
+	border-bottom: 0;
+}
+.s-stairs .s-arc b {
+	font-size: 28px;
+	line-height: 1.05;
+	box-shadow: none !important;
+}
+/* o chão da escada */
+.s-stairs .s-arc {
+	border-bottom: 3px solid var(--ivr-ink);
+}
+
+/* Logo ao lado da citação (`citeLogo:`): o SVG oficial vira máscara pintada na cor do texto, então
+   acompanha o tema claro/escuro (equivale às versões preta e branca do logo). */
+.s-cite {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+.s-cite-photo {
+	flex: none;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	border: 2px solid var(--ivr-ink);
+	object-fit: cover;
+}
+.s-cite-logo {
+	flex: none;
+	margin-left: 8px;
+	width: 72px;
+	height: 29px;
+	background: var(--ivr-ink);
+	-webkit-mask: var(--logo) center / contain no-repeat;
+	mask: var(--logo) center / contain no-repeat;
+}

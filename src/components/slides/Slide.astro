@@ -42,6 +42,7 @@ const sectionClass = [LAYOUT_CLASS[d.layout], d.layout === 'bio' && d.image && '
 const title = inline(d.title.replace('{site}', siteLabel));
 const frag = d.fragments ? 'fragment' : undefined;
 const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <section class={sectionClass}>
 	{d.layout === 'photo' && d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" />}
@@ -73,7 +74,13 @@ const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 				) : (
 					<h2 class={d.layout === 'end' ? 's-url' : undefined} set:html={title} />
 				)}
-				{d.cite && <p class="s-cite" set:html={inline(d.cite)} />}
+				{d.cite && (
+					<p class="s-cite">
+						{d.citePhoto && <img class="s-cite-photo" src={`${base}${d.citePhoto}`} alt="" width="56" height="56" loading="lazy" />}
+						<span set:html={inline(d.cite)} />
+						{d.citeLogo && <span class="s-cite-logo" role="img" aria-label="logo" style={`--logo: url(${base}${d.citeLogo})`} />}
+					</p>
+				)}
 				{d.items && <SlideItems layout={d.layout} items={d.items} fragments={d.fragments} />}
 				{visual && !visual.overlay && <visual.Comp {...visual.props} {...d.visualProps} />}
 				{hasBody && <div class={bodyClass}><Content /></div>}

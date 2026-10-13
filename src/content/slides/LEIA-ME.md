@@ -49,6 +49,7 @@ Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frent
 | `ponte` | Abre um capítulo, com o mapa no topo | `chapter:` (número), título = a pergunta do capítulo, texto = "Até aqui / Agora" |
 
 Campos que servem em qualquer layout: `kicker:` (linha pequena acima do título), `caveat:` (observação no fim),
+`citeLogo:` (logo ao lado do `cite:`, arquivo em `public/`, pintado na cor do texto), `citePhoto:` (foto redonda de quem disse),
 `fragments: true` (itens aparecem um por vez), `image:` (imagem abaixo do texto), `class:` (classe CSS extra).
 
 ## Espinha dorsal
