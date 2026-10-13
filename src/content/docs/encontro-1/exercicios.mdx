@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 1 · Exercícios'
-description: Cinco exercícios para casa. Tudo funciona no plano grátis.
+description: Cinco exercícios do dia a dia para casa. Tudo funciona no plano grátis.
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -11,83 +11,92 @@ Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o qu
 <Progress />
 
 <Exercise
-	id="e1-ex1" n={1} title="Organize sua semana" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
-	checks={['Tem uma tabela para cada dia útil', 'Nenhum dia passa do seu limite de horas', 'Tarefas com prazo vêm antes de sexta']}
-	human="Você concorda com as prioridades, ou sabe dizer qual mudaria e por quê"
+	id="e1-jantar" n={1} title="Monte o jantar da semana com o que tem em casa" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Tem um jantar para cada dia útil', 'Nenhum prato passa do tempo que você deu', 'A lista do que falta comprar é curta']}
+	human="Você faria pelo menos 3 desses jantares de verdade"
 	fail="Resposta genérica quase sempre é falta de contexto ou de restrição." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
-	challenge="Peça para a IA explicar o critério que usou para priorizar."
+	challenge="Peça uma versão com o que dá para adiantar no domingo."
 >
-<p>Uma semana cheia de reuniões e tarefas soltas. Primeiro peça só <strong>"organize minha semana"</strong>. Depois mande o pedido completo abaixo e compare as duas respostas.</p>
-<p>Sem lista à mão? Use uma destas:</p>
+<p>Semana corrida e a geladeira com coisas soltas. Primeiro peça só <strong>"o que eu faço de jantar?"</strong>. Depois mande o pedido completo abaixo e compare as duas respostas.</p>
+<p>Sem tempo de olhar a geladeira? Use uma destas:</p>
 <ul>
-<li><strong>Escritório:</strong> revisar 3 currículos, preparar a integração de 2 pessoas novas, fechar a folha de ponto, agendar 4 entrevistas, atualizar a planilha de férias, enviar o relatório mensal, preparar a reunião de sexta.</li>
-<li><strong>Autônomo:</strong> mandar 3 orçamentos, cobrar 2 clientes atrasados, emitir notas fiscais, postar no Instagram da loja, comprar material, entregar o pedido de quinta, fazer a contabilidade do mês.</li>
-<li><strong>Casa e família:</strong> consulta do pediatra, reunião da escola na quarta, mercado do mês, pagar contas, levar o carro na revisão, aniversário da sogra no sábado, organizar o guarda-roupa das crianças.</li>
+<li><strong>Casa de uma pessoa:</strong> ovos, arroz, macarrão, 2 tomates, meia cebola, queijo, um pacote de frango congelado.</li>
+<li><strong>Família com crianças:</strong> carne moída, batata, cenoura, feijão pronto, pão de forma, presunto, leite, banana.</li>
+<li><strong>Sem carne:</strong> grão-de-bico, abobrinha, berinjela, arroz integral, ovos, iogurte, espinafre.</li>
 </ul>
-<Prompt slot="prompt" id="e1-ex1-p"
-	contexto="Trabalho em [uma equipe pequena, com muitas reuniões]."
-	objetivo="Não deixar nada importante para sexta."
-	referencias="[Cole sua lista de tarefas]"
-	restricoes="No máximo [2h] livres por dia, nada depois das [18h]."
-	formato="Uma tabela por dia, com 3 prioridades em cada."
+<Prompt slot="prompt" id="e1-jantar-p"
+	contexto="Moro com [mais 2 pessoas] e tenho pouco tempo para cozinhar à noite."
+	objetivo="Ter o jantar de segunda a sexta resolvido com o que já tenho em casa."
+	referencias="Tenho: [cole o que tem na geladeira e no armário]."
+	restricoes="No máximo [30 minutos] por jantar; [ninguém aqui come peixe]."
+	formato="Uma tabela com o dia, o prato e o que falta comprar."
 />
 </Exercise>
 
 <Exercise
-	id="e1-ex2" n={2} title="A mesma pergunta em duas IAs" when="Para casa" minutes={10} tool="Grátis · duas IAs"
-	checks={['As duas respeitaram a restrição alimentar e o tempo de preparo', 'Você anotou pelo menos 2 diferenças entre as respostas']}
-	human="Você conferiu um preço num app de mercado e sabe qual estimativa errou mais"
-	fail="Respostas quase iguais acontecem em pedidos muito fechados." failHref="/consulta/conceitos/proxima-palavra/" failLabel="a próxima palavra"
-	challenge="Peça para cada IA criticar o cardápio da outra."
+	id="e1-passeio" n={2} title="Planeje um passeio de sábado em duas IAs" when="Para casa" minutes={10} tool="Grátis · duas IAs"
+	checks={['As duas respeitaram o orçamento e o horário de volta', 'Você anotou pelo menos 2 diferenças entre as respostas']}
+	human="Você conferiu se um dos lugares sugeridos existe e abre no sábado"
+	fail="Respostas quase iguais acontecem em pedidos muito fechados. Deixe uma parte do pedido mais aberta e tente de novo." failHref="/consulta/conceitos/modelos-e-custo/" failLabel="modelos e custo"
+	challenge="Peça para cada IA criticar o roteiro da outra."
 >
-<p>Jantar para 6 amigos no sábado. Mande o mesmo pedido para duas IAs diferentes (Claude, ChatGPT ou Gemini) e compare.</p>
-<Prompt slot="prompt" id="e1-ex2-p"
-	contexto="Vou receber [6] amigos para jantar no sábado; [um é vegetariano]."
-	objetivo="Um cardápio simples que agrade todo mundo."
-	referencias="Orçamento de [R$ 200]; tenho forno e fogão."
-	restricoes="Nada que leve mais de 1h de preparo."
-	formato="Entrada, prato e sobremesa, mais lista de compras com preço estimado."
+<p>Mande o mesmo pedido para duas IAs diferentes (Claude, ChatGPT ou Gemini) e compare o que cada uma sugeriu.</p>
+<Prompt slot="prompt" id="e1-passeio-p"
+	contexto="Moro em [cidade] e quero sair no sábado com [2 adultos e 1 criança de 7 anos]."
+	objetivo="Um passeio de um dia que agrade todo mundo."
+	referencias="Orçamento de [R$ 200]; vamos de [ônibus]."
+	restricoes="Nada a mais de [1 hora] de casa; voltar antes das [19h]."
+	formato="Um roteiro com horários, quanto custa cada parte e um plano B se chover."
 />
 </Exercise>
 
 <Exercise
-	id="e1-ex3" n={3} title="Confira o que a IA afirma" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
-	checks={['Você procurou cada item numa busca comum', 'Você perguntou "tem certeza?" e viu se a IA se corrigiu']}
-	human="Você sabe dizer quais itens existem e quais foram inventados"
-	fail="Não achou nenhum erro? Se a IA buscou na web, peça de novo num chat sem busca, ou pergunte algo com premissa falsa, como 'por que a padaria Estrela, da minha rua, fechou em 2015?'." failHref="/consulta/conceitos/alucinacao/" failLabel="alucinação"
-	challenge="Peça para a IA dizer o quanto confia em cada item, de 0 a 100%."
+	id="e1-bairro" n={3} title="Confira a história do seu bairro" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Você procurou cada curiosidade numa busca comum', 'Você perguntou "tem certeza?" e viu se a IA se corrigiu']}
+	human="Você sabe dizer quais curiosidades são verdadeiras e quais foram inventadas"
+	fail="Não achou nenhum erro? Se a IA buscou na web, peça de novo num chat sem busca, ou pergunte sobre algo que não existe, como 'por que a padaria Estrela, da minha rua, fechou em 2015?'." failHref="/consulta/conceitos/alucinacao/" failLabel="alucinação"
+	challenge="Peça para a IA dizer o quanto confia em cada curiosidade, de 0 a 100%."
 >
-<p>Peça três leituras sobre um tema que você conhece bem e procure cada uma numa busca comum.</p>
-<Prompt slot="prompt" id="e1-ex3-p"
-	contexto="Trabalho com [sua área]."
-	objetivo="Encontrar leituras sobre [um tema bem específico da sua área]."
-	referencias="Prefiro material em português."
-	restricoes="Só livros ou artigos que existem de verdade."
-	formato="Lista de 3 itens com autor, ano, editora ou revista, e link."
+<p>Peça 3 curiosidades sobre o bairro ou a cidade onde você mora e procure cada uma numa busca comum. Lugares pequenos são onde a IA mais inventa.</p>
+<Prompt slot="prompt" id="e1-bairro-p"
+	contexto="Moro no bairro [nome do bairro], em [cidade]."
+	objetivo="Conhecer a história do lugar onde eu moro."
+	referencias="Quero fatos que eu consiga conferir."
+	restricoes="Só fatos verdadeiros, com a fonte de cada um."
+	formato="3 curiosidades curtas, cada uma com o ano e de onde veio a informação."
 />
 </Exercise>
 
 <Exercise
-	id="e1-ex4" n={4} title="Seu primeiro pedido de verdade" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
-	checks={['Seu pedido tem as 5 partes', 'A resposta poupou tempo de verdade']}
-	human="Você anotou o que mudou na resposta depois de ajustar uma das partes"
-	fail="Traga o pedido para o Encontro 2: a aula começa por ele."
+	id="e1-conta" n={4} title="Entenda uma conta da casa" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Você apagou nome, endereço, CPF e número de cliente antes de colar', 'Cada cobrança da conta ganhou uma explicação']}
+	human="Você conferiu na conta de verdade se os valores que a IA citou batem"
+	fail="Ficou em dúvida sobre o que pode colar na IA?" failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Peça uma lista de perguntas para fazer à empresa se algum valor parecer errado."
 >
-<p>Escolha uma tarefa real desta semana e escreva o pedido em 5 partes do zero, sem modelo.</p>
+<p>Pegue uma conta de luz, água, internet ou do condomínio. Antes de colar, apague o seu nome, o endereço, o CPF e o número de cliente: a IA não precisa deles para explicar.</p>
+<Prompt slot="prompt" id="e1-conta-p"
+	contexto="Esta é a minha conta de [luz] deste mês, sem os meus dados pessoais: [cole o texto da conta]."
+	objetivo="Entender o que estou pagando."
+	referencias="No mês passado paguei [R$ 180]."
+	restricoes="Linguagem simples, sem termos técnicos."
+	formato="Cada cobrança em uma linha, dizendo o que é, e no fim 2 ideias para pagar menos."
+/>
 </Exercise>
 
 <Exercise
-	id="e1-ex5" n={5} title="Por que você faz o que faz?" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
-	checks={['Seu porquê não cita o nome do cargo', 'Cada uma das 5 tarefas tem uma marcação']}
-	human="Você discordou da IA em pelo menos um ponto, e sabe por quê"
+	id="e1-mensagem" n={5} title="Escreva uma mensagem difícil" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['Nenhuma das versões soa agressiva', 'A mensagem diz com clareza o que você quer']}
+	human="Você ajustou pelo menos uma frase para o seu jeito de falar antes de decidir o que mandar"
+	fail="Ficou com cara de robô? Conte como você costuma falar com essa pessoa e peça para a IA seguir esse jeito." failHref="/consulta/fique-com-o-volante/" failLabel="fique com o volante"
+	challenge="Peça para a IA responder como a outra pessoa responderia, e ensaie a conversa."
 >
-<p>Escreva em 2 frases por que seu trabalho existe: para quem, e que problema resolve. Depois liste 5 tarefas da sua semana e marque cada uma: a IA pode <strong>aumentar</strong>, <strong>fatiar</strong>, <strong>automatizar</strong>, ou é <strong>só sua</strong>.</p>
-<p>Guarde o resultado: no Encontro 4 ele vira a primeira página da sua base de conhecimento.</p>
-<Prompt slot="prompt" id="e1-ex5-p"
-	contexto="Este é o porquê do meu trabalho: [suas 2 frases]."
-	objetivo="Quero saber onde a IA pode me ajudar sem eu perder o que importa."
-	referencias="[Suas 5 tarefas, já marcadas]"
-	restricoes="Discorde de mim quando achar que errei."
-	formato="Para cada tarefa: concorda ou não, e por quê, em uma linha."
+<p>Aquela mensagem que você vem adiando: cobrar um amigo, reclamar com uma loja, recusar um convite ou pedir um favor. A IA ajuda no tom; quem decide o que mandar é você.</p>
+<Prompt slot="prompt" id="e1-mensagem-p"
+	contexto="Preciso [cobrar um amigo que me deve R$ 200 há 3 meses]. Somos amigos há [10 anos]."
+	objetivo="Resolver isso sem estragar a amizade."
+	referencias="Ele [passou por um aperto no ano passado]."
+	restricoes="Gentil e firme, sem indireta."
+	formato="2 versões curtas para WhatsApp, uma mais direta e uma mais leve."
 />
 </Exercise>

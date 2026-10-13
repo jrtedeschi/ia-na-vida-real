@@ -145,6 +145,18 @@ ivr-token-split .ts-tally .ts-arrow-text {
 ivr-token-split .ts-tally .ts-tokens {
 	position: relative;
 }
+ivr-token-split .ts-count {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.45em;
+}
+ivr-token-split .ts-alias {
+	font: 700 clamp(16px, 2.4cqi, 24px) / 1.1 var(--_hand);
+	color: var(--_graphite-ink);
+	letter-spacing: 0;
+	transform: rotate(-2deg);
+	transform-origin: left center;
+}
 
 ivr-token-split .ts-controls {
 	display: flex;

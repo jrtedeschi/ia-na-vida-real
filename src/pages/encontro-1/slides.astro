@@ -41,6 +41,7 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 		<script>
 			import Reveal from 'reveal.js';
 			import Notes from 'reveal.js/plugin/notes';
+			import { playGlyphs, stopGlyphs } from '../../components/slides/glyphs.js';
 
 			type Playable = HTMLElement & { play?: (opts?: { force?: boolean }) => void; pause?: () => void; reset?: () => void };
 			const ANIMS = 'ivr-token-split, ivr-next-word, ivr-context-window, ivr-evolution, ivr-transformer, ivr-prompt-art, ivr-mundo-novo, ivr-submarino';
@@ -67,12 +68,15 @@ const slides = (await getCollection('slides', (s) => s.id.startsWith('encontro-1
 
 			deck.initialize().then(() => {
 				playIn(deck.getCurrentSlide());
+				playGlyphs(deck.getCurrentSlide());
 				deck.on('slidechanged', (event) => {
 					const { currentSlide, previousSlide } = event as unknown as { currentSlide: Element; previousSlide?: Element };
 					pauseIn(previousSlide);
+					stopGlyphs(previousSlide);
 					// Voltando para um slide com saída já mostrada: recolhe a saída para ela poder tocar de novo.
 					if (currentSlide.querySelector('.s-exit.visible')) deck.prev();
 					playIn(currentSlide);
+					playGlyphs(currentSlide);
 				});
 				deck.on('fragmentshown', (event) => playIn((event as unknown as { fragment: Element }).fragment, { exits: true }));
 				deck.on('fragmenthidden', (event) =>

@@ -64,7 +64,8 @@
 	border-radius: 2px;
 }
 .ivr-prompt button,
-.ivr-ex button {
+.ivr-ex button,
+.ivr-exemplo button {
 	justify-self: start;
 	font: 600 13px/1 var(--ivr-font-body);
 	letter-spacing: 0.03em;
@@ -76,7 +77,8 @@
 	cursor: pointer;
 	transition: transform 150ms ease, box-shadow 150ms ease;
 }
-.ivr-prompt button:hover {
+.ivr-prompt button:hover,
+.ivr-exemplo button:hover {
 	box-shadow: 0 0 0 3px var(--ivr-orange);
 }
 .ivr-prompt button:active {

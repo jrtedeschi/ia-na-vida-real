@@ -1,6 +1,9 @@
 ---
 layout: big
-title: Tudo começa pelo seu pedido
-notes: "O app também coloca instruções próprias antes do seu pedido, que você não vê. O jeito de escrever o pedido muda o que ela responde: é o pedido em 5 partes, no fim da aula."
+class: s-hook s-note-left
+title: Tudo começa no **pedido**
+caveat: em inglês, prompt
+notes: |
+  O app também coloca instruções próprias antes do pedido, que a turma não vê. O jeito de escrever muda a resposta: é o pedido em 5 partes, no fim da aula. "A conversa até agora" é a semente da janela de contexto, mais à frente.
 ---
-O texto que você manda se chama, em inglês, prompt. A IA só tem o que está escrito ali e na conversa até agora. Ela não lê sua mente.
+Só o que está escrito ali, e na conversa até agora. Ela não lê a sua mente.

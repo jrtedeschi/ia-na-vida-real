@@ -29,6 +29,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Comece aqui', link: '/' },
+				{ label: 'Exemplos do dia a dia', link: '/exemplos/' },
 				{
 					label: 'Encontro 1 · Como a IA funciona',
 					items: [

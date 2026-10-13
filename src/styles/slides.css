@@ -337,6 +337,10 @@ body {
 	flex: 1;
 	min-height: 0;
 }
+/* No slide, sair e voltar já repete a animação. Os botões comem a altura. */
+.reveal ivr-token-split .ts-controls {
+	display: none;
+}
 .s-ex .ivr-prompt-body {
 	font-size: 24px;
 }
@@ -959,6 +963,11 @@ body {
 .present.s-hook .s-caveat {
 	animation: s-hook-note 500ms 1300ms both cubic-bezier(0.16, 1, 0.3, 1);
 }
+/* A anotação à direita encosta na borda do slide. Nesta variação ela fica sob o texto. */
+.s-hook.s-note-left .s-caveat {
+	align-self: flex-start;
+	margin-left: 12px !important;
+}
 @keyframes s-hook-note {
 	from {
 		opacity: 0;
@@ -968,6 +977,43 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	.present.s-hook h2 b::after,
 	.present.s-hook .s-caveat {
+		animation: none;
+	}
+}
+
+/* class: s-glyphs — a palavra em negrito troca de glifo até travar. Sem o círculo do .s-hook.
+   Cada letra ocupa a largura que já tem no título, na mesma linha de base. */
+.s-glyphs h2 b {
+	letter-spacing: 0;
+	white-space: nowrap;
+}
+.s-glyphs h2 b::after {
+	content: none;
+}
+.s-glyphs h2 b .g {
+	display: inline-block;
+	vertical-align: baseline;
+	text-align: left;
+	line-height: inherit;
+	letter-spacing: 0;
+}
+.s-glyphs h2 b .g-spin {
+	color: var(--ivr-orange);
+}
+.s-glyphs h2 b .g-lock {
+	animation: g-lock 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.present.s-hook.s-glyphs .s-caveat {
+	animation-delay: 1400ms;
+}
+@keyframes g-lock {
+	from {
+		transform: translateY(-0.08em);
+		color: var(--ivr-orange);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.s-glyphs h2 b .g-lock {
 		animation: none;
 	}
 }
