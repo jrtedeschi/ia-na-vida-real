@@ -1,0 +1,19 @@
+---
+/** Uma ideia de cada tema da página Exemplos do dia a dia, lida da mesma fonte. */
+import { TEMAS } from '../../data/exemplos';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const amostra = TEMAS.map(({ tema, exemplos }) => ({ tema, ...exemplos[0] }));
+---
+<ul class="ivr-amostra not-content">
+	{amostra.map((e) => (
+		<li>
+			<p class="ivr-amostra-tema">{e.tema}</p>
+			<h3>{e.titulo}</h3>
+			<p>{e.situacao}</p>
+		</li>
+	))}
+</ul>
+<p class="ivr-amostra-mais not-content">
+	<a class="ivr-btn ivr-btn-main" href={`${base}/exemplos/`}>Ver as {TEMAS.reduce((n, t) => n + t.exemplos.length, 0)} ideias, com pedido pronto</a>
+</p>

@@ -1,0 +1,76 @@
+---
+/**
+ * Um exemplo de uso da IA no dia a dia: título (a ideia), uma frase de situação (slot), um pedido
+ * curto copiável (trechos entre [colchetes] são campos que o aluno troca) e, se houver, um cuidado.
+ */
+interface Props {
+	id: string;
+	title: string;
+	pedido: string;
+	cuidado?: string;
+}
+const { id, title, pedido, cuidado } = Astro.props;
+const fields = (text: string) => text.split(/(\[[^\]]+\])/g).filter(Boolean);
+---
+<article class="ivr-exemplo not-content">
+	<h3>{title}</h3>
+	<div class="ivr-exemplo-text"><slot /></div>
+	<div class="ivr-exemplo-pedido">
+		<p class="ivr-exemplo-body" id={id} data-copy={pedido}>
+			{fields(pedido).map((t) => (t.startsWith('[') ? <span class="ivr-field">{t}</span> : t))}
+		</p>
+		<ivr-copy data-target={id}><button type="button">Copiar pedido</button></ivr-copy>
+	</div>
+	{cuidado && <p class="ivr-exemplo-cuidado"><b>Cuidado</b>{cuidado}</p>}
+</article>
+<script>import './ivr-elements';</script>
+<style>
+	.ivr-exemplo {
+		display: grid;
+		gap: 10px;
+		margin: 0 0 18px;
+		padding: 18px 20px;
+		border: 1.5px solid var(--ivr-ink);
+		border-radius: 6px;
+		background: var(--ivr-paper);
+	}
+	.ivr-exemplo h3 {
+		margin: 0;
+		font: 900 1.25rem/1.15 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink);
+	}
+	.ivr-exemplo-text {
+		color: var(--ivr-ink-soft);
+		line-height: 1.5;
+	}
+	.ivr-exemplo-text :global(p) {
+		margin: 0;
+	}
+	.ivr-exemplo-pedido {
+		display: grid;
+		gap: 8px;
+		justify-items: start;
+		padding: 12px 14px;
+		border-left: 4px solid var(--ivr-orange);
+		background: var(--ivr-bg);
+	}
+	.ivr-exemplo-body {
+		margin: 0;
+		font: 500 0.95rem/1.5 var(--ivr-font-mono);
+		color: var(--ivr-ink);
+	}
+	.ivr-exemplo-cuidado {
+		margin: 0;
+		font-size: 0.92rem;
+		line-height: 1.45;
+		color: var(--ivr-ink-soft);
+	}
+	.ivr-exemplo-cuidado b {
+		margin-right: 8px;
+		font: 500 0.75rem/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink);
+	}
+</style>

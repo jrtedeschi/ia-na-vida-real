@@ -1,6 +1,6 @@
 ---
 title: Próxima palavra
-description: Um modelo de linguagem escreve apostando, pedaço por pedaço, no que é mais provável vir a seguir.
+description: Um modelo de linguagem escreve pedaço por pedaço, escolhendo o que tem mais chance de vir a seguir.
 sidebar:
   order: 2
 ---
@@ -18,14 +18,14 @@ import { NEXT_WORD } from '../../../../components/anim/presets';
 
 ## Na prática
 
-- **Cada resposta é uma sequência de apostas.** Por isso a mesma pergunta, feita duas vezes, pode dar respostas diferentes.
-- **O seu pedido muda as apostas.** Contexto, objetivo e exemplos deixam as continuações certas mais prováveis. É por isso que [o pedido em 5 partes](/consulta/pedido-em-5-partes/) funciona.
-- **Modelos diferentes apostam diferente.** Foram treinados com textos e ajustes diferentes.
+- **Cada resposta é uma sequência de escolhas pela chance.** Por isso a mesma pergunta, feita duas vezes, pode dar respostas diferentes.
+- **O seu pedido muda as chances.** Contexto, objetivo e exemplos deixam as continuações certas mais prováveis. É por isso que [o pedido em 5 partes](/consulta/pedido-em-5-partes/) funciona.
+- **Modelos diferentes calculam chances diferentes.** Foram treinados com textos e ajustes diferentes.
 
 ## Erro comum
 
-Achar que a IA "procura a resposta" num banco de dados. Ela não procura: ela escreve o que é provável. Quando a IA usa busca na web, ela primeiro procura páginas e depois escreve com base nelas, mas a escrita continua sendo aposta.
+Achar que a IA "procura a resposta" num banco de dados. Ela não procura: ela escreve o que é provável. Quando a IA usa busca na web, ela primeiro procura páginas e depois escreve com base nelas, mas a escrita continua sendo uma escolha pela chance.
 
 ## Teste rápido · 1 minuto
 
-Faça a mesma pergunta aberta duas vezes, em conversas novas: *"Me dê uma ideia de presente para minha mãe."* Compare. As respostas diferentes são apostas diferentes.
+Faça a mesma pergunta aberta duas vezes, em conversas novas: *"Me dê uma ideia de presente para minha mãe."* Compare. As respostas diferentes são escolhas diferentes.

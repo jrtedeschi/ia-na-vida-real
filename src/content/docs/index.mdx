@@ -1,33 +1,50 @@
 ---
 title: Comece aqui
-description: Material de estudo, consulta e exercícios do curso IA na Vida Real.
+description: Curso de IA para o dia a dia, em quatro encontros ao vivo, para quem não é da área.
+template: splash
+hero:
+  title: IA na Vida Real
+  tagline: Quatro encontros para quem não é da área usar a IA no dia a dia, com segurança e sem jargão.
 ---
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import ProximoEncontro from '../../components/home/ProximoEncontro.astro';
+import Escada from '../../components/home/Escada.astro';
+import ExemplosAmostra from '../../components/home/ExemplosAmostra.astro';
+import Professor from '../../components/home/Professor.astro';
 
-Este é o material do curso **IA na Vida Real**: o que vimos em cada encontro, os exercícios com o seu progresso salvo, e uma consulta para usar depois do curso.
+<ProximoEncontro />
 
-## Próximo encontro
+## O que você vai conseguir fazer
 
-<LinkCard title="Encontro 1 · Como a IA funciona" description="Terça, 20/10, das 20h às 21h30, ao vivo. Veja o que preparar antes da aula." href="/encontro-1/" />
+No fim do curso, você usa a IA em coisas da sua semana: da cozinha às contas da casa, do dever de casa dos filhos ao roteiro do feriado.
+
+<ExemplosAmostra />
+
+## Do pedido ao sistema, em quatro encontros
+
+Cada encontro sobe um degrau: primeiro o pedido, depois o que a IA sabe sobre você, o seu trabalho e a sua rotina.
+
+<Escada />
 
 ## Consulta
 
+Para tirar dúvidas depois da aula.
+
 <CardGrid>
 	<LinkCard title="O pedido em 5 partes" description="Contexto, objetivo, referências, restrições e formato." href="/consulta/pedido-em-5-partes/" />
-	<LinkCard title="Conceitos" description="Token, próxima palavra, alucinação, janela de contexto, modelos e custo." href="/consulta/conceitos/token/" />
-	<LinkCard title="Segurança e privacidade" description="Configure o treinamento com seus dados e evite golpes." href="/consulta/seguranca-e-privacidade/" />
-	<LinkCard title="Fique com o volante" description="Delegue a tarefa, não o julgamento." href="/consulta/fique-com-o-volante/" />
+	<LinkCard title="Conceitos" description="Como a IA lê, responde, inventa e lembra, explicado sem complicação." href="/consulta/conceitos/token/" />
+	<LinkCard title="Segurança e privacidade" description="O que não colar na IA e como evitar golpes." href="/consulta/seguranca-e-privacidade/" />
+	<LinkCard title="Fique com o volante" description="A IA faz a tarefa; a decisão continua sua." href="/consulta/fique-com-o-volante/" />
 	<LinkCard title="Um micro app na planilha" description="Um controle de gastos que manda o resumo da semana por e-mail." href="/consulta/micro-apps-na-planilha/" />
-	<LinkCard title="IA e trabalho" description="O que as revoluções anteriores ensinam." href="/consulta/ia-e-trabalho/" />
 </CardGrid>
 
-## Calendário
+## Quem dá o curso
 
-| Encontro | Data | Tema |
-|---|---|---|
-| 1 | terça, 20/10 | Como a IA funciona |
-| 2 | terça, 27/10 | Contexto é tudo |
-| 3 | terça, 03/11 | IA no seu trabalho |
-| 4 | terça, 10/11 | Sua rotina com IA |
+<Professor />
 
-Todas as aulas são das 20h às 21h30, ao vivo, e ficam gravadas.
+## Como funciona
+
+- Aulas ao vivo às terças, das 20h às 21h30, e todas ficam gravadas.
+- Tudo funciona no plano grátis do Claude, do ChatGPT ou do Gemini. Não precisa pagar nada.
+- Não precisa saber programar nem instalar nada.
+- Os exercícios ficam no site, com o seu progresso salvo no navegador.

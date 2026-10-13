@@ -1,0 +1,21 @@
+---
+/** Os quatro encontros como uma escada: cada um sobe um degrau. Destaca o próximo; os que já foram ficam mais claros. */
+import { ENCONTROS, proximoEncontro } from '../../data/curso';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const proximo = proximoEncontro(new Date());
+const estado = (n: number) => (!proximo || n < proximo.n ? 'feito' : n === proximo.n ? 'proximo' : 'futuro');
+---
+<ol class="ivr-escada not-content">
+	{ENCONTROS.map((e) => (
+		<li class={`ivr-degrau ivr-degrau-${estado(e.n)}`} aria-current={estado(e.n) === 'proximo' ? 'step' : undefined}>
+			<p class="ivr-degrau-kicker">
+				Encontro {e.n} · {e.dia}
+				{estado(e.n) === 'proximo' && <span> · próximo</span>}
+				{estado(e.n) === 'feito' && <span> · já foi</span>}
+			</p>
+			<h3>{e.links ? <a href={`${base}${e.links.estudo}`}>{e.titulo}</a> : e.titulo}</h3>
+			<p>{e.texto}</p>
+		</li>
+	))}
+</ol>

@@ -17,17 +17,18 @@ const EASE_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const EASE_PEN = 'cubic-bezier(0.6, 0, 0.2, 1)';
 const T = {
 	sentenceIn: 0,
-	labelSwap: 1500,
-	split: 1900,
-	splitStagger: 45,
-	splitDur: 950,
-	box: 2300,
-	boxStagger: 110,
-	circle: 4000,
-	note: 4900,
-	words: 6000,
-	tokens: 6500,
-	underline: 6900,
+	labelSwap: 1100,
+	split: 1450,
+	splitStagger: 32,
+	splitDur: 640,
+	box: 1750,
+	boxStagger: 32,
+	circle: 2550,
+	note: 3250,
+	words: 3900,
+	tokens: 4250,
+	underline: 4550,
+	alias: 5000,
 };
 const VISIBLE_THRESHOLD = 0.4;
 
@@ -147,6 +148,8 @@ export class IvrTokenSplit extends HTMLElement {
 			circle,
 			words,
 			note: this.getAttribute('note') ?? '',
+			unit: this.getAttribute('unit') || 'tokens',
+			alias: this.getAttribute('alias') ?? '',
 			before: this.getAttribute('before') ?? 'você escreve:',
 			after: this.getAttribute('after') ?? 'a IA lê assim:',
 			caption: this.querySelector('figcaption')?.textContent.trim(),
@@ -162,7 +165,7 @@ export class IvrTokenSplit extends HTMLElement {
 
 		const frame = el('div', 'ts-frame');
 		frame.setAttribute('role', 'img');
-		frame.setAttribute('aria-label', `Animação: "${sentence}" vira ${cfg.tokens.length} tokens.`);
+		frame.setAttribute('aria-label', `Animação: "${sentence}" vira ${cfg.tokens.length} ${cfg.unit}.`);
 
 		const labels = el('div', 'ts-labels');
 		const before = el('span', 'ts-before', cfg.before);
@@ -195,13 +198,17 @@ export class IvrTokenSplit extends HTMLElement {
 		const tally = el('div', 'ts-tally');
 		const wordsEl = el('span', null, `${cfg.words} palavras`);
 		const arrowText = el('span', 'ts-arrow-text', '→');
-		const tokensEl = el('span', 'ts-tokens', `${cfg.tokens.length} tokens`);
+		const tokensEl = el('span', 'ts-tokens', `${cfg.tokens.length} ${cfg.unit}`);
+		const alias = cfg.alias ? el('span', 'ts-alias', cfg.alias) : null;
 		const tallyInk = svgEl('svg', 'ts-ink');
 		tallyInk.setAttribute('aria-hidden', 'true');
 		const underline = svgEl('path', 'ts-underline');
 		tallyInk.append(underline);
+		const count = el('span', 'ts-count');
+		count.append(tokensEl);
+		if (alias) count.append(alias);
 		tally.style.position = 'relative';
-		tally.append(wordsEl, arrowText, tokensEl, tallyInk);
+		tally.append(wordsEl, arrowText, count, tallyInk);
 
 		frame.append(labels, stage, tally);
 
@@ -220,14 +227,15 @@ export class IvrTokenSplit extends HTMLElement {
 		this.replaceChildren(figure);
 
 		const pathsOf = { circlePath, arrowShaft, arrowHead, underline };
-		return { cfg, frame, labels, before, after, stage, row, tokens, note, tally, wordsEl, arrowText, tokensEl, replay, pause, ...pathsOf };
+		return { cfg, frame, labels, before, after, stage, row, tokens, note, tally, wordsEl, arrowText, tokensEl, alias, replay, pause, ...pathsOf };
 	}
 
 	#transcript(cfg) {
 		const list = cfg.tokens.map((t) => t.trim()).join(' | ');
 		const circled = cfg.circle.map((i) => cfg.tokens[i]?.trim()).join('');
-		const noteText = circled ? ` A palavra "${circled}" virou ${cfg.circle.length} tokens.` : '';
-		return `Transcrição: a frase "${cfg.tokens.join('')}" se quebra em pedaços chamados tokens: ${list}.${noteText} Resultado: ${cfg.words} palavras, ${cfg.tokens.length} tokens.`;
+		const noteText = circled ? ` A palavra "${circled}" virou ${cfg.circle.length} ${cfg.unit}.` : '';
+		const aliasText = cfg.alias ? ` ${cfg.alias}.` : '';
+		return `Transcrição: a frase "${cfg.tokens.join('')}" se quebra em ${cfg.unit}: ${list}.${noteText} Resultado: ${cfg.words} palavras, ${cfg.tokens.length} ${cfg.unit}.${aliasText}`;
 	}
 
 	async #fontsReady() {
@@ -365,7 +373,10 @@ export class IvrTokenSplit extends HTMLElement {
 			[p.wordsEl, pop, { duration: 450, delay: T.words }],
 			[p.arrowText, [{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: T.words + 300 }],
 			[p.tokensEl, pop, { duration: 450, delay: T.tokens }],
-			...this.#drawSpec(p.underline, T.underline, 700),
+			...this.#drawSpec(p.underline, T.underline, 560),
+			...(p.alias
+				? [[p.alias, [{ opacity: 0, transform: 'rotate(-2deg) translateY(6px)' }, { opacity: 1, transform: 'rotate(-2deg)' }], { duration: 400, delay: T.alias }]]
+				: []),
 		];
 	}
 

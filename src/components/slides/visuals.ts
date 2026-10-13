@@ -18,6 +18,9 @@ import PromptArt from '../anim/PromptArt.astro';
 import MundoNovo from '../anim/MundoNovo.astro';
 import Submarino from '../anim/Submarino.astro';
 import PipelineEtl from '../anim/PipelineEtl.astro';
+import Harness from '../anim/Harness.astro';
+import Difusao from '../anim/Difusao.astro';
+import Combustivel from '../anim/Combustivel.astro';
 import VidaMelhor from '../anim/VidaMelhor.astro';
 import TarefasFundamentos from '../anim/TarefasFundamentos.astro';
 import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO } from '../anim/presets';
@@ -45,6 +48,9 @@ export const VISUALS: Record<string, VisualEntry> = {
 	evolucao: { Comp: Evolucao, props: { ...EVOLUTION, ...PLAYED }, slideClass: 's-anim' },
 	'tarefas-fundamentos': { Comp: TarefasFundamentos, props: {}, slideClass: 's-fund' },
 	'vida-melhor': { Comp: VidaMelhor, props: {}, slideClass: 's-stat' },
+	difusao: { Comp: Difusao, props: {}, slideClass: 's-code' },
+	harness: { Comp: Harness, props: {}, slideClass: 's-code' },
+	combustivel: { Comp: Combustivel, props: {}, slideClass: 's-code' },
 	'pipeline-etl': { Comp: PipelineEtl, props: {}, slideClass: 's-code' },
 	submarino: { Comp: Submarino, props: {}, slideClass: '', overlay: true, exit: true },
 	'mundo-novo': { Comp: MundoNovo, props: { ...MUNDO_NOVO }, slideClass: 's-mundo', overlay: true },

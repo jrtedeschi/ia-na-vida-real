@@ -1,0 +1,302 @@
+---
+/**
+ * Os tokens são o combustível. À esquerda, uma mensagem numa conversa longa: cada item que entra ou
+ * sai do modelo tem uma barra do tamanho do seu gasto (valores de exemplo), e o gomo correspondente
+ * do tanque acende e esvazia quando o item aparece. À direita, os planos como tamanhos de tanque.
+ * Estático; no slide ativo, a sequência anda sozinha (só CSS).
+ */
+const ITENS: { nome: string; lado: 'entra' | 'sai'; tokens: number }[] = [
+	{ nome: 'Seu pedido', lado: 'entra', tokens: 60 },
+	{ nome: 'A conversa até agora', lado: 'entra', tokens: 1800 },
+	{ nome: 'As instruções do app', lado: 'entra', tokens: 1500 },
+	{ nome: 'Os seus arquivos', lado: 'entra', tokens: 3000 },
+	{ nome: 'O raciocínio', lado: 'sai', tokens: 1200 },
+	{ nome: 'A resposta', lado: 'sai', tokens: 500 },
+];
+const TANQUE = 10000; // capacidade de exemplo
+const MAIOR = Math.max(...ITENS.map((i) => i.tokens));
+const SOBRA = TANQUE - ITENS.reduce((n, i) => n + i.tokens, 0);
+const fmt = (n: number) => n.toLocaleString('pt-BR');
+const STEP = 520; // ms entre um item e o próximo
+const PLANOS = [
+	{ nome: 'Plano grátis', texto: 'Um tanque pequeno, que enche de novo de tempos em tempos.', icone: 'pequeno' },
+	{ nome: 'Plano pago', texto: 'Um tanque maior.', icone: 'grande' },
+	{ nome: 'Para programas', texto: 'Paga por litro: cada milhão de tokens tem um preço.', icone: 'bomba' },
+] as const;
+---
+<div
+	class="cb not-content"
+	role="img"
+	aria-label={`Os tokens são o combustível. Numa conversa longa, uma mensagem gasta, em valores de exemplo: ${ITENS.map((i) => `${i.nome.toLowerCase()}, ${fmt(i.tokens)} tokens`).join('; ')}. O pedido é o que menos gasta; a conversa e os arquivos, os que mais gastam. Como você paga: no plano grátis, um tanque pequeno que enche de novo; no plano pago, um tanque maior; para programas, paga por milhão de tokens.`}
+>
+	<div class="cb-gasta">
+		<div class="cb-tanque" aria-hidden="true">
+			<span class="cb-tanque-label">cheio</span>
+			<div class="cb-tanque-corpo">
+				{ITENS.map((i, n) => <i class="cb-gomo" style={`flex-grow:${i.tokens}; --i:${n}`}></i>)}
+				<i class="cb-gomo cb-sobra" style={`flex-grow:${SOBRA}`}></i>
+			</div>
+			<span class="cb-tanque-label">vazio</span>
+		</div>
+		<div class="cb-lista">
+			<p class="cb-label">Uma mensagem numa conversa longa · valores de exemplo</p>
+			<ol>
+				{ITENS.map((i, n) => (
+					<li style={`--i:${n}; --w:${(i.tokens / MAIOR) * 100}%`}>
+						<span class="cb-lado">{i.lado}</span>
+						<span class="cb-nome">{i.nome}</span>
+						<span class="cb-barra"><i></i></span>
+						<span class="cb-qtd">{fmt(i.tokens)}</span>
+					</li>
+				))}
+			</ol>
+		</div>
+	</div>
+	<div class="cb-paga">
+		<p class="cb-label">Como você paga</p>
+		<ul>
+			{PLANOS.map((p, n) => (
+				<li style={`--i:${n}`}>
+					<svg class="cb-icone" viewBox="0 0 40 48" aria-hidden="true">
+						{p.icone === 'pequeno' && (
+							<>
+								<rect x="11" y="20" width="18" height="24" rx="3" />
+								<rect class="cb-icone-nivel" x="13" y="32" width="14" height="10" rx="1.5" />
+								<path class="cb-icone-traco" d="M30 9a10 10 0 1 0 3 9" />
+								<path class="cb-icone-traco" d="M33 5v6h-6" />
+							</>
+						)}
+						{p.icone === 'grande' && (
+							<>
+								<rect x="5" y="6" width="30" height="38" rx="4" />
+								<rect class="cb-icone-nivel" x="8" y="16" width="24" height="25" rx="2" />
+							</>
+						)}
+						{p.icone === 'bomba' && (
+							<>
+								<rect x="6" y="8" width="20" height="36" rx="3" />
+								<rect class="cb-icone-nivel" x="10" y="13" width="12" height="9" rx="1" />
+								<path class="cb-icone-traco" d="M26 16h5a3 3 0 0 1 3 3v15a3 3 0 0 1-6 0v-6" />
+							</>
+						)}
+					</svg>
+					<div>
+						<b>{p.nome}</b>
+						<span>{p.texto}</span>
+					</div>
+				</li>
+			))}
+		</ul>
+	</div>
+</div>
+<style define:vars={{ step: `${STEP}ms` }}>
+	.cb {
+		display: grid;
+		grid-template-columns: 1.45fr 1fr;
+		gap: 26px;
+		align-items: stretch;
+	}
+	/* `.cb` na frente: o `.reveal p, ul, ol { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.cb .cb-label {
+		margin: 0 0 14px;
+		font: 500 13px/1.2 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+
+	/* ---------- O que gasta ---------- */
+	.cb-gasta {
+		display: grid;
+		grid-template-columns: 70px 1fr;
+		gap: 24px;
+		padding: 22px 24px;
+		border: 2px solid var(--ivr-ink);
+		border-radius: 8px;
+		background: var(--ivr-paper);
+	}
+	.cb-tanque {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		justify-items: center;
+		gap: 6px;
+	}
+	.cb-tanque-label {
+		font: 700 18px/1 var(--ivr-font-hand);
+		color: var(--ivr-graphite-ink);
+	}
+	.cb-tanque-corpo {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		width: 52px;
+		padding: 4px;
+		border: 2.5px solid var(--ivr-ink);
+		border-radius: 10px;
+	}
+	.cb-gomo {
+		display: block;
+		flex-basis: 0;
+		min-height: 3px;
+		border-radius: 3px;
+		/* Estado final: os gomos gastos ficam vazios (só o contorno tracejado). */
+		background: transparent;
+		box-shadow: inset 0 0 0 1.5px var(--ivr-line);
+	}
+	.cb-sobra {
+		background: var(--ivr-ink);
+		box-shadow: none;
+	}
+	.cb .cb-lista ol {
+		display: grid;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.cb-lista li {
+		display: grid;
+		grid-template-columns: 52px 210px 1fr 58px;
+		align-items: center;
+		gap: 10px;
+	}
+	.cb-lado {
+		font: 500 12px/1 var(--ivr-font-mono);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.cb-nome {
+		font: 700 19px/1.1 var(--ivr-font-display);
+		letter-spacing: -0.01em;
+		color: var(--ivr-ink);
+	}
+	.cb-barra {
+		height: 14px;
+		border-radius: 3px;
+		background: var(--ivr-bg);
+		overflow: hidden;
+	}
+	.cb-barra i {
+		display: block;
+		width: var(--w);
+		height: 100%;
+		min-width: 3px;
+		border-radius: 3px;
+		background: var(--ivr-graphite);
+		transform-origin: left center;
+	}
+	.cb-qtd {
+		text-align: right;
+		font: 500 15px/1 var(--ivr-font-mono);
+		font-variant-numeric: tabular-nums;
+		color: var(--ivr-ink-soft);
+	}
+
+	/* ---------- Como você paga ---------- */
+	.cb-paga {
+		padding: 22px 24px;
+		border-radius: 8px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.cb-paga .cb-label {
+		color: var(--ivr-orange);
+	}
+	.cb .cb-paga ul {
+		display: grid;
+		gap: 18px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.cb-paga li {
+		display: grid;
+		grid-template-columns: 44px 1fr;
+		gap: 14px;
+		align-items: center;
+	}
+	.cb-paga b {
+		display: block;
+		font: 900 23px/1.1 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+	}
+	.cb-paga li span {
+		display: block;
+		margin-top: 3px;
+		font-size: 18px;
+		line-height: 1.3;
+		opacity: 0.85;
+	}
+	.cb-icone {
+		width: 44px;
+		height: 52px;
+		overflow: visible;
+	}
+	.cb-icone rect {
+		fill: none;
+		stroke: var(--ivr-bg);
+		stroke-width: 2.5;
+	}
+	.cb-icone .cb-icone-nivel {
+		fill: var(--ivr-orange);
+		stroke: none;
+	}
+	.cb-icone-traco {
+		fill: none;
+		stroke: var(--ivr-orange);
+		stroke-width: 2.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	/* ---------- Sequência: cada item aparece, a barra cresce e o gomo do tanque queima ---------- */
+	@keyframes cb-in {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+	}
+	@keyframes cb-grow {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	@keyframes cb-burn {
+		0%,
+		20% {
+			background: var(--ivr-ink);
+			box-shadow: none;
+		}
+		45% {
+			background: var(--ivr-orange);
+			box-shadow: none;
+		}
+	}
+	:global(.present) .cb-gomo:not(.cb-sobra) {
+		animation: cb-burn 900ms both;
+		animation-delay: calc(500ms + var(--i) * var(--step));
+	}
+	:global(.present) .cb-lista li {
+		animation: cb-in 300ms both;
+		animation-delay: calc(450ms + var(--i) * var(--step));
+	}
+	:global(.present) .cb-barra i {
+		animation: cb-grow 500ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(500ms + var(--i) * var(--step));
+	}
+	:global(.present) .cb-paga {
+		animation: cb-in 450ms both;
+		animation-delay: calc(900ms + 6 * var(--step));
+	}
+	:global(.present) .cb-paga li {
+		animation: cb-in 350ms both;
+		animation-delay: calc(1200ms + 6 * var(--step) + var(--i) * 250ms);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .cb * {
+			animation: none !important;
+		}
+	}
+</style>

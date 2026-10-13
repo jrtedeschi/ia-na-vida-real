@@ -102,10 +102,6 @@ ivr-transformer .tf-pct {
 ivr-transformer .tf-ink {
 	z-index: 1;
 }
-ivr-transformer .tf-ink .tf-arc {
-	stroke: var(--ivr-orange);
-	opacity: 0.85;
-}
 ivr-transformer .tf-ink .tf-flow {
 	stroke: var(--ivr-ink);
 	stroke-width: 2;
@@ -118,4 +114,40 @@ ivr-transformer .tf-ink .tf-loop {
 ivr-transformer .tf-note {
 	position: absolute;
 	white-space: nowrap;
+}
+
+/* Atenção: uma barra por token anterior, dentro da pilha de camadas. */
+ivr-transformer .tf-att,
+ivr-transformer .tf-att-note {
+	grid-column: 3;
+	position: relative;
+	z-index: 1;
+	margin: 0 18px;
+}
+ivr-transformer .tf-att {
+	display: block;
+	height: 12px;
+	border-radius: 3px;
+	background: var(--ivr-bg);
+}
+ivr-transformer .tf-att i {
+	display: block;
+	height: 100%;
+	border-radius: 3px;
+	background: var(--ivr-graphite);
+	transform-origin: left center;
+}
+ivr-transformer .tf-att-hi i {
+	background: var(--ivr-orange);
+}
+ivr-transformer .tf-att-note {
+	font: 600 clamp(11px, 1.3cqi, 14px) / 1.2 var(--ivr-font-body);
+	color: var(--ivr-ink-soft);
+}
+ivr-transformer .tf-layers .tf-layers-tag {
+	position: absolute;
+	right: 10px;
+	bottom: -22px;
+	font: 500 clamp(9px, 1cqi, 11px) / 1 var(--ivr-font-mono);
+	color: var(--ivr-ink-soft);
 }
