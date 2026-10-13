@@ -3,7 +3,13 @@
  * Um pedido, três entregas: o pedido de um ETL de pagamentos em português e o que a IA produz em
  * sequência — o código Python, o DAG no Airflow e o painel de receita. Estático; no slide ativo,
  * cada etapa entra depois da anterior (só CSS, sem JS). Os números do painel são de exemplo.
+ * Com `simples`, para turma leiga: o pedido em português e só o painel, sem código nem DAG.
  */
+interface Props {
+	simples?: boolean;
+}
+const { simples = false } = Astro.props;
+const PEDIDO_SIMPLES = 'Todo dia às 6h, junte os pagamentos do dia e me mostre a receita por meio de pagamento.';
 type Tok = [string, string?]; // [texto, classe de cor]
 const CODE: Tok[][] = [
 	[['def', 'k'], [' '], ['extrair', 'f'], ['(dia):']],
@@ -25,29 +31,43 @@ const BARS: [string, number, string][] = [
 	['Boleto', 7, 'R$ 3,4 mil'],
 ];
 ---
-<div class="pe not-content" role="img" aria-label="Um pedido ao Claude Code que chama a skill /create-etl para a base de pagamentos. A IA entrega, em sequência: o código Python com as funções extrair, transformar e carregar; um DAG no Airflow com quatro tarefas que rodam todo dia; e um painel de receita por meio de pagamento, com dados de exemplo.">
-	<p class="pe-ask">
-		<small>Você · Claude Code</small><code class="pe-skill">/create-etl</code> base de pagamentos, todo dia às 6h: trate, carregue no data warehouse, crie o DAG no Airflow e um painel de receita.
-	</p>
+<div
+	class:list={['pe not-content', { 'pe-simples': simples }]}
+	role="img"
+	aria-label={simples
+		? `Um pedido em português: "${PEDIDO_SIMPLES}" A IA entrega um painel de receita por meio de pagamento, com dados de exemplo.`
+		: 'Um pedido ao Claude Code que chama a skill /create-etl para a base de pagamentos. A IA entrega, em sequência: o código Python com as funções extrair, transformar e carregar; um DAG no Airflow com quatro tarefas que rodam todo dia; e um painel de receita por meio de pagamento, com dados de exemplo.'}
+>
+	{simples ? (
+		<p class="pe-ask"><small>Você · Claude</small>{PEDIDO_SIMPLES}</p>
+	) : (
+		<p class="pe-ask">
+			<small>Você · Claude Code</small><code class="pe-skill">/create-etl</code> base de pagamentos, todo dia às 6h: trate, carregue no data warehouse, crie o DAG no Airflow e um painel de receita.
+		</p>
+	)}
 	<div class="pe-row">
-		<figure class="pe-win pe-step" style="--s:0">
-			<figcaption class="pe-bar"><i></i><i></i><i></i><span>etl_pagamentos.py</span></figcaption>
-			<ol class="pe-code">
-				{CODE.map((line, i) => <li style={`--i:${i}`}>{line.map(([t, c]) => <span class={c}>{t}</span>)}</li>)}
-			</ol>
-		</figure>
-		<p class="pe-arrow pe-step" style="--s:1" aria-hidden="true">→</p>
-		<figure class="pe-win pe-step" style="--s:2">
-			<figcaption class="pe-bar"><i></i><i></i><i></i><span>Airflow · dag_pagamentos</span></figcaption>
-			<div class="pe-dag">
-				<p class="pe-sched">schedule <b>@daily</b> · 06:00</p>
-				<ol>
-					{TASKS.map((t, i) => <li style={`--i:${i}`}><b aria-hidden="true"></b>{t}</li>)}
-				</ol>
-			</div>
-		</figure>
-		<p class="pe-arrow pe-step" style="--s:3" aria-hidden="true">→</p>
-		<figure class="pe-win pe-dash pe-step" style="--s:4">
+		{!simples && (
+			<Fragment>
+				<figure class="pe-win pe-step" style="--s:0">
+					<figcaption class="pe-bar"><i></i><i></i><i></i><span>etl_pagamentos.py</span></figcaption>
+					<ol class="pe-code">
+						{CODE.map((line, i) => <li style={`--i:${i}`}>{line.map(([t, c]) => <span class={c}>{t}</span>)}</li>)}
+					</ol>
+				</figure>
+				<p class="pe-arrow pe-step" style="--s:1" aria-hidden="true">→</p>
+				<figure class="pe-win pe-step" style="--s:2">
+					<figcaption class="pe-bar"><i></i><i></i><i></i><span>Airflow · dag_pagamentos</span></figcaption>
+					<div class="pe-dag">
+						<p class="pe-sched">schedule <b>@daily</b> · 06:00</p>
+						<ol>
+							{TASKS.map((t, i) => <li style={`--i:${i}`}><b aria-hidden="true"></b>{t}</li>)}
+						</ol>
+					</div>
+				</figure>
+			</Fragment>
+		)}
+		<p class="pe-arrow pe-step" style={`--s:${simples ? 0 : 3}`} aria-hidden="true">{simples ? '↓' : '→'}</p>
+		<figure class="pe-win pe-dash pe-step" style={`--s:${simples ? 1 : 4}`}>
 			<figcaption class="pe-bar"><i></i><i></i><i></i><span>Painel · Receita</span></figcaption>
 			<div class="pe-panel">
 				<div class="pe-kpis">
@@ -334,6 +354,23 @@ const BARS: [string, number, string][] = [
 	:global(.present) .pe-bars i {
 		animation: pe-grow 600ms both cubic-bezier(0.16, 1, 0.3, 1);
 		animation-delay: calc(4900ms + var(--i) * 150ms);
+	}
+	/* Modo simples: pedido em cima, seta para baixo, painel centralizado e maior. */
+	.pe-simples .pe-ask {
+		justify-self: center;
+		font-size: 26px;
+	}
+	.pe-simples .pe-row {
+		grid-template-columns: minmax(0, 620px);
+		justify-content: center;
+		justify-items: center;
+	}
+	.pe-simples .pe-win {
+		width: 100%;
+		min-height: 0;
+	}
+	:global(.present) .pe-simples .pe-bars i {
+		animation-delay: calc(2200ms + var(--i) * 150ms);
 	}
 	@media (prefers-reduced-motion: reduce) {
 		:global(.present) .pe-ask,

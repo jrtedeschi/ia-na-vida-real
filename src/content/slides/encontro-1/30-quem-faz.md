@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: visual
 title: Empresa, modelo e aplicativo
 visual: quem-e-quem

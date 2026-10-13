@@ -5,7 +5,7 @@ visual: fragmentos
 visualProps:
   note: "1 palavra, 2 fragmentos"
   unit: fragmentos
-  alias: "em inglês, tokens"
+  alias: "fragmento = token, o nome técnico"
 notes: |
-  A frase é o pedido da demonstração do fim da aula. Uma palavra pode virar dois fragmentos. Esses fragmentos se chamam tokens: o limite da conversa e o preço dos planos são contados neles. É o combustível, daqui a pouco.
+  A frase é o pedido da demonstração do fim da aula. Uma palavra pode virar dois fragmentos: a IA corta o texto nos pedaços que mais apareceram no treino, não em sílabas. Palavra comum vira um pedaço; palavra menos comum, dois ou três. Dizer com todas as letras: fragmento e token são a mesma coisa; daqui em diante, a tela usa token. O limite da conversa e o preço dos planos são contados neles; isso volta no capítulo seguinte, no combustível.
 ---

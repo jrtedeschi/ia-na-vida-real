@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: visual
 title: Um erro no começo vira base para o resto
 visual: raciocinio-erro

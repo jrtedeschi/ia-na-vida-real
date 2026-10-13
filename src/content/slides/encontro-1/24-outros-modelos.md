@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: visual
 title: E imagem, vídeo e som?
 visual: difusao

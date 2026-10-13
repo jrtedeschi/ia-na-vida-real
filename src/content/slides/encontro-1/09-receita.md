@@ -10,5 +10,5 @@ items:
   - Existe uma maionese japonesa chamada Kewpie, muito boa!
   - Desenvolvi com IA uma receita caseira de Kewpie
 notes: |
-  Ao vivo, uma frase: a IA não cozinha; encurta o caminho entre a vontade e a primeira tentativa. O gosto final é seu. Não contar a história da Kewpie.
+  Ao vivo, uma frase: a IA não cozinha; encurta o caminho entre a vontade e a primeira tentativa. O gosto final é seu. Não contar a história da Kewpie. Em seguida, a turma faz o primeiro pedido.
 ---

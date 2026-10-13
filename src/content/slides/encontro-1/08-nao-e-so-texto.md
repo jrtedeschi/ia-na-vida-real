@@ -14,6 +14,6 @@ items:
     image: ./img/sub-3-brinquedo.jpg
     alt: Dois submarinos amarelos impressos em 3D sobre uma mesa cinza
 notes: |
-  Ao vivo, 1 minuto: da descrição à peça na mesa. A IA também cria imagem e, com a ferramenta certa, objeto físico. No clique para sair, a água sobe; no fim aparece "Perguntas até aqui?". Não abrir rodada: a pergunta fica para o exercício "Pegue a IA inventando".
-  Se perguntarem: o modelo 3D saiu do Meshy 7 e do Tripo 3.1 Ultra, a partir da imagem do Gemini. Como a imagem funciona aparece no slide de imagem, vídeo e som, em 45 segundos.
+  Ao vivo, 1 minuto: da descrição à peça na mesa. A IA também cria imagem e, com a ferramenta certa, objeto físico. No clique para sair, a água sobe; no fim aparece "Perguntas até aqui?". Não abrir rodada aqui: logo em seguida a turma faz o primeiro pedido, e as perguntas abertas vêm depois dos quatro encontros.
+  Se perguntarem: o modelo 3D saiu do Meshy 7 e do Tripo 3.1 Ultra, a partir da imagem do Gemini. Como a imagem funciona ficou fora desta aula (slide 24, escondido): a imagem começa bagunçada e vai ficando parecida com o pedido, por isso erra dedo e letra.
 ---

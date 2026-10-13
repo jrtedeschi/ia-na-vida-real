@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: visual
 title: Cada salto chega mais rápido
 visual: evolucao

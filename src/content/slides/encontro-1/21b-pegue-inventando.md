@@ -1,12 +1,12 @@
 ---
 layout: list
-kicker: Agora vocês · 8 minutos
+kicker: Agora vocês · 10 minutos
 title: Pegue a IA inventando
 items:
-  - Abra um chat sem busca na web
-  - Peça 3 livros de um tema que você conhece, com autor, ano e editora
-  - Confira um deles fora da IA
-  - "No chat da aula: existiu ou inventou"
+  - Peça 3 livros de um tema que você conhece bem, com autor, ano e editora
+  - "Termine o pedido com: “Responda só com o que você já sabe, sem pesquisar na internet.”"
+  - Confira um deles no Google
+  - "Conte para a turma: existiu ou inventou?"
 notes: |
-  A turma faz, na própria IA. Você não demonstra antes. Leia o chat e chame duas pessoas. Se ninguém achar erro, plano B em 1 minuto, sem busca na web: "Por que a padaria Estrela, da rua [perto de você], fechou em 2015?" Feche com: tom confiante não é prova. O próximo slide explica o porquê.
+  A turma faz, na própria IA, na mesma conversa do jantar ou numa nova. Você não demonstra antes. A frase do fim do pedido substitui desligar a busca, que leigo não sabe fazer. Ande pela sala e chame duas pessoas para contar. Se ninguém achar erro, plano B em 1 minuto, com a mesma frase no fim: "Por que a padaria Estrela, da rua [perto de você], fechou em 2015?" Feche com: tom confiante não é prova. O próximo slide explica o porquê.
 ---

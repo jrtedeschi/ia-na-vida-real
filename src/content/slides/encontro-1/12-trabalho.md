@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: cards
 class: s-bedrock
 title: Como a tecnologia muda o trabalho
