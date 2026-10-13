@@ -1,0 +1,52 @@
+---
+title: Um micro app na sua planilha
+description: Um controle de gastos no Google Planilhas, montado em casa com a ajuda de um assistente de IA, um passo por página.
+sidebar:
+  order: 0
+  label: Comece aqui
+---
+import { Aside } from '@astrojs/starlight/components';
+
+Este é o app do Encontro 4, "Sua rotina com IA". É o último degrau da escada: a planilha faz uma tarefa sozinha, toda semana. Na aula você vê a demonstração. Em casa, num computador, você monta o seu em cerca de 40 minutos.
+
+O app tem um menu na planilha, confere as linhas, manda um resumo dos gastos por e-mail toda segunda e, se você quiser, abre um formulário no celular.
+
+<Aside type="caution" title="Segurança">
+Teste numa planilha nova, com os gastos de exemplo. Na conversa com a IA, nunca cole CPF, número de conta, cartão ou senha. Para pedir ajuda, cole só a mensagem de erro. Leia a tela de permissões antes de clicar em Permitir. Mais em [Segurança e privacidade](/consulta/seguranca-e-privacidade/).
+</Aside>
+
+## Com um assistente de IA
+
+Abra uma conversa nova num assistente grátis (Claude, ChatGPT ou Gemini) e mande este pedido:
+
+```text
+Leia este guia e me conduza, um passo por vez:
+https://jrtedeschi.github.io/ia-na-vida-real/consulta/micro-apps-na-planilha/AGENTS.md
+```
+
+Se o assistente disser que não consegue abrir links, siga as páginas abaixo sozinho e cole na conversa só o texto do passo em que travou.
+
+## Os passos
+
+| Passo | O que você faz | Entra quando |
+|---|---|---|
+| [00](passo-00/) | Conta certa, computador e cuidado com os dados | sempre começa aqui |
+| [01](passo-01/) | Cria a planilha e abre o editor do Apps Script | 00 feito |
+| [02](passo-02/) | Cola os 8 arquivos de código | editor aberto, ligado à planilha |
+| [03](passo-03/) | Executa pela primeira vez e lê as permissões | 8 arquivos salvos sem erro |
+| [04](passo-04/) | Testa o menu, a verificação e o resumo | autorização concluída |
+| [05](passo-05/) | Agenda o resumo semanal | o resumo chegou no e-mail |
+| [06](passo-06/) | Publica o formulário do celular (opcional) | 05 feito e você quer lançar pelo celular |
+| [07](passo-07/) | Confere tudo e aprende a desligar | 05 feito |
+| [Erros](erros/) | Acha o passo que resolve uma mensagem de erro | aparece um erro |
+| [Glossário](glossario/) | Gatilho, script vinculado, app da Web | um termo não ficou claro |
+
+## Gastos de exemplo
+
+A [planilha de exemplo](/assets/gastos-exemplo.csv) tem as mesmas colunas da aba Gastos: Data, Descrição, Categoria e Valor, com dados inventados. É a mesma do Encontro 3. Também em [Excel](/assets/gastos-exemplo.xlsx).
+
+Para usar no Google Planilhas: Arquivo, Importar, Fazer upload, e escolha "Substituir a página atual". Faça isso depois do passo 03, na aba Gastos.
+
+## Só tem celular
+
+O editor do Apps Script precisa de um computador. Pelo celular, abra a planilha de exemplo e veja a gravação da demonstração da aula.

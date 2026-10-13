@@ -1,0 +1,35 @@
+---
+/**
+ * Página de um passo do Tijolinho. O texto vem de tijolinho/passos/NN-*.md (fonte única,
+ * a mesma que o assistente de IA lê); aqui só entram a lista "Confira antes de seguir"
+ * (do campo `verificacao`, no máximo 3 itens) e a navegação.
+ */
+interface Props {
+	frontmatter: { id: string | number; objetivo: string; verificacao: string[]; proximo?: string | number };
+	fonte: string;
+}
+const { frontmatter: fm, fonte } = Astro.props;
+const id = String(fm.id).padStart(2, '0');
+if (!Array.isArray(fm.verificacao) || fm.verificacao.length > 3) {
+	throw new Error(`Passo ${id}: a verificação precisa ter no máximo 3 itens (tem ${fm.verificacao?.length}).`);
+}
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const raiz = `${base}/consulta/micro-apps-na-planilha`;
+---
+<p class="ivr-passo-obj"><b>Objetivo:</b> {fm.objetivo}</p>
+<slot />
+<div class="not-content ivr-ex">
+	<ivr-checklist data-key={`tijolinho-passo-${id}`}>
+		<p class="ivr-label">Confira antes de seguir</p>
+		<ul class="ivr-checks">
+			{fm.verificacao.map((c, i) => (
+				<li><label><input type="checkbox" id={`passo-${id}-c${i}`} /> <span>{c}</span></label></li>
+			))}
+		</ul>
+	</ivr-checklist>
+</div>
+<p>
+	Deu erro? Veja <a href={`${raiz}/erros/`}>os erros mais comuns</a>. Termo estranho? Veja <a href={`${raiz}/glossario/`}>o glossário</a>.
+	Para o assistente de IA, este passo em texto: <a href={`${raiz}/${fonte}`}>{fonte}</a>.
+</p>
+<script>import './ivr-elements';</script>

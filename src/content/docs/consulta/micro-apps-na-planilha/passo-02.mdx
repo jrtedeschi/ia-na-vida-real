@@ -1,0 +1,42 @@
+---
+title: '02 · Cole os arquivos de código'
+description: 'Ter os 8 arquivos do app no editor, salvos, sem erro de sintaxe.'
+sidebar:
+  order: 3
+---
+import Passo from '../../../../components/Passo.astro';
+import Texto, { frontmatter as passo } from '../../../../../tijolinho/passos/02-colar-codigo.md';
+import { Code } from '@astrojs/starlight/components';
+import c0 from '../../../../../tijolinho/codigo/appsscript.json?raw';
+import c1 from '../../../../../tijolinho/codigo/config.gs?raw';
+import c2 from '../../../../../tijolinho/codigo/dominio.gs?raw';
+import c3 from '../../../../../tijolinho/codigo/planilha.gs?raw';
+import c4 from '../../../../../tijolinho/codigo/email.gs?raw';
+import c5 from '../../../../../tijolinho/codigo/menu.gs?raw';
+import c6 from '../../../../../tijolinho/codigo/web.gs?raw';
+import c7 from '../../../../../tijolinho/codigo/Formulario.html?raw';
+
+<Passo frontmatter={passo} fonte="passos/02-colar-codigo.md">
+<Texto />
+</Passo>
+
+## O código, para copiar
+
+Cada bloco tem um botão de copiar no canto. Copie o bloco inteiro, do começo ao fim. Este é o mesmo arquivo que o assistente de IA lê.
+
+<Code code={c0} lang="json" title="appsscript.json" />
+
+<Code code={c1} lang="js" title="config.gs" />
+
+<Code code={c2} lang="js" title="dominio.gs" />
+
+<Code code={c3} lang="js" title="planilha.gs" />
+
+<Code code={c4} lang="js" title="email.gs" />
+
+<Code code={c5} lang="js" title="menu.gs" />
+
+<Code code={c6} lang="js" title="web.gs" />
+
+<Code code={c7} lang="html" title="Formulario.html" />
+
