@@ -1,7 +1,11 @@
 ---
-layout: big
-title: Mais otimista do que pessimista
+layout: visual
+class: s-stat
+visual: vida-melhor
+kicker: Mais otimista do que pessimista
+title: A melhor época para estar vivo
+caveat: "“Assustar as pessoas é desnecessário. É irresponsável.” Jensen Huang, CEO da Nvidia, sobre o “apocalipse da IA” ([The Guardian, setembro de 2026](https://www.theguardian.com/technology/2026/sep/22/ai-doomsday-trump-xi))"
 notes: |
-  Início de conversa. Dizer com franqueza: estou mais otimista do que pessimista. As revoluções tecnológicas sempre assustaram; a diferença agora é a velocidade. Perguntar à turma: o que mudou no seu trabalho nos últimos dois anos? O título "Admirável Mundo Novo" fica guardado para o slide do espanto, logo adiante.
+  Início de conversa, passar segurança. Dizer com franqueza: estou mais otimista do que pessimista, e esta é a melhor época da história para estar vivo. Vivemos mais e melhor por causa das revoluções industriais: a máquina, mas também as vacinas, o saneamento e a escola para todos, frutos das mesmas revoluções científicas e tecnológicas. Esse é o argumento: cada revolução tecnológica deixou a vida melhor, e eu aposto que a da IA vai pelo mesmo caminho. É uma aposta com base no histórico, não uma certeza; a transição pode ser dura para quem está no meio dela (volta no slide do trabalho). Os números (Our World in Data): expectativa de vida no mundo de cerca de 29 anos em 1800 para 73 em 2023; mortalidade infantil antes dos 5 anos de cerca de 43% em 1800 para 4% em 2021 (ou seja, 57% das crianças chegavam aos 5 anos, hoje 96%); alfabetização de adultos de 12% em 1820 para 87% em 2022. O "apocalipse da IA" rende manchete e serve mais para causar medo do que para ajudar alguém a decidir o que fazer. Para ser justo, se perguntarem: Huang vende os chips que movem a IA, então tem interesse no otimismo; e a mesma matéria do Guardian ("The world freaked out about AI doomsday. Now what?", Blake Montgomery, 22/09/2026) registra que há quem peça regulação, como Dario Amodei, e que EUA e China discutem um sistema de alerta para incidentes com IA. Ter cuidado é diferente de ter medo. Links: https://www.theguardian.com/technology/2026/sep/22/ai-doomsday-trump-xi · https://ourworldindata.org/life-expectancy · https://ourworldindata.org/child-mortality · https://ourworldindata.org/literacy Perguntar à turma: o que mudou no seu trabalho nos últimos dois anos?
 ---
-As mudanças vêm em ciclos cada vez mais curtos.
+Foram as revoluções tecnológicas que nos trouxeram até aqui. A da IA é a próxima.

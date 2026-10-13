@@ -1,0 +1,152 @@
+---
+/**
+ * A vida melhorou: três indicadores de bem-estar, cada um com o valor de por volta de 1800 (cinza)
+ * e o de hoje (laranja) numa régua de 0 a 100, ligados por uma barra que cresce do antes para o
+ * hoje quando o slide fica ativo (só CSS). Fonte: Our World in Data; anos exatos nas notas do slide.
+ */
+const ROWS: { label: string; then: number; now: number; unit: string }[] = [
+	{ label: 'Expectativa de vida', then: 29, now: 73, unit: ' anos' },
+	{ label: 'Crianças que chegam aos 5 anos', then: 57, now: 96, unit: '%' },
+	{ label: 'Adultos que sabem ler', then: 12, now: 87, unit: '%' },
+];
+---
+<figure class="vm not-content" role="img" aria-label="A vida melhorou desde antes das revoluções industriais, por volta de 1800: expectativa de vida de 29 para 73 anos; crianças que chegam aos 5 anos de 57% para 96%; adultos que sabem ler de 12% para 87%. Fonte: Our World in Data.">
+	<p class="vm-legend" aria-hidden="true"><span class="vm-then">antes das revoluções industriais (~1800)</span><span class="vm-now">hoje</span></p>
+	<ol>
+		{ROWS.map((r, i) => (
+			<li style={`--a:${r.then}%; --b:${r.now}%; --i:${i}`}>
+				<p class="vm-label">{r.label}</p>
+				<div class="vm-track" aria-hidden="true">
+					<i class="vm-gain"></i>
+					<b class="vm-dot vm-dot-then"><span>{r.then}{r.unit}</span></b>
+					<b class="vm-dot vm-dot-now"><span>{r.now}{r.unit}</span></b>
+				</div>
+			</li>
+		))}
+	</ol>
+	<figcaption>Fonte: Our World in Data · <a href="https://ourworldindata.org/life-expectancy" target="_blank" rel="noopener">expectativa de vida</a>, <a href="https://ourworldindata.org/child-mortality" target="_blank" rel="noopener">mortalidade infantil</a> e <a href="https://ourworldindata.org/literacy" target="_blank" rel="noopener">alfabetização</a></figcaption>
+</figure>
+<style>
+	.vm {
+		margin: 0;
+		display: grid;
+		gap: 22px;
+	}
+	/* `.vm` na frente: o `.reveal p { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.vm .vm-legend {
+		display: flex;
+		gap: 22px;
+		margin: 0;
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.04em;
+		color: var(--ivr-ink-soft);
+	}
+	.vm-legend span::before {
+		content: '';
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		margin-right: 8px;
+		border-radius: 50%;
+		vertical-align: -1px;
+		background: var(--ivr-graphite);
+	}
+	.vm-legend .vm-now::before {
+		background: var(--ivr-orange);
+	}
+	.vm ol {
+		display: grid;
+		gap: 38px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.vm .vm-label {
+		margin: 0 0 30px;
+		font: 700 24px/1.1 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink);
+	}
+	/* Régua de 0 a 100: o antes e o hoje são pontos; o ganho é a barra entre eles. */
+	.vm-track {
+		position: relative;
+		height: 6px;
+		border-radius: 3px;
+		background: var(--ivr-line);
+	}
+	.vm-gain {
+		position: absolute;
+		left: var(--a);
+		width: calc(var(--b) - var(--a));
+		top: 0;
+		bottom: 0;
+		border-radius: 3px;
+		background: var(--ivr-orange);
+		transform-origin: left center;
+	}
+	.vm-dot {
+		position: absolute;
+		top: 50%;
+		width: 18px;
+		height: 18px;
+		margin: -9px 0 0 -9px;
+		border-radius: 50%;
+		border: 3px solid var(--ivr-bg);
+		background: var(--ivr-graphite);
+	}
+	.vm-dot-then {
+		left: var(--a);
+	}
+	.vm-dot-now {
+		left: var(--b);
+		background: var(--ivr-orange);
+	}
+	.vm-dot span {
+		position: absolute;
+		bottom: 18px;
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+		font: 500 16px/1 var(--ivr-font-mono);
+		color: var(--ivr-ink-soft);
+	}
+	.vm-dot-now span {
+		font: 900 26px/1 var(--ivr-font-display);
+		letter-spacing: -0.03em;
+		color: var(--ivr-ink);
+	}
+	.vm figcaption {
+		font: 500 12px/1.5 var(--ivr-font-mono);
+		color: var(--ivr-ink-soft);
+	}
+	.vm figcaption a {
+		color: inherit;
+		text-decoration-color: var(--ivr-orange);
+		text-underline-offset: 0.2em;
+	}
+	@keyframes vm-grow {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	@keyframes vm-in {
+		from {
+			opacity: 0;
+			transform: scale(0.4);
+		}
+	}
+	:global(.present) .vm-gain {
+		animation: vm-grow 900ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(500ms + var(--i) * 350ms);
+	}
+	:global(.present) .vm-dot-now {
+		animation: vm-in 350ms both;
+		animation-delay: calc(1200ms + var(--i) * 350ms);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .vm-gain,
+		:global(.present) .vm-dot-now {
+			animation: none;
+		}
+	}
+</style>

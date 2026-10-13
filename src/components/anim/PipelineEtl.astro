@@ -1,0 +1,347 @@
+---
+/**
+ * Um pedido, três entregas: o pedido de um ETL de pagamentos em português e o que a IA produz em
+ * sequência — o código Python, o DAG no Airflow e o painel de receita. Estático; no slide ativo,
+ * cada etapa entra depois da anterior (só CSS, sem JS). Os números do painel são de exemplo.
+ */
+type Tok = [string, string?]; // [texto, classe de cor]
+const CODE: Tok[][] = [
+	[['def', 'k'], [' '], ['extrair', 'f'], ['(dia):']],
+	[['    sql = '], ['"SELECT * FROM pagamentos"', 's']],
+	[['    '], ['return', 'k'], [' pd.read_sql(sql, origem)']],
+	[['']],
+	[['def', 'k'], [' '], ['transformar', 'f'], ['(df):']],
+	[['    ok = df[df.status == '], ['"aprovado"', 's'], [']']],
+	[['    ok['], ['"valor"', 's'], ['] = ok.centavos / '], ['100', 'n']],
+	[['    '], ['return', 'k'], [' ok.groupby('], ['"metodo"', 's'], [').valor.sum()']],
+	[['']],
+	[['def', 'k'], [' '], ['carregar', 'f'], ['(df):']],
+	[['    df.to_sql('], ['"receita"', 's'], [', dw, if_exists='], ['"append"', 's'], [')']],
+];
+const TASKS = ['extrair_pagamentos', 'transformar', 'carregar_dw', 'atualizar_painel'];
+const BARS: [string, number, string][] = [
+	['Pix', 62, 'R$ 29,9 mil'],
+	['Cartão', 31, 'R$ 14,9 mil'],
+	['Boleto', 7, 'R$ 3,4 mil'],
+];
+---
+<div class="pe not-content" role="img" aria-label="Um pedido ao Claude Code que chama a skill /create-etl para a base de pagamentos. A IA entrega, em sequência: o código Python com as funções extrair, transformar e carregar; um DAG no Airflow com quatro tarefas que rodam todo dia; e um painel de receita por meio de pagamento, com dados de exemplo.">
+	<p class="pe-ask">
+		<small>Você · Claude Code</small><code class="pe-skill">/create-etl</code> base de pagamentos, todo dia às 6h: trate, carregue no data warehouse, crie o DAG no Airflow e um painel de receita.
+	</p>
+	<div class="pe-row">
+		<figure class="pe-win pe-step" style="--s:0">
+			<figcaption class="pe-bar"><i></i><i></i><i></i><span>etl_pagamentos.py</span></figcaption>
+			<ol class="pe-code">
+				{CODE.map((line, i) => <li style={`--i:${i}`}>{line.map(([t, c]) => <span class={c}>{t}</span>)}</li>)}
+			</ol>
+		</figure>
+		<p class="pe-arrow pe-step" style="--s:1" aria-hidden="true">→</p>
+		<figure class="pe-win pe-step" style="--s:2">
+			<figcaption class="pe-bar"><i></i><i></i><i></i><span>Airflow · dag_pagamentos</span></figcaption>
+			<div class="pe-dag">
+				<p class="pe-sched">schedule <b>@daily</b> · 06:00</p>
+				<ol>
+					{TASKS.map((t, i) => <li style={`--i:${i}`}><b aria-hidden="true"></b>{t}</li>)}
+				</ol>
+			</div>
+		</figure>
+		<p class="pe-arrow pe-step" style="--s:3" aria-hidden="true">→</p>
+		<figure class="pe-win pe-dash pe-step" style="--s:4">
+			<figcaption class="pe-bar"><i></i><i></i><i></i><span>Painel · Receita</span></figcaption>
+			<div class="pe-panel">
+				<div class="pe-kpis">
+					<p><small>Receita hoje</small>R$ 48,2 mil</p>
+					<p><small>Aprovação</small>96%</p>
+				</div>
+				<p class="pe-chart-title">Receita por meio de pagamento</p>
+				<ul class="pe-bars">
+					{BARS.map(([name, pct, value], i) => (
+						<li style={`--i:${i}`}>
+							<span>{name}</span>
+							<i style={`--w:${pct}%`}></i>
+							<em>{value}</em>
+						</li>
+					))}
+				</ul>
+				<p class="pe-note">dados de exemplo</p>
+			</div>
+		</figure>
+	</div>
+</div>
+<style>
+	.pe {
+		--pe-bg: #1b1d23;
+		--pe-bar: #262931;
+		--pe-ink: #d7dae0;
+		--pe-soft: #9aa1ad;
+		--pe-ok: #3fb950;
+		display: grid;
+		gap: 22px;
+	}
+	/* `.pe` na frente: o `.reveal p { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.pe .pe-ask {
+		justify-self: start;
+		max-width: 62ch;
+		margin: 0;
+		padding: 10px 16px;
+		border-radius: 12px 12px 12px 3px;
+		background: #3f6fd0;
+		font: 500 20px/1.35 var(--ivr-font-body);
+		color: #fff;
+	}
+	/* A skill chamada no começo do pedido: comando em fonte de código, destacado como um "chip". */
+	.pe .pe-skill {
+		margin-right: 8px;
+		padding: 2px 8px 3px;
+		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.92);
+		font: 600 18px/1.4 var(--ivr-font-mono);
+		color: #1f3f8a;
+	}
+	.pe .pe-ask small {
+		display: block;
+		margin-bottom: 4px;
+		font: 500 11px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+	.pe-row {
+		display: grid;
+		grid-template-columns: 1.25fr auto 1fr auto 1fr;
+		align-items: stretch;
+		gap: 12px;
+	}
+	.pe-win {
+		margin: 0;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		min-height: 330px;
+		background: var(--pe-bg);
+		border: 2px solid var(--ivr-ink);
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 8px 8px 0 var(--ivr-line);
+		color: var(--pe-ink);
+	}
+	.pe-bar {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 9px 12px;
+		background: var(--pe-bar);
+		font: 500 12px/1 var(--ivr-font-mono);
+		color: var(--pe-soft);
+	}
+	.pe-bar i {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #ff6058;
+	}
+	.pe-bar i:nth-child(2) {
+		background: #ffbd2e;
+	}
+	.pe-bar i:nth-child(3) {
+		background: #28c941;
+	}
+	.pe-bar span {
+		margin-left: 6px;
+	}
+	.pe-arrow {
+		align-self: center;
+		margin: 0;
+		font: 700 34px/1 var(--ivr-font-display);
+		color: var(--ivr-orange);
+	}
+	/* Código */
+	.pe .pe-code {
+		margin: 0;
+		padding: 12px 12px 12px 0;
+		list-style: none;
+		counter-reset: ln;
+		font: 500 12.5px/1.6 var(--ivr-font-mono);
+		white-space: pre;
+	}
+	.pe-code li {
+		counter-increment: ln;
+	}
+	.pe-code li::before {
+		content: counter(ln);
+		display: inline-block;
+		width: 2.4em;
+		padding-right: 0.9em;
+		text-align: right;
+		color: #5c6370;
+	}
+	.pe-code .k {
+		color: #ff9a6a;
+	}
+	.pe-code .f {
+		color: #61afef;
+	}
+	.pe-code .s {
+		color: #98c379;
+	}
+	.pe-code .n {
+		color: #d19a66;
+	}
+	/* DAG */
+	.pe-dag {
+		display: grid;
+		align-content: start;
+		gap: 14px;
+		padding: 14px 16px;
+	}
+	.pe .pe-sched {
+		margin: 0;
+		font: 500 12px/1 var(--ivr-font-mono);
+		color: var(--pe-soft);
+	}
+	.pe-sched b {
+		color: var(--pe-ink);
+	}
+	.pe .pe-dag ol {
+		display: grid;
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.pe-dag li {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 9px 12px;
+		border: 1.5px solid #3a3f4b;
+		border-left: 5px solid var(--pe-ok);
+		border-radius: 4px;
+		background: #23262e;
+		font: 500 13px/1 var(--ivr-font-mono);
+	}
+	.pe-dag li + li::before {
+		content: '';
+		position: absolute;
+		left: 24px;
+		top: -17px;
+		height: 16px;
+		border-left: 2px solid #5c6370;
+	}
+	.pe-dag li b {
+		width: 10px;
+		height: 10px;
+		border-radius: 2px;
+		background: var(--pe-ok);
+	}
+	/* Painel */
+	.pe-panel {
+		display: grid;
+		align-content: start;
+		gap: 12px;
+		padding: 14px 16px;
+	}
+	.pe-kpis {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+	.pe .pe-kpis p {
+		margin: 0;
+		padding: 10px;
+		border-radius: 6px;
+		background: #23262e;
+		font: 700 20px/1.1 var(--ivr-font-display);
+		color: #fff;
+	}
+	.pe-kpis small {
+		display: block;
+		margin-bottom: 6px;
+		font: 500 11px/1 var(--ivr-font-mono);
+		color: var(--pe-soft);
+	}
+	.pe .pe-chart-title,
+	.pe .pe-note {
+		margin: 0;
+		font: 500 11px/1 var(--ivr-font-mono);
+		color: var(--pe-soft);
+	}
+	.pe .pe-bars {
+		display: grid;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.pe-bars li {
+		display: grid;
+		grid-template-columns: 4.2em 1fr auto;
+		align-items: center;
+		gap: 8px;
+		font: 500 12px/1 var(--ivr-font-mono);
+	}
+	.pe-bars i {
+		display: block;
+		width: var(--w);
+		height: 14px;
+		border-radius: 2px;
+		background: #ff9a6a;
+		transform-origin: left center;
+	}
+	.pe-bars em {
+		font-style: normal;
+		color: var(--pe-soft);
+	}
+	/* Sequência no slide ativo: pedido → código (linha a linha) → DAG (tarefas acendendo) → painel. */
+	@keyframes pe-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+	}
+	@keyframes pe-line {
+		from {
+			opacity: 0;
+			transform: translateX(-6px);
+		}
+	}
+	@keyframes pe-ok {
+		from {
+			border-left-color: #3a3f4b;
+		}
+	}
+	@keyframes pe-grow {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	:global(.present) .pe-ask {
+		animation: pe-in 400ms 200ms both cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	:global(.present) .pe-step {
+		animation: pe-in 450ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(900ms + var(--s) * 900ms);
+	}
+	:global(.present) .pe-code li {
+		animation: pe-line 250ms both;
+		animation-delay: calc(1200ms + var(--i) * 70ms);
+	}
+	:global(.present) .pe-dag li {
+		animation: pe-line 300ms both, pe-ok 300ms both;
+		animation-delay: calc(3100ms + var(--i) * 260ms), calc(3400ms + var(--i) * 260ms);
+	}
+	:global(.present) .pe-bars i {
+		animation: pe-grow 600ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(4900ms + var(--i) * 150ms);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .pe-ask,
+		:global(.present) .pe-step,
+		:global(.present) .pe-code li,
+		:global(.present) .pe-dag li,
+		:global(.present) .pe-bars i {
+			animation: none;
+		}
+	}
+</style>

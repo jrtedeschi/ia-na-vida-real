@@ -900,3 +900,114 @@ body {
 	font-weight: 400;
 	color: var(--ivr-orange);
 }
+
+/* Pedido → código → DAG → painel (visual: pipeline-etl). */
+.s-code {
+	justify-content: center;
+	gap: 18px !important;
+}
+.s-code h2 {
+	font-size: 52px;
+	max-width: none;
+}
+
+/* class: s-hook — frase de gancho: título enorme, a palavra em **negrito** ganha um círculo laranja
+   "à mão" que se desenha quando o slide entra; o `caveat:` vira anotação manuscrita no canto. */
+.s-hook {
+	justify-content: center;
+}
+.s-hook h2 {
+	font-size: 128px !important;
+	max-width: none !important;
+}
+.s-hook h2 b {
+	position: relative;
+	font-weight: inherit;
+}
+.s-hook h2 b::after {
+	content: '';
+	position: absolute;
+	inset: -16% -12% -22% -4%;
+	background: var(--ivr-orange);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='none'%3E%3Cpath d='M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26' fill='none' stroke='black' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='none'%3E%3Cpath d='M210 18C110 6 22 50 18 150s92 140 210 132 160-60 156-150S290 10 160 26' fill='none' stroke='black' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.present.s-hook h2 b::after {
+	animation: s-hook-draw 900ms 400ms both cubic-bezier(0.6, 0, 0.2, 1);
+}
+@keyframes s-hook-draw {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+.s-hook .s-sub {
+	font-size: 36px;
+	max-width: 36ch;
+}
+.s-hook .s-caveat {
+	align-self: flex-end;
+	margin-top: 36px !important;
+	max-width: none;
+	font: 700 36px/1.1 var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+	transform: rotate(-3deg);
+}
+.present.s-hook .s-caveat {
+	animation: s-hook-note 500ms 1300ms both cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes s-hook-note {
+	from {
+		opacity: 0;
+		transform: rotate(-3deg) translateX(-12px);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.present.s-hook h2 b::after,
+	.present.s-hook .s-caveat {
+		animation: none;
+	}
+}
+
+/* class s-stat (visual: vida-melhor) — o argumento à esquerda (kicker, título, frase, citação) e o
+   dado como gráfico à direita, ocupando a altura toda. */
+.reveal .slides > section.s-stat {
+	display: grid !important;
+	grid-template-columns: 1.15fr 0.85fr;
+	grid-template-rows: 1fr auto auto auto auto 1fr;
+	column-gap: 72px;
+	row-gap: 0 !important;
+}
+.s-stat > .s-kicker {
+	grid-column: 1;
+	grid-row: 2;
+	margin-bottom: 12px !important;
+}
+.s-stat > h2 {
+	grid-column: 1;
+	grid-row: 3;
+	font-size: 72px !important;
+}
+.s-stat > .s-sub {
+	grid-column: 1;
+	grid-row: 4;
+	margin-top: 26px !important;
+	font-size: 30px;
+	color: var(--ivr-ink);
+}
+.s-stat > .s-caveat {
+	grid-column: 1;
+	grid-row: 5;
+	margin-top: 26px !important;
+	padding-left: 18px;
+	border-left: 4px solid var(--ivr-orange);
+	font-size: 21px;
+	line-height: 1.45;
+}
+.s-stat > .vm {
+	grid-column: 2;
+	grid-row: 1 / -1;
+	align-self: center;
+}

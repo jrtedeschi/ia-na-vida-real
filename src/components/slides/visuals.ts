@@ -17,6 +17,8 @@ import Transformer from '../anim/Transformer.astro';
 import PromptArt from '../anim/PromptArt.astro';
 import MundoNovo from '../anim/MundoNovo.astro';
 import Submarino from '../anim/Submarino.astro';
+import PipelineEtl from '../anim/PipelineEtl.astro';
+import VidaMelhor from '../anim/VidaMelhor.astro';
 import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
@@ -40,6 +42,8 @@ export const VISUALS: Record<string, VisualEntry> = {
 	modelos: { Comp: Modelos, props: {}, slideClass: 's-wide' },
 	'feita-com-um-pedido': { Comp: PromptArt, props: { ...PROMPT_ART, ...PLAYED }, slideClass: 's-anim s-art' },
 	evolucao: { Comp: Evolucao, props: { ...EVOLUTION, ...PLAYED }, slideClass: 's-anim' },
+	'vida-melhor': { Comp: VidaMelhor, props: {}, slideClass: 's-stat' },
+	'pipeline-etl': { Comp: PipelineEtl, props: {}, slideClass: 's-code' },
 	submarino: { Comp: Submarino, props: {}, slideClass: '', overlay: true, exit: true },
 	'mundo-novo': { Comp: MundoNovo, props: { ...MUNDO_NOVO }, slideClass: 's-mundo', overlay: true },
 	'por-dentro-do-modelo': { Comp: Transformer, props: { ...TRANSFORMER, ...PLAYED }, slideClass: 's-anim' },
