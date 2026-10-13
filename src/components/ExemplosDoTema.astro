@@ -1,0 +1,15 @@
+---
+/** Os cartões de um tema da página Exemplos do dia a dia, lidos de src/data/exemplos. */
+import Exemplo from './Exemplo.astro';
+import { TEMAS } from '../data/exemplos';
+
+interface Props {
+	tema: string;
+}
+const { tema } = Astro.props;
+const grupo = TEMAS.find((t) => t.tema === tema);
+if (!grupo) throw new Error(`Tema "${tema}" não existe em src/data/exemplos.ts`);
+---
+{grupo.exemplos.map((e) => (
+	<Exemplo id={e.id} title={e.titulo} pedido={e.pedido} cuidado={e.cuidado}>{e.situacao}</Exemplo>
+))}

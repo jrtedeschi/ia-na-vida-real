@@ -1,0 +1,13 @@
+---
+/** Quem dá o curso: a mesma foto e as mesmas identidades do slide de apresentação. */
+import { Image } from 'astro:assets';
+import foto from '../../content/slides/encontro-1/img/joao.jpg';
+---
+<div class="ivr-professor not-content">
+	<Image src={foto} alt="Retrato de João Rafael sorrindo, de camiseta escura e braços cruzados" width={180} height={225} />
+	<div>
+		<h3>João Rafael</h3>
+		<p class="ivr-professor-tags">Engenheiro de dados <span>/</span> Pai de família <span>/</span> Leitor <span>/</span> Maker</p>
+		<p>Trabalho com dados há mais de 8 anos e uso IA todos os dias, no trabalho e em casa. Os exemplos do curso saem da minha vida real.</p>
+	</div>
+</div>

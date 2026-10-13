@@ -1,0 +1,43 @@
+---
+/**
+ * O próximo encontro e o material dele. Calculado no build: o destaque muda a cada publicação do
+ * site (o deploy roda a cada push). Depois do último encontro, aponta para a consulta.
+ */
+import { ENCONTROS, HORARIO, proximoEncontro } from '../../data/curso';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const proximo = proximoEncontro(new Date());
+const ultimoComMaterial = [...ENCONTROS].reverse().find((e) => e.links && e !== proximo);
+---
+<section class="ivr-proximo not-content" aria-labelledby="proximo-titulo">
+	{proximo ? (
+		<>
+			<p class="ivr-proximo-kicker">Próximo encontro · {proximo.dia}, {HORARIO}</p>
+			<h2 id="proximo-titulo">Encontro {proximo.n} · {proximo.titulo}</h2>
+			<p class="ivr-proximo-texto">{proximo.texto}</p>
+			{proximo.links ? (
+				<div class="ivr-proximo-acoes">
+					<a class="ivr-btn ivr-btn-main" href={`${base}${proximo.links.estudo}`}>O que preparar e estudar</a>
+					<a class="ivr-btn" href={`${base}${proximo.links.exercicios}`}>Exercícios</a>
+					<a class="ivr-btn" href={`${base}${proximo.links.slides}`} target="_blank" rel="noopener">Slides</a>
+				</div>
+			) : (
+				<p class="ivr-proximo-texto">O material deste encontro sai na semana da aula.</p>
+			)}
+			{!proximo.links && ultimoComMaterial?.links && (
+				<p class="ivr-proximo-texto">
+					Enquanto isso, reveja o <a href={`${base}${ultimoComMaterial.links.estudo}`}>Encontro {ultimoComMaterial.n}</a>.
+				</p>
+			)}
+		</>
+	) : (
+		<>
+			<p class="ivr-proximo-kicker">O curso terminou</p>
+			<h2 id="proximo-titulo">A consulta continua aqui</h2>
+			<p class="ivr-proximo-texto">O pedido em 5 partes, os conceitos e os exemplos ficam no site para você usar quando precisar.</p>
+			<div class="ivr-proximo-acoes">
+				<a class="ivr-btn ivr-btn-main" href={`${base}/consulta/pedido-em-5-partes/`}>Abrir a consulta</a>
+			</div>
+		</>
+	)}
+</section>
