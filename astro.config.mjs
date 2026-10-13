@@ -38,6 +38,18 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Encontro 2 · Contexto é tudo',
+					items: [{ label: 'Slides', link: '/encontro-2/slides/', attrs: { target: '_blank' } }],
+				},
+				{
+					label: 'Encontro 3 · IA no seu trabalho',
+					items: [{ label: 'Slides', link: '/encontro-3/slides/', attrs: { target: '_blank' } }],
+				},
+				{
+					label: 'Encontro 4 · Sua rotina com IA',
+					items: [{ label: 'Slides', link: '/encontro-4/slides/', attrs: { target: '_blank' } }],
+				},
+				{
 					label: 'Consulta',
 					items: [
 						{ label: 'O pedido em 5 partes', link: '/consulta/pedido-em-5-partes/' },
