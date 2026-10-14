@@ -3,16 +3,16 @@ layout: "roteiro"
 kicker: "O fio da aula"
 title: "Como a IA fica sabendo do que importa para você?"
 items:
-  - title: "O que a IA enxerga"
-    text: "A janela, a memória e o que entra nela."
+  - title: "A conversa"
+    text: "A janela e a memória."
   - title: "Seus documentos"
-    text: "Projetos e Gemini Notebook, com os seus arquivos."
-  - title: "Instruções que ficam"
-    text: "Instruções salvas e Gems."
-  - title: "Estudar com IA"
-    text: "Usar a IA para te perguntar, não só para responder."
-  - title: "Cuidados"
-    text: "Conversa nova, instruções escondidas e privacidade."
+    text: "Arquivos e sites que a IA lê antes de responder."
+  - title: "Instruções e skills"
+    text: "O pedido que você não precisa repetir."
+  - title: "Suas ferramentas"
+    text: "E-mail, Drive e planilhas, conectados à IA."
+  - title: "Aprender e se cuidar"
+    text: "Estudar com IA e o que pode dar errado com o contexto."
 notes: |
-  A pergunta do título é o fio da aula. Cada capítulo responde um pedaço.
+  Quatro níveis de contexto, do mais simples ao mais poderoso: conversa, documento, instrução que se repete e conexão com outros apps. O quinto capítulo junta estudo e cuidados.
 ---
