@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: cards
 title: Por que cada empresa tem vários modelos
 items:

@@ -5,7 +5,7 @@
  */
 interface Props {
 	id: string;
-	n: number;
+	n: number; // 0 = sem número (exercício feito em aula)
 	title: string;
 	when: 'Em aula' | 'Para casa';
 	minutes: number;
@@ -27,7 +27,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 			<span class:list={['ivr-tag', when === 'Em aula' && 'ivr-tag-o']}>{when} · {minutes} min</span>
 			<span class="ivr-tag">{tool}</span>
 		</div>
-		<h3>{n} · {title}</h3>
+		<h3>{n > 0 && `${n} · `}{title}</h3>
 		<div class="ivr-ex-sit"><slot /></div>
 		{hand && <span class="ivr-hand">{hand}</span>}
 	</div>

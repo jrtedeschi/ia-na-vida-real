@@ -9,7 +9,11 @@ interface Props {
 	simples?: boolean;
 }
 const { simples = false } = Astro.props;
-const PEDIDO_SIMPLES = 'Todo dia às 6h, junte os pagamentos do dia e me mostre a receita por meio de pagamento.';
+const PEDIDO_SIMPLES = 'Todo dia às 6h, junte as vendas do dia e me mostre quanto entrou por Pix, cartão e boleto.';
+// Rótulos do painel: no modo simples, palavras de quem vende, sem "receita" (que a turma lê como receita de comida).
+const ROTULOS = simples
+	? { painel: 'Painel · Vendas', total: 'Vendas hoje', extra: ['Pedidos', '412'], grafico: 'Quanto entrou por forma de pagamento' }
+	: { painel: 'Painel · Receita', total: 'Receita hoje', extra: ['Aprovação', '96%'], grafico: 'Receita por meio de pagamento' };
 type Tok = [string, string?]; // [texto, classe de cor]
 const CODE: Tok[][] = [
 	[['def', 'k'], [' '], ['extrair', 'f'], ['(dia):']],
@@ -35,7 +39,7 @@ const BARS: [string, number, string][] = [
 	class:list={['pe not-content', { 'pe-simples': simples }]}
 	role="img"
 	aria-label={simples
-		? `Um pedido em português: "${PEDIDO_SIMPLES}" A IA entrega um painel de receita por meio de pagamento, com dados de exemplo.`
+		? `Um pedido em português: "${PEDIDO_SIMPLES}" A IA entrega um painel de vendas com quanto entrou por forma de pagamento, com dados de exemplo.`
 		: 'Um pedido ao Claude Code que chama a skill /create-etl para a base de pagamentos. A IA entrega, em sequência: o código Python com as funções extrair, transformar e carregar; um DAG no Airflow com quatro tarefas que rodam todo dia; e um painel de receita por meio de pagamento, com dados de exemplo.'}
 >
 	{simples ? (
@@ -68,13 +72,13 @@ const BARS: [string, number, string][] = [
 		)}
 		<p class="pe-arrow pe-step" style={`--s:${simples ? 0 : 3}`} aria-hidden="true">{simples ? '↓' : '→'}</p>
 		<figure class="pe-win pe-dash pe-step" style={`--s:${simples ? 1 : 4}`}>
-			<figcaption class="pe-bar"><i></i><i></i><i></i><span>Painel · Receita</span></figcaption>
+			<figcaption class="pe-bar"><i></i><i></i><i></i><span>{ROTULOS.painel}</span></figcaption>
 			<div class="pe-panel">
 				<div class="pe-kpis">
-					<p><small>Receita hoje</small>R$ 48,2 mil</p>
-					<p><small>Aprovação</small>96%</p>
+					<p><small>{ROTULOS.total}</small>R$ 48,2 mil</p>
+					<p><small>{ROTULOS.extra[0]}</small>{ROTULOS.extra[1]}</p>
 				</div>
-				<p class="pe-chart-title">Receita por meio de pagamento</p>
+				<p class="pe-chart-title">{ROTULOS.grafico}</p>
 				<ul class="pe-bars">
 					{BARS.map(([name, pct, value], i) => (
 						<li style={`--i:${i}`}>

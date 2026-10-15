@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: visual
 title: Os tokens são o combustível
 visual: combustivel

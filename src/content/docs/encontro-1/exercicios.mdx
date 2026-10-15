@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 1 · Exercícios'
-description: Cinco exercícios do dia a dia para casa. Tudo funciona no plano grátis.
+description: O exercício da aula e cinco do dia a dia para casa. Tudo funciona no plano grátis.
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -9,6 +9,32 @@ import Progress from '../../../components/Progress.astro';
 Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o que deu certo: o progresso fica salvo neste navegador. O item com borda laranja é a conferência que só você pode fazer.
 
 <Progress />
+
+## Em aula
+
+<Exercise
+	id="e1-semana" n={0} title="Organize sua semana" when="Em aula" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Você mandou primeiro só "organize minha semana"', 'Depois mandou o pedido completo, com a sua lista', 'Você comparou as suas duas respostas']}
+	human="A tabela do pedido completo serve para a sua semana de verdade"
+	fail="A resposta veio genérica? Veja qual das 5 partes ficou vazia ou vaga." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
+	challenge="Peça para a IA dizer o que ela tiraria da sua semana, e por quê."
+>
+<p>Primeiro mande só <strong>"organize minha semana"</strong>. Depois copie o pedido abaixo, troque o que está entre colchetes (pode apagar os colchetes) e compare as duas respostas.</p>
+<p>Sem lista à mão? Use uma destas:</p>
+<ul>
+<li><strong>Escritório:</strong> relatório do mês até quinta, 3 reuniões (segunda, terça e quinta à tarde), responder os e-mails de fornecedores, organizar os arquivos de outubro, ligar para o banco.</li>
+<li><strong>Casa:</strong> mercado, consulta do filho na quarta às 15h, pagar a conta de luz, lavar roupa, aniversário da sogra no sábado.</li>
+</ul>
+<Prompt slot="prompt" id="e1-semana-p"
+	contexto="Trabalho em [uma equipe pequena, com muitas reuniões]."
+	objetivo="Não deixar nada importante para sexta."
+	referencias="Minhas tarefas da semana: [cole ou escreva a sua lista]."
+	restricoes="No máximo [2h] livres por dia, nada depois das [18h]."
+	formato="Uma tabela por dia, com 3 prioridades em cada."
+/>
+</Exercise>
+
+## Para casa
 
 <Exercise
 	id="e1-jantar" n={1} title="Monte o jantar da semana com o que tem em casa" when="Para casa" minutes={10} tool="Grátis · qualquer IA"

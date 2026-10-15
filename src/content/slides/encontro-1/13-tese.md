@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: thesis
 kicker: Guarde esta frase
 title: O valor da IA não vem só do modelo, nem só do pedido. Vem do **sistema em volta dela**, e da disciplina de melhorar esse sistema quando ela não funciona.

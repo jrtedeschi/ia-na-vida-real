@@ -6,7 +6,7 @@ class: s-side s-side-card
 image: ./img/kewpie.jpg
 alt: "Maionese japonesa Kewpie: um frasco de tampa vermelha e a embalagem com a rede vermelha e o bonequinho"
 items:
-  - Fiz poke para receber os amigos
+  - Fiz poke (prato havaiano de peixe cru com arroz) para receber os amigos
   - Existe uma maionese japonesa chamada Kewpie, muito boa!
   - Desenvolvi com IA uma receita caseira de Kewpie
 notes: |

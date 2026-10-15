@@ -3,7 +3,7 @@ layout: list
 kicker: Agora vocês · 4 minutos
 title: O que ela lembra?
 items:
-  - "Na conversa dos livros, pergunte: “Qual foi a primeira coisa que eu te pedi nesta conversa?”"
+  - "Na conversa do exercício anterior, pergunte: “Qual foi a primeira coisa que eu te pedi nesta conversa?”"
   - Abra uma conversa nova e faça a mesma pergunta
   - Compare as duas respostas
 visual: timer

@@ -1256,3 +1256,16 @@ body {
 .s-inventa .ivr-anim-controls {
 	display: none;
 }
+
+/* Exercício com QR ao lado do pedido (35-demo-semana): o QR fica à direita, dentro da altura do pedido. */
+.s-qr-side .s-image {
+	position: absolute;
+	right: 112px;
+	bottom: 128px;
+	width: 200px;
+	height: auto;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 8px;
+	background: #fff;
+	padding: 6px;
+}
