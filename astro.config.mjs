@@ -56,6 +56,7 @@ export default defineConfig({
 						{ label: 'O pedido em 5 partes', link: '/consulta/pedido-em-5-partes/' },
 						{ label: 'Conceitos', items: [{ autogenerate: { directory: 'consulta/conceitos' } }] },
 						{ label: 'Um micro app na planilha', collapsed: true, items: [{ autogenerate: { directory: 'consulta/micro-apps-na-planilha' } }] },
+						{ label: 'Esforço de raciocínio', link: '/consulta/esforco-de-raciocinio/' },
 						{ label: 'Segurança e privacidade', link: '/consulta/seguranca-e-privacidade/' },
 						{ label: 'Fique com o volante', link: '/consulta/fique-com-o-volante/' },
 						{ label: 'IA e trabalho', link: '/consulta/ia-e-trabalho/' },

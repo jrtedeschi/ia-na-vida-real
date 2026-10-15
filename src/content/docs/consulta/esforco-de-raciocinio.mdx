@@ -1,0 +1,192 @@
+---
+title: Esforço de raciocínio
+description: Quanto o modelo pensa antes de responder. Custo, tempo e qualidade de cada nível nos quatro maiores modelos, com fontes.
+---
+import Definition from '../../../components/Definition.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<Definition>Esforço de raciocínio é um botão que diz ao modelo quanto pensar antes de responder. Mais esforço costuma acertar mais, mas demora mais e custa mais.</Definition>
+
+<p class="ivr-label">Dados de 15/10/2026. Material de leitura e consulta. Preços, nomes de nível e notas mudam a cada poucas semanas: confira as fontes antes de decidir.</p>
+
+## O modelo escreve um rascunho antes da resposta
+
+Os modelos com raciocínio escrevem etapas internas antes da resposta final. Esse rascunho é cobrado como texto de saída, mesmo quando você não vê ([OpenAI](https://platform.openai.com/docs/guides/reasoning), [Google](https://ai.google.dev/gemini-api/docs/thinking)). O esforço controla o tamanho desse rascunho.
+
+Os níveis têm nomes parecidos nas quatro empresas: baixo (*low*), médio (*medium*), alto (*high*), extra alto (*xhigh*) e máximo (*max*). Cada empresa calibra os seus. O "alto" de um modelo não equivale ao "alto" de outro.
+
+| Modelo | Níveis disponíveis | Nível padrão |
+|---|---|---|
+| GPT-6 Astra (OpenAI) | baixo, médio, alto, extra alto, máximo | não publicado na página consultada |
+| GPT-6.1 Sol (OpenAI) | baixo, médio, alto, extra alto, máximo | médio |
+| Claude Opus 5.5 (Anthropic) | baixo, médio, alto, extra alto, máximo | médio |
+| Gemini 4 Argon (Google) | baixo, médio, alto | médio |
+| Grok 4.7 (SpaceXAI) | baixo, médio, alto, extra alto | alto |
+
+O Astra não aceita o nível "nenhum", e o Sol não aceita "nenhum" nem "mínimo". No Claude Opus 5.5 e no Grok 4.7, o raciocínio não pode ser desligado.
+
+## Mais esforço, mais custo e mais espera
+
+As tabelas abaixo vêm de um mesmo avaliador independente, a Artificial Analysis. Ela roda dez testes em cada modelo e em cada nível e resume tudo numa nota de 0 a 100. Como a metodologia é a mesma, dá para comparar as linhas entre si.
+
+Como ler as colunas:
+
+- **Custo por tarefa:** quanto, em dólares, custou em média uma tarefa do conjunto de testes, pagando o preço de tabela.
+- **Tempo:** segundos até receber uma resposta de 500 palavras-pedaço (*tokens*), incluindo o tempo pensando.
+- **Velocidade:** palavras-pedaço por segundo depois que a resposta começa.
+- **Nota:** índice de inteligência da Artificial Analysis. Quanto maior, melhor.
+
+"Não publicado" quer dizer que o avaliador não mediu esse nível. Não é zero.
+
+### GPT-6 Astra
+
+Preço de tabela: US$ 10 por milhão de palavras-pedaço de entrada e US$ 50 por milhão de saída.
+
+| Nível | Custo por tarefa | Tempo | Velocidade | Nota |
+|---|---|---|---|---|
+| Baixo | US$ 0,82 | 15 s | 42 por s | 46 |
+| **Médio** | **US$ 1,54** | **18 s** | **44 por s** | **50** |
+| Alto | US$ 1,73 | 83 s | 43 por s | 51 |
+| Extra alto | US$ 2,31 | 196 s | 44 por s | 52 |
+| Máximo | US$ 3,26 | 304 s | 44 por s | 53 |
+
+Do médio ao máximo, o custo dobra, a espera passa de 18 segundos para 5 minutos e a nota sobe 3 pontos.
+
+### GPT-6.1 Sol
+
+Preço de tabela: US$ 2 por milhão de entrada e US$ 10 por milhão de saída.
+
+| Nível | Custo por tarefa | Tempo | Velocidade | Nota |
+|---|---|---|---|---|
+| Baixo | US$ 0,13 | 15 s | 44 por s | 42 |
+| **Médio** | **US$ 0,21** | **18 s** | **46 por s** | **48** |
+| Alto | US$ 0,32 | 64 s | 49 por s | 50 |
+| Extra alto | US$ 0,39 | 198 s | 51 por s | 51 |
+| Máximo | US$ 0,72 | 312 s | 48 por s | 52 |
+
+O Sol no máximo empata com o Astra no extra alto, nota 52, por menos de um terço do custo.
+
+### Claude Opus 5.5
+
+Preço de tabela: US$ 4 por milhão de entrada e US$ 20 por milhão de saída.
+
+| Nível | Custo por tarefa | Tempo | Velocidade | Nota |
+|---|---|---|---|---|
+| Baixo | US$ 0,55 | 18 s | 74 por s | 42 |
+| **Médio** | **US$ 1,34** | **34 s** | **73 por s** | **51** |
+| Alto | US$ 1,82 | 67 s | 74 por s | 54 |
+| Extra alto | US$ 3,46 | 151 s | 76 por s | 56 |
+| Máximo | US$ 5,98 | 685 s | 95 por s | 58 |
+
+É o modelo que mais ganha com esforço: 7 pontos do médio ao máximo. O máximo custa quatro vezes e meia o médio e pode levar mais de 11 minutos.
+
+### Gemini 4 Argon
+
+Preço de tabela: US$ 2 por milhão de entrada e US$ 10 por milhão de saída até 30/11/2026. A partir de 01/12/2026, US$ 4 e US$ 20.
+
+| Nível | Custo por tarefa | Tempo | Velocidade | Nota |
+|---|---|---|---|---|
+| Baixo | não publicado | não publicado | não publicado | não publicado |
+| Médio | não publicado | não publicado | não publicado | não publicado |
+| Alto | US$ 1,99 | não publicado | não publicado | 53 |
+
+O Argon não tem níveis acima do alto. No nível alto, ele gastou em média 62 mil palavras-pedaço de saída por tarefa, das quais 36 mil de rascunho. O custo foi medido com o preço promocional.
+
+### Grok 4.7
+
+Preço de tabela: US$ 2 por milhão de entrada e US$ 6 por milhão de saída, para pedidos com menos de 200 mil palavras-pedaço. Acima disso, o dobro.
+
+| Nível | Custo por tarefa | Tempo | Velocidade | Nota |
+|---|---|---|---|---|
+| Baixo | US$ 1,25 | 15 s | 60 por s | 42 |
+| Médio | não publicado | não publicado | não publicado | não publicado |
+| **Alto (padrão)** | **US$ 2,73** | **60 s** | **68 por s** | **46** |
+| Extra alto | US$ 3,74 | 103 s | 72 por s | 46 |
+
+No Grok, o extra alto custou 37% mais que o alto e não mudou a nota. O preço por palavra-pedaço é baixo, mas o modelo escreve muito: no nível baixo, foram 28 mil palavras-pedaço de saída por tarefa.
+
+<Aside type="caution" title="Preço por palavra não é preço por tarefa">
+Um modelo barato por palavra-pedaço pode sair caro se pensar demais. O Grok 4.7 cobra menos que o Claude Opus 5.5 pela saída, mas no nível alto custou mais por tarefa. Compare o custo por tarefa, não a tabela de preços.
+</Aside>
+
+## O que muda em programação
+
+Programação é onde o esforço mais faz diferença. Os números abaixo vêm de fontes diferentes, com métodos diferentes. Compare só dentro de cada tabela.
+
+### Terminal-Bench 4.0, medido pela Artificial Analysis
+
+Tarefas longas no terminal, a tela de comandos do computador. Percentual de tarefas resolvidas.
+
+| Nível | GPT-6 Astra | Claude Opus 5.5 | Gemini 4 Argon | Grok 4.7 |
+|---|---|---|---|---|
+| Baixo | 41,9% | 31,3% | não publicado | 16% |
+| Médio | 49,5% | 52,5% | não publicado | não publicado |
+| Alto | 54,0% | 56,6% | 57% | não publicado |
+| Extra alto | 59,6% | 59,6% | não existe | não publicado |
+| Máximo | 59,1% | 59,6% | não existe | não existe |
+
+No Claude Opus 5.5, sair do baixo para o médio vale 21 pontos. Do extra alto para o máximo, nenhum. Para o GPT-6.1 Sol, os resultados por nível não foram publicados na página consultada.
+
+### SWE-bench Pro, medido pela Anthropic no Claude Opus 5.5
+
+Correções reais em projetos de código. Dados da Anthropic resumidos pelo site Claude Media, num subconjunto de 478 problemas. Esses números não se comparam com o placar público do SWE-bench Pro.
+
+| Nível | Problemas resolvidos | Custo por problema | Custo em relação ao alto |
+|---|---|---|---|
+| Baixo | 87,4% | cerca de US$ 0,105 | cerca de um terço |
+| **Médio** | **92,8%** | **cerca de US$ 0,204** | **cerca de 70%** |
+| Alto | 95,3% | US$ 0,29 | base |
+| Extra alto | cerca de 96,7% | não publicado | 2,5 vezes |
+
+O mesmo teste mostrou um caminho mais barato: rodar no baixo e refazer no alto só o que falhou. Resolveu cerca de 97% dos problemas por cerca de US$ 0,17 cada, 60% do custo de rodar tudo no alto. Isso só funciona quando dá para conferir automaticamente se a resposta está certa.
+
+### Resultados publicados pela SpaceXAI no Grok 4.7
+
+Números da própria empresa, no anúncio do modelo.
+
+| Teste | Resultado | Nível |
+|---|---|---|
+| CursorBench 4.0 | 46,3% | extra alto |
+| DeepSWE v1.1 | 71,0% | alto |
+| Terminal-Bench 4.0 | 37,6% | extra alto |
+
+LiveCodeBench e Aider: não publicados por nível para nenhum dos cinco modelos nas fontes consultadas.
+
+## Nos aplicativos, o botão tem outro nome
+
+No aplicativo, você não paga por tarefa, mas o esforço maior gasta seu limite de uso mais rápido.
+
+| Aplicativo | Como aparece | Quem tem |
+|---|---|---|
+| **ChatGPT** | Seletor com Instant, Medium, High, Extra High e Pro. Medium até Extra High usam o GPT-6 Sol. Pro usa o GPT-6 Pro, que roda no GPT-6 Astra. | Medium e High: Plus. Extra High e Pro: Pro, Business e Enterprise. Grátis e Go: só o botão Think, com o GPT-5.6 Luna. |
+| **Claude** | Menu ao lado do botão de enviar, em "Effort": Low, Medium, High, Extra high e Max. O nível recomendado aparece marcado como "Default". | Seletor disponível para Haiku 5.5 e Sonnet 5.5, que estão no plano grátis. O Opus só a partir do Pro. |
+| **Gemini** | Gemini 4 Argon no seletor de modelo e o modo Deep Think, de raciocínio em paralelo. Os nomes dos níveis dentro do aplicativo não foram publicados nas páginas consultadas. | Argon e Deep Think: Google AI Pro e Ultra. |
+| **Grok** | Modo de vários agentes trabalhando em paralelo. | SuperGrok. Detalhes do plano Heavy não verificados nesta data. |
+
+A OpenAI trocou os nomes antigos: Thinking Standard virou Medium, Thinking Extended virou High e Thinking Heavy virou Extra High. Pedir "pense mais" na conversa não muda o nível. É preciso escolher no seletor.
+
+## Comece no médio e suba só se precisar
+
+1. **Comece no médio.** É o padrão de três dos cinco modelos e o ponto recomendado pela OpenAI para a maioria dos trabalhos.
+2. **Use o baixo para o simples.** Resumo, tradução, classificação, resposta curta.
+3. **Suba um nível quando a resposta errar por falta de cuidado.** Conta errada, etapa pulada, plano incompleto. Antes de subir, confira se o pedido estava claro: esforço não conserta pedido ruim.
+4. **Deixe o extra alto e o máximo para trabalho longo e caro de errar.** Revisão de contrato, código importante, pesquisa extensa. Espere minutos, não segundos.
+5. **Meça no seu caso.** O ganho varia por tarefa. No Grok 4.7, o extra alto não melhorou a nota. No Opus 5.5, melhorou 4 pontos sobre o alto.
+
+## Fontes
+
+Todas acessadas em 15/10/2026.
+
+- [Artificial Analysis, ranking de modelos](https://artificialanalysis.ai/leaderboards/models): custo por tarefa, tempo, velocidade e nota de cada nível.
+- [Artificial Analysis, comparação GPT-6 Astra e Claude Opus 5.5 por nível](https://artificialanalysis.ai/models/releases/comparisons): Terminal-Bench 4.0 por nível.
+- [Artificial Analysis, Gemini 4 Argon (alto) e Grok 4.7 (baixo)](https://artificialanalysis.ai/models/comparisons/gemini-4-argon-vs-grok-4-7-low): Terminal-Bench 4.0 e palavras-pedaço por tarefa.
+- [Artificial Analysis, Grok 4.7](https://artificialanalysis.ai/models/releases/grok-4-7): níveis medidos (baixo, alto, extra alto).
+- [OpenAI, preços da API](https://platform.openai.com/docs/pricing) e [guia de raciocínio](https://platform.openai.com/docs/guides/reasoning).
+- [Anthropic, preços](https://docs.anthropic.com/en/docs/about-claude/pricing) e [parâmetro de esforço](https://docs.anthropic.com/en/docs/build-with-claude/effort).
+- [Google, preços da API Gemini](https://ai.google.dev/gemini-api/docs/pricing) e [controle de raciocínio](https://ai.google.dev/gemini-api/docs/thinking).
+- [SpaceXAI, modelos e preços](https://docs.x.ai/docs/models), [níveis de raciocínio](https://docs.x.ai/docs/guides/reasoning) e [anúncio do Grok 4.7](https://x.ai/news/grok-4-7).
+- [Claude Media, esforço do Opus 5.5 no SWE-bench Pro](https://claude-media.com/articles/claude-opus-5-5-effort-swe-bench-pro-cost), em japonês, com dados da Anthropic.
+- [OpenAI, GPT-6 no ChatGPT](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt) e [planos do ChatGPT](https://chatgpt.com/pricing).
+- [Anthropic, como mudar modelo e esforço no Claude](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings) e [planos do Claude](https://claude.com/pricing).
+- [Google, planos do Gemini](https://gemini.google/subscriptions/) e [Neowin, Deep Think nos planos Pro e Ultra](https://www.neowin.net/news/just-days-after-gemini-argon-launch-google-updates-ai-plans-to-limit-free-use-significantly/).
+- [SpaceXAI, Grok](https://x.ai/grok): modo de vários agentes no SuperGrok.
