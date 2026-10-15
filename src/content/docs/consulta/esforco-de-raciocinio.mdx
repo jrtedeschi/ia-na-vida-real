@@ -39,12 +39,26 @@ Clique no nome do modelo, escolha "Pro" e depois "Nível de raciocínio". O pens
 - **Google AI Pro:** Gemini 4 Argon, sem Deep Think.
 - **Google AI Ultra:** Gemini 4 Argon e Deep Think, para maiores de 18 anos.
 
-## Comece no padrão e suba só se precisar
+## Faça no médio e revise no alto
 
-1. **Use pouco esforço para o simples.** Resumo, tradução, resposta curta, troca de tom.
-2. **Fique no padrão para o dia a dia.** É o que a própria empresa recomenda para a maioria das tarefas.
-3. **Suba um nível quando a resposta errar por falta de cuidado.** Conta errada, etapa pulada, plano incompleto. Antes, confira se o pedido estava claro. Esforço não conserta pedido ruim.
-4. **Deixe o nível máximo para trabalho longo e caro de errar.** Revisão de contrato, planejamento detalhado, análise de documento grande. Espere minutos, não segundos.
+Deixar tudo no nível máximo parece mais seguro, mas costuma ser pior negócio. O máximo demora muito mais e gasta seu limite de uso rápido, e a resposta melhora pouco. Num ranking independente de modelos, passar do médio para o máximo rendeu só de 3 a 7 pontos no índice de qualidade. Em troca, o custo ficou de 2 a 4,5 vezes maior. O tempo de espera chegou a ser cerca de 20 vezes maior. No Claude Opus 5.5, uma tarefa que levava cerca de 34 segundos no médio levou cerca de 11 minutos no máximo.
+
+Um caminho melhor é fazer em duas etapas. Num teste com 478 tarefas de programação no Claude Opus 5.5, fazer tudo num nível baixo e refazer só o que falhou num nível alto resolveu cerca de 97% das tarefas. Cada tarefa custou cerca de US$ 0,17. Fazer tudo no nível alto resolveu cerca de 95%, a cerca de US$ 0,29 cada.
+
+Isso funciona porque conferir uma resposta pronta é mais fácil do que criar do zero. A segunda passada também pega o que a primeira deixou escapar.
+
+1. **Escreva a primeira versão no nível padrão.** No ChatGPT, "nível de esforço" Médio. No Claude, Effort Medium. No Gemini, o padrão em "Nível de raciocínio".
+2. **Peça uma revisão com o esforço maior.** Suba para Alto no ChatGPT ou High no Claude e peça para a IA conferir a resposta.
+3. **Use Extra alto ou Max só em último caso.** Reserve para um problema difícil de verdade que já falhou duas vezes.
+
+Para a revisão, copie e cole:
+
+> Revise a resposta acima. Procure erros, itens que faltaram e partes que se contradizem. Liste cada problema encontrado e depois mostre a versão corrigida.
+
+Algumas dicas a mais:
+
+- **Use pouco esforço para o simples.** Resumo, tradução, resposta curta, troca de tom.
+- **Confira se o pedido estava claro antes de subir o nível.** Esforço não conserta pedido ruim.
 
 ## Fontes
 
@@ -57,3 +71,5 @@ Todas acessadas em 15/10/2026.
 - [Anthropic, planos do Claude](https://claude.com/pricing): Opus só nos planos pagos.
 - [Google, planos do Gemini](https://gemini.google/subscriptions/): modelos por plano.
 - [Google, como usar o Deep Think no app Gemini](https://support.google.com/gemini/answer/16345172?hl=pt-BR): caminho até "Nível de raciocínio" e Deep Think só no Google AI Ultra.
+- [Artificial Analysis, ranking de modelos](https://artificialanalysis.ai/leaderboards/models): índice de qualidade, custo e tempo por nível de esforço.
+- [Claude Media, esforço do Claude Opus 5.5 em tarefas de programação](https://claude-media.com/articles/claude-opus-5-5-effort-swe-bench-pro-cost): teste com 478 tarefas, fazendo no nível baixo e refazendo as falhas no alto.
