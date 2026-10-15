@@ -16,11 +16,13 @@ Pedir "pense mais" na conversa não muda o nível. Você precisa escolher no men
 
 ## No ChatGPT, o ajuste fica no menu de modelo
 
-Escolha o GPT-6 no menu de modelo e use o controle "Thinking" para escolher o nível. Os nomes aparecem em inglês: Instant (rápido), Medium (padrão), High (pensa mais), Extra High e Pro.
+Escolha o GPT-6 no menu de modelo e use o seletor "nível de esforço". Os níveis são Instantâneo (rápido), Médio (padrão), Alto (pensa mais), Extra alto e Pro.
 
-- **Plano grátis e Go:** não têm os níveis. Têm o botão "Think" para perguntas mais difíceis, que usa o modelo GPT-5.6 Luna.
-- **Plus:** Instant, Medium e High.
-- **Pro, Business e Enterprise:** também Extra High e Pro.
+- **Plano grátis e Go:** não têm os níveis. Têm a opção "Pensar", no menu +, para perguntas mais difíceis, que usa o modelo GPT-5.6 Luna.
+- **Plus:** Instantâneo, Médio e Alto.
+- **Pro, Business e Enterprise:** também Extra alto e Pro.
+
+{/* VERIFICAR: os nomes em português foram confirmados na ajuda da OpenAI para o plano Business. Conferir na tela do Plus e do grátis. */}
 
 ## No Claude, o ajuste se chama Effort
 
@@ -31,24 +33,43 @@ Clique no nome do modelo, ao lado do botão de enviar, e depois em "Effort". Os 
 
 ## No Gemini, o pensamento extra se chama Deep Think
 
-O Gemini não mostra uma escala de níveis como os outros dois. O pensamento extra aparece como o modo Deep Think, que testa vários caminhos ao mesmo tempo.
+Clique no nome do modelo, escolha "Pro" e depois "Nível de raciocínio". O pensamento extra aparece ali como o modo Deep Think, que testa vários caminhos ao mesmo tempo.
 
 - **Sem plano pago:** só o modelo Flash-Lite, sem Deep Think.
-- **Google AI Pro e Ultra:** Gemini 4 Argon e Deep Think.
+- **Google AI Pro:** Gemini 4 Argon, sem Deep Think.
+- **Google AI Ultra:** Gemini 4 Argon e Deep Think, para maiores de 18 anos.
 
-## Comece no padrão e suba só se precisar
+## Faça no médio e revise no alto
 
-1. **Use pouco esforço para o simples.** Resumo, tradução, resposta curta, troca de tom.
-2. **Fique no padrão para o dia a dia.** É o que a própria empresa recomenda para a maioria das tarefas.
-3. **Suba um nível quando a resposta errar por falta de cuidado.** Conta errada, etapa pulada, plano incompleto. Antes, confira se o pedido estava claro. Esforço não conserta pedido ruim.
-4. **Deixe o nível máximo para trabalho longo e caro de errar.** Revisão de contrato, planejamento detalhado, análise de documento grande. Espere minutos, não segundos.
+Deixar tudo no nível máximo parece mais seguro, mas costuma ser pior negócio. O máximo demora muito mais e gasta seu limite de uso rápido, e a resposta melhora pouco. Num ranking independente de modelos, passar do médio para o máximo rendeu só de 3 a 7 pontos no índice de qualidade. Em troca, o custo ficou de 2 a 4,5 vezes maior. O tempo de espera chegou a ser cerca de 20 vezes maior. No Claude Opus 5.5, uma tarefa que levava cerca de 34 segundos no médio levou cerca de 11 minutos no máximo.
+
+Um caminho melhor é fazer em duas etapas. Num teste com 478 tarefas de programação no Claude Opus 5.5, fazer tudo num nível baixo e refazer só o que falhou num nível alto resolveu cerca de 97% das tarefas. Cada tarefa custou cerca de US$ 0,17. Fazer tudo no nível alto resolveu cerca de 95%, a cerca de US$ 0,29 cada.
+
+Isso funciona porque conferir uma resposta pronta é mais fácil do que criar do zero. A segunda passada também pega o que a primeira deixou escapar.
+
+1. **Escreva a primeira versão no nível padrão.** No ChatGPT, "nível de esforço" Médio. No Claude, Effort Medium. No Gemini, o padrão em "Nível de raciocínio".
+2. **Peça uma revisão com o esforço maior.** Suba para Alto no ChatGPT ou High no Claude e peça para a IA conferir a resposta.
+3. **Use Extra alto ou Max só em último caso.** Reserve para um problema difícil de verdade que já falhou duas vezes.
+
+Para a revisão, copie e cole:
+
+> Revise a resposta acima. Procure erros, itens que faltaram e partes que se contradizem. Liste cada problema encontrado e depois mostre a versão corrigida.
+
+Algumas dicas a mais:
+
+- **Use pouco esforço para o simples.** Resumo, tradução, resposta curta, troca de tom.
+- **Confira se o pedido estava claro antes de subir o nível.** Esforço não conserta pedido ruim.
 
 ## Fontes
 
 Todas acessadas em 15/10/2026.
 
-- [OpenAI, GPT-6 e outros modelos no ChatGPT](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt): níveis de raciocínio, plano a plano, e o botão Think nos planos grátis e Go.
+- [OpenAI, GPT-6 e outros modelos no ChatGPT](https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt): níveis de raciocínio, plano a plano, e a opção de pensar nos planos grátis e Go.
+- [OpenAI, ajuda em português sobre modelos no ChatGPT](https://help.openai.com/pt-br/articles/12003714-chatgpt-thinking): nomes "nível de esforço", Instantâneo, Médio, Alto, Extra alto e Pro.
+- [OpenAI, perguntas frequentes do plano grátis](https://help.openai.com/pt-br/articles/9275245-chatgpt-free-tier-faq): opção "Pensar" no menu +.
 - [Anthropic, como mudar modelo, esforço e raciocínio no Claude](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings): menu Effort e níveis.
 - [Anthropic, planos do Claude](https://claude.com/pricing): Opus só nos planos pagos.
 - [Google, planos do Gemini](https://gemini.google/subscriptions/): modelos por plano.
-- [Neowin, Deep Think nos planos Pro e Ultra](https://www.neowin.net/news/just-days-after-gemini-argon-launch-google-updates-ai-plans-to-limit-free-use-significantly/): mudança de 09/10/2026, com base no suporte do Google.
+- [Google, como usar o Deep Think no app Gemini](https://support.google.com/gemini/answer/16345172?hl=pt-BR): caminho até "Nível de raciocínio" e Deep Think só no Google AI Ultra.
+- [Artificial Analysis, ranking de modelos](https://artificialanalysis.ai/leaderboards/models): índice de qualidade, custo e tempo por nível de esforço.
+- [Claude Media, esforço do Claude Opus 5.5 em tarefas de programação](https://claude-media.com/articles/claude-opus-5-5-effort-swe-bench-pro-cost): teste com 478 tarefas, fazendo no nível baixo e refazendo as falhas no alto.
