@@ -3,6 +3,7 @@ layout: end
 title: "{site}"
 image: ./img/qr-feedback.png
 alt: "QR code do formulário de feedback do encontro"
+notes: "Cole no chat o link do formulário de feedback: escanear o QR pela chamada nem sempre funciona. Fique na chamada uns minutos depois do fim para quem quiser perguntar."
 ---
 Material, exercícios e consulta. Próximo encontro: terça, 27/10, às 20h.
 

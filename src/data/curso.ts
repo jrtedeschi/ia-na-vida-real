@@ -44,7 +44,7 @@ export const ENCONTROS: Encontro[] = [
 		titulo: 'Sua rotina com IA',
 		dia: 'terça, 10/11',
 		fim: '2026-11-10T21:30:00-03:00',
-		texto: 'O que você sabe, em textos simples que qualquer IA lê, e pequenos apps nas suas planilhas, feitos com a IA.',
+		texto: 'Guardar o que deu certo, deixar a IA conferir por você e um pequeno app na sua planilha.',
 	},
 ];
 

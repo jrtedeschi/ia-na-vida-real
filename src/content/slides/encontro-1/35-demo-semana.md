@@ -17,6 +17,6 @@ visualProps:
 class: s-qr-side
 image: ./img/qr-semana.png
 alt: "QR code da página do exercício no site, com o pedido pronto para copiar"
-notes: "Cronômetro no canto: clique no número quando a turma começar. O QR abre a página do exercício no site (Encontro 1, Exercícios, Organize sua semana): o pedido com botão de copiar e duas listas prontas, para ninguém digitar as 5 partes no celular. Primeiro o pedido curto, depois o completo, e cada um compara as suas duas respostas. A privacidade acabou de passar: nada de nome de cliente na lista. A sua tela entra só se a sala travar. Em casa, o jantar repete o formato com a lista de verdade."
+notes: "Cronômetro no canto: clique no número quando a turma começar. Cole também no chat o link da página: na chamada, nem todo mundo consegue escanear o QR da tela. O QR abre a página do exercício no site (Encontro 1, Exercícios, Organize sua semana): o pedido com botão de copiar e duas listas prontas, para ninguém digitar as 5 partes no celular. Primeiro o pedido curto, depois o completo, e cada um compara as suas duas respostas. A privacidade acabou de passar: nada de nome de cliente na lista. Peça que cada um escreva no chat uma diferença entre as duas respostas. A sua tela entra só se a turma travar. Em casa, o jantar repete o formato com a lista de verdade."
 ---
 Primeiro só "organize minha semana". Depois copie o pedido completo pelo QR e compare as suas duas respostas.
