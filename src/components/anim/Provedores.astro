@@ -1,60 +1,156 @@
 ---
 /**
- * As três maiores empresas e suas ferramentas, organizadas pelo uso.
+ * As três maiores empresas e suas ferramentas. Em destaque, o app de conversa de cada uma (o que a
+ * turma usa no curso, de graça); embaixo, menores, o que mais existe, com "para quem programa" por
+ * último e mais apagado. No slide ativo, os apps entram primeiro e o resto depois (só CSS).
  * Verificado em 08/10/2026 (ver notas do slide). Produtos mudam rápido: revisar antes de cada turma.
  */
-const usos = ['Conversar', 'Executar tarefas sozinho', 'Programar e automatizar', 'Criar imagem e vídeo'];
-const empresas = [
-	{ nome: 'Anthropic', itens: ['Claude', 'Claude Cowork (também no Chrome)', 'Claude Code', 'Não gera imagem nem vídeo'] },
-	{ nome: 'OpenAI', itens: ['ChatGPT', 'ChatGPT Work', 'Codex', 'Imagens no ChatGPT'] },
-	{ nome: 'Google', itens: ['Gemini e Gemini Notebook', 'Modo agente do Gemini', 'Antigravity e Gemini CLI', 'Imagens no Gemini, vídeos no Flow'] },
+const empresas = ['Anthropic', 'OpenAI', 'Google'];
+const apps = ['Claude', 'ChatGPT', 'Gemini'];
+const outros: { uso: string; itens: (string | null)[]; dev?: boolean }[] = [
+	{ uso: 'Faz tarefas por você', itens: ['Claude Cowork', 'ChatGPT Work', 'Modo agente do Gemini'] },
+	{ uso: 'Imagem e vídeo', itens: [null, 'Imagens no ChatGPT', 'Imagens no Gemini, vídeos no Flow'] },
+	{ uso: 'Para quem programa', itens: ['Claude Code', 'Codex', 'Antigravity e Gemini CLI'], dev: true },
 ];
 ---
-<div class="pv not-content" role="table" aria-label="Ferramentas das três maiores empresas de IA, por uso">
+<div class="pv not-content" role="table" aria-label="As três maiores empresas de IA. O app de conversa de cada uma, que serve de graça para o curso: Claude, ChatGPT e Gemini. E o que mais existe, por uso.">
 	<div class="pv-row pv-head" role="row">
-		<span role="columnheader"></span>
-		{empresas.map((e) => <b role="columnheader">{e.nome}</b>)}
+		<span role="columnheader"><span class="pv-sr">Uso</span></span>
+		{empresas.map((e) => <span class="pv-co" role="columnheader">{e}</span>)}
 	</div>
-	{usos.map((uso, i) => (
-		<div class="pv-row" role="row">
-			<span class="pv-use" role="rowheader">{uso}</span>
-			{empresas.map((e) => <span role="cell" class:list={[e.itens[i].startsWith('Não') && 'pv-none']}>{e.itens[i]}</span>)}
+	<div class="pv-row pv-hero" role="row">
+		<span class="pv-use" role="rowheader">O app de conversa<em>use qualquer um, de graça</em></span>
+		{apps.map((a, i) => <b class="pv-app" role="cell" style={`--i:${i}`}>{a}</b>)}
+	</div>
+	<p class="pv-more" aria-hidden="true">O que mais existe</p>
+	{outros.map((o, r) => (
+		<div class:list={['pv-row pv-rest', { 'pv-dev': o.dev }]} role="row" style={`--r:${r}`}>
+			<span class="pv-use" role="rowheader">{o.uso}</span>
+			{o.itens.map((t) => (t ? <span role="cell">{t}</span> : <span role="cell" class="pv-none">não faz</span>))}
 		</div>
 	))}
 </div>
 <style>
 	.pv {
+		--pv-cols: minmax(10rem, 1fr) repeat(3, minmax(9rem, 1.15fr));
 		display: grid;
+		container-type: inline-size;
 		background: var(--ivr-paper);
 		border: 2px solid var(--ivr-ink);
-		border-radius: 6px;
+		border-radius: 8px;
+		box-shadow: 8px 8px 0 var(--ivr-line);
 		overflow-x: auto;
 		color: var(--ivr-ink);
 	}
 	.pv-row {
 		display: grid;
-		grid-template-columns: minmax(9rem, 1fr) repeat(3, minmax(9rem, 1.2fr));
-		gap: 12px;
+		grid-template-columns: var(--pv-cols);
+		column-gap: 16px;
 		align-items: baseline;
-		padding: 12px 16px;
-		border-top: 1px dashed var(--ivr-line);
+		padding: 10px 20px;
 	}
+	.pv-sr {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+	}
+	/* Cabeçalho: a empresa é etiqueta, não título. */
 	.pv-head {
-		border-top: 0;
+		padding-top: 16px;
+		padding-bottom: 0;
+	}
+	.pv-co {
+		font: 500 13px/1 var(--ivr-font-mono);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	/* Destaque: o app que a turma usa. Laranja só no traço. */
+	.pv-hero {
+		align-items: end;
+		padding-top: 6px;
+		padding-bottom: 20px;
 		border-bottom: 2px solid var(--ivr-ink);
 	}
-	.pv-head b {
-		font: 900 1.3rem/1 var(--ivr-font-display);
-		letter-spacing: -0.03em;
+	.pv-app {
+		justify-self: start;
+		font: 900 clamp(1.4rem, 0.6rem + 3.5cqi, 2.9rem)/1 var(--ivr-font-display);
+		letter-spacing: -0.04em;
+		padding-bottom: 6px;
+		background: linear-gradient(var(--ivr-orange), var(--ivr-orange)) left bottom / 100% 5px no-repeat;
 	}
 	.pv-use {
-		font: 500 12px/1.3 var(--ivr-font-mono);
+		font: 500 12px/1.35 var(--ivr-font-mono);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--ivr-ink-soft);
 	}
-	.pv-none {
+	.pv-hero .pv-use {
+		color: var(--ivr-ink);
+		display: grid;
+		gap: 6px;
+	}
+	.pv-hero .pv-use em {
+		font: 700 18px/1.15 var(--ivr-font-hand);
+		font-style: normal;
+		letter-spacing: 0;
+		text-transform: none;
+		color: var(--ivr-ink);
+	}
+	/* O que mais existe: menor, mais apagado. */
+	.pv .pv-more {
+		margin: 0;
+		padding: 14px 20px 2px;
+		font: 500 11px/1 var(--ivr-font-mono);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 		color: var(--ivr-ink-soft);
-		font-style: italic;
+	}
+	.pv-rest {
+		font: 400 17px/1.3 var(--ivr-font-body);
+		color: var(--ivr-ink-soft);
+		border-top: 1px dashed var(--ivr-line);
+	}
+	.pv-more + .pv-rest {
+		border-top: 0;
+	}
+	.pv-rest:last-child {
+		padding-bottom: 16px;
+	}
+	.pv-dev {
+		opacity: 0.6;
+	}
+	.pv-none {
+		font: 700 18px/1.3 var(--ivr-font-hand);
+	}
+	/* No slide ativo: os três apps primeiro, o resto depois. */
+	:global(.present) .pv-app {
+		animation: pv-in 450ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(250ms + var(--i) * 150ms);
+	}
+	:global(.present) .pv-rest,
+	:global(.present) .pv-more {
+		animation: pv-fade 400ms both ease-out;
+		animation-delay: calc(1200ms + var(--r, 0) * 150ms);
+	}
+	@keyframes pv-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+	}
+	@keyframes pv-fade {
+		from {
+			opacity: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .pv-app,
+		:global(.present) .pv-rest,
+		:global(.present) .pv-more {
+			animation: none;
+		}
 	}
 </style>
