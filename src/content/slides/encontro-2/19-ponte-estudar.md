@@ -1,8 +1,8 @@
 ---
 layout: "ponte"
-chapter: 4
-title: "E para aprender, a IA ajuda ou atrapalha?"
+chapter: 5
+title: "Para aprender, a IA pode ajudar ou atrapalhar"
 notes: |
-  Transição para o bloco de estudo (ticket 13).
+  Transição para o bloco de estudo (ticket 13). Tudo o que vimos até aqui é a IA fazendo por você. Para aprender, a lógica é outra.
 ---
-**Até aqui:** a IA trabalhando com o seu material. **Agora:** a IA ajudando você a aprender esse material.
+**Até aqui:** a IA trabalhando com o seu contexto. **Agora:** a IA ajudando você a aprender.
