@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Padaria Estrela — sem a skill</title>
+<!-- O mesmo pedido, sem as instruções da skill: o jeito padrão (centralizado, degradê, emoji, cartões iguais). -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+	* { box-sizing: border-box; margin: 0; }
+	html, body { width: 1080px; height: 1350px; overflow: hidden; }
+	body {
+		font-family: 'Poppins', sans-serif;
+		background: linear-gradient(135deg, #ff9a3c 0%, #ffd56b 100%);
+		display: grid; place-items: center;
+		text-align: center; color: #3b2a1a;
+	}
+	.card {
+		width: 900px; padding: 72px 64px;
+		background: #fff; border-radius: 32px;
+		box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+	}
+	.badge {
+		display: inline-block; padding: 10px 26px; border-radius: 999px;
+		background: #fff3e0; color: #e07a00; font-weight: 600; font-size: 24px;
+	}
+	h1 { margin-top: 28px; font-size: 92px; font-weight: 800; line-height: 1.05;
+		background: linear-gradient(90deg, #e65c00, #f9a825); -webkit-background-clip: text; color: transparent; }
+	.sub { margin-top: 20px; font-size: 32px; }
+	.grid { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+	.grid div { padding: 32px 16px; border-radius: 20px; background: #fff8ee; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+	.grid i { font-style: normal; font-size: 56px; display: block; }
+	.grid b { display: block; font-size: 40px; margin-top: 8px; }
+	.grid span { font-size: 22px; color: #8a6d52; }
+	.addr { margin-top: 40px; font-size: 24px; color: #8a6d52; }
+	.btn {
+		margin-top: 36px; display: inline-block; padding: 24px 56px; border-radius: 999px;
+		background: linear-gradient(90deg, #e65c00, #f9a825); color: #fff; font-weight: 600; font-size: 30px;
+		box-shadow: 0 12px 30px rgba(230,92,0,0.35);
+	}
+</style>
+</head>
+<body>
+	<div class="card">
+		<span class="badge">✨ Fresquinho todo dia ✨</span>
+		<h1>🥖 Padaria Estrela 🥖</h1>
+		<p class="sub">O melhor pão francês da cidade!</p>
+		<div class="grid">
+			<div><i>☀️</i><b>6h</b><span>Café da manhã</span></div>
+			<div><i>🍽️</i><b>11h</b><span>Almoço</span></div>
+			<div><i>🌙</i><b>17h</b><span>Fim de tarde</span></div>
+		</div>
+		<p class="addr">📍 Rua da Mooca, 1.240</p>
+		<span class="btn">📞 Peça já: (11) 98765-4321</span>
+	</div>
+</body>
+</html>

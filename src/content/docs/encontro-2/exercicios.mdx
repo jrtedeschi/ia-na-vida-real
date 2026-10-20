@@ -1,0 +1,167 @@
+---
+title: 'Encontro 2 · Exercícios'
+description: Imagens com o Nano Banana (Gemini ou Google Flow) e o texto no Claude, com as suas fotos.
+---
+import Exercise from '../../../components/Exercise.astro';
+import Prompt from '../../../components/Prompt.astro';
+import Progress from '../../../components/Progress.astro';
+
+Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o que deu certo: o progresso fica salvo neste navegador. O item com borda laranja é a conferência que só você pode fazer.
+
+<Progress />
+
+## Imagens com o Nano Banana
+
+Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.com/) (Criar imagem) ou no [Google Flow](https://labs.google/flow), a ferramenta de vídeo do Google, que também faz imagem. Duas regras valem para todos:
+
+- **Imagem no Google, texto no Claude.** Gerador de imagem ainda troca letra e acento. Peça a imagem sem nenhuma letra e escreva o texto no [Claude](https://claude.ai/), que monta o cartaz como uma página pronta para imprimir.
+- **Um ajuste por pedido** ("mais vapor saindo do pão", "o telefone maior"), para a IA não refazer tudo.
+
+<Exercise
+	id="e2-cartaz" n={1} title="Um cartaz com a foto do seu produto" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
+	checks={['O produto da foto é o seu, sem nada inventado', 'A foto do Gemini veio sem nenhuma letra', 'O texto do Claude saiu exatamente como você pediu']}
+	human="Você colaria esse cartaz na sua vitrine ou mandaria no seu grupo"
+	fail="Apareceu letra na foto? Peça ao Gemini: tire todas as letras, sem mudar o resto." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
+	challenge="Peça ao Claude a mesma arte deitada, para o status do WhatsApp."
+>
+<p>Tire 1 ou 2 fotos de algo que você vende ou faz (um bolo, uma peça de crochê, um prato). São dois pedidos: o primeiro no Gemini, com as fotos anexadas, faz a foto bonita; salve a imagem. O segundo, no Claude, escreve o texto e monta o cartaz: escolha a foto no botão da página e imprima.</p>
+<Prompt slot="prompt" id="e2-cartaz-p"
+	contexto="Tenho [uma doceria]. Anexei a foto do [bolo de cenoura com chocolate]."
+	objetivo="Uma foto bonita do bolo para a parte de cima de um cartaz."
+	referencias="Use a foto anexada como base, sem mudar o bolo."
+	restricoes="[Luz da manhã, mesa de madeira clara]. Nenhuma letra, placa ou logotipo; deixe o terço de baixo calmo."
+	formato="Retrato 4:5, foto realista."
+/>
+<Prompt slot="prompt" id="e2-cartaz-p2"
+	contexto="Tenho a foto de um bolo feita no Gemini para o cartaz da minha [doceria]."
+	objetivo="Um cartaz para colar na vitrine, pronto para imprimir."
+	referencias="Textos exatos: [Bolo de cenoura com cobertura] / [R$ 35 inteiro · R$ 6 a fatia] / [Encomendas (11) 98765-4321]."
+	restricoes="Letra grande, legível de longe; sem degradê, sem emoji."
+	formato="Um artefato A4 em pé, com um botão para eu escolher a foto e outro para imprimir."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-personagem" n={2} title="O mesmo personagem em várias cenas" when="Para casa" minutes={15} tool="Grátis · Gemini ou Flow"
+	checks={['O personagem ficou igual em todas as cenas', 'Cada cena mostra o que você pediu']}
+	human="Você mostraria as cenas para quem elas foram feitas (o cliente, o filho)"
+	fail="O personagem mudou de uma cena para outra? Anexe de novo a primeira imagem e escreva: o mesmo personagem, igualzinho a este."
+	challenge="Peça uma capa com o nome da história ou da loja em letra grande."
+>
+<p>Um mascote para a sua loja ou um herói para a historinha de dormir do seu filho. Crie o personagem primeiro; depois, na mesma conversa, peça uma cena por vez: <strong>"agora o mesmo personagem, igualzinho, [consertando uma torneira]"</strong>. Tem um desenho do seu filho? Anexe e use como personagem.</p>
+<Prompt slot="prompt" id="e2-personagem-p"
+	contexto="Tenho [uma loja de ferragens no bairro]."
+	objetivo="Um mascote para usar nos avisos e no Instagram."
+	referencias="O mascote é [um parafuso simpático, de capacete amarelo e macacão azul]."
+	restricoes="Traço simples, poucas cores, nada de texto na imagem."
+	formato="Corpo inteiro, fundo branco, de frente e de lado."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-pedaco" n={3} title="Mude só um pedaço da foto" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	checks={['Só mudou o que você pediu', 'Móveis, luz e o resto da foto continuam iguais']}
+	human="Você olhou a foto nova ao lado da original e achou o que mudou sem querer"
+	fail="Mudou mais coisa do que devia? Repita o pedido com: mantenha todo o resto exatamente igual."
+	challenge="Peça 3 cores diferentes e compare lado a lado antes de comprar a tinta."
+>
+<p>Tire uma foto da parede da sala, da fachada ou de um produto em cima da mesa. Outras trocas que funcionam: <strong>"tire o fio de luz que atravessa a fachada"</strong> ou <strong>"troque o fundo por uma mesa de madeira clara com luz da manhã"</strong>.</p>
+<Prompt slot="prompt" id="e2-pedaco-p"
+	contexto="Anexei uma foto da [minha sala]."
+	objetivo="Ver como ficaria a parede pintada de [verde-sálvia] antes de comprar a tinta."
+	referencias="A foto anexada."
+	restricoes="Troque só a cor da parede. Mantenha os móveis, a luz e todo o resto igual."
+	formato="A mesma foto, no mesmo enquadramento."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-video" n={4} title="Seu cartaz vira vídeo" when="Para casa" minutes={10} tool="Grátis · Flow"
+	checks={['O vídeo tem 8 segundos e o movimento é suave', 'O texto do cartaz continua legível do começo ao fim']}
+	human="Você postaria esse vídeo no seu status"
+	fail="O texto tremeu ou mudou? Tire o texto da imagem, gere o vídeo e escreva o texto por cima no próprio WhatsApp."
+	challenge="Gere duas versões com movimentos diferentes e pergunte a alguém qual chama mais atenção."
+>
+<p>Só no Flow. Use o cartaz do exercício 1 (ou qualquer imagem sua) como ponto de partida do vídeo.</p>
+<Prompt slot="prompt" id="e2-video-p"
+	contexto="Anexei o cartaz da [minha padaria]."
+	objetivo="Um vídeo curto para o status do WhatsApp."
+	referencias="O cartaz anexado é o primeiro quadro."
+	restricoes="[O vapor sobe do pão e a luz da manhã entra devagar pela janela]; a câmera se aproxima bem pouco; o texto fica parado e legível."
+	formato="8 segundos, vertical 9:16."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-aviso" n={5} title="Um aviso que se lê de longe" when="Para casa" minutes={10} tool="Grátis · Claude"
+	checks={['Todos os nomes e números estão certos', 'Dá para ler a uns 2 metros de distância']}
+	human="Você conferiu cada linha da tabela antes de imprimir"
+	fail="Trocou algum número ou letra? Peça: corrija só [a linha de março], sem mudar o resto."
+	challenge="Peça a mesma escala numa versão para mandar no grupo do prédio."
+>
+<p>Escala de limpeza do condomínio, horário da van da escola, regras da piscina. Aqui quase tudo é texto, então nem precisa de imagem: o Claude faz sozinho.</p>
+<Prompt slot="prompt" id="e2-aviso-p"
+	contexto="Sou [síndico de um prédio com 6 apartamentos]."
+	objetivo="Um aviso para colar no elevador."
+	referencias="Título: &quot;[Escala de limpeza da garagem]&quot;. Meses de [novembro a abril] e os apartamentos [101, 102, 201, 202, 301, 302], um por mês."
+	restricoes="Letra grande, só preto e [verde], sem enfeite."
+	formato="Um artefato A4 em pé, com uma tabela e um botão para imprimir."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-banner" n={6} title="Um banner largo para a fachada" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
+	checks={['A foto saiu larga, com a esquerda livre para o nome', 'O nome do negócio está grande e escrito certo']}
+	human="Você imaginou o banner na sua fachada e ele funciona de longe"
+	fail="A foto saiu quadrada? Repita o formato no fim do pedido: panorâmico, 3 vezes mais largo que alto."
+	challenge="Peça a foto de novo em outro clima (etéreo, de neblina; ou de fim de tarde) e compare os dois banners."
+>
+<p>Primeiro a foto larga no Gemini, sem letras. Depois o Claude põe o nome e o telefone por cima.</p>
+<Prompt slot="prompt" id="e2-banner-p"
+	contexto="Tenho [uma oficina de bicicletas] no bairro."
+	objetivo="A foto de fundo de um banner para a fachada."
+	referencias="À direita, [uma bicicleta antiga laranja numa rua de paralelepípedo, com a luz da manhã]; a esquerda fica livre, quase vazia."
+	restricoes="Nenhuma letra, placa ou logotipo na imagem."
+	formato="Panorâmico 3:1, foto realista."
+/>
+<Prompt slot="prompt" id="e2-banner-p2"
+	contexto="Tenho a foto de fundo do banner da minha oficina [Pedal da Vila], feita no Gemini."
+	objetivo="O banner pronto para mandar para a gráfica."
+	referencias="À esquerda, o nome [Pedal da Vila] em letra grande; embaixo, numa linha: [Conserto · Revisão · Peças · (11) 98765-4321]."
+	restricoes="Sem degradê; o nome legível do outro lado da rua."
+	formato="Um artefato panorâmico 3:1, com um botão para eu escolher a foto e outro para imprimir em PDF."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-foto-antiga" n={7} title="Restaure uma foto antiga da família" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	checks={['Rasgos, manchas e riscos sumiram', 'Os rostos continuam sendo das mesmas pessoas']}
+	human="Alguém da família reconheceu as pessoas da foto restaurada"
+	fail="Mudou o rosto de alguém? Peça de novo: só conserte os danos, não mexa nas feições." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Mande a original e a restaurada para quem está na foto, ou para os netos."
+>
+<p>Fotografe ou escaneie uma foto antiga. Ela tem rostos de pessoas reais: use uma da sua família e veja antes o que a ferramenta guarda.</p>
+<Prompt slot="prompt" id="e2-foto-antiga-p"
+	contexto="Anexei uma foto antiga da minha família, de [1970]."
+	objetivo="Restaurar a foto para imprimir de novo."
+	referencias="A foto anexada."
+	restricoes="Tire os rasgos, as manchas e os riscos e deixe mais nítido, sem mudar a feição de ninguém."
+	formato="Uma versão restaurada em preto e branco e outra colorida, com cores naturais da época."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-reforma" n={8} title="O antes e depois da reforma" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	checks={['Janela, porta e tamanho do cômodo continuam iguais', 'As mudanças pedidas aparecem todas']}
+	human="Você mostrou o antes e o depois para quem mora com você e decidiram juntos"
+	fail="O cômodo mudou de tamanho ou ganhou janela? Repita: mantenha a mesma janela, a mesma porta e as mesmas medidas."
+	challenge="Peça duas versões, uma econômica e uma caprichada, e pergunte à IA o que muda no custo."
+>
+<Prompt slot="prompt" id="e2-reforma-p"
+	contexto="Anexei uma foto da minha [cozinha] como ela está hoje."
+	objetivo="Ver como ela ficaria depois da reforma."
+	referencias="[Azulejo verde-água até a metade da parede, bancada de madeira clara e luminária pendente]."
+	restricoes="Mantenha a mesma janela, a mesma porta e o mesmo tamanho do cômodo."
+	formato="A mesma foto, no mesmo ângulo."
+/>
+</Exercise>

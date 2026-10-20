@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Totó Banho e Tosa — pôster</title>
+<!-- Direção dealt pela tasteskill: "Dressed as something else" (seed 732547822), herói "Counter object, wide wordmark",
+     tipo Boska, paleta Cobalt on sand. Categoria emprestada: anúncio de perfume. Ideia: o banho do vira-lata vira
+     o lançamento de uma fragrância, "Cheiroso"; a frase da casa, "vai sujo, volta cheiroso", é o leva e traz.
+     Foto gerada por IA (Higgsfield, modelo Soul 2.0); o fundo azul foi estendido para caber no formato do pôster. -->
+<link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,400i,500i&display=swap" rel="stylesheet">
+<style>
+	:root {
+		--sand: #ece2cf;
+		--cobalt: #062b8a;
+		--font: 'Boska', serif;
+		--margin: 56px;
+	}
+	* { box-sizing: border-box; margin: 0; }
+	html, body { width: 1080px; height: 1350px; overflow: hidden; }
+	body { background: var(--cobalt); color: var(--sand); font-family: var(--font); position: relative; }
+	.photo { position: absolute; inset: 0; width: 1080px; height: 1350px; display: block; }
+
+	.top {
+		position: absolute; left: var(--margin); right: var(--margin); top: 64px;
+		text-align: center;
+	}
+	h1 {
+		font: 400 168px/0.9 var(--font);
+		letter-spacing: 0.1em; margin-right: -0.1em;
+		text-transform: uppercase;
+	}
+	.line { margin-top: 26px; font: italic 400 60px/1.05 var(--font); letter-spacing: -0.01em; }
+	.maker { margin-top: 14px; font: italic 400 38px/1.2 var(--font); }
+
+	.side {
+		position: absolute; bottom: 64px; width: 270px;
+		list-style: none; padding: 0;
+		font: 500 38px/1.12 var(--font);
+	}
+	.side li + li { margin-top: 22px; }
+	.side b { display: block; font-weight: 400; font-size: 62px; line-height: 1; }
+	.left { left: var(--margin); }
+	.right { right: var(--margin); text-align: right; }
+	.call {
+		display: inline-block; margin-top: 6px;
+		background: var(--sand); color: var(--cobalt);
+		padding: 14px 18px 16px; font: 500 34px/1 var(--font);
+	}
+	.credit { position: absolute; left: var(--margin); top: 24px; font: 400 15px/1 var(--font); color: rgba(236, 226, 207, 0.7); }
+</style>
+</head>
+<body>
+	<img class="photo" src="assets/gerada-caramelo-toalha.jpg" width="1080" height="1350" alt="Vira-lata caramelo recém-banhado, com uma toalha branca enrolada na cabeça como turbante, de olhos fechados e cara de satisfeito, num fundo azul-cobalto">
+	<header class="top">
+		<h1>Cheiroso</h1>
+		<p class="line">Vai sujo, volta cheiroso.</p>
+		<p class="maker">a nova fragrância do Totó Banho e Tosa</p>
+	</header>
+	<ul class="side left">
+		<li>Banho<b>R$ 60</b></li>
+		<li>Banho e tosa<b>R$ 95</b></li>
+	</ul>
+	<ul class="side right">
+		<li>Leva e traz grátis até 3 km</li>
+		<li><span class="call">(11) 98765-4321</span></li>
+	</ul>
+	<p class="credit">Foto gerada por IA (Higgsfield)</p>
+</body>
+</html>

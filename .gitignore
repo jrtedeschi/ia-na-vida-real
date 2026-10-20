@@ -9,3 +9,5 @@ animations/media/
 animations/_comparativo-manim/fonts/
 __pycache__/
 animations/out/manim/
+animations/posteres-skill/out/
+.taste-skill/

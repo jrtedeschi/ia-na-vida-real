@@ -40,7 +40,10 @@ export default defineConfig({
 				},
 				{
 					label: 'Encontro 2 · Contexto é tudo',
-					items: [{ label: 'Slides', link: '/encontro-2/slides/', attrs: { target: '_blank' } }],
+					items: [
+						{ label: 'Exercícios', link: '/encontro-2/exercicios/' },
+						{ label: 'Slides', link: '/encontro-2/slides/', attrs: { target: '_blank' } },
+					],
 				},
 				{
 					label: 'Encontro 3 · IA no seu trabalho',

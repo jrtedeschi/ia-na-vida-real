@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Padaria Estrela — pôster com a marca</title>
+<!-- Foto gerada no Higgsfield (madrugada, filme 35 mm, forno aceso). Fraunces: serifa macia dos anos 70,
+     o mesmo calor de filme da foto. A estrela de 8 pontas é a marca; o verde entra na altura do balcão. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+<style>
+	:root {
+		--green: #064e3f;
+		--gold: #f3d58a;
+		--cream: #f6ecd4;
+		--font: 'Fraunces', serif;
+		--counter: 766px; /* linha do balcão na foto */
+	}
+	* { box-sizing: border-box; margin: 0; }
+	html, body { width: 1080px; height: 1350px; overflow: hidden; }
+	body { background: var(--green); color: var(--cream); font-family: var(--font); position: relative; }
+	.photo {
+		position: absolute; inset: 0 0 auto 0;
+		width: 1080px; height: var(--counter);
+		object-fit: cover; object-position: 50% 0;
+	}
+	.credit {
+		position: absolute; top: 24px; right: 28px;
+		font: 400 13px/1 var(--font); color: rgba(246, 236, 212, 0.75);
+	}
+	.panel {
+		position: absolute; top: var(--counter); left: 0; right: 0; bottom: 0;
+		padding: 56px 72px 52px;
+		display: flex; flex-direction: column;
+	}
+	.brand { display: flex; align-items: center; gap: 22px; }
+	.brand svg { width: 84px; height: 84px; flex: none; margin-left: -10px; }
+	.brand span {
+		font: 600 40px/1 var(--font);
+		font-variation-settings: 'opsz' 72, 'SOFT' 50;
+		letter-spacing: -0.01em; color: var(--gold);
+	}
+	.slogan {
+		margin-top: 40px;
+		font: italic 340 100px/0.98 var(--font);
+		font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+		letter-spacing: -0.025em;
+	}
+	.facts {
+		margin-top: auto;
+		display: flex; justify-content: space-between; align-items: baseline;
+		font: 400 26px/1.3 var(--font);
+		font-variation-settings: 'opsz' 24, 'SOFT' 50;
+	}
+	.facts b { font-weight: 600; color: var(--gold); }
+</style>
+</head>
+<body>
+	<img class="photo" src="assets/gerada-padeiro-6h.jpg" width="1536" height="2048" alt="Padeiro sorrindo tira uma assadeira de pães franceses do forno, de madrugada">
+	<p class="credit">Foto gerada por IA (Higgsfield)</p>
+
+	<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+		<symbol id="estrela" viewBox="-180 -180 360 360">
+			<polygon fill="currentColor" points="0.0,-170.0 8.4,-20.3 70.7,-70.7 20.3,-8.4 170.0,-0.0 20.3,8.4 70.7,70.7 8.4,20.3 0.0,170.0 -8.4,20.3 -70.7,70.7 -20.3,8.4 -170.0,0.0 -20.3,-8.4 -70.7,-70.7 -8.4,-20.3" />
+		</symbol>
+	</svg>
+
+	<section class="panel">
+		<div class="brand">
+			<svg style="color: var(--gold)" role="img" aria-label="Estrela"><use href="#estrela" /></svg>
+			<span>Padaria Estrela</span>
+		</div>
+		<h1 class="slogan">Enquanto a Mooca dorme,<br>o pão acorda.</h1>
+		<p class="facts">
+			<span>Fornadas <b>6h · 11h · 17h</b></span>
+			<span>Rua da Mooca, 1.240</span>
+		</p>
+		<p class="facts" style="margin-top: 10px">
+			<span>Encomendas <b>(11) 98765-4321</b></span>
+		</p>
+	</section>
+</body>
+</html>

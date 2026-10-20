@@ -821,6 +821,16 @@ body {
 	font: 500 16px/1 var(--ivr-font-mono);
 	color: var(--ivr-orange);
 }
+/* class: s-posters — pôsteres em 4:5, maiores; com s-posters-3 são exemplos lado a lado, sem setas. */
+.s-posters .s-gallery img {
+	height: 440px;
+}
+.s-posters-3 .s-gallery {
+	gap: 40px;
+}
+.s-posters-3 .s-gallery li + li::before {
+	content: none;
+}
 
 /* class: s-side-card — variante do s-side para foto quadrada de produto: texto mais largo e a foto
    como um cartão branco inclinado, com sombra sólida (receita pregada na geladeira). */
@@ -1268,4 +1278,11 @@ body {
 	border-radius: 8px;
 	background: #fff;
 	padding: 6px;
+}
+/* class: s-posters-trio — três pôsteres em sequência, com setas: um pouco menores para caber. */
+.s-posters-trio .s-gallery img {
+	height: 410px;
+}
+.s-posters-trio .s-gallery {
+	gap: 44px;
 }
