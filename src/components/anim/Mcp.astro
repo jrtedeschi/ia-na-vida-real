@@ -1,0 +1,320 @@
+---
+/**
+ * MCP como uma bancada: o app de IA ao fundo, com uma fileira de portas USB-C iguais (o padrão MCP).
+ * Agenda, caixa de correio e planilha entram com o mesmo conector USB-C; o gaveteiro de arquivos espera,
+ * com o conector no chão. Cada porta tem uma chave: a permissão, que liga e desliga.
+ * Geometria isométrica montada no build (mcp/geometry.mjs, kit da skill anatomy em iso/);
+ * a parte viva está em mcp/mcp.js. Prova da geometria: `node src/components/anim/mcp/audit.mjs --audit`.
+ */
+import { ISO_CSS } from './iso/iso-kit.mjs';
+import { buildMcp } from './mcp/geometry.mjs';
+
+const { body, data, width, height } = buildMcp();
+const label =
+	'Uma bancada. Ao fundo, o app de IA, com uma tela de conversa e uma fileira de quatro portas USB-C iguais, marcadas MCP. ' +
+	'Na frente, uma agenda, uma caixa de correio e uma planilha, cada uma ligada por um cabo com o mesmo conector USB-C. ' +
+	'Um gaveteiro de arquivos ainda está desligado, com o conector no chão: entra na mesma porta. ' +
+	'Cada porta tem uma chave, que é a permissão: com ela ligada, o pedido vai pelo cabo, a ferramenta faz e a resposta volta; desligada, o pedido não passa.';
+const hits = data.hits
+	.map(
+		([x, y], i) =>
+			`<circle class="mcp-hit" data-hit="${i}" cx="${x}" cy="${y}" r="13" tabindex="0" role="switch" aria-checked="true" aria-label="Permissão da ${['agenda', 'caixa de e-mail', 'planilha'][i]}"/>`,
+	)
+	.join('');
+const svg = `<svg class="iso-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">${body}${hits}</svg>`;
+---
+<Fragment set:html={`<style>${ISO_CSS}</style>`} />
+<figure class="mcp iso not-content" data-mcp={JSON.stringify(data)}>
+	<div class="iso-plate">
+		<div class="iso-plate-corners" aria-hidden="true">
+			<span class="iso-plate-corner" data-corner="fig">Fig. MCP</span>
+			<span class="iso-plate-corner" data-corner="title">Uma porta para todas as ferramentas</span>
+			<span class="iso-plate-corner" data-corner="hint">clique numa chave para tirar a permissão</span>
+			<span class="iso-plate-corner" data-corner="readout" data-readout>3 de 3 conectores ligados</span>
+		</div>
+		<Fragment set:html={svg} />
+	</div>
+</figure>
+<script>
+	import './mcp/mcp.js';
+</script>
+<style is:global>
+	.mcp.iso {
+		--anatomy-card: var(--ivr-paper);
+		--anatomy-paper: var(--ivr-paper);
+		--anatomy-text: var(--ivr-ink-soft);
+		--anatomy-muted: var(--ivr-ink-soft);
+		--anatomy-strong: var(--ivr-ink);
+		--anatomy-face: #ffffff;
+		--anatomy-top: #ffffff;
+		--anatomy-shade-0: #d9dad4;
+		--anatomy-shade-1: #e3e4de;
+		--anatomy-shade-2: #ecede7;
+		--anatomy-shade-3: #f3f3ef;
+		--anatomy-lit-top: #ffffff;
+		--anatomy-lit-shade: #eeeee9;
+		--anatomy-hi: #1d1e1b;
+		--anatomy-mid: #85877f;
+		--anatomy-lo: #aeb0a8;
+		--anatomy-faint: #d0d1ca;
+		--anatomy-lit: var(--ivr-orange);
+		--anatomy-halo: #84867c;
+		--anatomy-halo-opacity: 0.32;
+		--anatomy-dot: #3a3b37;
+		--anatomy-weight: 1px;
+		--anatomy-mono: var(--ivr-font-mono);
+		--mcp-glass: #e6e8e2;
+		margin: 0;
+		flex: 1;
+		min-height: 0;
+		display: flex;
+	}
+	:root[data-theme='dark'] .mcp.iso {
+		--anatomy-face: #262723;
+		--anatomy-top: #282925;
+		--anatomy-shade-0: #151613;
+		--anatomy-shade-1: #191a17;
+		--anatomy-shade-2: #1d1e1b;
+		--anatomy-shade-3: #22231f;
+		--anatomy-lit-top: #2e2f2a;
+		--anatomy-lit-shade: #23241f;
+		--anatomy-hi: #dcddd6;
+		--anatomy-mid: #73756d;
+		--anatomy-lo: #474942;
+		--anatomy-faint: #30322c;
+		--anatomy-halo: #050505;
+		--anatomy-halo-opacity: 0.8;
+		--anatomy-dot: #e6e7e0;
+		--mcp-glass: #121311;
+	}
+	/* O título cabe numa linha; a figura ocupa a altura que sobra e a nota vai para a coluna da direita. */
+	.reveal .slides > section.s-anim:has(.mcp) {
+		display: grid !important;
+		grid-template-columns: minmax(0, 1fr) 250px;
+		grid-template-rows: auto auto minmax(0, 1fr);
+		column-gap: 22px;
+	}
+	.s-anim:has(.mcp) > .s-kicker,
+	.s-anim:has(.mcp) > h2 {
+		grid-column: 1 / -1;
+	}
+	.s-anim:has(.mcp) h2 {
+		max-width: none;
+		margin-bottom: 14px;
+	}
+	.s-anim:has(.mcp) > .mcp {
+		grid-column: 1;
+		grid-row: 3;
+	}
+	.s-anim:has(.mcp) > .s-caveat {
+		grid-column: 2;
+		grid-row: 3;
+		align-self: center;
+		margin: 0;
+		font-size: 22px;
+		line-height: 1.4;
+	}
+	.mcp .iso-plate {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		padding: 34px 16px;
+		box-shadow: 0 0 0 1.5px var(--ivr-line);
+	}
+	.mcp .iso-plate-corner {
+		font-size: 15px;
+	}
+	.mcp .iso-plate-corner[data-corner='readout'] {
+		color: var(--ivr-ink);
+	}
+	.mcp .iso-svg {
+		width: 100%;
+		max-height: 100%;
+	}
+	.mcp-screen {
+		fill: var(--mcp-glass);
+	}
+	.mcp-screen-edge,
+	.mcp-recess,
+	.mcp-holder {
+		fill: none;
+		stroke: var(--anatomy-lo);
+		stroke-width: var(--anatomy-weight);
+		vector-effect: non-scaling-stroke;
+	}
+	.mcp-recess {
+		fill: var(--anatomy-shade-0);
+	}
+	.mcp-slot {
+		fill: var(--anatomy-hi);
+	}
+	.mcp-bubble {
+		fill: var(--anatomy-paper);
+		stroke: var(--anatomy-mid);
+		stroke-width: var(--anatomy-weight);
+		vector-effect: non-scaling-stroke;
+		transition: stroke 300ms ease;
+	}
+	[data-answer][data-on] .mcp-bubble {
+		stroke: var(--ivr-orange);
+	}
+	.mcp-screen-bar {
+		fill: none;
+		stroke: var(--anatomy-lo);
+		stroke-width: var(--anatomy-weight);
+		vector-effect: non-scaling-stroke;
+	}
+	.mcp-win {
+		fill: var(--anatomy-lo);
+	}
+	.mcp-bubble-me {
+		fill: var(--anatomy-shade-1);
+	}
+	.mcp-chat {
+		fill: var(--anatomy-hi);
+		font-family: var(--ivr-font-body);
+		font-weight: 500;
+	}
+	[data-answer] {
+		transition: opacity 300ms ease;
+	}
+	[data-answer][data-hide] {
+		opacity: 0;
+	}
+	.mcp-input {
+		fill: var(--anatomy-paper);
+		stroke: var(--anatomy-lo);
+		stroke-width: var(--anatomy-weight);
+		vector-effect: non-scaling-stroke;
+	}
+	.mcp-tongue {
+		fill: var(--anatomy-mid);
+	}
+	.mcp-rule {
+		fill: none;
+		stroke: var(--anatomy-lo);
+		stroke-width: 1.4px;
+		stroke-linecap: round;
+		vector-effect: non-scaling-stroke;
+	}
+	.mcp-cursor {
+		fill: var(--anatomy-hi);
+		animation: mcp-blink 1.1s steps(1, end) infinite;
+	}
+	@keyframes mcp-blink {
+		50% {
+			opacity: 0;
+		}
+	}
+	.mcp-engraved {
+		fill: var(--anatomy-hi);
+		font-weight: 600;
+	}
+	.mcp-led {
+		fill: var(--anatomy-shade-0);
+		stroke: var(--anatomy-mid);
+		stroke-width: 0.6px;
+		vector-effect: non-scaling-stroke;
+		transition: fill 250ms ease;
+	}
+	.mcp-led[data-on] {
+		fill: var(--ivr-orange);
+	}
+	.mcp-led[data-deny] {
+		animation: mcp-deny 450ms steps(1, end) 3;
+	}
+	@keyframes mcp-deny {
+		50% {
+			fill: var(--anatomy-hi);
+		}
+	}
+	.mcp-knob {
+		transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+	}
+	.mcp-hit {
+		fill: transparent;
+		cursor: pointer;
+		outline: none;
+	}
+	.mcp-hit:focus-visible {
+		stroke: var(--ivr-orange);
+		stroke-width: 1.5px;
+		vector-effect: non-scaling-stroke;
+	}
+	.mcp-band {
+		fill: var(--anatomy-shade-1);
+	}
+	.mcp-print {
+		fill: var(--anatomy-mid);
+		font-family: var(--ivr-font-mono);
+		font-weight: 500;
+		letter-spacing: 0.06em;
+	}
+	.mcp-day {
+		fill: var(--anatomy-hi);
+		font-family: var(--ivr-font-display);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+	}
+	.mcp-mark {
+		fill: none;
+		stroke: var(--ivr-orange);
+		stroke-width: 2.2px;
+		stroke-linecap: round;
+		vector-effect: non-scaling-stroke;
+		stroke-dasharray: 100;
+		stroke-dashoffset: 100;
+		transition: stroke-dashoffset 700ms cubic-bezier(0.6, 0, 0.2, 1);
+	}
+	.mcp-mark[data-on] {
+		stroke-dashoffset: 0;
+	}
+	.mcp-flag {
+		transition: transform 650ms cubic-bezier(0.34, 1.4, 0.5, 1);
+	}
+	.mcp-flag[data-on] {
+		transform: rotate(-90deg);
+	}
+	.mcp-flag-arm {
+		fill: var(--anatomy-mid);
+	}
+	.mcp-flag-sail {
+		fill: var(--anatomy-mid);
+		transition: fill 300ms ease;
+	}
+	.mcp-flag[data-on] .mcp-flag-sail {
+		fill: var(--ivr-orange);
+	}
+	.mcp-row {
+		opacity: 0;
+		transition: opacity 400ms ease;
+	}
+	.mcp-row[data-on] {
+		opacity: 1;
+	}
+	.mcp-row-fill {
+		fill: var(--ivr-hl);
+	}
+	.mcp-pulse {
+		fill: var(--ivr-orange);
+		stroke: var(--anatomy-paper);
+		stroke-width: 1.2px;
+		vector-effect: non-scaling-stroke;
+		opacity: 0;
+	}
+	.mcp-pulse[data-on] {
+		opacity: 1;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.mcp-knob,
+		.mcp-flag,
+		.mcp-row,
+		.mcp-mark,
+		[data-answer] {
+			transition: none;
+		}
+		.mcp-cursor {
+			animation: none;
+		}
+	}
+</style>
