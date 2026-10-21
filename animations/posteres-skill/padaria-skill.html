@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Padaria Estrela — pedido + skill</title>
+<!-- Versão "pedido + skill" do slide 16a: só o que a taste-skill dá, sem foto gerada por IA.
+     Direção dealt: "The page is the object" (Bebas Neue / EB Garamond, Teal on paper).
+     Ideia: os horários das fornadas viram a placa esmaltada de horários do bonde da Mooca,
+     presa na fachada de tijolo do Cotonifício Crespi. Fotos de acervo aberto, com crédito. -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+	:root {
+		--paper: #f7f9f8;
+		--surface: #e3ebe8;
+		--ink: #06525c;
+		--display: 'Bebas Neue', sans-serif;
+		--text: 'EB Garamond', serif;
+	}
+	* { box-sizing: border-box; margin: 0; }
+	html, body { width: 1080px; height: 1350px; overflow: hidden; }
+	body { position: relative; background: #5a3a2a; font-family: var(--text); color: var(--ink); }
+
+	.wall {
+		position: absolute; inset: 0;
+		width: 1080px; height: 1350px;
+		object-fit: cover; object-position: 0% 60%;
+		filter: saturate(0.85) brightness(0.8);
+	}
+
+	/* A placa esmaltada: chapa clara, moldura grossa na cor da tinta, cantos arredondados e quatro rebites */
+	.plate {
+		position: absolute; left: 110px; top: 110px;
+		width: 860px; height: 1090px;
+		background: var(--paper);
+		border: 16px solid var(--ink);
+		border-radius: 36px;
+		display: flex; flex-direction: column;
+		overflow: hidden;
+	}
+	.rivet { position: absolute; z-index: 2; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); }
+	.rivet.tl { top: 14px; left: 18px; background: var(--paper); } .rivet.tr { top: 14px; right: 18px; background: var(--paper); }
+	.rivet.bl { bottom: 14px; left: 18px; background: var(--paper); } .rivet.br { bottom: 14px; right: 18px; background: var(--paper); }
+
+	.band {
+		background: var(--ink); color: var(--paper);
+		padding: 22px 64px 16px;
+		display: flex; justify-content: space-between; align-items: baseline;
+		font: 400 44px/1 var(--display); letter-spacing: 0.01em;
+	}
+	.band span:last-child { font: italic 400 30px/1 var(--text); }
+
+	.head { padding: 34px 64px 0; }
+	h1 { font: 400 150px/0.86 var(--display); letter-spacing: -0.02em; }
+	.lead { margin-top: 12px; font: italic 400 38px/1.2 var(--text); }
+
+	.photo {
+		margin: 28px 64px 0;
+		height: 190px;
+		background: url(assets/pao-frances-carioca.jpg) 50% 52% / cover;
+		border-radius: 14px;
+		filter: sepia(0.15);
+	}
+
+	.times { list-style: none; padding: 0; margin: 24px 0 0; }
+	.times li {
+		display: grid; grid-template-columns: 220px 1fr; align-items: baseline;
+		padding: 8px 64px 4px;
+	}
+	.times li:nth-child(odd) { background: var(--surface); }
+	.times b { font: 400 96px/0.9 var(--display); letter-spacing: -0.01em; }
+	.times b small { font: italic 500 52px/1 var(--text); margin-left: 4px; }
+	.times span { font: italic 400 40px/1 var(--text); }
+
+	.foot {
+		margin-top: auto;
+		background: var(--ink); color: var(--paper);
+		padding: 22px 64px 26px;
+		display: flex; justify-content: space-between; align-items: baseline;
+	}
+	.foot span { font: 400 30px/1 var(--text); }
+	.foot b { font: 400 58px/1 var(--display); letter-spacing: 0.01em; }
+
+	.credit {
+		position: absolute; left: 110px; right: 110px; bottom: 40px;
+		font: 400 14px/1.35 var(--text); color: #f2e9e1;
+	}
+</style>
+</head>
+<body>
+	<img class="wall" src="assets/cotonificio-crespi-fachada.jpg" width="1920" height="2880" alt="Fachada de tijolos do antigo Cotonifício Crespi, na Mooca">
+
+	<main class="plate">
+		<span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+		<p class="band"><span>Padaria Estrela</span><span>Rua da Mooca, 1.240</span></p>
+		<div class="head">
+			<h1>Horário das<br>fornadas</h1>
+			<p class="lead">Pão francês saindo do forno, três vezes por dia.</p>
+		</div>
+		<div class="photo" role="img" aria-label="Pães franceses na estufa do balcão"></div>
+		<ol class="times">
+			<li><b>6<small>h</small></b><span>antes do primeiro turno</span></li>
+			<li><b>11<small>h</small></b><span>para o almoço</span></li>
+			<li><b>17<small>h</small></b><span>na volta da fábrica</span></li>
+		</ol>
+		<p class="foot"><span>Encomendas</span><b>(11) 98765-4321</b></p>
+	</main>
+
+	<p class="credit">Fotos: “Cotonifício Crespi fachada”, Cassio Sabacão, CC BY 4.0; “Pão francês carioca”, Gabriel Del Cima, CC BY-SA 4.0; via Wikimedia Commons.</p>
+</body>
+</html>

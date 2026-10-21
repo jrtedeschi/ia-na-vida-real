@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT=../../src/content/slides/encontro-2/img
 mkdir -p out
-for name in padaria padaria-sem-skill pet costura padaria-estrela; do
+for name in padaria padaria-sem-skill pet costura padaria-estrela padaria-skill; do
 	"$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
 		--window-size=1080,1350 --virtual-time-budget=8000 \
 		--screenshot="$PWD/out/$name.png" "file://$PWD/$name.html" 2>/dev/null

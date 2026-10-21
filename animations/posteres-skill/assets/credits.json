@@ -1,0 +1,72 @@
+[
+ {
+  "file": "assets/rua-da-mooca.jpg",
+  "media": "image",
+  "ref": "openverse:7b5b145b-883a-46c2-81fb-6537b8e11183",
+  "title": "Rua da Mooca",
+  "creator": "User:Dantadd",
+  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Dantadd",
+  "date": null,
+  "license": "CC BY-SA 2.5",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/w/index.php?curid=5565192",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Rua_da_Mooca.jpg/1920px-Rua_da_Mooca.jpg",
+  "width": 1920,
+  "height": 1273,
+  "bytes": 517729,
+  "credit": "\"Rua da Mooca\" by User:Dantadd, CC BY-SA 2.5, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-10-21T02:11:14.236Z"
+ },
+ {
+  "file": "assets/cotonificio-crespi-fachada.jpg",
+  "media": "image",
+  "ref": "openverse:8c0d53d5-0ee2-4780-8c98-b7390157bdf1",
+  "title": "Cotonifício Crespi fachada",
+  "creator": "Cassio Sabacão",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?title=User:Cassio_Sabac%C3%A3o&action=edit&redlink=1",
+  "date": null,
+  "license": "CC BY 4.0",
+  "licenseCode": "by",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/w/index.php?curid=149382800",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Cotonif%C3%ADcio_Crespi_fachada.jpg/1920px-Cotonif%C3%ADcio_Crespi_fachada.jpg",
+  "width": 1920,
+  "height": 2880,
+  "bytes": 1108329,
+  "credit": "\"Cotonifício Crespi fachada\" by Cassio Sabacão, CC BY 4.0, via Wikimedia Commons",
+  "notes": [],
+  "saved": "2026-10-21T02:11:21.686Z"
+ },
+ {
+  "file": "assets/cotonificio-rodolfo-crespi-02.jpg",
+  "media": "image",
+  "ref": "openverse:d3d46405-204d-43ae-ab09-4bfd149f5815",
+  "title": "Cotonifício Rodolfo Crespi 02",
+  "creator": "Enrico Liberatori",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?title=User:Enrico_Liberatori&action=edit&redlink=1",
+  "date": null,
+  "license": "CC BY-SA 4.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/w/index.php?curid=73710087",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Cotonif%C3%ADcio_Rodolfo_Crespi_02.jpg/1920px-Cotonif%C3%ADcio_Rodolfo_Crespi_02.jpg",
+  "width": 1920,
+  "height": 1440,
+  "bytes": 788577,
+  "credit": "\"Cotonifício Rodolfo Crespi 02\" by Enrico Liberatori, CC BY-SA 4.0, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-10-21T02:11:26.511Z"
+ }
+]
