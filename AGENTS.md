@@ -12,6 +12,8 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 Each slide is one `.md` file in `src/content/slides/encontro-N/`, rendered by `src/components/slides/Slide.astro`. Format and layouts: `src/content/slides/LEIA-ME.md`. Edit slide content there, never in `src/pages/encontro-N/slides.astro`.
 
+Speaker notes, site pages and exercises speak in João's **voice**, for a lay audience: read `~/.claude/voz/voz.md` (classroom vs. written register in `tom.md`) before writing them.
+
 New animation requested for a slide: build the component in `src/components/anim/`, register it in `src/components/slides/visuals.ts`, and set `visual: <name>` on the slide. Screenshot the slide at 1280×720 before calling it done.
 
 ## Documentation
