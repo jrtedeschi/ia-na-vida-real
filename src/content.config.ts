@@ -30,6 +30,8 @@ const slides = defineCollection({
 			citePhoto: z.string().optional(),
 			image: image().optional(),
 			alt: z.string().optional(),
+			// ferramentas citadas no slide: logo (em public/, pintado na cor do texto), nome e link que abre em outra aba
+			tools: z.array(z.object({ name: z.string(), logo: z.string(), href: z.string().url() })).optional(),
 			visual: z.string().optional(),
 			visualProps: z.record(z.string(), z.unknown()).optional(),
 			prompt: z

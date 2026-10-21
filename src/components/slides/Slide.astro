@@ -84,6 +84,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				{d.items && <SlideItems layout={d.layout} items={d.items} fragments={d.fragments} />}
 				{visual && !visual.overlay && <visual.Comp {...visual.props} {...d.visualProps} />}
 				{hasBody && <div class={bodyClass}><Content /></div>}
+				{d.tools && (
+					<ul class="s-tools">
+						{d.tools.map((t) => (
+							<li><a href={t.href} target="_blank" rel="noopener"><span class="s-tool-logo" aria-hidden="true" style={`--logo: url(${base}${t.logo})`} />{t.name}</a></li>
+						))}
+					</ul>
+				)}
 				{d.prompt && <Prompt id={`p-${slide.id.replace(/\W/g, '-')}`} {...d.prompt} />}
 				{d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" class="s-image" />}
 			</Fragment>

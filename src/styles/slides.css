@@ -1296,3 +1296,38 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	.s-posters-trio .s-gallery li.fragment { transform: none; transition: opacity 0.2s; }
 }
+
+/* tools: — as ferramentas que o slide cita, cada uma com logo (pintado na cor do texto) e link. */
+.s-tools {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px 28px;
+	margin: 28px 0 0 !important;
+	padding: 0;
+	list-style: none;
+}
+.s-tools li {
+	margin: 0;
+}
+.reveal .slides section .s-tools a {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	font: 700 24px/1 var(--ivr-font-display);
+	letter-spacing: -0.01em;
+	color: var(--ivr-ink);
+	text-decoration: none;
+	border-bottom: 3px solid var(--ivr-orange);
+	padding-bottom: 6px;
+}
+.reveal .slides section .s-tools a:hover {
+	color: var(--ivr-orange);
+}
+.s-tool-logo {
+	flex: none;
+	width: 30px;
+	height: 30px;
+	background: currentColor;
+	-webkit-mask: var(--logo) center / contain no-repeat;
+	mask: var(--logo) center / contain no-repeat;
+}

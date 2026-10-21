@@ -52,6 +52,16 @@ Campos que servem em qualquer layout: `kicker:` (linha pequena acima do título)
 `citeLogo:` (logo ao lado do `cite:`, arquivo em `public/`, pintado na cor do texto), `citePhoto:` (foto redonda de quem disse),
 `fragments: true` (itens aparecem um por vez), `image:` (imagem abaixo do texto), `class:` (classe CSS extra).
 
+**Ferramentas com logo e link** (`tools:`): uma faixa com o logo e o nome de cada ferramenta, que abre em outra aba.
+Os logos ficam em `public/img/logos/` (do [Simple Icons](https://simpleicons.org/), CC0) e são pintados na cor do texto.
+
+```md
+tools:
+  - name: "Gemini Notebook"
+    logo: "/img/logos/notebooklm.svg"
+    href: "https://notebooklm.google.com/"
+```
+
 ## Espinha dorsal
 
 O slide `roteiro` define os capítulos da aula. Cada `ponte` abre um capítulo (`chapter: 3`) e mostra o mapa,
