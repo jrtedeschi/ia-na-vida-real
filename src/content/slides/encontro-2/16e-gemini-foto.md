@@ -8,8 +8,15 @@ prompt:
   referencias: "Use as minhas fotos como base; não invente produto que eu não vendo."
   restricoes: "Nenhuma letra, placa ou logotipo na imagem. Deixe o terço de baixo mais calmo, para o texto."
   formato: "Retrato 4:5, foto realista, luz da manhã."
+tools:
+  - name: "Gemini"
+    logo: "/img/logos/googlegemini.svg"
+    href: "https://gemini.google.com/"
+  - name: "Google Flow"
+    logo: "/img/logos/google.svg"
+    href: "https://labs.google/flow"
 notes: |
-  Vamos fazer juntos? Passo 1, a foto, no Gemini. Repara na restrição: "nenhuma letra, placa ou logotipo" e "deixe o terço de baixo calmo, para o texto". Eu já tô pensando no pôster antes de pedir a foto. O passo 2, o texto e o layout no Claude, tá no exercício 1 do site, com o pedido pronto.
+  Vamos fazer juntos? Passo 1, a foto, no Gemini. Repara na restrição: "nenhuma letra, placa ou logotipo" e "deixe o terço de baixo calmo, para o texto". Eu já tô pensando no pôster antes de pedir a foto. O passo 2, o texto e o layout no Claude, tá no exercício 6 do site, com o pedido pronto.
 
   **Bastidor:** ao vivo: anexar 2 fotos públicas, colar o pedido, pedir um ajuste ("mais vapor saindo do pão"). Se aparecer letra: "tire todas as letras, sem mudar o resto". Salvar a imagem no aparelho.
 

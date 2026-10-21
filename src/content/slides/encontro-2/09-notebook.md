@@ -1,6 +1,10 @@
 ---
 layout: "big"
 title: "O Gemini Notebook responde a partir das suas fontes"
+tools:
+  - name: "Gemini Notebook"
+    logo: "/img/logos/notebooklm.svg"
+    href: "https://notebooklm.google.com/"
 notes: |
   Quem tem Gemini tem o Gemini Notebook, que antes se chamava NotebookLM. O Almir perguntou dele na semana passada, lembra? Você manda apostila, PDF, link, até vídeo, e ele responde com base nisso e mostra de onde tirou cada trecho. Eu coloquei lá os 40 vídeos de uma conferência, ele transcreveu todos, e agora eu faço pergunta sobre qualquer palestra.
 

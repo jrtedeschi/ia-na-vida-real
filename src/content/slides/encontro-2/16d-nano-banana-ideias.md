@@ -11,6 +11,13 @@ items:
     text: "Trocar o fundo da foto, tirar um fio da fachada, ver a parede de outra cor."
   - title: "A imagem vira vídeo"
     text: "No Flow, o pôster ganha movimento e vira status do WhatsApp."
+tools:
+  - name: "Gemini"
+    logo: "/img/logos/googlegemini.svg"
+    href: "https://gemini.google.com/"
+  - name: "Google Flow"
+    logo: "/img/logos/google.svg"
+    href: "https://labs.google/flow"
 notes: |
   Quem tem Gemini tem o Nano Banana, o gerador de imagem do Google, no app do Gemini ou no Flow. Lembra do submarino amarelo que eu imprimi para o meu filho? Começou numa imagem do Gemini.
 

@@ -2,6 +2,13 @@
 layout: "big"
 kicker: "Skills"
 title: "Uma skill é uma receita que a IA abre na hora certa"
+tools:
+  - name: "Claude"
+    logo: "/img/logos/claude.svg"
+    href: "https://claude.ai/"
+  - name: "Gemini"
+    logo: "/img/logos/googlegemini.svg"
+    href: "https://gemini.google.com/"
 notes: |
   E aí vem a skill. Pensa no caderno de receitas da família na prateleira: ninguém lê todas antes de cozinhar, você abre a do prato do dia. A skill é isso: uma pasta com instruções, exemplos e arquivos. A IA lê só o nome de cada uma e, quando o seu pedido combina, abre a receita inteira. Por isso dá para ter um monte sem lotar a janela.
 

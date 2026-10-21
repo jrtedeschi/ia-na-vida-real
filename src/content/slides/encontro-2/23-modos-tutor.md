@@ -1,6 +1,16 @@
 ---
 layout: "big"
 title: "As três têm um modo que pergunta em vez de responder"
+tools:
+  - name: "Gemini"
+    logo: "/img/logos/googlegemini.svg"
+    href: "https://gemini.google.com/"
+  - name: "ChatGPT"
+    logo: "/img/logos/openai.svg"
+    href: "https://chatgpt.com/"
+  - name: "Claude"
+    logo: "/img/logos/claude.svg"
+    href: "https://claude.ai/"
 notes: |
   E as três têm um modo que faz isso por você: em vez de responder, a IA pergunta, dá pista e só depois confirma. No Gemini é o Aprendizado guiado, no ChatGPT é o modo estudo, no Claude é o estilo de aprendizado.
 

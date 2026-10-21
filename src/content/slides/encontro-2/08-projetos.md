@@ -2,6 +2,13 @@
 layout: "big"
 chapter: 2
 title: "Um Projeto é uma pasta que a IA consulta"
+tools:
+  - name: "Projetos no Claude"
+    logo: "/img/logos/claude.svg"
+    href: "https://claude.ai/projects"
+  - name: "ChatGPT"
+    logo: "/img/logos/openai.svg"
+    href: "https://chatgpt.com/"
 notes: |
   Capítulo 2: e se a IA pudesse ler os seus documentos? É isso que é um Projeto: uma pasta. Você junta ali os documentos e as instruções de um assunto, e toda conversa lá dentro já começa sabendo disso. Pensa no regulamento do condomínio, no contrato do aluguel, nas receitas da família. Tem no Claude e no ChatGPT, inclusive no grátis.
 

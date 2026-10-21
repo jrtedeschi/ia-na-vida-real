@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 2 · Exercícios'
-description: Imagens com o Nano Banana e o Claude, e skills combinadas com conectores, imagens e estudo.
+description: 'O exercício da aula, cinco para casa e mais: imagens com o Nano Banana e skills combinadas.'
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -10,7 +10,123 @@ Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o qu
 
 <Progress />
 
-## Imagens com o Nano Banana
+## Em aula
+
+<Exercise
+	id="e2-planilha" n={0} title="A IA lê e monta uma planilha no seu Drive" when="Em aula" minutes={10} tool="Grátis · Gemini + Drive"
+	checks={['A IA achou a planilha no seu Drive e respondeu a categoria de setembro', 'A tabela com o total de cada categoria virou uma planilha nova no Drive', 'A planilha original continua igual']}
+	human="O total do Delivery de setembro confere com a sua soma à mão"
+	fail="Ela não achou o arquivo? Diga o nome exato da planilha. Não conseguiu criar a planilha? Peça a tabela na conversa e copie para uma planilha nova." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Peça a mesma tabela para agosto e compare os dois meses."
+>
+
+Antes da aula, baixe a [planilha de exemplo](/assets/gastos-exemplo.xlsx) e suba para o seu Google Drive. São gastos inventados de julho a setembro, então pode usar sem medo. Use o Gemini com a sua conta Google pessoal, não a do trabalho.
+
+<p>Depois da primeira resposta, peça: <strong>"Monte uma tabela com o total de cada categoria em setembro."</strong> No fim da tabela, use o botão de exportar para o Planilhas.</p>
+<Prompt slot="prompt" id="e2-planilha-p"
+	contexto="No meu Drive está a planilha [Gastos de exemplo], com gastos de julho a setembro."
+	objetivo="Saber qual categoria mais pesou em setembro, sem contar a moradia."
+	referencias="Use só os dados dessa planilha."
+	restricoes="Não mude nada na planilha."
+	formato="A categoria e o valor, em uma linha."
+/>
+</Exercise>
+
+## Para casa
+
+<Exercise
+	id="e2-tutor" n={1} title="Me ensine sem dar a resposta" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['A IA fez perguntas e deu dicas antes de explicar', 'Você tentou responder antes de pedir ajuda']}
+	human="Você explicou o assunto de volta com as suas palavras, sem olhar"
+	fail="Ela despejou a resposta? Lembre: 'não me dê a resposta; me faça uma pergunta por vez e me dê uma dica quando eu errar'."
+	challenge="Use o modo que pergunta em vez de responder: Aprendizado guiado no Gemini, modo estudo no ChatGPT."
+>
+<p>Escolha algo que você quer aprender de verdade: uma regra de gramática, como funciona o juro do cartão, um assunto do trabalho. A ideia é a IA te fazer pensar, e não pensar por você.</p>
+<Prompt slot="prompt" id="e2-tutor-p"
+	contexto="Quero aprender [como funciona o juro do cartão de crédito]. Sei pouco do assunto."
+	objetivo="Entender de verdade, a ponto de explicar para outra pessoa."
+	referencias="Comece pelo básico e vá subindo."
+	restricoes="Não me dê a resposta pronta. Uma pergunta por vez; quando eu errar, uma dica antes da explicação."
+	formato="Perguntas curtas. No fim, me peça para explicar tudo com as minhas palavras."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-apostila" n={2} title="Da apostila ao teste, sem olhar" when="Para casa" minutes={15} tool="Grátis · Gemini Notebook"
+	checks={['O Gemini Notebook gerou um teste a partir do seu material', 'Você respondeu sem olhar a apostila', 'Você marcou para refazer os erros daqui a dois dias']}
+	human="Dois dias depois, você acertou as que tinha errado"
+	fail="O teste ficou fácil ou genérico demais? Peça perguntas sobre um capítulo específico, ou mais difíceis."
+	challenge="Refaça os erros de novo daqui a uma semana."
+>
+
+Envie ao [Gemini Notebook](https://notebooklm.google.com/) um material que você precisa aprender: apostila, manual, um PDF do trabalho. No painel Estúdio, use "Testes" ou "Cartões didáticos". Responda sem olhar e refaça só os erros daqui a dois dias. Testar-se ensina mais que reler.
+
+<Prompt slot="prompt" id="e2-apostila-p"
+	contexto="Enviei [a apostila do curso de primeiros socorros]."
+	objetivo="Saber o que eu já aprendi e o que ainda não."
+	referencias="Só o material enviado."
+	restricoes="Perguntas que dá para responder sem olhar, uma de cada parte do material."
+	formato="Um teste de 10 perguntas, com a resposta e a página só depois que eu responder."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-revisor" n={3} title="Um revisor de mensagens só seu" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini"
+	checks={['A instrução ficou salva como skill ou no Projeto', 'Numa conversa nova, uma mensagem sua saiu revisada sem você repetir as regras']}
+	human="Você leu a versão revisada e ela ainda soa como você"
+	fail="Ela mudou o sentido ou deixou a mensagem com cara de robô? Cole mais duas mensagens suas como exemplo de tom."
+	challenge="Crie uma segunda skill de tom e combine as duas (exercício 17)."
+>
+<p>Mande o pedido e termine com <strong>"transforme isso numa skill chamada [revisor]"</strong>, ou cole a instrução num Projeto. Depois, abra uma conversa nova e mande uma mensagem que você ainda vai enviar.</p>
+<Prompt slot="prompt" id="e2-revisor-p"
+	contexto="Escrevo mensagens para [clientes da minha loja] pelo WhatsApp."
+	objetivo="Revisar cada mensagem antes de eu mandar."
+	referencias="[Cole 2 mensagens suas que deram certo]"
+	restricoes="Não mude o sentido; aponte o que é grosseiro ou confuso."
+	formato="A mensagem revisada e, abaixo, o que mudou em uma linha."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-projeto" n={4} title="Seu primeiro Projeto" when="Para casa" minutes={15} tool="Grátis · Claude ou ChatGPT"
+	checks={['O Projeto tem pelo menos um documento seu', 'A resposta veio com o trecho exato do documento']}
+	human="Você abriu o documento e conferiu que o trecho citado está lá"
+	fail="A resposta veio de outra parte do documento? Aponte: 'olhe na página 12', 'na parte das multas'." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Pergunte algo que o documento não diz e veja se ela admite que não sabe."
+>
+<p>Escolha um documento que você consulta de vez em quando: o regulamento do condomínio, o contrato do aluguel, o manual de um eletrodoméstico. Antes de enviar, a regra do cartão-postal: nada de CPF, dado de saúde ou dado de outras pessoas.</p>
+<Prompt slot="prompt" id="e2-projeto-p"
+	contexto="Este Projeto tem [o regulamento do condomínio]."
+	objetivo="Saber se [posso fazer obra no sábado]."
+	referencias="Use só o documento enviado."
+	restricoes="Se o documento não responder, diga que não sabe."
+	formato="Resposta em 2 frases e o trecho exato do documento."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-email" n={5} title="A IA organiza a sua caixa de entrada" when="Para casa" minutes={10} tool="Grátis · Gemini + Gmail"
+	checks={['A IA separou os e-mails nos três grupos', 'Nada foi apagado, arquivado ou respondido']}
+	human="Você abriu dois e-mails da lista e conferiu que estão no grupo certo"
+	fail="Ela não vê os e-mails? Ligue o Gmail em Configurações, Apps conectados. Não quer ligar? Pule este exercício: ele é opcional." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Peça o rascunho de resposta de um e-mail do grupo 'responder hoje'. Quem decide se manda é você."
+>
+<p>Opcional. Ligar o e-mail manda para a IA também o que outras pessoas escreveram para você. Se não quiser, não ligue. O pedido é só de leitura. No fim, você pode desligar o Gmail em Apps conectados.</p>
+<Prompt slot="prompt" id="e2-email-p"
+	contexto="Uso este e-mail para [trabalho e coisas de casa]."
+	objetivo="Separar os e-mails dos últimos [3 dias] em três grupos: responder hoje, pode esperar e propaganda."
+	referencias="Use só os e-mails da minha caixa de entrada."
+	restricoes="Não apague, não arquive e não responda nada. Só leia e sugira."
+	formato="Uma lista por grupo, com remetente e assunto de cada e-mail."
+/>
+</Exercise>
+
+## Para ver em casa
+
+[23 erros comuns com o Claude, e como corrigir](https://youtu.be/gvESqM6s0kM), de Jay E (RoboNuggets). O vídeo é em inglês; dá para ligar a legenda em português no YouTube. Muita coisa vale para qualquer IA.
+
+
+## Mais para casa: imagens com o Nano Banana
 
 Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.com/) (Criar imagem) ou no [Google Flow](https://labs.google/flow), a ferramenta de vídeo do Google, que também faz imagem. Duas regras valem para todos:
 
@@ -18,7 +134,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 - **Um ajuste por pedido** ("mais vapor saindo do pão", "o telefone maior"), para a IA não refazer tudo.
 
 <Exercise
-	id="e2-cartaz" n={1} title="Um cartaz com a foto do seu produto" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
+	id="e2-cartaz" n={6} title="Um cartaz com a foto do seu produto" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
 	checks={['O produto da foto é o seu, sem nada inventado', 'A foto do Gemini veio sem nenhuma letra', 'O texto do Claude saiu exatamente como você pediu']}
 	human="Você colaria esse cartaz na sua vitrine ou mandaria no seu grupo"
 	fail="Apareceu letra na foto? Peça ao Gemini: tire todas as letras, sem mudar o resto." failHref="/consulta/pedido-em-5-partes/" failLabel="o pedido em 5 partes"
@@ -42,7 +158,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-personagem" n={2} title="O mesmo personagem em várias cenas" when="Para casa" minutes={15} tool="Grátis · Gemini ou Flow"
+	id="e2-personagem" n={7} title="O mesmo personagem em várias cenas" when="Para casa" minutes={15} tool="Grátis · Gemini ou Flow"
 	checks={['O personagem ficou igual em todas as cenas', 'Cada cena mostra o que você pediu']}
 	human="Você mostraria as cenas para quem elas foram feitas (o cliente, o filho)"
 	fail="O personagem mudou de uma cena para outra? Anexe de novo a primeira imagem e escreva: o mesmo personagem, igualzinho a este."
@@ -59,7 +175,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-pedaco" n={3} title="Mude só um pedaço da foto" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	id="e2-pedaco" n={8} title="Mude só um pedaço da foto" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
 	checks={['Só mudou o que você pediu', 'Móveis, luz e o resto da foto continuam iguais']}
 	human="Você olhou a foto nova ao lado da original e achou o que mudou sem querer"
 	fail="Mudou mais coisa do que devia? Repita o pedido com: mantenha todo o resto exatamente igual."
@@ -76,13 +192,13 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-video" n={4} title="Seu cartaz vira vídeo" when="Para casa" minutes={10} tool="Grátis · Flow"
+	id="e2-video" n={9} title="Seu cartaz vira vídeo" when="Para casa" minutes={10} tool="Grátis · Flow"
 	checks={['O vídeo tem 8 segundos e o movimento é suave', 'O texto do cartaz continua legível do começo ao fim']}
 	human="Você postaria esse vídeo no seu status"
 	fail="O texto tremeu ou mudou? Tire o texto da imagem, gere o vídeo e escreva o texto por cima no próprio WhatsApp."
 	challenge="Gere duas versões com movimentos diferentes e pergunte a alguém qual chama mais atenção."
 >
-<p>Só no Flow. Use o cartaz do exercício 1 (ou qualquer imagem sua) como ponto de partida do vídeo.</p>
+<p>Só no Flow. Use o cartaz do exercício 6 (ou qualquer imagem sua) como ponto de partida do vídeo.</p>
 <Prompt slot="prompt" id="e2-video-p"
 	contexto="Anexei o cartaz da [minha padaria]."
 	objetivo="Um vídeo curto para o status do WhatsApp."
@@ -93,7 +209,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-aviso" n={5} title="Um aviso que se lê de longe" when="Para casa" minutes={10} tool="Grátis · Claude"
+	id="e2-aviso" n={10} title="Um aviso que se lê de longe" when="Para casa" minutes={10} tool="Grátis · Claude"
 	checks={['Todos os nomes e números estão certos', 'Dá para ler a uns 2 metros de distância']}
 	human="Você conferiu cada linha da tabela antes de imprimir"
 	fail="Trocou algum número ou letra? Peça: corrija só [a linha de março], sem mudar o resto."
@@ -110,7 +226,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-banner" n={6} title="Um banner largo para a fachada" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
+	id="e2-banner" n={11} title="Um banner largo para a fachada" when="Para casa" minutes={15} tool="Grátis · Gemini + Claude"
 	checks={['A foto saiu larga, com a esquerda livre para o nome', 'O nome do negócio está grande e escrito certo']}
 	human="Você imaginou o banner na sua fachada e ele funciona de longe"
 	fail="A foto saiu quadrada? Repita o formato no fim do pedido: panorâmico, 3 vezes mais largo que alto."
@@ -134,7 +250,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-foto-antiga" n={7} title="Restaure uma foto antiga da família" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	id="e2-foto-antiga" n={12} title="Restaure uma foto antiga da família" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
 	checks={['Rasgos, manchas e riscos sumiram', 'Os rostos continuam sendo das mesmas pessoas']}
 	human="Alguém da família reconheceu as pessoas da foto restaurada"
 	fail="Mudou o rosto de alguém? Peça de novo: só conserte os danos, não mexa nas feições." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
@@ -151,7 +267,7 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 </Exercise>
 
 <Exercise
-	id="e2-reforma" n={8} title="O antes e depois da reforma" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
+	id="e2-reforma" n={13} title="O antes e depois da reforma" when="Para casa" minutes={10} tool="Grátis · Gemini ou Flow"
 	checks={['Janela, porta e tamanho do cômodo continuam iguais', 'As mudanças pedidas aparecem todas']}
 	human="Você mostrou o antes e o depois para quem mora com você e decidiram juntos"
 	fail="O cômodo mudou de tamanho ou ganhou janela? Repita: mantenha a mesma janela, a mesma porta e as mesmas medidas."
@@ -166,12 +282,12 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 />
 </Exercise>
 
-## Skills combinadas
+## Mais para casa: skills combinadas
 
 Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto aparece. Sozinha, ela já ajuda; junto com outra peça da aula (um conector, uma imagem, uma apostila, outra skill), ela faz trabalho de verdade. Para criar, mande o pedido e termine com <strong>"transforme isso numa skill chamada [nome]"</strong>. No [Claude](https://claude.ai/) as skills ficam em Configurações; no [Gemini](https://gemini.google.com/) você chama digitando <strong>/</strong> e o nome.
 
 <Exercise
-	id="e2-skill-agenda" n={9} title="Sua segunda-feira num pedido só" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini + Agenda"
+	id="e2-skill-agenda" n={14} title="Sua segunda-feira num pedido só" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini + Agenda"
 	checks={['O conector da Agenda está ligado e a IA leu os seus compromissos', 'O resumo veio no formato que você definiu', 'Na semana seguinte, o mesmo pedido curto trouxe o resumo no mesmo formato']}
 	human="Você conferiu na Agenda se nenhum compromisso ficou de fora ou foi inventado"
 	fail="A IA disse que não vê a agenda? Ligue o conector: no Claude, em Configurações, Conectores; no Gemini, o app Google Workspace." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
@@ -188,13 +304,13 @@ Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto a
 </Exercise>
 
 <Exercise
-	id="e2-skill-cartaz" n={10} title="Cartaz sempre com a cara da sua marca" when="Para casa" minutes={20} tool="Grátis · Gemini + Claude"
+	id="e2-skill-cartaz" n={15} title="Cartaz sempre com a cara da sua marca" when="Para casa" minutes={20} tool="Grátis · Gemini + Claude"
 	checks={['A skill guarda as cores, a letra e o tom da sua marca', 'Dois cartazes diferentes saíram com o mesmo estilo', 'A foto do Gemini veio sem letras e o texto do Claude saiu certo']}
 	human="Alguém que conhece o seu negócio olhou os cartazes e reconheceu que são seus"
 	fail="O segundo cartaz saiu com outro estilo? Abra a skill e veja se as regras estão escritas com clareza, como 'cor principal verde-escuro #064E3F'."
 	challenge="Faça o cartaz de uma promoção e o de um aviso de feriado e ponha os dois lado a lado."
 >
-<p>Skill + imagem: o jeito dos pôsteres da aula. A skill guarda o que nunca muda na sua marca. A foto vem do Gemini, sem letras (exercício 1); o Claude monta o cartaz seguindo a skill. Na próxima vez, só mude o texto.</p>
+<p>Skill + imagem: o jeito dos pôsteres da aula. A skill guarda o que nunca muda na sua marca. A foto vem do Gemini, sem letras (exercício 6); o Claude monta o cartaz seguindo a skill. Na próxima vez, só mude o texto.</p>
 <Prompt slot="prompt" id="e2-skill-cartaz-p"
 	contexto="Tenho [uma padaria] chamada [Padaria Estrela], com [uma estrela dourada de 8 pontas] no logotipo."
 	objetivo="Guardar o estilo dos meus cartazes para todos saírem iguais. Transforme isso numa skill chamada [cartaz-da-loja]."
@@ -205,7 +321,7 @@ Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto a
 </Exercise>
 
 <Exercise
-	id="e2-skill-tutor" n={11} title="Um tutor que só pergunta" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini"
+	id="e2-skill-tutor" n={16} title="Um tutor que só pergunta" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini"
 	checks={['A IA fez perguntas em vez de explicar tudo de cara', 'As perguntas saíram da sua apostila, não da cabeça dela', 'Você errou pelo menos uma e ela deu dica antes da resposta']}
 	human="Dois dias depois, você acertou sem olhar as perguntas que tinha errado"
 	fail="Ela despejou a resposta? Lembre a skill: 'só dica, nunca a resposta antes de eu tentar duas vezes'." failHref="/consulta/conceitos/janela-de-contexto/" failLabel="janela de contexto"
@@ -222,7 +338,7 @@ Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto a
 </Exercise>
 
 <Exercise
-	id="e2-skill-duas" n={12} title="Duas skills no mesmo pedido" when="Para casa" minutes={10} tool="Grátis · Gemini"
+	id="e2-skill-duas" n={17} title="Duas skills no mesmo pedido" when="Para casa" minutes={10} tool="Grátis · Gemini"
 	checks={['Você criou duas skills separadas', 'Chamando as duas juntas, a resposta seguiu as regras das duas']}
 	human="Você mandou a mensagem final para alguém de verdade, ou decidiu conscientemente não mandar"
 	fail="Uma skill ignorou a outra? Chame as duas no começo do pedido, uma depois da outra, antes do texto."
