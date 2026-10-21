@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: "demo"
 kicker: "Passo 2, o texto e o layout no Claude"
 title: "O pôster, no Claude"
@@ -9,8 +10,7 @@ prompt:
   restricoes: "Sem degradê, sem emoji. Os horários enormes, legíveis do outro lado da rua."
   formato: "Um artefato A4 em pé, com um botão para eu escolher a foto e outro para imprimir."
 notes: |
-  O Claude faz o pôster como uma página (artefato). O botão de escolher a foto resolve o encaixe: a foto vai do seu aparelho direto para a página, sem precisar subir para lugar nenhum. Depois é imprimir ou salvar em PDF (o botão de imprimir abre a janela do navegador).
-  Por que no Claude: o texto é texto de verdade, não desenho de letra, então sai com cada acento no lugar. E dá para pedir ajuste fino: "o telefone maior", "a faixa do nome em vermelho".
-  Quem gostou do jeito: salvar este pedido como instrução de um Projeto ou como skill, e o próximo pôster sai no mesmo estilo.
-  VERIFICAR antes da aula: artefato com botão de escolher foto e imprimir funcionando no plano grátis do Claude, no computador e no celular.
+  Passo 2, o texto e o layout, no Claude. Ele monta o pôster como uma página, com um botão para escolher a foto e outro para imprimir. A foto vai do seu aparelho direto para a página. E dá para pedir ajuste fino: "o telefone maior", "a faixa em vermelho". Gostou do jeito? Salva esse pedido como skill, e o próximo cartaz sai igualzinho.
+
+  **Bastidor:** VERIFICAR antes da aula: artefato com botão de escolher foto e de imprimir funcionando no Claude grátis, no computador e no celular.
 ---

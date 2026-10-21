@@ -9,5 +9,7 @@ prompt:
   restricoes: "Não mude o sentido; aponte o que é grosseiro ou confuso."
   formato: "A mensagem revisada e, abaixo, o que mudou em uma linha."
 notes: |
-  Salvar como skill ou instrução de Projeto, ao vivo. Testar com uma mensagem nova. Plano B: se o plano grátis não tiver o recurso na hora, colar a instrução no início de uma conversa e mostrar que funciona igual, só que não fica salva.
+  Agora uma que eu uso bastante. Eu trabalho num ambiente todo em inglês e vivo pedindo para a IA revisar o que eu vou mandar. Aqui é o mesmo para o WhatsApp da loja: você cola duas mensagens suas que deram certo e diz o que ela não pode fazer. Aí eu salvo isso como skill, e a próxima mensagem já sai revisada do meu jeito.
+
+  **Bastidor:** salvar como skill ou instrução de Projeto, ao vivo, e testar com uma mensagem nova. Plano B: colar a instrução no começo de uma conversa e mostrar que funciona igual, só não fica salva.
 ---

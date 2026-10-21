@@ -92,5 +92,5 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	{visual?.overlay && <div class:list={['fragment s-overlay', { 's-exit': visual.exit }]}><visual.Comp {...visual.props} {...d.visualProps} /></div>}
 	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
 	{marker && <p class="s-chapter" aria-hidden="true">{marker}</p>}
-	{d.notes && <aside class="notes" set:html={inline(d.notes)} />}
+	{d.notes && <aside class="notes" set:html={inline(d.notes.trim()).replace(/\n\s*\n/g, '<br><br>')} />}
 </section>

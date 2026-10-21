@@ -1,13 +1,9 @@
 ---
 layout: "thesis"
 kicker: "Depois de tudo isso"
-title: "A IA faz rápido. Quem decide ainda é você."
+title: "A IA faz rápido. Quem decide ainda é a gente."
 notes: |
-  Fechar o bloco dos pôsteres com o pé no chão. Nada do que deu certo veio pronto da máquina:
-  - a estrela e as cores eram da marca, e alguém escolheu usá-las;
-  - de 7 fotos geradas, 3 serviram; uma saiu imprópria e foi apagada;
-  - o slogan "Enquanto a Mooca dorme, o pão acorda" nasceu de olhar a foto e pensar no bairro;
-  - a primeira versão "com skill" foi achada sem graça e refeita.
-  A ferramenta encurta o caminho entre a ideia e o resultado. A ideia, o gosto e o "isso ainda não está bom" continuam sendo trabalho de gente. Conecta com o "fique com o volante" do Encontro 1.
+  E aqui eu quero deixar o pé no chão. Nada disso veio pronto da máquina. A estrela e as cores eram da marca, e alguém escolheu usar. O slogan, "Enquanto a Mooca dorme, o pão acorda", saiu de olhar a foto e pensar no bairro. E a primeira versão com skill eu achei sem graça e mandei refazer.
+
+  A IA faz rápido; quem decide ainda é a gente. É o que eu falei na semana passada: não terceirize suas decisões.
 ---
-Escolher a foto, achar a frase, dizer "ainda não está bom" e refazer: o processo criativo continua sendo trabalho de gente.

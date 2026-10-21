@@ -3,7 +3,5 @@ layout: "big"
 chapter: 5
 title: "Conversa longa demais, resposta pior"
 notes: |
-  Abertura de capítulo (ponte cortada): "O que pode dar errado com o contexto?"
-  Ligado à janela de contexto: com a conversa muito longa, o começo pode sair da janela ou perder peso. Regra prática: mudou de assunto, abra uma conversa nova. Peça um resumo antes de trocar.
+  Capítulo 5, os cuidados. O que pode dar errado com o contexto? Primeiro: conversa longa demais dá resposta pior. O começo da conversa vai saindo da janela, e é aí que ela começa a inventar. Mudou de assunto? Abre uma conversa nova. Se precisar levar alguma coisa, pede um resumo e cola na conversa nova.
 ---
-Mudou de assunto, abra uma conversa nova. Se precisar levar algo, peça à IA um resumo e cole na conversa nova.

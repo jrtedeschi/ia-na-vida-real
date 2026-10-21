@@ -2,6 +2,5 @@
 layout: "big"
 title: "Pergunta vaga, trecho errado"
 notes: |
-  Consequência prática da busca por sentido: quanto mais específica a pergunta, melhor o trecho que ela encontra. Ligar ao pedido em 5 partes.
+  E a consequência prática: pergunta vaga, trecho errado. Se a resposta veio de outra parte do documento, aponta: "olha na página 12", "na parte das multas". Ela busca muito melhor quando você aponta. É o pedido em 5 partes de novo: quanto mais específico, melhor.
 ---
-Se a resposta veio de outra parte do documento, peça a página ou a seção. Ela busca melhor quando você aponta.

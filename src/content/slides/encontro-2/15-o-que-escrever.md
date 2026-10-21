@@ -7,5 +7,5 @@ items:
   - "O que a IA nunca deve fazer"
   - "Como você quer que ela diga que não sabe"
 notes: |
-  Puxar do pedido em 5 partes: contexto e restrições que se repetem viram instrução salva. Objetivo e referências mudam a cada pedido.
+  O que vale pôr ali? Pega o pedido em 5 partes: o contexto e as restrições que você repete toda vez viram instrução salva. O objetivo e as referências mudam a cada pedido; esses ficam no pedido mesmo.
 ---

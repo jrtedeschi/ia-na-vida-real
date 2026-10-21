@@ -1,11 +1,11 @@
 ---
 layout: "big"
 kicker: "Skills"
-title: "Uma skill é um manual que a IA abre quando precisa"
+title: "Uma skill é uma receita que a IA abre na hora certa"
 notes: |
-  Skill = uma pasta com instruções, exemplos e arquivos de apoio. A IA lê só o nome e a descrição de cada skill; quando o pedido combina, ela abre o manual inteiro. Por isso dá para ter muitas sem encher a janela de contexto (capítulo 1). Comparação para a turma: o caderno de receitas da família na prateleira; ninguém lê todas antes de cozinhar, abre a do prato do dia.
-  Diferença para a instrução salva: a instrução vale para toda conversa; a skill entra só quando o assunto pede.
-  Origem: a Anthropic lançou as Agent Skills em 16/10/2025 e abriu o formato como padrão em 18/12/2025 (https://www.anthropic.com/news/skills, https://agentskills.io). O Google trocou as Gems por skills no Gemini; em contas pessoais as Gems saem a partir de novembro de 2026, com migração automática a partir de 17/11 (https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/). Se alguém já usa Gem: ela vira skill sozinha.
-  VERIFICAR antes da aula: skills no plano grátis do Claude e do Gemini (o blog do Google fala em maiores de 18 anos) e o nome do menu em português.
+  E aí vem a skill. Pensa no caderno de receitas da família na prateleira: ninguém lê todas antes de cozinhar, você abre a do prato do dia. A skill é isso: uma pasta com instruções, exemplos e arquivos. A IA lê só o nome de cada uma e, quando o seu pedido combina, abre a receita inteira. Por isso dá para ter um monte sem lotar a janela.
+
+  A diferença para a instrução salva: a instrução vale sempre; a skill entra só quando o assunto pede. E quem usa Gem no Gemini: a partir de novembro ela vira skill sozinha.
+
+  **Fontes:** a Anthropic lançou as Agent Skills em 16/10/2025 e abriu o formato como padrão em 18/12/2025 (https://www.anthropic.com/news/skills, https://agentskills.io). Claude grátis tem skills e conectores desde fevereiro de 2026 (https://x.com/claudeai/status/2021630343372259759, https://support.claude.com/en/articles/12512180-use-skills-in-claude). No Gemini, as skills substituem as Gems em contas pessoais a partir de novembro de 2026, com migração automática a partir de 17/11; todos os planos, maiores de 18 anos; chama-se com "/" e dá para combinar várias (https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/). VERIFICAR: nome do menu em português.
 ---
-Instruções, exemplos e arquivos numa pasta. A IA lê o nome de todas e só abre a que serve para o seu pedido.

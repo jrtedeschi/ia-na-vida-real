@@ -12,9 +12,11 @@ items:
   - title: "A imagem vira vídeo"
     text: "No Flow, o pôster ganha movimento e vira status do WhatsApp."
 notes: |
-  Antes da demonstração: mostrar que dá para fazer com o celular, no app do Gemini (Criar imagem) ou no Google Flow (labs.google/flow), a ferramenta de vídeo do Google.
-  Base de cada card, segundo a imprensa: melhor qualidade de foto e de edição; até 4 personagens e 10 objetos consistentes, com até 14 imagens de referência; edição de um pedaço da imagem; e, só no Flow, imagem que vira vídeo curto com o Veo (https://the-decoder.com/googles-new-image-model-nano-banana-2-1-generates-better-images-for-less-money/).
-  Outras ideias, se sobrar tempo ou alguém perguntar: aviso que se lê de longe (escala de limpeza do condomínio, horário da van da escola); banner largo para a fachada ou a capa do WhatsApp Business; restaurar e colorir foto antiga da família; "antes e depois" da reforma a partir da foto da cozinha.
-  Texto dentro da imagem: o 2.1 melhorou, mas ainda erra acento e letra em português. Regra da aula: imagem sem texto no Google, texto no Claude.
-  VERIFICAR: o nome do modelo no seletor do Gemini e do Flow (ver notas do próximo slide).
+  Quem tem Gemini tem o Nano Banana, o gerador de imagem do Google, no app do Gemini ou no Flow. Lembra do submarino amarelo que eu imprimi para o meu filho? Começou numa imagem do Gemini.
+
+  Quatro jeitos que eu acho legais: deixar a foto do seu produto mais bonita; o mesmo personagem em várias cenas, tipo o mascote da loja ou o herói do seu filho; mudar só um pedaço da foto, como ver a parede de outra cor antes de pintar; e, no Flow, a imagem vira vídeo para o status. Uma regra só: imagem sem letra no Google, texto no Claude.
+
+  **Bastidor:** outras ideias, se sobrar tempo: aviso do condomínio, banner da fachada, foto antiga da família, antes e depois da reforma. O 2.1 melhorou o texto dentro da imagem, mas ainda erra acento e letra em português.
+
+  **Fontes:** até 4 personagens e 10 objetos consistentes, com até 14 imagens de referência; edição de um pedaço; formatos largos; no Flow, imagem vira vídeo com o Veo (https://the-decoder.com/googles-new-image-model-nano-banana-2-1-generates-better-images-for-less-money/). VERIFICAR: o nome do modelo no seletor do Gemini e do Flow (ver o próximo slide).
 ---

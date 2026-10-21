@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: "gallery"
 class: "s-posters"
 kicker: "Como os pôsteres foram feitos · Higgsfield + Claude"
@@ -11,10 +12,9 @@ items:
     image: ./img/poster-padaria.jpg
     alt: "O pôster pronto da Padaria Estrela: a mesma foto em cima, uma faixa vermelha com o nome e, embaixo, os horários 6h, 11h e 17h em dourado"
 notes: |
-  Bastidor dos pôsteres: cada IA fez o que faz melhor.
-  1. A foto: gerada no Higgsfield, uma plataforma que reúne vários geradores de imagem e vídeo (Nano Banana, GPT Image, Soul, Veo e outros). O pedido descrevia a cena e terminava com "sem nenhuma letra, placa ou logotipo": gerador de imagem ainda troca letra e inventa palavra.
-  2. O pôster: o Claude (no Claude Code, com a skill de design) escreveu cada palavra e montou o layout por cima da foto. Texto feito pelo Claude sai exatamente como foi pedido, porque é texto de verdade, não desenho de letra.
-  Números reais desta produção: conta grátis do Higgsfield, 10 créditos; as três fotos custaram menos de 1 crédito (modelo Soul, cerca de 0,12 por imagem). De 7 fotos geradas, 3 foram usadas: uma saiu com texto sem sentido no fundo, outra emendada como colagem, e uma da costureira saiu inadequada e foi apagada. Gerar é rápido; escolher continua sendo trabalho seu.
-  Os negócios e as pessoas não existem; cada pôster diz "Foto gerada por IA" no canto.
-  Ponte para os próximos slides: quem tem Gemini faz o mesmo de graça, foto no Gemini e texto no Claude.
+  Deixa eu mostrar o bastidor. Cada IA fez o que sabe fazer melhor. A foto saiu de um gerador de imagem, o Higgsfield, e eu pedi "sem nenhuma letra", porque gerador de imagem ainda erra letra e inventa palavra. O texto e o layout ficaram com o Claude, que escreve texto de verdade, com cada acento no lugar.
+
+  E olha o número real: de sete fotos geradas, eu usei três. Uma veio com umas letras sem sentido no fundo, outra emendada, e uma saiu inadequada e eu apaguei. Gerar é rápido; escolher continua sendo trabalho nosso.
+
+  **Bastidor:** conta grátis do Higgsfield, 10 créditos; as três fotos custaram menos de 1 crédito (modelo Soul, cerca de 0,12 por imagem). Ponte: quem tem Gemini faz o mesmo de graça, a foto no Gemini e o texto no Claude.
 ---

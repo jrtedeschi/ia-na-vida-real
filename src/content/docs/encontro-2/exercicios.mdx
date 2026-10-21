@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 2 · Exercícios'
-description: Imagens com o Nano Banana (Gemini ou Google Flow) e o texto no Claude, com as suas fotos.
+description: Imagens com o Nano Banana e o Claude, e skills combinadas com conectores, imagens e estudo.
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -163,5 +163,77 @@ Quem tem conta Google faz as imagens no app do [Gemini](https://gemini.google.co
 	referencias="[Azulejo verde-água até a metade da parede, bancada de madeira clara e luminária pendente]."
 	restricoes="Mantenha a mesma janela, a mesma porta e o mesmo tamanho do cômodo."
 	formato="A mesma foto, no mesmo ângulo."
+/>
+</Exercise>
+
+## Skills combinadas
+
+Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto aparece. Sozinha, ela já ajuda; junto com outra peça da aula (um conector, uma imagem, uma apostila, outra skill), ela faz trabalho de verdade. Para criar, mande o pedido e termine com <strong>"transforme isso numa skill chamada [nome]"</strong>. No [Claude](https://claude.ai/) as skills ficam em Configurações; no [Gemini](https://gemini.google.com/) você chama digitando <strong>/</strong> e o nome.
+
+<Exercise
+	id="e2-skill-agenda" n={9} title="Sua segunda-feira num pedido só" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini + Agenda"
+	checks={['O conector da Agenda está ligado e a IA leu os seus compromissos', 'O resumo veio no formato que você definiu', 'Na semana seguinte, o mesmo pedido curto trouxe o resumo no mesmo formato']}
+	human="Você conferiu na Agenda se nenhum compromisso ficou de fora ou foi inventado"
+	fail="A IA disse que não vê a agenda? Ligue o conector: no Claude, em Configurações, Conectores; no Gemini, o app Google Workspace." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Peça para a skill avisar quando dois compromissos estiverem perto demais um do outro."
+>
+<p>Skill + conector. Ligue o conector da Agenda (ele é o MCP do slide do USB-C: traz os seus compromissos para a conversa). Depois crie a skill com o pedido abaixo. Toda segunda, basta escrever <strong>"resumo da semana"</strong>.</p>
+<Prompt slot="prompt" id="e2-skill-agenda-p"
+	contexto="Uso a minha Agenda do Google para [trabalho e coisas da casa]."
+	objetivo="Toda segunda, um resumo da minha semana. Transforme isso numa skill chamada [resumo-da-semana]."
+	referencias="Os compromissos desta semana, lidos da Agenda conectada."
+	restricoes="Não invente compromisso; se a Agenda estiver vazia num dia, diga 'livre'. [Nada de reuniões depois das 18h sem avisar]."
+	formato="Um parágrafo por dia, com o mais importante em primeiro, e no fim os 2 dias mais apertados."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-skill-cartaz" n={10} title="Cartaz sempre com a cara da sua marca" when="Para casa" minutes={20} tool="Grátis · Gemini + Claude"
+	checks={['A skill guarda as cores, a letra e o tom da sua marca', 'Dois cartazes diferentes saíram com o mesmo estilo', 'A foto do Gemini veio sem letras e o texto do Claude saiu certo']}
+	human="Alguém que conhece o seu negócio olhou os cartazes e reconheceu que são seus"
+	fail="O segundo cartaz saiu com outro estilo? Abra a skill e veja se as regras estão escritas com clareza, como 'cor principal verde-escuro #064E3F'."
+	challenge="Faça o cartaz de uma promoção e o de um aviso de feriado e ponha os dois lado a lado."
+>
+<p>Skill + imagem: o jeito dos pôsteres da aula. A skill guarda o que nunca muda na sua marca. A foto vem do Gemini, sem letras (exercício 1); o Claude monta o cartaz seguindo a skill. Na próxima vez, só mude o texto.</p>
+<Prompt slot="prompt" id="e2-skill-cartaz-p"
+	contexto="Tenho [uma padaria] chamada [Padaria Estrela], com [uma estrela dourada de 8 pontas] no logotipo."
+	objetivo="Guardar o estilo dos meus cartazes para todos saírem iguais. Transforme isso numa skill chamada [cartaz-da-loja]."
+	referencias="Cores: [verde-escuro e dourado]. Letra: [uma serifa macia, com cara de antiga]. Tom: [carinhoso, de bairro]."
+	restricoes="Sem degradê, sem emoji; o mais importante sempre em letra enorme; texto em português sem erro."
+	formato="Um artefato A4 em pé, com um botão para escolher a foto e outro para imprimir."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-skill-tutor" n={11} title="Um tutor que só pergunta" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini"
+	checks={['A IA fez perguntas em vez de explicar tudo de cara', 'As perguntas saíram da sua apostila, não da cabeça dela', 'Você errou pelo menos uma e ela deu dica antes da resposta']}
+	human="Dois dias depois, você acertou sem olhar as perguntas que tinha errado"
+	fail="Ela despejou a resposta? Lembre a skill: 'só dica, nunca a resposta antes de eu tentar duas vezes'." failHref="/consulta/conceitos/janela-de-contexto/" failLabel="janela de contexto"
+	challenge="Peça para a skill guardar as perguntas que você errou e repetir só essas na próxima vez."
+>
+<p>Skill + estudo, o capítulo 4 da aula. A skill define o jeito de estudar; a apostila (anexada, num Projeto ou no Gemini Notebook) define o assunto. Depois, para qualquer matéria, é só anexar o material e escrever <strong>"me teste"</strong>.</p>
+<Prompt slot="prompt" id="e2-skill-tutor-p"
+	contexto="Estou estudando [para a prova de enfermagem]. Vou anexar o material em cada conversa."
+	objetivo="Um tutor que me faz perguntas sobre o material. Transforme isso numa skill chamada [me-teste]."
+	referencias="Só o material anexado; se a resposta não estiver nele, diga."
+	restricoes="Uma pergunta por vez. Nunca dê a resposta antes de eu tentar duas vezes; primeiro, uma dica."
+	formato="Pergunta curta; depois da minha resposta, certo ou errado em uma linha e a página do material."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-skill-duas" n={12} title="Duas skills no mesmo pedido" when="Para casa" minutes={10} tool="Grátis · Gemini"
+	checks={['Você criou duas skills separadas', 'Chamando as duas juntas, a resposta seguiu as regras das duas']}
+	human="Você mandou a mensagem final para alguém de verdade, ou decidiu conscientemente não mandar"
+	fail="Uma skill ignorou a outra? Chame as duas no começo do pedido, uma depois da outra, antes do texto."
+	challenge="Crie uma terceira skill, como [/curtinho], e veja o que acontece com as três juntas."
+>
+<p>No Gemini dá para chamar várias skills ao mesmo tempo. Crie uma de revisão (a demonstração da aula) e outra de tom. Depois escreva: <strong>/revisor /tom-formal</strong> e cole a mensagem. Troque <strong>/tom-formal</strong> por <strong>/tom-amigo</strong> e compare.</p>
+<Prompt slot="prompt" id="e2-skill-duas-p"
+	contexto="Escrevo mensagens para [clientes e fornecedores] pelo WhatsApp e pelo e-mail."
+	objetivo="Uma skill que deixa qualquer texto com tom [formal]. Transforme isso numa skill chamada [tom-formal]."
+	referencias="[Cole uma mensagem formal sua que deu certo]."
+	restricoes="Não mude o sentido nem invente informação; só o jeito de falar."
+	formato="O texto reescrito e, embaixo, uma linha dizendo o que mudou."
 />
 </Exercise>

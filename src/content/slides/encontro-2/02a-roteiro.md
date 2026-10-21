@@ -14,5 +14,5 @@ items:
   - title: "Cuidados"
     text: "Conversa nova, instruções escondidas e privacidade."
 notes: |
-  A pergunta do título é o fio da aula. Cada capítulo responde um pedaço.
+  Esse é o fio da aula. Cada capítulo responde um pedaço dessa pergunta: o que a IA enxerga, os seus documentos, skills e conectores, estudar com IA e, no fim, os cuidados. Beleza? Bora.
 ---

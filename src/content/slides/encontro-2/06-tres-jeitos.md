@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: "cards"
 title: "Três jeitos de dar contexto sem repetir"
 items:
@@ -9,5 +10,5 @@ items:
   - title: "Suas ferramentas"
     text: "Agenda, e-mail e planilhas, quando você permite."
 notes: |
-  Mapa da aula. As ferramentas aparecem hoje só pelo nome; no Encontro 4 a turma vê como funcionam.
+  Então são três jeitos de dar contexto sem repetir: os seus documentos, as suas instruções salvas e as suas ferramentas. Hoje a gente passa pelos três. As ferramentas aparecem hoje só pelo nome; no Encontro 4 a gente põe a mão nelas.
 ---
