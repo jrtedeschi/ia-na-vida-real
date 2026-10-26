@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 2 · Exercícios'
-description: 'Os dois exercícios da aula, cinco para casa e mais: imagens com o Nano Banana, skills combinadas, conversa e pedido.'
+description: 'O exercício da aula, cinco para casa e mais: imagens com o Nano Banana, skills combinadas, conversa e pedido.'
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -29,31 +29,6 @@ Antes da aula, baixe a [planilha de exemplo](/assets/gastos-exemplo.xlsx) e suba
 	referencias="Use só os dados dessa planilha."
 	restricoes="Não mude nada na planilha."
 	formato="A categoria e o valor, em uma linha."
-/>
-</Exercise>
-
-<Exercise
-	id="e2-rag" n={0} title="Faça o RAG tropeçar, e desvie" when="Em aula" minutes={15} tool="Grátis · Claude (Projeto) ou Gemini Notebook"
-	checks={['A pergunta vaga trouxe uma resposta que não era a que você queria', 'Com o pedido em 5 partes, a resposta citou a página 12', 'Na pergunta que o regulamento não responde, ela disse que não sabe']}
-	human="Você achou no PDF, com Ctrl+F, o trecho exato que ela citou"
-	fail="Ela acertou até a pergunta vaga? Pode ser: o documento é pequeno e às vezes vai inteiro para a janela. Aí a lição é a conferência: o trecho citado existe?" failHref="/consulta/conceitos/janela-de-contexto/" failLabel="janela de contexto"
-	challenge="Pergunte &quot;o que vale aos sábados?&quot;. A resposta está em duas páginas (obras e mudanças): ela juntou as duas ou trouxe só uma?"
->
-
-Baixe o [regulamento de exemplo](/assets/regulamento-exemplo.pdf). É de um condomínio inventado, então pode usar sem medo. Suba num Projeto do Claude ou no [Gemini Notebook](https://notebooklm.google.com/) e faça três perguntas, nesta ordem:
-
-<ol>
-<li>Uma vaga: <strong>"E no fim de semana, o que pode?"</strong></li>
-<li>O pedido em 5 partes, ao lado, que aponta a parte do documento.</li>
-<li>Uma que o regulamento não responde: <strong>"Posso pôr uma churrasqueira na varanda?"</strong></li>
-</ol>
-
-<Prompt slot="prompt" id="e2-rag-p"
-	contexto="Enviei [o regulamento do Condomínio Edifício Jacarandá]."
-	objetivo="Saber se [posso fazer obra no sábado] e em que horário."
-	referencias="Procure na parte de [Obras, página 12]."
-	restricoes="Use só o documento. Se não estiver lá, diga que não sabe."
-	formato="Responda em 2 frases, com o trecho exato e a página. Depois diga se há outro trecho sobre isso."
 />
 </Exercise>
 
