@@ -1,0 +1,100 @@
+/* Estante de trechos ao lado da janela (estante.js). Janela, balões e rótulos vêm de nota-na-janela.css. */
+ivr-estante {
+	display: block;
+}
+.es-stage {
+	grid-template-columns: 0.95fr 1.25fr;
+	align-items: start;
+}
+.es-lead {
+	grid-column: 1 / -1;
+	margin: -8px 0 14px;
+	font-size: 20px;
+	line-height: 1.35;
+}
+.es-lead::first-line {
+	font-weight: 600;
+}
+.es-shelf {
+	position: relative;
+	display: grid;
+	gap: 8px;
+}
+.es-item {
+	padding: 7px 12px 8px;
+	border-radius: 6px;
+	background: var(--ivr-paper);
+	box-shadow: inset 0 0 0 1.5px var(--ivr-line);
+	transition: opacity var(--nj-fade), box-shadow var(--nj-fade), transform var(--nj-fade);
+}
+.es-item p {
+	margin: 0;
+}
+.es-head {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	font-size: 19px;
+	line-height: 1.25;
+}
+.es-text {
+	margin-top: 2px !important;
+	font-size: 15px;
+	line-height: 1.3;
+	color: var(--ivr-ink-soft);
+}
+.es-tag {
+	display: inline-block;
+	flex: none;
+	white-space: nowrap;
+	padding: 2px 7px;
+	border-radius: 4px;
+	background: var(--ivr-ink);
+	color: var(--ivr-paper);
+	font: 500 12px/1.3 var(--ivr-font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+/* A pergunta acende os trechos parecidos; o resto da estante recua. */
+.es-item.es-lit {
+	box-shadow: inset 0 0 0 2.5px var(--ivr-orange);
+	transform: translateX(6px);
+}
+.es-item.es-lit .es-tag {
+	background: var(--ivr-orange);
+}
+.es-item.es-dim {
+	opacity: 0.35;
+}
+.es-win {
+	min-height: 24rem;
+	align-self: stretch;
+}
+.es-body {
+	display: grid;
+	gap: 10px;
+	align-content: start;
+}
+.es-body > .nj-voce {
+	justify-self: end;
+}
+/* A cópia que entrou na janela: mesma cara do trecho da estante, com a borda laranja. */
+.es-copy {
+	justify-self: start;
+	max-width: 88%;
+	box-shadow: inset 0 0 0 2px var(--ivr-orange);
+	background: color-mix(in srgb, var(--ivr-orange) 8%, var(--ivr-paper));
+}
+.es-copy .es-tag {
+	background: var(--ivr-orange);
+}
+.es-cite {
+	margin-left: 6px;
+	vertical-align: 2px;
+	background: var(--ivr-orange);
+}
+.es-note {
+	right: 18px;
+	bottom: 14px;
+	color: var(--ivr-orange);
+}

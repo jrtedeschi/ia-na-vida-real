@@ -127,3 +127,63 @@ export const CONVERSA_LONGA = {
 	lostNote: '↑ o glúten ficou lá atrás, fora da janela',
 };
 
+// E2, capítulo 2: a estante de fontes ao lado da janela (Estante.astro).
+export interface EstanteItem {
+	id: string;
+	tag: string;
+	title: string;
+	text?: string;
+}
+export interface EstanteScene {
+	label?: string;
+	ask?: string;
+	lit?: string[];
+	pull?: string[];
+	answer?: string;
+	cites?: string[];
+	note?: string;
+}
+
+// Slide do Gemini Notebook: responde a partir das suas fontes e mostra de onde tirou.
+export const FONTES = {
+	shelf: 'suas fontes',
+	items: [
+		{ id: 'pdf', tag: 'PDF', title: 'Regulamento do condomínio', text: '32 páginas' },
+		{ id: 'link', tag: 'Link', title: 'Site da administradora', text: 'perguntas frequentes' },
+		{ id: 'video', tag: 'Vídeo', title: 'Reunião de outubro', text: '1 hora, transcrita' },
+	],
+	scenes: [
+		{ label: 'Gemini Notebook' },
+		{ label: 'Gemini Notebook', ask: 'Até que horas pode ter obra no sábado?', lit: ['pdf', 'video'] },
+		{
+			label: 'Gemini Notebook',
+			ask: 'Até que horas pode ter obra no sábado?',
+			lit: ['pdf', 'video'],
+			answer: 'Até as 12h. A reunião de outubro manteve esse horário.',
+			cites: ['pdf', 'video'],
+			note: 'mostra de onde tirou',
+		},
+	] as EstanteScene[],
+};
+
+// Slide do RAG: primeiro busca os trechos parecidos, só eles entram na janela, depois responde.
+const REGULAMENTO: EstanteItem[] = [
+	{ id: 'p3', tag: 'p. 3', title: 'Silêncio', text: 'das 22h às 8h, todos os dias' },
+	{ id: 'p7', tag: 'p. 7', title: 'Piscina', text: 'aberta das 8h às 22h' },
+	{ id: 'p12', tag: 'p. 12', title: 'Obras', text: 'seg. a sex. 8h–17h · sáb. 9h–12h' },
+	{ id: 'p15', tag: 'p. 15', title: 'Multas', text: 'barulho fora de hora: advertência, depois multa' },
+	{ id: 'p18', tag: 'p. 18', title: 'Animais', text: 'na coleira nas áreas comuns' },
+	{ id: 'p21', tag: 'p. 21', title: 'Garagem', text: 'uma vaga por apartamento' },
+];
+const OBRA = 'Posso fazer obra no sábado?';
+export const RAG = {
+	lead: 'RAG, geração aumentada por recuperação: antes de responder, a IA busca no seu documento os trechos mais parecidos com a pergunta e lê só esses.',
+	shelf: 'regulamento, picado em trechos',
+	items: REGULAMENTO,
+	scenes: [
+		{},
+		{ ask: OBRA, lit: ['p12', 'p3'], note: '1. busca os trechos parecidos' },
+		{ ask: OBRA, lit: ['p12', 'p3'], pull: ['p12', 'p3'], note: '2. só eles entram na janela' },
+		{ ask: OBRA, lit: ['p12', 'p3'], pull: ['p12', 'p3'], answer: 'Pode, das 9h às 12h.', cites: ['p12'], note: '3. depois responde' },
+	] as EstanteScene[],
+};

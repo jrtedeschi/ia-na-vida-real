@@ -1,0 +1,19 @@
+---
+/** Estante de trechos (ou fontes) ao lado da janela, em cenas por clique (estante.js). Presets em presets.ts. */
+import './anim-base.css';
+import './nota-na-janela.css';
+import './estante.css';
+import type { EstanteItem, EstanteScene } from './presets';
+interface Props {
+	items: EstanteItem[];
+	scenes: EstanteScene[];
+	shelf: string;
+	/** Frase no topo, acima da estante e da janela. */
+	lead?: string;
+}
+const { items, scenes, shelf, lead } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-estante items={JSON.stringify(items)} scenes={JSON.stringify(scenes)} shelf={shelf} lead={lead}></ivr-estante>
+</div>
+<script>import './estante.js';</script>

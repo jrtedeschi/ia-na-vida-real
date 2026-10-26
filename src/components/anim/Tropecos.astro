@@ -1,0 +1,93 @@
+---
+/**
+ * Onde o RAG tropeça: o caminho em quatro etapas (corte, busca, seleção, janela), uma por clique (tropecos.js).
+ * Colunas em <div>, nunca <section>: o reveal.js lê toda <section> como slide.
+ * Cada etapa tem um desenho do tropeço com o regulamento do condomínio da demonstração.
+ * Fontes nas notas do slide (Anthropic, Contextual Retrieval; Barnett et al. 2024; Liu et al. 2023).
+ */
+import './anim-base.css';
+import './tropecos.css';
+
+const ASK = 'Posso fazer obra no sábado?';
+const label =
+	`Uma pergunta, "${ASK}", passando pelas 4 etapas do RAG, com o regulamento do condomínio. ` +
+	'1, corte (chunking): o título "p. 12, Obras" ficou num pedaço e o horário "aos sábados, só das 9h às 12h" no outro. ' +
+	'2, busca (embedding): por sentido, "Silêncio, barulho no fim de semana" parece mais com a pergunta do que o horário, que ficou sem a palavra obra. ' +
+	'3, seleção (top-k): só os 3 mais parecidos entram; o horário estava em 5º. ' +
+	'4, janela (lost in the middle): com mais pedaços, o horário entra mas fica no meio, e a resposta sai errada: "Pode, até as 22h".';
+const ranked = [
+	{ tag: 'p. 3', name: 'Silêncio', score: 0.82 },
+	{ tag: 'p. 15', name: 'Multas', score: 0.77 },
+	{ tag: 'p. 12', name: 'Obras', score: 0.74 },
+	{ tag: 'p. 7', name: 'Piscina', score: 0.66 },
+	{ tag: 'p. 12', name: 'horário', score: 0.61, hit: true },
+	{ tag: 'p. 21', name: 'Garagem', score: 0.52 },
+];
+const inWindow = ['p. 3', 'p. 15', 'p. 12', 'p. 12', 'p. 7', 'p. 21', 'p. 18'];
+---
+<div class="ivr-anim not-content">
+	<ivr-tropecos>
+		<p class="tr-lead">A pergunta <b class="tr-ask-inline">{ASK}</b> passa por 4 etapas. Em cada uma, a resposta certa pode se perder.</p>
+		<div class="tr-grid" aria-label={label}>
+			<div class="tr-col">
+				<p class="tr-step"><b>1</b> Corte <span>chunking</span></p>
+				<p class="tr-does">O regulamento é picado em pedaços.</p>
+				<div class="tr-ill tr-cut">
+					<p class="tr-chunk"><span class="tr-tag">p. 12</span> Obras</p>
+					<p class="tr-scissor" aria-hidden="true"><span>✂</span></p>
+					<p class="tr-chunk tr-hit"><span class="tr-tag">p. 12</span> aos sábados, só das 9h às 12h.</p>
+					<p class="tr-cap">o horário ficou num pedaço sem a palavra "obra"</p>
+				</div>
+				<p class="tr-fail"><small>tropeço</small> o pedaço perde o assunto</p>
+			</div>
+			<div class="tr-col">
+				<p class="tr-step"><b>2</b> Busca <span>embedding</span></p>
+				<p class="tr-does">Cada pedaço é comparado com a pergunta pelo sentido.</p>
+				<div class="tr-ill tr-search">
+					<p class="tr-q">parece com a pergunta?</p>
+					<div class="tr-pair">
+						<p><span class="tr-tag">p. 3</span> Silêncio: barulho no fim de semana</p>
+						<i style="--s:0.82"></i>
+						<small>muito: barulho ≈ obra, fim de semana ≈ sábado</small>
+					</div>
+					<div class="tr-pair tr-hit">
+						<p><span class="tr-tag">p. 12</span> aos sábados, só das 9h às 12h.</p>
+						<i style="--s:0.61"></i>
+						<small>pouco: não fala de obra</small>
+					</div>
+				</div>
+				<p class="tr-fail"><small>tropeço</small> parecido não é certo</p>
+			</div>
+			<div class="tr-col">
+				<p class="tr-step"><b>3</b> Seleção <span>top-k</span></p>
+				<p class="tr-does">Só os k pedaços mais parecidos entram na janela.</p>
+				<div class="tr-ill tr-topk">
+					<ol>
+						{ranked.map((r, i) => (
+							<li class:list={[{ 'tr-hit': r.hit, 'tr-out': i >= 3 }]}><b>{i + 1}º</b><span class="tr-tag">{r.tag}</span><span class="tr-name">{r.name}</span></li>
+						))}
+					</ol>
+					<p class="tr-cap">com k = 3, o horário (5º) não entra</p>
+				</div>
+				<p class="tr-fail"><small>tropeço</small> a resposta ficou de fora</p>
+			</div>
+			<div class="tr-col">
+				<p class="tr-step"><b>4</b> Janela <span>lost in the middle</span></p>
+				<p class="tr-does">A IA lê os pedaços da janela e responde.</p>
+				<div class="tr-ill tr-mid">
+					<div class="tr-win">
+						{inWindow.map((tag, i) => <span class:list={['tr-tag', { 'tr-hit': i === 3 }]}>{tag}</span>)}
+					</div>
+					<svg class="tr-curve" viewBox="0 0 60 200" preserveAspectRatio="none" aria-hidden="true">
+						<path d="M8 6 C 54 40, 54 160, 8 194" />
+					</svg>
+					<p class="tr-attn">atenção</p>
+					<p class="tr-answer"><small>IA</small> Pode, até as 22h.</p>
+					<p class="tr-cap tr-cap-wide">com k = 7 o horário entra, mas no meio, e passa batido</p>
+				</div>
+				<p class="tr-fail"><small>tropeço</small> o meio é pouco lido</p>
+			</div>
+		</div>
+	</ivr-tropecos>
+</div>
+<script>import './tropecos.js';</script>
