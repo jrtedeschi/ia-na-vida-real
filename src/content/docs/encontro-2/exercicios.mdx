@@ -1,6 +1,6 @@
 ---
 title: 'Encontro 2 · Exercícios'
-description: 'O exercício da aula, cinco para casa e mais: imagens com o Nano Banana e skills combinadas.'
+description: 'Os dois exercícios da aula, cinco para casa e mais: imagens com o Nano Banana, skills combinadas, conversa e pedido.'
 ---
 import Exercise from '../../../components/Exercise.astro';
 import Prompt from '../../../components/Prompt.astro';
@@ -29,6 +29,31 @@ Antes da aula, baixe a [planilha de exemplo](/assets/gastos-exemplo.xlsx) e suba
 	referencias="Use só os dados dessa planilha."
 	restricoes="Não mude nada na planilha."
 	formato="A categoria e o valor, em uma linha."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-rag" n={0} title="Faça o RAG tropeçar, e desvie" when="Em aula" minutes={15} tool="Grátis · Claude (Projeto) ou Gemini Notebook"
+	checks={['A pergunta vaga trouxe uma resposta que não era a que você queria', 'Com o pedido em 5 partes, a resposta citou a página 12', 'Na pergunta que o regulamento não responde, ela disse que não sabe']}
+	human="Você achou no PDF, com Ctrl+F, o trecho exato que ela citou"
+	fail="Ela acertou até a pergunta vaga? Pode ser: o documento é pequeno e às vezes vai inteiro para a janela. Aí a lição é a conferência: o trecho citado existe?" failHref="/consulta/conceitos/janela-de-contexto/" failLabel="janela de contexto"
+	challenge="Pergunte &quot;o que vale aos sábados?&quot;. A resposta está em duas páginas (obras e mudanças): ela juntou as duas ou trouxe só uma?"
+>
+
+Baixe o [regulamento de exemplo](/assets/regulamento-exemplo.pdf). É de um condomínio inventado, então pode usar sem medo. Suba num Projeto do Claude ou no [Gemini Notebook](https://notebooklm.google.com/) e faça três perguntas, nesta ordem:
+
+<ol>
+<li>Uma vaga: <strong>"E no fim de semana, o que pode?"</strong></li>
+<li>O pedido em 5 partes, ao lado, que aponta a parte do documento.</li>
+<li>Uma que o regulamento não responde: <strong>"Posso pôr uma churrasqueira na varanda?"</strong></li>
+</ol>
+
+<Prompt slot="prompt" id="e2-rag-p"
+	contexto="Enviei [o regulamento do Condomínio Edifício Jacarandá]."
+	objetivo="Saber se [posso fazer obra no sábado] e em que horário."
+	referencias="Procure na parte de [Obras, página 12]."
+	restricoes="Use só o documento. Se não estiver lá, diga que não sabe."
+	formato="Responda em 2 frases, com o trecho exato e a página. Depois diga se há outro trecho sobre isso."
 />
 </Exercise>
 
@@ -351,5 +376,60 @@ Uma skill é um pedido que você salva uma vez e a IA usa sempre que o assunto a
 	referencias="[Cole uma mensagem formal sua que deu certo]."
 	restricoes="Não mude o sentido nem invente informação; só o jeito de falar."
 	formato="O texto reescrito e, embaixo, uma linha dizendo o que mudou."
+/>
+</Exercise>
+
+## Mais para casa: conversa e pedido
+
+Três exercícios para o que vimos sobre a janela e sobre os jeitos de pedir. Os dois últimos vêm do tutorial de [Felix Rieseberg](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/), que lidera a engenharia do Claude na Anthropic.
+
+<Exercise
+	id="e2-conversa" n={18} title="Um assunto, uma conversa" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
+	checks={['O resumo tem o que foi decidido e o que ficou em aberto', 'Na conversa nova, a IA continuou de onde vocês pararam sem você repetir nada']}
+	human="Você releu a conversa antiga e nenhuma decisão importante ficou de fora do resumo"
+	fail="O resumo misturou assuntos? Peça um resumo só do assunto que você vai continuar." failHref="/consulta/conceitos/janela-de-contexto/" failLabel="janela de contexto"
+	challenge="Durante uma semana, abra uma conversa nova sempre que mudar de assunto."
+>
+<p>Escolha uma conversa sua que ficou comprida e mistura assuntos. Mande o pedido nela. Depois abra uma conversa nova, cole o resumo e siga dali.</p>
+<Prompt slot="prompt" id="e2-conversa-p"
+	contexto="Esta conversa ficou longa e mistura assuntos."
+	objetivo="Levar só o que importa sobre [o cardápio da semana] para uma conversa nova."
+	referencias="Só o que está nesta conversa."
+	restricoes="Não invente nada. Se algo não foi decidido, escreva &quot;em aberto&quot;."
+	formato="5 linhas: o que foi decidido, o que está em aberto e o próximo passo."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-altitude" n={19} title="Suba um andar" when="Para casa" minutes={10} tool="Grátis · qualquer IA"
+	checks={['Você pediu do jeito de sempre e do jeito novo, em conversas separadas', 'A versão nova começa pelas decisões, não pelos números']}
+	human="Você escolheu qual das duas versões mandaria de verdade, e sabe dizer por quê"
+	fail="Ela fez o relatório de sempre? Repita a restrição: não quero o relatório, quero o que precisa acontecer depois dele."
+	challenge="Antes da sua próxima reunião, pergunte: o que precisa acontecer depois dela? E peça a pauta que leva a isso."
+>
+<p>Pense numa tarefa que você repete: o relatório do mês, a ata, o e-mail para o síndico. Primeiro peça do jeito de sempre. Depois, numa conversa nova, peça o resultado: o que precisa acontecer depois que alguém ler.</p>
+<Prompt slot="prompt" id="e2-altitude-p"
+	contexto="Todo mês eu faço [o relatório de vendas da loja] para [a dona]."
+	objetivo="Que, depois de ler, ela [decida o que comprar no mês que vem]."
+	referencias="[Cole os números do mês]."
+	restricoes="Não faça o relatório de sempre: diga o que mudou, por quê, e quais 3 decisões são urgentes."
+	formato="Meia página, com as 3 decisões no topo."
+/>
+</Exercise>
+
+<Exercise
+	id="e2-especialista" n={20} title="Do jeito do melhor da área" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['A IA respondeu as 4 perguntas antes de fazer a tarefa', 'Você rodou o pedido reescrito numa conversa nova']}
+	human="Você fez a conferência de fora que ela sugeriu (uma conta, uma pessoa, um dado) e o resultado passou"
+	fail="Ela já saiu fazendo a tarefa? Repita: antes de fazer, só as 4 respostas."
+	challenge="Troque o profissional: como [um nutricionista] faria a mesma tarefa? E [um organizador de eventos]?"
+>
+<p>Escolha uma tarefa que você faria do seu jeito e peça como o melhor profissional da área faria: o material de onde ele começa, o método que usa e quem confere o resultado. Não é pedir mais texto, é pedir mais rigor.</p>
+<Prompt slot="prompt" id="e2-especialista-p"
+	contexto="Preciso [montar o cardápio de uma festa de 30 pessoas]."
+	objetivo="Uma versão mais rigorosa desta tarefa, não uma mais longa."
+	referencias="Pense em como [um bufê profissional] faria."
+	restricoes="Antes de fazer, me diga: o que esse profissional faria que eu não pedi; com que material ele começaria; que métodos e ferramentas usaria; e o que, além de você e de mim, mostraria que o resultado está certo."
+	formato="Essas 4 respostas em tópicos e, depois, o meu pedido reescrito pedindo isso."
 />
 </Exercise>
