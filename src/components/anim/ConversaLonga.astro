@@ -1,0 +1,20 @@
+---
+/** Conversa longa demais, resposta pior: assuntos acumulados na mesma janela. Anda por cliques (stepped.js). */
+import './anim-base.css';
+import './nota-na-janela.css';
+interface Props {
+	/** Cada assunto entra num passo (`at`). */
+	topics: { name: string; at: number; messages: ['voce' | 'ia', string][] }[];
+	/** Palavra que importava no começo e palavra errada na última resposta. */
+	keep: string;
+	wrong: string;
+	wrongNote: string;
+	/** Bilhete no topo: o que importava saiu da janela. */
+	lostNote: string;
+}
+const { topics, keep, wrong, wrongNote, lostNote } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-conversa-longa topics={JSON.stringify(topics)} keep={keep} wrong={wrong} wrong-note={wrongNote} lost-note={lostNote}></ivr-conversa-longa>
+</div>
+<script>import './conversa-longa.js';</script>

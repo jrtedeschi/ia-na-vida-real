@@ -1,0 +1,239 @@
+/* Memória e conversa longa (memoria.js, conversa-longa.js), animações em passos (stepped.js).
+   O estado de cada passo está aqui, em [data-step]; o JS só desenha a viagem entre um passo e o próximo.
+   Mesma linguagem do slide da janela (context-window.css): janela de borda preta, balões, rótulo mono. */
+ivr-memoria,
+ivr-conversa-longa {
+	display: block;
+}
+.st-stage {
+	--nj-dash: color-mix(in srgb, var(--ivr-line) 60%, var(--ivr-ink-soft));
+	--nj-fade: 250ms;
+	position: relative;
+	display: grid;
+	gap: 28px;
+	padding-top: 24px;
+	min-height: 25rem;
+}
+.st-stage > * {
+	transition: opacity var(--nj-fade);
+}
+
+/* ---- peças comuns ---- */
+.nj-win {
+	position: relative;
+	display: grid;
+	align-content: start;
+	gap: 12px;
+	padding: 18px;
+	border: 2.5px solid var(--ivr-ink);
+	border-radius: 8px;
+	background: color-mix(in srgb, var(--ivr-paper) 90%, transparent);
+}
+.nj-label {
+	position: absolute;
+	top: -24px;
+	left: 2px;
+	font: 500 12px/1.2 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+	white-space: nowrap;
+}
+.nj-msg {
+	margin: 0;
+	max-width: 86%;
+	padding: 8px 14px;
+	border-radius: 10px;
+	font-size: 19px;
+	line-height: 1.3;
+	transition: opacity var(--nj-fade), box-shadow var(--nj-fade);
+}
+.nj-msg small {
+	margin-right: 8px;
+	font: 500 11px/1 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.nj-voce {
+	justify-self: end;
+	background: var(--ivr-ink);
+	color: var(--ivr-paper);
+	border-bottom-right-radius: 3px;
+}
+.nj-voce small {
+	color: inherit;
+	opacity: 0.7;
+}
+.nj-ia {
+	justify-self: start;
+	background: var(--ivr-bg);
+	box-shadow: inset 0 0 0 1px var(--ivr-line);
+	border-bottom-left-radius: 3px;
+}
+/* A anotação que viaja: mesma cara no caderninho, na memória e no resumo. */
+.nj-card {
+	justify-self: start;
+	padding: 10px 16px 12px;
+	border: 1.5px dashed var(--ivr-orange);
+	border-radius: 4px;
+	background: color-mix(in srgb, var(--ivr-orange) 9%, var(--ivr-paper));
+	font: 700 22px/1.3 var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+	transform-origin: center;
+	transition: opacity var(--nj-fade);
+}
+.nj-card small,
+.nj-book .nj-label {
+	font: 500 11px/1 var(--ivr-font-mono);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ivr-orange);
+}
+.nj-card small {
+	display: block;
+	margin-bottom: 6px;
+}
+.nj-card ul,
+.nj-book ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+/* Causa e efeito: a mesma marca na anotação e na resposta, só quando a resposta aparece. */
+.st-stage mark {
+	background: transparent;
+	color: inherit;
+	transition: background-color 400ms 300ms;
+}
+.nj-note {
+	position: absolute;
+	z-index: 3;
+	white-space: nowrap;
+	font-size: 24px;
+	transition: opacity var(--nj-fade);
+}
+
+/* ---- memória: caderninho fora da janela, janela da conversa ---- */
+.nj-mem {
+	grid-template-columns: 0.75fr 2fr;
+	align-items: stretch;
+}
+.nj-book {
+	position: relative;
+	align-self: center;
+	padding: 20px 18px 22px;
+	border-radius: 4px;
+	background:
+		repeating-linear-gradient(180deg, transparent 0 33px, color-mix(in srgb, var(--ivr-ink) 12%, transparent) 33px 34px),
+		color-mix(in srgb, var(--ivr-orange) 6%, var(--ivr-paper));
+	background-position: 0 12px;
+	box-shadow: 0 1px 0 var(--ivr-line), 4px 6px 0 color-mix(in srgb, var(--ivr-ink) 10%, transparent);
+	border-left: 6px solid var(--ivr-orange);
+	font: 700 22px/34px var(--ivr-font-hand);
+	color: var(--ivr-graphite-ink);
+	transform: rotate(-1.5deg);
+}
+.nj-book .nj-label {
+	top: -26px;
+}
+.nj-mem .nj-card {
+	margin-bottom: 6px;
+}
+.nj-tomorrow,
+.nj-mem[data-step='3'] .nj-today {
+	display: none;
+}
+.nj-mem[data-step='3'] .nj-tomorrow {
+	display: inline;
+}
+.nj-note-1 {
+	right: 24px;
+	top: 34px;
+}
+.nj-note-2 {
+	right: 24px;
+	top: 34px;
+}
+.nj-mem:not([data-step='1']):not([data-step='2']) .nj-note-1,
+.nj-mem:not([data-step='3']) .nj-note-2,
+.nj-mem[data-step='0'] .nj-card,
+.nj-mem:is([data-step='0'], [data-step='1'], [data-step='3']) .nj-msg {
+	opacity: 0;
+}
+.nj-mem[data-step='2'] mark {
+	background: color-mix(in srgb, var(--ivr-orange) 30%, transparent);
+}
+
+/* ---- conversa longa: os assuntos se acumulam, o começo sobe e se perde ---- */
+.nj-long-win {
+	height: 26rem;
+	overflow: hidden;
+	padding: 0;
+}
+.nj-long-col {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: 6px;
+	padding: 16px 18px;
+	/* O topo vai sumindo: o que ficou lá em cima pesa menos na resposta. */
+	mask-image: linear-gradient(180deg, transparent 0, #000 38%);
+}
+.nj-long-col > * {
+	flex: none;
+	align-self: flex-start;
+}
+.nj-long-col > .nj-voce {
+	align-self: flex-end;
+}
+.nj-long .nj-msg {
+	font-size: 18px;
+	padding: 6px 12px;
+}
+.nj-topic {
+	align-self: center !important;
+	margin: 6px 0 2px;
+	padding: 2px 10px;
+	border-radius: 999px;
+	box-shadow: inset 0 0 0 1px var(--ivr-line);
+	font: 500 11px/1.6 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.nj-long[data-step='0'] :is([data-at='1'], [data-at='2']),
+.nj-long[data-step='1'] [data-at='2'] {
+	display: none;
+}
+/* Volta ao primeiro assunto: o que importava (lá em cima) e o erro (aqui embaixo) com a mesma cor. */
+.nj-worse mark {
+	background: transparent;
+	text-decoration: underline wavy var(--ivr-orange) 2px;
+	text-underline-offset: 4px;
+}
+.nj-long[data-step='2'] .nj-keep mark {
+	background: color-mix(in srgb, var(--ivr-orange) 45%, transparent);
+}
+.nj-note-wrong {
+	right: 22px;
+	bottom: 18px;
+	color: var(--ivr-orange);
+}
+.nj-note-lost {
+	left: 22px;
+	top: 14px;
+	color: var(--ivr-orange);
+}
+.nj-long:not([data-step='2']) :is(.nj-note-wrong, .nj-note-lost) {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.st-stage,
+	.st-stage * {
+		transition: none !important;
+	}
+}

@@ -73,3 +73,57 @@ export const PROMPT_ART = {
 export const MUNDO_NOVO = {
 	caption: 'Um mundo de possibilidades se abre pra todos, novas formas de expressão e geração de soluções de problemas',
 };
+
+// E2: a memória é um caderninho que o app copia para toda conversa (lembra a receita italiana do E1).
+export const MEMORIA = {
+	memory: ['Gosta de comida italiana', 'Tem dois filhos pequenos'],
+	ask: 'Me sugere um jantar para hoje?',
+	answer: 'Que tal um nhoque ao sugo? Criança costuma gostar.',
+	mark: ['italiana', 'nhoque'] as [string, string],
+};
+
+// E2: conversa longa demais, resposta pior. Três assuntos na mesma conversa; a Rita volta ao primeiro e o glúten se perdeu.
+export const CONVERSA_LONGA = {
+	topics: [
+		{
+			name: 'cardápio',
+			at: 0,
+			messages: [
+				['voce', 'Sou a Rita, nutricionista.'],
+				['voce', 'Meu paciente não pode comer glúten.'],
+				['ia', 'Anotado. Segue o cardápio da semana…'],
+			],
+		},
+		{
+			name: 'e-mail',
+			at: 1,
+			messages: [
+				['voce', 'Agora me ajuda com um e-mail pro meu chefe?'],
+				['ia', 'Claro, segue um rascunho…'],
+				['voce', 'Deixa mais formal.'],
+				['ia', 'Pronto, versão formal…'],
+			],
+		},
+		{
+			name: 'viagem',
+			at: 1,
+			messages: [
+				['voce', 'E um roteiro de 3 dias em Salvador?'],
+				['ia', 'Dia 1: Pelourinho e Elevador Lacerda…'],
+			],
+		},
+		{
+			name: 'cardápio de novo',
+			at: 2,
+			messages: [
+				['voce', 'Voltando: monte os lanches da tarde do paciente.'],
+				['ia', 'Que tal torrada com geleia?'],
+			],
+		},
+	] as { name: string; at: number; messages: ['voce' | 'ia', string][] }[],
+	keep: 'glúten',
+	wrong: 'torrada',
+	wrongNote: 'esqueceu do glúten',
+	lostNote: '↑ o glúten ficou lá atrás, fora da janela',
+};
+

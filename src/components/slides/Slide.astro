@@ -83,6 +83,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				)}
 				{d.items && <SlideItems layout={d.layout} items={d.items} fragments={d.fragments} />}
 				{visual && !visual.overlay && <visual.Comp {...visual.props} {...d.visualProps} />}
+				{visual?.steps && Array.from({ length: visual.steps - 1 }, () => <span class="fragment s-step" aria-hidden="true" />)}
 				{hasBody && <div class={bodyClass}><Content /></div>}
 				{d.tools && (
 					<ul class="s-tools">

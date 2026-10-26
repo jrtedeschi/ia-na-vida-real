@@ -5,6 +5,7 @@
  * `visualProps:` no .md substitui os textos do preset (ex.: outra frase no NextWord).
  * `overlay` = o visual cobre o slide inteiro e só aparece no próximo clique (fragmento).
  * `exit` = overlay de saída: toca no último clique, nunca ao entrar no slide; o clique seguinte vai ao próximo slide.
+ * `steps` = animação em passos (anim/stepped.js): o slide ganha `steps - 1` cliques, um por passo.
  */
 import TokenSplit from '../anim/TokenSplit.astro';
 import NextWord from '../anim/NextWord.astro';
@@ -26,7 +27,10 @@ import VidaMelhor from '../anim/VidaMelhor.astro';
 import TarefasFundamentos from '../anim/TarefasFundamentos.astro';
 import Timer from '../anim/Timer.astro';
 import Mcp from '../anim/Mcp.astro';
-import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO } from '../anim/presets';
+import Memoria from '../anim/Memoria.astro';
+import ConversaLonga from '../anim/ConversaLonga.astro';
+import MedidorJanela from '../anim/MedidorJanela.astro';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
 
@@ -37,6 +41,7 @@ interface VisualEntry {
 	slideClass: string;
 	overlay?: boolean;
 	exit?: boolean;
+	steps?: number;
 }
 
 export const VISUALS: Record<string, VisualEntry> = {
@@ -57,6 +62,9 @@ export const VISUALS: Record<string, VisualEntry> = {
 	harness: { Comp: Harness, props: {}, slideClass: 's-code' },
 	combustivel: { Comp: Combustivel, props: {}, slideClass: 's-code' },
 	'pipeline-etl': { Comp: PipelineEtl, props: {}, slideClass: 's-code' },
+	memoria: { Comp: Memoria, props: MEMORIA, slideClass: 's-anim s-tight', steps: 4 },
+	'conversa-longa': { Comp: ConversaLonga, props: CONVERSA_LONGA, slideClass: 's-anim s-tight', steps: 3 },
+	'medidor-janela': { Comp: MedidorJanela, props: {}, slideClass: 's-tight' },
 	mcp: { Comp: Mcp, props: {}, slideClass: 's-anim' },
 	timer: { Comp: Timer, props: {}, slideClass: 's-timer' },
 	submarino: { Comp: Submarino, props: {}, slideClass: '', overlay: true, exit: true },

@@ -1,0 +1,183 @@
+---
+/**
+ * Quanto da janela você já gastou: no alto, uma status line como a do Claude Code (o medidor que existe
+ * para programador), que enche quando o slide fica ativo (só CSS). Embaixo, quanto cabe em cada app e os
+ * sinais de que a janela encheu, já que os apps de conversa não mostram o medidor. Fontes nas notas do slide.
+ */
+interface Row {
+	app: string;
+	plans: string;
+}
+interface Props {
+	used?: number;
+	usedLabel?: string;
+	apps?: Row[];
+	signs?: string[];
+}
+const {
+	used = 72,
+	usedLabel = '144 mil de 200 mil tokens',
+	apps = [
+		{ app: 'ChatGPT', plans: 'grátis ~27 mil · Plus ~54 mil' },
+		{ app: 'Gemini', plans: 'grátis 32 mil · Plus 128 mil · Pro 1 milhão' },
+		{ app: 'Claude', plans: 'planos pagos: 200 mil a 1 milhão' },
+	],
+	signs = ['Contradiz o que vocês combinaram', 'Pergunta de novo o que você já disse', 'No Claude: avisa que resumiu a conversa'],
+} = Astro.props;
+const label =
+	`Uma barra de status, como a do Claude Code, mostra a janela de contexto ${used}% cheia: ${usedLabel}. ` +
+	'Nos apps de conversa esse medidor não existe. Quanto cabe em cada app: ' +
+	apps.map((a) => `${a.app}, ${a.plans}`).join('; ') +
+	'. Sinais de que a janela encheu: ' +
+	signs.join('; ') +
+	'.';
+---
+<figure class="mj not-content" role="img" aria-label={label}>
+	<div class="mj-status" aria-hidden="true" style={`--used:${used}%`}>
+		<span class="mj-tool">claude code</span>
+		<span class="mj-sep">·</span>
+		<span>janela</span>
+		<span class="mj-track"><i class="mj-fill"></i></span>
+		<b class="mj-pct">{used}%</b>
+		<span class="mj-sep">·</span>
+		<span class="mj-soft">{usedLabel}</span>
+	</div>
+	<p class="mj-note" aria-hidden="true">assim é na ferramenta de programador. Nos apps de conversa, esse medidor não existe</p>
+	<div class="mj-cols" aria-hidden="true">
+		<div class="mj-box">
+			<h3>Quanto cabe em cada app</h3>
+			<dl>
+				{apps.map((a) => (
+					<div>
+						<dt>{a.app}</dt>
+						<dd>{a.plans}</dd>
+					</div>
+				))}
+			</dl>
+			<p class="mj-unit">em tokens, os pedacinhos de texto do Encontro 1</p>
+		</div>
+		<div class="mj-box">
+			<h3>Sinais de que encheu</h3>
+			<ul>
+				{signs.map((s) => <li>{s}</li>)}
+			</ul>
+		</div>
+	</div>
+</figure>
+<style>
+	.mj {
+		margin: 12px 0 0;
+		display: grid;
+		gap: 18px;
+	}
+	/* Status line: faixa escura de terminal, nos dois temas. */
+	.mj .mj-status {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		padding: 16px 22px;
+		border-radius: 8px;
+		background: #121311;
+		color: #edeee8;
+		font: 500 22px/1 var(--ivr-font-mono);
+		/* No tema escuro o fundo é quase o mesmo preto: a borda segura a faixa. */
+		box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ivr-ink) 22%, transparent);
+	}
+	.mj .mj-tool {
+		color: #ff6a33;
+	}
+	.mj .mj-sep,
+	.mj .mj-soft {
+		color: #a6a89f;
+	}
+	.mj .mj-track {
+		position: relative;
+		width: 260px;
+		height: 16px;
+		border-radius: 3px;
+		background: #34362f;
+		overflow: hidden;
+	}
+	.mj .mj-fill {
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: var(--used);
+		background: #ff6a33;
+		transform-origin: left center;
+	}
+	.mj .mj-note {
+		margin: -4px 0 14px 4px;
+		font: 700 24px/1.2 var(--ivr-font-hand);
+		color: var(--ivr-orange);
+		transform: rotate(-1deg);
+		transform-origin: left center;
+	}
+	.mj .mj-cols {
+		display: grid;
+		grid-template-columns: 1.25fr 1fr;
+		gap: 28px;
+	}
+	.mj .mj-box {
+		padding: 24px 28px 28px;
+		border: 2px solid var(--ivr-ink);
+		border-radius: 8px;
+		background: var(--ivr-paper);
+	}
+	.mj h3 {
+		margin: 0 0 18px;
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.mj dl {
+		display: grid;
+		gap: 16px;
+		margin: 0;
+	}
+	.mj dl > div {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		align-items: baseline;
+	}
+	.mj dt {
+		font: 700 26px/1.2 var(--ivr-font-display);
+	}
+	.mj dd {
+		margin: 0;
+		font-size: 24px;
+		line-height: 1.25;
+	}
+	.mj .mj-unit {
+		margin: 18px 0 0;
+		font-size: 17px;
+		color: var(--ivr-ink-soft);
+	}
+	.mj ul {
+		display: grid;
+		gap: 18px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.mj li {
+		padding-left: 18px;
+		border-left: 4px solid var(--ivr-orange);
+		font-size: 24px;
+		line-height: 1.25;
+	}
+	@keyframes mj-fill {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	/* A janela enche quando o slide fica ativo. */
+	:global(.present) .mj-fill {
+		animation: mj-fill 1800ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .mj-fill {
+			animation: none;
+		}
+	}
+</style>

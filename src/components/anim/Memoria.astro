@@ -1,0 +1,17 @@
+---
+/** A memória do app: um caderninho fora da conversa, copiado para dentro de toda conversa nova. Anda por cliques (stepped.js). */
+import './anim-base.css';
+import './nota-na-janela.css';
+interface Props {
+	memory: string[];
+	ask: string;
+	answer: string;
+	/** [palavra na memória, palavra na resposta]: a ligação marcada entre as duas. */
+	mark?: [string, string];
+}
+const { memory, ask, answer, mark } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-memoria memory={JSON.stringify(memory)} ask={ask} answer={answer} mark={JSON.stringify(mark ?? [])}></ivr-memoria>
+</div>
+<script>import './memoria.js';</script>
