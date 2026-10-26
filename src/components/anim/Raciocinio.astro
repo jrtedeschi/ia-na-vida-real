@@ -130,7 +130,9 @@ const MARCA = { erro: 'leu errado: ela fecha aos domingos', apoio: 'apoiada no e
 		grid-column: 2;
 		font: 700 16px/1.2 var(--ivr-font-hand);
 		font-style: normal;
-		color: var(--ivr-orange);
+		color: var(--ivr-graphite-ink);
+		text-decoration: underline 2px var(--ivr-orange);
+		text-underline-offset: 4px;
 	}
 	.rc-janela li.rc-erro {
 		border: 2.5px solid var(--ivr-orange);
@@ -146,7 +148,9 @@ const MARCA = { erro: 'leu errado: ela fecha aos domingos', apoio: 'apoiada no e
 		box-shadow: 8px 8px 0 var(--ivr-line);
 	}
 	.rc-custo .rc-label {
-		color: var(--ivr-orange);
+		color: var(--ivr-bg);
+		text-decoration: underline 2px var(--ivr-orange);
+		text-underline-offset: 4px;
 	}
 	.rc-custo li {
 		display: grid;
@@ -156,7 +160,7 @@ const MARCA = { erro: 'leu errado: ela fecha aos domingos', apoio: 'apoiada no e
 		font: 500 15px/1 var(--ivr-font-mono);
 	}
 	.rc-n {
-		opacity: 0.6;
+		opacity: 0.85;
 	}
 	.rc-barra {
 		height: 14px;
@@ -188,8 +192,9 @@ const MARCA = { erro: 'leu errado: ela fecha aos domingos', apoio: 'apoiada no e
 		font: 600 19px/1.3 var(--ivr-font-body);
 	}
 	.rc-total b {
-		color: var(--ivr-orange);
 		font-weight: 800;
+		text-decoration: underline 2px var(--ivr-orange);
+		text-underline-offset: 4px;
 	}
 	/* Sequência: cada passo entra na janela e, junto, a barra do que ele relê cresce. */
 	@keyframes rc-in {

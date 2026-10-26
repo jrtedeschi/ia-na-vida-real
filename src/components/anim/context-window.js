@@ -8,7 +8,7 @@ import { IvrAnim, el, svgEl, relRect, drawSpec } from './anim-base.js';
 const MSG_EVERY = 900;
 const MSG_IN = 380;
 const PAD = 12; // folga entre a última mensagem e o fundo da janela
-const OUT_OPACITY = 0.3;
+const OUT_OPACITY = 0.65; // fora da janela: apagado, mas legível para quem enxerga pouco
 
 export class IvrContextWindow extends IvrAnim {
 	build(frame) {

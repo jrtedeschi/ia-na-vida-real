@@ -303,7 +303,7 @@ ivr-progress {
 .ivr-degrau-kicker,
 .ivr-amostra-tema {
 	margin: 0;
-	font: 500 12px/1.3 var(--ivr-font-mono);
+	font: 500 13px/1.3 var(--ivr-font-mono);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--ivr-ink-soft);
@@ -409,7 +409,7 @@ ivr-progress {
 	color: var(--ivr-ink);
 }
 .ivr-degrau-feito {
-	opacity: 0.6;
+	opacity: 0.85;
 }
 @media (max-width: 50rem) {
 	.ivr-escada {

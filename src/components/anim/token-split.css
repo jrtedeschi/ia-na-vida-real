@@ -11,7 +11,6 @@ ivr-token-split {
 	--_orange: var(--ivr-orange, #ff5a1f);
 	--_graphite: var(--ivr-graphite, #5b5f57);
 	--_graphite-ink: var(--ivr-graphite-ink, #4a4d46);
-	--_dot: var(--ivr-dot, rgba(18, 19, 17, 0.13));
 	--_display: var(--ivr-font-display, 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif);
 	--_hand: var(--ivr-font-hand, 'Kalam', 'Comic Sans MS', cursive);
 	--_mono: var(--ivr-font-mono, 'IBM Plex Mono', ui-monospace, Menlo, monospace);
@@ -27,8 +26,6 @@ ivr-token-split .ts-frame {
 	gap: 0.9rem;
 	padding: clamp(16px, 4cqi, 40px);
 	background-color: var(--_bg);
-	background-image: radial-gradient(var(--_dot) 1.5px, transparent 1.5px);
-	background-size: 22px 22px;
 	border: 2px solid var(--_ink);
 	border-radius: 6px;
 }

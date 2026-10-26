@@ -7,8 +7,6 @@ body {
 }
 .reveal-viewport {
 	background-color: var(--ivr-bg);
-	background-image: radial-gradient(var(--ivr-dot) 1.6px, transparent 1.6px);
-	background-size: 24px 24px;
 }
 .reveal {
 	--r-main-font: var(--ivr-font-body);

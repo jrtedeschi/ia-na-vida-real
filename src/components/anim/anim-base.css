@@ -9,8 +9,6 @@
 	container-type: inline-size;
 	padding: clamp(16px, 4cqi, 36px);
 	background-color: var(--ivr-paper);
-	background-image: radial-gradient(var(--ivr-dot) 1.5px, transparent 1.5px);
-	background-size: 22px 22px;
 	border: 2px solid var(--ivr-ink);
 	border-radius: 6px;
 	color: var(--ivr-ink);
