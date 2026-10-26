@@ -2,7 +2,7 @@
 layout: big
 kicker: Agora vocês · 4 minutos
 title: Pagar não desliga o treinamento
-caveat: "No celular, toque na sua foto ou no seu nome. **Claude:** Configurações → Privacidade · **ChatGPT:** Configurações → Controles de dados · **Gemini:** Atividade nos apps Gemini"
+caveat: "No celular, toque na sua foto ou no seu nome. **Claude:** Configurações, Privacidade · **ChatGPT:** Configurações, Controles de dados · **Gemini:** Atividade nos apps Gemini"
 visual: timer
 visualProps:
   minutos: 4
