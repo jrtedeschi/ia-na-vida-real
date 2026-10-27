@@ -11,7 +11,7 @@ export interface Encontro {
 	fim: string;
 	texto: string;
 	/** Material publicado; encontros futuros ainda não têm. */
-	links?: { estudo: string; exercicios: string; slides: string };
+	links?: { estudo?: string; exercicios: string; slides: string };
 }
 
 export const HORARIO = 'das 20h às 21h30, ao vivo';
@@ -31,6 +31,7 @@ export const ENCONTROS: Encontro[] = [
 		dia: 'terça, 27/10',
 		fim: '2026-10-27T21:30:00-03:00',
 		texto: 'A IA usando os seus documentos, as suas instruções salvas e as suas ferramentas. E como manter a conversa no rumo.',
+		links: { exercicios: '/encontro-2/exercicios/', slides: '/encontro-2/slides/' },
 	},
 	{
 		n: 3,
