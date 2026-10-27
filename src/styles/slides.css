@@ -1389,3 +1389,33 @@ body {
 	border-radius: 10px;
 	background: var(--ivr-ink);
 }
+
+/* class: s-pares (layout five): o item à esquerda, em negrito, e o complemento à direita (hábitos, cuidados, exercícios). */
+.s-pares .s-five li {
+	grid-template-columns: 330px 1fr;
+	align-items: center;
+	padding: 14px 22px;
+}
+.s-pares .s-five b {
+	font-size: 27px;
+	line-height: 1.1;
+}
+.s-pares .s-five span {
+	font-size: 22px;
+	line-height: 1.3;
+	color: var(--ivr-ink-soft);
+}
+/* s-largo: títulos compridos (os exercícios) cabem numa linha, e as faixas ficam mais baixas. */
+.s-pares.s-largo .s-five {
+	gap: 8px;
+}
+.s-pares.s-largo .s-five li {
+	grid-template-columns: 450px 1fr;
+	padding: 9px 20px;
+}
+.s-pares.s-largo .s-five b {
+	font-size: 23px;
+}
+.s-pares.s-largo .s-five span {
+	font-size: 20px;
+}
