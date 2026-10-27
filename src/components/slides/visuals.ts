@@ -32,7 +32,8 @@ import ConversaLonga from '../anim/ConversaLonga.astro';
 import MedidorJanela from '../anim/MedidorJanela.astro';
 import Estante from '../anim/Estante.astro';
 import Tropecos from '../anim/Tropecos.astro';
-import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA, RAG } from '../anim/presets';
+import SkillJanela from '../anim/SkillJanela.astro';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA, RAG, SKILL_JANELA } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
 
@@ -68,6 +69,7 @@ export const VISUALS: Record<string, VisualEntry> = {
 	'conversa-longa': { Comp: ConversaLonga, props: CONVERSA_LONGA, slideClass: 's-anim s-tight', steps: 3 },
 	rag: { Comp: Estante, props: RAG, slideClass: 's-anim s-tight', steps: RAG.scenes.length },
 	tropecos: { Comp: Tropecos, props: {}, slideClass: 's-anim s-tight', steps: 5 },
+	skill: { Comp: SkillJanela, props: SKILL_JANELA, slideClass: 's-anim s-tight', steps: 4 },
 	'medidor-janela': { Comp: MedidorJanela, props: {}, slideClass: 's-tight' },
 	mcp: { Comp: Mcp, props: {}, slideClass: 's-anim' },
 	timer: { Comp: Timer, props: {}, slideClass: 's-timer' },

@@ -1,0 +1,19 @@
+---
+/** Como o chat acha e usa uma skill: pastas fechadas e a janela de contexto. Anda por cliques (stepped.js). */
+import './anim-base.css';
+import './nota-na-janela.css';
+import './skill-janela.css';
+interface Props {
+	skills: { name: string; desc: string; files: string[] }[];
+	pick: number;
+	file: number;
+	ask: string;
+	answer: string;
+	rules: string[];
+}
+const { skills, pick, file, ask, answer, rules } = Astro.props;
+---
+<div class="ivr-anim not-content">
+	<ivr-skill-janela skills={JSON.stringify(skills)} pick={pick} file={file} ask={ask} answer={answer} rules={JSON.stringify(rules)}></ivr-skill-janela>
+</div>
+<script>import './skill-janela.js';</script>

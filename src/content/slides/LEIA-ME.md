@@ -102,7 +102,7 @@ items:
 
 Nomes disponíveis em `visual:` (lista em `src/components/slides/visuals.ts`):
 `fragmentos`, `proxima-palavra`, `alucinacao`, `janela-de-contexto`, `quem-e-quem`, `provedores`, `modelos`,
-`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl` (`visualProps: { simples: true }` mostra só o pedido e o painel, sem código), `harness`, `combustivel`, `difusao`, `raciocinio`, `raciocinio-erro`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide), `memoria`, `conversa-longa`, `rag` e `tropecos` (andam por cliques), `medidor-janela`, `timer` (cronômetro; `visualProps: { minutos: 5, fim: "Hora de voltar!" }`; nos exercícios, `sozinho: false` espera o clique e `compacto: true` põe no canto).
+`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl` (`visualProps: { simples: true }` mostra só o pedido e o painel, sem código), `harness`, `combustivel`, `difusao`, `raciocinio`, `raciocinio-erro`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide), `memoria`, `conversa-longa`, `rag` e `tropecos` (andam por cliques), `medidor-janela`, `skill` (como o chat acha e abre uma skill; anda por cliques), `timer` (cronômetro; `visualProps: { minutos: 5, fim: "Hora de voltar!" }`; nos exercícios, `sozinho: false` espera o clique e `compacto: true` põe no canto).
 
 Para trocar o texto de uma animação só neste slide, use `visualProps:`:
 

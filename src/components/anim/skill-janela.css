@@ -1,0 +1,177 @@
+/* Como o chat acha e usa uma skill (skill-janela.js). Janela, balões e rótulos vêm de nota-na-janela.css.
+   O estado de cada passo está aqui, em [data-step]; o JS só desenha a viagem dos arquivos para a janela. */
+ivr-skill-janela {
+	display: block;
+}
+.sj {
+	grid-template-columns: 0.85fr 1.25fr;
+	grid-template-rows: auto auto;
+	align-items: start;
+	column-gap: 32px;
+	row-gap: 14px;
+}
+.sj-shelf {
+	position: relative;
+	display: grid;
+	gap: 10px;
+}
+/* A pasta: aba com o nome e a descrição; os arquivos só aparecem quando ela abre. */
+.sj-folder {
+	position: relative;
+	padding: 10px 14px 10px;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 2px 8px 8px 8px;
+	background: var(--ivr-paper);
+	transition: box-shadow var(--nj-fade), opacity var(--nj-fade);
+}
+.sj-folder::before {
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: -9px;
+	width: 46px;
+	height: 9px;
+	border: 2px solid var(--ivr-ink);
+	border-bottom: 0;
+	border-radius: 5px 5px 0 0;
+	background: var(--ivr-paper);
+}
+.sj-tab b {
+	display: block;
+	font: 600 19px/1.2 var(--ivr-font-mono);
+}
+.sj-tab small {
+	display: block;
+	font-size: 16px;
+	line-height: 1.3;
+	color: var(--ivr-ink-soft);
+}
+.sj-count {
+	display: block;
+	margin-top: 6px;
+	font: 500 13px/1 var(--ivr-font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.sj-files {
+	display: none;
+	margin: 8px 0 0;
+	padding: 8px 0 0;
+	border-top: 1.5px solid var(--ivr-line);
+	list-style: none;
+	gap: 5px;
+}
+.sj-file {
+	padding: 3px 8px;
+	border-radius: 4px;
+	box-shadow: inset 0 0 0 1.5px var(--ivr-line);
+	font: 500 15px/1.3 var(--ivr-font-mono);
+}
+.sj-file.sj-md {
+	font-weight: 600;
+}
+.sj-win {
+	min-height: 25rem;
+	gap: 10px;
+}
+.sj-tags {
+	display: grid;
+	gap: 4px;
+	padding: 8px 12px 10px;
+	border-radius: 6px;
+	background: var(--ivr-bg);
+}
+.sj-kicker {
+	margin-bottom: 2px;
+	font: 500 12px/1 var(--ivr-font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ivr-ink-soft);
+}
+.sj-tag {
+	margin: 0;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 15px;
+	line-height: 1.3;
+	color: var(--ivr-ink-soft);
+	transition: box-shadow var(--nj-fade), color var(--nj-fade);
+}
+.sj-tag b {
+	font-family: var(--ivr-font-mono);
+	color: var(--ivr-ink);
+}
+.sj .nj-msg {
+	font-size: 18px;
+}
+/* O que entra na janela vindo da pasta: borda laranja, texto em tinta. */
+.sj-doc {
+	justify-self: start;
+	max-width: 92%;
+	padding: 8px 14px 10px;
+	border-radius: 4px;
+	box-shadow: inset 0 0 0 2px var(--ivr-orange);
+	background: color-mix(in srgb, var(--ivr-orange) 8%, var(--ivr-paper));
+	font-size: 16px;
+	line-height: 1.35;
+}
+.sj-doc small {
+	display: block;
+	margin-bottom: 3px;
+	font: 600 12px/1 var(--ivr-font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+.sj-doc ol {
+	margin: 0;
+	padding-left: 18px;
+}
+.sj-doc-file span {
+	font-family: var(--ivr-font-mono);
+}
+/* A legenda do passo, embaixo, ocupando as duas colunas. */
+.sj-step {
+	grid-column: 1 / -1;
+	margin: 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+.sj-step span {
+	display: none;
+	text-decoration: underline 3px var(--ivr-orange);
+	text-underline-offset: 6px;
+}
+.sj[data-step='0'] .sj-step [data-at='0'],
+.sj[data-step='1'] .sj-step [data-at='1'],
+.sj[data-step='2'] .sj-step [data-at='2'],
+.sj[data-step='3'] .sj-step [data-at='3'] {
+	display: inline;
+}
+
+/* Passos. 0: só as etiquetas. 1: pedido, etiqueta acesa. 2: pasta aberta, SKILL.md na janela. 3: arquivo e resposta. */
+.sj[data-step='0'] :is(.sj-win .nj-msg, .sj-doc),
+.sj[data-step='1'] :is(.sj-doc, .nj-ia),
+.sj[data-step='2'] :is(.sj-doc-file, .nj-ia) {
+	display: none;
+}
+.sj:not([data-step='0']) .sj-tag.sj-pick {
+	box-shadow: inset 0 0 0 2px var(--ivr-orange);
+	color: var(--ivr-ink);
+}
+.sj:not([data-step='0']) .sj-folder.sj-pick {
+	box-shadow: 0 0 0 3px var(--ivr-orange);
+}
+.sj:not([data-step='0']) .sj-folder:not(.sj-pick) {
+	opacity: 0.6;
+}
+.sj:is([data-step='2'], [data-step='3']) .sj-pick .sj-files {
+	display: grid;
+}
+.sj:is([data-step='2'], [data-step='3']) .sj-pick .sj-count {
+	display: none;
+}
+.sj:is([data-step='2'], [data-step='3']) .sj-pick .sj-md,
+.sj[data-step='3'] .sj-pick .sj-need {
+	box-shadow: inset 0 0 0 2px var(--ivr-orange);
+}

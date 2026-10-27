@@ -165,3 +165,17 @@ export const RAG = {
 		{ ask: OBRA, lit: ['p12', 'p3'], pull: ['p12', 'p3'], answer: 'Pode, das 9h às 12h.', cites: ['p12'], note: '3. depois responde' },
 	] as EstanteScene[],
 };
+
+// E2: como o chat acha e usa uma skill (SkillJanela.astro). Os nomes vêm dos exercícios de skill.
+export const SKILL_JANELA = {
+	skills: [
+		{ name: 'revisor', desc: 'revisa mensagens para clientes antes de eu enviar', files: ['SKILL.md', 'exemplos-de-tom.txt'] },
+		{ name: 'cartaz', desc: 'faz cartazes no estilo da minha loja', files: ['SKILL.md', 'modelo-cartaz.png', 'cores-da-loja.txt'] },
+		{ name: 'resumo', desc: 'resume a minha semana a partir da agenda', files: ['SKILL.md', 'formato-do-resumo.txt'] },
+	],
+	pick: 1,
+	file: 1,
+	ask: 'Faz o cartaz da promoção de sábado',
+	rules: ['Use o modelo da loja', 'Letra grande, sem degradê', 'O preço sempre em destaque'],
+	answer: 'Pronto: cartaz no modelo da loja, com o preço em destaque.',
+};
