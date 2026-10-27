@@ -144,28 +144,6 @@ export interface EstanteScene {
 	note?: string;
 }
 
-// Slide do Gemini Notebook: responde a partir das suas fontes e mostra de onde tirou.
-export const FONTES = {
-	shelf: 'suas fontes',
-	items: [
-		{ id: 'pdf', tag: 'PDF', title: 'Regulamento do condomínio', text: '32 páginas' },
-		{ id: 'link', tag: 'Link', title: 'Site da administradora', text: 'perguntas frequentes' },
-		{ id: 'video', tag: 'Vídeo', title: 'Reunião de outubro', text: '1 hora, transcrita' },
-	],
-	scenes: [
-		{ label: 'Gemini Notebook' },
-		{ label: 'Gemini Notebook', ask: 'Até que horas pode ter obra no sábado?', lit: ['pdf', 'video'] },
-		{
-			label: 'Gemini Notebook',
-			ask: 'Até que horas pode ter obra no sábado?',
-			lit: ['pdf', 'video'],
-			answer: 'Até as 12h. A reunião de outubro manteve esse horário.',
-			cites: ['pdf', 'video'],
-			note: 'mostra de onde tirou',
-		},
-	] as EstanteScene[],
-};
-
 // Slide do RAG: primeiro busca os trechos parecidos, só eles entram na janela, depois responde.
 const REGULAMENTO: EstanteItem[] = [
 	{ id: 'p3', tag: 'p. 3', title: 'Silêncio', text: 'das 22h às 8h, todos os dias' },

@@ -1,6 +1,6 @@
 // <ivr-estante>: uma estante de trechos (ou de fontes) ao lado da janela. Cada passo é uma cena descrita em dados:
 // a pergunta, os trechos que acendem, os que são copiados para a janela e a resposta, com a etiqueta de onde veio.
-// Serve aos slides do capítulo 2: as fontes do Gemini Notebook e a busca do RAG.
+// Serve ao slide da busca do RAG.
 // Atributos: `items` (JSON [{ id, tag, title, text }]), `scenes` (JSON [Cena]), `shelf` (rótulo da estante),
 // `lead` (opcional: uma frase no topo, por exemplo a definição do que a cena mostra).
 // Cena: { label?, ask?, lit?: [id], pull?: [id], answer?, cites?: [id], note? } — cada cena é completa, não um delta.

@@ -32,7 +32,7 @@ import ConversaLonga from '../anim/ConversaLonga.astro';
 import MedidorJanela from '../anim/MedidorJanela.astro';
 import Estante from '../anim/Estante.astro';
 import Tropecos from '../anim/Tropecos.astro';
-import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA, FONTES, RAG } from '../anim/presets';
+import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA, RAG } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
 
@@ -66,7 +66,6 @@ export const VISUALS: Record<string, VisualEntry> = {
 	'pipeline-etl': { Comp: PipelineEtl, props: {}, slideClass: 's-code' },
 	memoria: { Comp: Memoria, props: MEMORIA, slideClass: 's-anim s-tight', steps: 4 },
 	'conversa-longa': { Comp: ConversaLonga, props: CONVERSA_LONGA, slideClass: 's-anim s-tight', steps: 3 },
-	fontes: { Comp: Estante, props: FONTES, slideClass: 's-anim s-tight', steps: FONTES.scenes.length },
 	rag: { Comp: Estante, props: RAG, slideClass: 's-anim s-tight', steps: RAG.scenes.length },
 	tropecos: { Comp: Tropecos, props: {}, slideClass: 's-anim s-tight', steps: 5 },
 	'medidor-janela': { Comp: MedidorJanela, props: {}, slideClass: 's-tight' },
