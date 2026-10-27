@@ -14,7 +14,7 @@ const estado = (n: number) => (!proximo || n < proximo.n ? 'feito' : n === proxi
 				{estado(e.n) === 'proximo' && <span> · próximo</span>}
 				{estado(e.n) === 'feito' && <span> · já foi</span>}
 			</p>
-			<h3>{e.links ? <a href={`${base}${e.links.estudo}`}>{e.titulo}</a> : e.titulo}</h3>
+			<h3>{e.links?.estudo ? <a href={`${base}${e.links.estudo}`}>{e.titulo}</a> : e.titulo}</h3>
 			<p>{e.texto}</p>
 		</li>
 	))}

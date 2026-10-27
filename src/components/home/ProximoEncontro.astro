@@ -7,7 +7,7 @@ import { ENCONTROS, HORARIO, proximoEncontro } from '../../data/curso';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const proximo = proximoEncontro(new Date());
-const ultimoComMaterial = [...ENCONTROS].reverse().find((e) => e.links && e !== proximo);
+const ultimoComMaterial = [...ENCONTROS].reverse().find((e) => e.links?.estudo && e !== proximo);
 ---
 <section class="ivr-proximo not-content" aria-labelledby="proximo-titulo">
 	{proximo ? (
@@ -17,7 +17,7 @@ const ultimoComMaterial = [...ENCONTROS].reverse().find((e) => e.links && e !== 
 			<p class="ivr-proximo-texto">{proximo.texto}</p>
 			{proximo.links ? (
 				<div class="ivr-proximo-acoes">
-					<a class="ivr-btn ivr-btn-main" href={`${base}${proximo.links.estudo}`}>O que preparar e estudar</a>
+					{proximo.links.estudo && <a class="ivr-btn ivr-btn-main" href={`${base}${proximo.links.estudo}`}>O que preparar e estudar</a>}
 					<a class="ivr-btn" href={`${base}${proximo.links.exercicios}`}>Exercícios</a>
 					<a class="ivr-btn" href={`${base}${proximo.links.slides}`} target="_blank" rel="noopener">Slides</a>
 				</div>
