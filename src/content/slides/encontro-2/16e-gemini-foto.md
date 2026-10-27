@@ -1,6 +1,6 @@
 ---
 layout: "demo"
-kicker: "Quem tem Gemini · passo 1, a foto no Nano Banana"
+kicker: "Quem tem Gemini · passo 1, a foto"
 title: "A foto, no Gemini"
 prompt:
   contexto: "Tenho [uma padaria na Rua da Mooca]. Anexei [2 fotos reais da vitrine e do pão]."

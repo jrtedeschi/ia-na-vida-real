@@ -1,6 +1,6 @@
-// <ivr-skill-janela>: como o chat acha e usa uma skill, com a mesma janela das outras animações.
+// <ivr-skill-janela>: como a IA acha e usa uma skill, com a mesma janela das outras animações.
 // À esquerda, as pastas das skills, fechadas: só a etiqueta (nome e descrição) aparece.
-// À direita, a janela de contexto, que já começa com as etiquetas de todas (é tudo o que o chat lê delas).
+// À direita, a janela de contexto, que já começa com as etiquetas de todas (é tudo o que a IA lê delas).
 // Atributos: `skills` (JSON [{ name, desc, files: [arquivo, ...] }]; o primeiro arquivo é o SKILL.md),
 // `pick` (índice da skill que combina), `file` (índice do arquivo que o pedido precisa), `ask`, `answer`,
 // `rules` (JSON [linha do SKILL.md, ...]).
@@ -67,7 +67,7 @@ export class IvrSkillJanela extends IvrStepped {
 		win.append(tags, askMsg, manual, file, answerMsg);
 
 		const notes = el('p', 'sj-step');
-		['O chat lê só as etiquetas.', 'O pedido combina com uma etiqueta.', 'Só agora ele abre a pasta e lê as instruções.', 'Arquivo extra, só o que o pedido precisa.'].forEach((text, i) => {
+		['A IA lê só as etiquetas.', 'O pedido combina com uma etiqueta.', 'Só agora ela abre a pasta e lê as instruções.', 'Arquivo extra, só o que o pedido precisa.'].forEach((text, i) => {
 			const span = el('span', null, text);
 			span.dataset.at = String(i);
 			notes.append(span);

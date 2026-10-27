@@ -6,7 +6,7 @@ items:
   - title: "A conversa"
     text: "A janela e a memória."
   - title: "Seus documentos"
-    text: "Projetos e Gemini Notebook, com os seus arquivos."
+    text: "Projetos: a IA consulta os seus arquivos."
   - title: "Skills"
     text: "O jeito de fazer que você não precisa repetir."
   - title: "Seus aplicativos"
@@ -14,5 +14,5 @@ items:
   - title: "Estudar com IA"
     text: "Usar a IA para te perguntar, não só para responder."
 notes: |
-  Esse é o fio da aula. A IA fica sabendo do que importa para você por quatro caminhos, e a gente vai subindo um degrau por vez: a conversa, os seus documentos, as skills e os seus aplicativos. No fim, uma conversa sobre estudar com IA. E em cada degrau tem um cuidado, que eu mostro na hora. Beleza? Bora.
+  Na semana passada vocês viram que o pedido em 5 partes já carrega contexto: quem você é, qual a situação, o que evitar. Hoje a gente faz esse contexto durar, para não ter que escrever tudo de novo em cada conversa. Esse é o fio da aula. A IA fica sabendo do que importa para você por quatro caminhos, e a gente vai subindo um degrau por vez: a conversa, os seus documentos, as skills e os seus aplicativos. No fim, uma conversa sobre estudar com IA. E em cada degrau tem um cuidado, que eu mostro na hora. Beleza? Bora.
 ---

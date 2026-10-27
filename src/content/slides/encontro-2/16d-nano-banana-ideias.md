@@ -30,7 +30,7 @@ tools:
 notes: |
   Para imagem e vídeo, duas ferramentas que eu uso: o Google Flow, de quem tem conta Google, e o Higgsfield, que junta vários geradores num lugar só. Todas essas imagens aqui eu fiz no Higgsfield. Lembra do submarino amarelo que eu imprimi para o meu filho? Começou numa imagem do Google.
 
-  Quatro jeitos que eu acho legais: deixar a foto do seu produto mais bonita; o mesmo personagem em várias cenas, tipo esse gnomo de uma loja de jardim ou o herói do seu filho; mudar só um pedaço da foto, como ver a parede de outra cor antes de pintar; e a imagem vira vídeo para o status, no Flow ou no Higgsfield. Uma regra só: imagem sem letra no Google, texto no Claude.
+  Quatro jeitos que eu acho legais: deixar a foto do seu produto mais bonita; o mesmo personagem em várias cenas, tipo esse gnomo de uma loja de jardim ou o herói do seu filho; mudar só um pedaço da foto, como ver a parede de outra cor antes de pintar; e a imagem vira vídeo para o status, no Flow ou no Higgsfield. Uma regra só: imagem sem letra no gerador, texto no Claude.
 
   **Bastidor:** as três imagens foram geradas no Higgsfield, com o modelo Nano Banana 2.1 do Google, em 26/10/2026 (o mesmo que roda no Flow e no Gemini); a da sala é uma edição da mesma foto (só a parede), mostrada metade antes e metade depois. O vídeo saiu da foto do bolo, no Grok Video 1.5 Lite, também no Higgsfield; no Gemini, isso se faz no Flow. Outras ideias, se sobrar tempo: aviso do condomínio, banner da fachada, foto antiga da família, antes e depois da reforma. O 2.1 melhorou o texto dentro da imagem, mas ainda erra acento e letra em português.
 
