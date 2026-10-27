@@ -1,17 +1,20 @@
 ---
-layout: "cards"
-title: "Com IA, dá pra pedir de quatro jeitos"
+layout: "photo"
+class: "s-photo-big"
+title: "Com IA, dá pra ir além da tarefa"
+image: ./img/estrategia-mirante.jpg
+alt: "Desenho a grafite: uma mesa cheia de pilhas de tarefas e uma lista de checagem; dela sobe uma escada até um mirante, onde uma pessoa de binóculo olha um vale com vários caminhos. Um deles, traçado em laranja, sobe até o topo da montanha."
 items:
-  - title: "Velocidade"
-    text: "A mesma tarefa, em menos tempo."
-  - title: "Altitude"
-    text: "Peça o resultado, não o passo a passo."
-  - title: "Profundidade"
-    text: "Peça como um especialista do campo faria."
-  - title: "Alcance"
-    text: "Traga o método de um ofício que não é o da tarefa."
+  - "Velocidade: a mesma tarefa, mais rápido"
+  - "Altitude: o resultado, não o passo a passo"
+  - "Profundidade: o rigor do melhor da área"
+  - "Alcance: o método de outro ofício"
 notes: |
-  Até aqui a gente pediu a mesma coisa de sempre, só que mais rápido. E tudo bem, é o primeiro jeito: velocidade. Mas o Felix Rieseberg, que lidera a engenharia do Claude na Anthropic, escreveu um tutorial mostrando outros três jeitos de pedir, e é aí que está o salto. Altitude: em vez do passo a passo, você pede o resultado. Profundidade: você pede como o melhor profissional daquele campo faria. E alcance: você traz o método de um ofício que nem é o da tarefa. Vou mostrar os três.
+  Até aqui a gente usou a IA para fazer tarefas mais rápido. E tudo bem, esse é o primeiro degrau: velocidade. Mas olha a imagem: dá para sair da mesa cheia de tarefas, subir a escada e olhar o mapa inteiro. Lá de cima você vê os caminhos e escolhe para onde ir. É isso que eu quero que vocês levem: a IA não serve só para fazer a tarefa, ela ajuda a pensar a estratégia.
+
+  O Felix Rieseberg, que lidera a engenharia do Claude na Anthropic, separa em quatro jeitos de pedir. Velocidade, a gente já faz. Altitude: em vez do passo a passo, você pede o resultado. Profundidade: você pede como o melhor profissional daquele campo faria. Alcance: você traz o método de um ofício que nem é o da tarefa. Os próximos dois slides mostram como.
+
+  **Bastidor:** imagem gerada no Higgsfield (GPT Image 2.5), em 26/10/2026.
 
   **Fonte:** Felix Rieseberg, "How to Be More Ambitious: A Tutorial for Humans with Models" (https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/).
 ---
