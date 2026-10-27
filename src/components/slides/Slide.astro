@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import Prompt from '../Prompt.astro';
 import SlideItems from './SlideItems.astro';
 import SpineStrip from './SpineStrip.astro';
+import SlideTools from './SlideTools.astro';
 import { getVisual } from './visuals';
 import { inline } from './inline';
 
@@ -53,6 +54,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<h2 set:html={title} />
 				{d.items && <SlideItems layout="photo" items={d.items} fragments={d.fragments} />}
 				{hasBody && <div class="s-sub"><Content /></div>}
+				{d.tools && <SlideTools tools={d.tools} />}
 			</div>
 		) : d.layout === 'ponte' ? (
 			<Fragment>
@@ -85,19 +87,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				{visual && !visual.overlay && <visual.Comp {...visual.props} {...d.visualProps} />}
 				{visual?.steps && Array.from({ length: visual.steps - 1 }, () => <span class="fragment s-step" aria-hidden="true" />)}
 				{hasBody && <div class={bodyClass}><Content /></div>}
-				{d.tools && (
-					<ul class="s-tools">
-						{d.tools.map((t) => (
-							<li><a href={t.href} target="_blank" rel="noopener"><span class="s-tool-logo" aria-hidden="true" style={`--logo: url(${base}${t.logo})`} />{t.name}</a></li>
-						))}
-					</ul>
-				)}
+				{d.tools && <SlideTools tools={d.tools} />}
 				{d.prompt && <Prompt id={`p-${slide.id.replace(/\W/g, '-')}`} {...d.prompt} />}
 				{d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" class="s-image" />}
 			</Fragment>
 		)}
 	</Fragment>
 	{visual?.overlay && <div class:list={['fragment s-overlay', { 's-exit': visual.exit }]}><visual.Comp {...visual.props} {...d.visualProps} /></div>}
+	{d.sideVideo && (
+		<video class="fragment s-side-video" src={`${base}${d.sideVideo.src}`} poster={d.sideVideo.poster && `${base}${d.sideVideo.poster}`} preload="auto" playsinline aria-label={d.sideVideo.alt} />
+	)}
 	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
 	{marker && <p class="s-chapter" aria-hidden="true">{marker}</p>}
 	{d.notes && <aside class="notes" set:html={inline(d.notes.trim()).replace(/\n\s*\n/g, '<br><br>')} />}

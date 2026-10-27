@@ -4,9 +4,12 @@ import { z } from 'astro/zod';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
 
-/** Um item de lista: texto simples, ou título + texto (cartões, números, encontros), com foto opcional (galeria). */
+/**
+ * Um item de lista: texto simples, ou título + texto (cartões, números, encontros), com foto opcional (galeria, cartões).
+ * `video`: caminho em public/ de um vídeo curto sem som (cartões); toca em loop, com a `image` como capa.
+ */
 const item = (image: () => z.ZodTypeAny) =>
-	z.union([z.string(), z.object({ title: z.string(), text: z.string().optional(), image: image().optional(), alt: z.string().optional() })]);
+	z.union([z.string(), z.object({ title: z.string(), text: z.string().optional(), image: image().optional(), video: z.string().optional(), poster: z.string().optional(), alt: z.string().optional() })]);
 
 /** Um slide = um arquivo .md em src/content/slides/<encontro>/. Formato em src/content/slides/LEIA-ME.md. */
 const slides = defineCollection({
@@ -29,6 +32,8 @@ const slides = defineCollection({
 			// foto redonda de quem disse a citação: caminho em public/ (ex.: /img/arvind-jain.jpg)
 			citePhoto: z.string().optional(),
 			image: image().optional(),
+			// vídeo vertical à direita do slide (caminho em public/), que entra no próximo clique e toca com som
+			sideVideo: z.object({ src: z.string(), poster: z.string().optional(), alt: z.string() }).optional(),
 			alt: z.string().optional(),
 			// ferramentas citadas no slide: logo (em public/, pintado na cor do texto), nome e link que abre em outra aba
 			tools: z.array(z.object({ name: z.string(), logo: z.string(), href: z.string().url() })).optional(),

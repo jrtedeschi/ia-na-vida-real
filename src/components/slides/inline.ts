@@ -18,7 +18,7 @@ export function inline(text: string): string {
 		.replace(/\*(.+?)\*/g, '<em>$1</em>');
 }
 
-export type Item = string | { title: string; text?: string; image?: ImageMetadata; alt?: string };
+export type Item = string | { title: string; text?: string; image?: ImageMetadata; video?: string; poster?: string; alt?: string };
 
 export const itemTitle = (item: Item) => (typeof item === 'string' ? item : item.title);
 export const itemText = (item: Item) => (typeof item === 'string' ? undefined : item.text);

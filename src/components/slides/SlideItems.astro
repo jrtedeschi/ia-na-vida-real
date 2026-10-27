@@ -11,6 +11,7 @@ interface Props {
 
 const { layout, items, fragments } = Astro.props;
 const frag = fragments ? 'fragment' : undefined;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const title = (item: Item) => inline(itemTitle(item));
 const text = (item: Item) => inline(itemText(item) ?? '');
 ---
@@ -27,8 +28,18 @@ const text = (item: Item) => inline(itemText(item) ?? '');
 	<ol class="s-flow">{items.map((i) => <li class={frag}><span set:html={title(i)} /></li>)}</ol>
 )}
 {layout === 'cards' && (
-	<div class:list={['s-three', { 's-four': items.length === 4, 's-two': items.length === 2 }]}>
-		{items.map((i) => <div class={frag}><b set:html={title(i)} /><span set:html={text(i)} /></div>)}
+	<div class:list={['s-three', { 's-four': items.length === 4, 's-two': items.length === 2, 's-media': items.some((i) => typeof i !== 'string' && (i.image || i.video)) }]}>
+		{items.map((i) => (
+			<div class={frag}>
+				{typeof i !== 'string' && i.video ? (
+					<video src={`${base}${i.video}`} poster={i.poster && `${base}${i.poster}`} autoplay muted loop playsinline aria-label={i.alt ?? ''} />
+				) : (
+					typeof i !== 'string' && i.image && <Image src={i.image} alt={i.alt ?? ''} widths={[320, 640]} sizes="320px" loading="lazy" />
+				)}
+				<b set:html={title(i)} />
+				<span set:html={text(i)} />
+			</div>
+		))}
 	</div>
 )}
 {layout === 'five' && (

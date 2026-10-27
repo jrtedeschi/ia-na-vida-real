@@ -487,6 +487,31 @@ body {
 .s-four b {
 	font-size: 36px !important;
 }
+/* Cartões com foto ou vídeo em cima: a mídia ocupa a largura do cartão, o texto encolhe. */
+.s-three.s-media > div {
+	padding: 0 0 18px;
+	overflow: hidden;
+	gap: 6px;
+}
+.s-three.s-media > div > :is(img, video) {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	margin-bottom: 8px;
+	border-bottom: 2px solid var(--ivr-ink);
+}
+.s-three.s-media > div > :is(b, span) {
+	padding-inline: 16px;
+}
+.s-three.s-media.s-four b {
+	font-size: 26px !important;
+}
+.s-three.s-media span {
+	font-size: 18px;
+	line-height: 1.3;
+}
 .reveal .md-row {
 	font-size: 22px;
 	padding-block: 8px;
@@ -515,6 +540,24 @@ body {
 }
 .s-photo .s-flow li {
 	font-size: 32px;
+}
+/* class: s-photo-right — a foto fica à direita do texto. */
+.reveal .slides > section.s-photo.s-photo-right {
+	grid-template-columns: 1.2fr 0.8fr;
+}
+.s-photo-right > img {
+	order: 2;
+}
+/* class: s-photo-big — a imagem é o assunto do slide: ela fica com a maior parte da largura. */
+.reveal .slides > section.s-photo.s-photo-big {
+	grid-template-columns: 1.35fr 1fr;
+	gap: 36px !important;
+}
+.s-photo-big h2 {
+	font-size: 48px;
+}
+.s-photo-big .s-flow li {
+	font-size: 24px;
 }
 
 /* Números grandes (layout: numbers) e imagem solta em qualquer slide. */
@@ -1328,4 +1371,21 @@ body {
 	background: currentColor;
 	-webkit-mask: var(--logo) center / contain no-repeat;
 	mask: var(--logo) center / contain no-repeat;
+}
+
+/* sideVideo: vídeo vertical à direita, que entra no clique (o deck dá o play com som). */
+.reveal .slides > section:has(> .s-side-video) {
+	padding-right: 400px !important;
+}
+.s-side-video {
+	position: absolute;
+	right: 76px;
+	top: 50%;
+	height: 600px;
+	aspect-ratio: 9 / 16;
+	translate: 0 -50%;
+	object-fit: cover;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 10px;
+	background: var(--ivr-ink);
 }

@@ -1,0 +1,13 @@
+---
+/** Faixa de ferramentas do slide (`tools:` no .md): logo e nome, cada um abre a ferramenta em outra aba. */
+interface Props {
+	tools: { name: string; logo: string; href: string }[];
+}
+const { tools } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<ul class="s-tools">
+	{tools.map((t) => (
+		<li><a href={t.href} target="_blank" rel="noopener"><span class="s-tool-logo" aria-hidden="true" style={`--logo: url(${base}${t.logo})`} />{t.name}</a></li>
+	))}
+</ul>
