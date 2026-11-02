@@ -57,9 +57,9 @@ Os logos ficam em `public/img/logos/` (do [Simple Icons](https://simpleicons.org
 
 ```md
 tools:
-  - name: "Gemini Notebook"
+  - name: "Gemini (Notebooks)"
     logo: "/img/logos/notebooklm.svg"
-    href: "https://notebooklm.google.com/"
+    href: "https://gemini.google.com/app?hl=pt-BR"
 ```
 
 ## Espinha dorsal
