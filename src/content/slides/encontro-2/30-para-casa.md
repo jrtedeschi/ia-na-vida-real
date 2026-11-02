@@ -7,7 +7,7 @@ items:
   - title: "Me ensine sem dar a resposta"
     text: "A IA te pergunta em vez de responder. Qualquer IA."
   - title: "Da apostila ao teste, sem olhar"
-    text: "Um teste feito do seu material. Gemini Notebook."
+    text: "Um teste feito do seu material. Gemini (Notebooks → Novo notebook)."
   - title: "Um revisor de mensagens só seu"
     text: "Uma skill que revisa antes de você enviar. Claude ou Gemini."
   - title: "Seu primeiro Projeto"
