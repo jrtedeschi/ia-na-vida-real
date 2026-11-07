@@ -1,0 +1,170 @@
+---
+title: 'Encontro 3 · Exercícios'
+description: 'O exercício da aula, cinco para casa e mais três: as três caixas, PDF para planilha, ata, pesquisa com fontes e a palavra-código da família.'
+---
+import Exercise from '../../../components/Exercise.astro';
+import Prompt from '../../../components/Prompt.astro';
+import Progress from '../../../components/Progress.astro';
+
+Nos pedidos, troque o que está entre colchetes pela sua situação. Marque o que deu certo: o progresso fica salvo neste navegador. O item com borda laranja é a conferência que só você pode fazer.
+
+O fio deste encontro: a gente delega a tarefa, não o julgamento. A IA faz o trabalho braçal. Conferir, decidir e assinar continua com a gente.
+
+<Progress />
+
+## Em aula
+
+<Exercise
+	id="e3-caixas-aula" n={0} title="Separe a sua semana nas três caixas" when="Em aula" minutes={5} tool="Grátis · qualquer IA"
+	checks={['Cada tarefa ganhou uma caixa e um motivo', 'Cada tarefa das duas primeiras caixas ganhou um primeiro pedido']}
+	human="Você concorda com a caixa de cada tarefa. Se não concorda, mudou"
+	fail="Ela pôs tudo na caixa 'a IA faz'? Pergunte: em qual destas uma resposta errada me causaria problema? Essa sobe de caixa."
+>
+<p>As três caixas: <strong>a IA faz, você confere</strong> (passar PDF para planilha, resumir, fazer a primeira versão); <strong>a IA ajuda, você decide</strong> (comparar fornecedores, revisar um documento, preparar uma reunião); <strong>só você</strong> (o que você assina, a conversa difícil, a decisão sobre pessoas).</p>
+<Prompt slot="prompt" id="e3-caixas-aula-p"
+	contexto="Eu trabalho como [sua função]. Na semana, eu faço: [liste 5 tarefas]."
+	objetivo="Saber em quais a IA pode me ajudar."
+	referencias="Três caixas: a IA faz e eu confiro; a IA ajuda e eu decido; só eu."
+	restricoes="Só ferramentas grátis. Se não entender uma tarefa, me pergunte antes."
+	formato="Tabela: tarefa, caixa, por quê, um primeiro pedido para testar."
+/>
+</Exercise>
+
+## Para casa
+
+<Exercise
+	id="e3-caixas" n={1} title="Separe a sua semana nas três caixas" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['Você testou o primeiro pedido de uma tarefa da caixa "a IA faz, você confere"', 'O resultado veio no formato que você pediu']}
+	human="Você conferiu o resultado inteiro antes de usar, e anotou quanto tempo levou"
+	fail="O resultado não serviu? Falta contexto. Diga para quem é, o que já existe e um exemplo de como você faria."
+	challenge="Anote qual tarefa dessa caixa se repete toda semana. Ela é candidata a virar rotina no Encontro 4."
+>
+<p>Se você fez o exercício da aula, pegue a tabela. Se não fez, faça agora com o pedido do exercício da aula. Escolha uma tarefa da primeira caixa, a que mais toma o seu tempo, e teste o primeiro pedido numa conversa nova.</p>
+<Prompt slot="prompt" id="e3-caixas-p"
+	contexto="Toda semana eu [faço o resumo das vendas para a minha sócia]."
+	objetivo="Uma primeira versão que eu só precise conferir."
+	referencias="[Cole o material de uma semana, ou um exemplo de como você faz hoje]."
+	restricoes="O que você não tiver certeza, marque com (?). Não invente número."
+	formato="[O mesmo formato que você usa hoje]."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-pdf" n={2} title="Uma pilha de PDFs vira planilha" when="Para casa" minutes={15} tool="Grátis · Claude ou Gemini"
+	checks={['Cada PDF virou uma linha da tabela', 'O campo que ela não conseguiu ler veio como "não achei", e não com um número inventado', 'A tabela foi para uma planilha']}
+	human="Você sorteou três linhas, abriu os PDFs e comparou. Se uma errou, conferiu todas"
+	fail="Ela inventou um valor? Repita a restrição: campo ilegível, escreva 'não achei'. PDF escaneado ou foto torta? Mande um arquivo por vez." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Some você a coluna de valores e compare com o total que a IA deu."
+>
+
+Junte três a dez PDFs do mesmo tipo: notas fiscais, extratos, boletos ou recibos. Antes de enviar, a regra do cartão-postal: nada de CPF, senha ou dado de cliente. Documento do trabalho só na IA que a empresa liberou.
+
+Não tem PDF à mão? Use as notas da aula, inventadas para um mercadinho de mentira: [nota 1](/assets/notas/nota-1-sol-nascente.pdf), [nota 2](/assets/notas/nota-2-serra-azul.pdf) e [nota 3](/assets/notas/nota-3-vale-verde.pdf). A nota 2 tem um número borrado de propósito.
+
+<Prompt slot="prompt" id="e3-pdf-p"
+	contexto="Anexei [3 notas fiscais em PDF] de fornecedores do meu comércio."
+	objetivo="Uma tabela para lançar no controle do mês."
+	referencias="Use só o que está escrito nas notas."
+	restricoes={'Campo ilegível, escreva "não achei". Não invente.'}
+	formato="Tabela: fornecedor, data, número da nota, valor. Na última linha, o total."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-ata" n={3} title="A ata da sua próxima reunião" when="Para casa" minutes={15} tool="Grátis · qualquer IA"
+	checks={['A ata separou decisões, tarefas e dúvidas', 'Cada tarefa tem um responsável e um prazo, ou um aviso de que faltou', 'Nome que ela não reconheceu veio marcado com (?)']}
+	human="Você leu a ata inteira, corrigiu os nomes e só depois mandou"
+	fail="Ela pôs na ata uma decisão que ninguém tomou? Peça: para cada decisão, cole o trecho da transcrição de onde ela saiu."
+	challenge="Mande a ata para uma pessoa que estava na reunião e pergunte se faltou alguma coisa."
+>
+<p>Pode ser a reunião do trabalho, do condomínio, da escola ou da família. Serve a transcrição automática ou as suas anotações à mão, fotografadas. A transcrição erra nome próprio: na nossa aula 2, "Claude" virou "Cloud". Avise todo mundo antes de gravar.</p>
+<p>Não tem reunião à mão? Use a da aula, inventada para o mesmo mercadinho das notas: a <a href="/assets/reuniao/transcricao-reuniao.pdf">transcrição em PDF</a> ou o <a href="/assets/reuniao/transcricao-reuniao.txt">texto para colar</a>. Ela tem nomes mal transcritos e uma decisão que ninguém tomou. Ache os dois.</p>
+<Prompt slot="prompt" id="e3-ata-p"
+	contexto="Esta é a transcrição de [uma reunião de 1 hora] com [8 pessoas]."
+	objetivo="Uma ata para mandar a quem não veio."
+	referencias="[Cole a transcrição ou as suas anotações]"
+	restricoes="Só o que foi dito. Nome que você não reconhecer, marque com (?)."
+	formato="Decisões, tarefas com responsável e prazo, dúvidas em aberto. Meia página."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-pesquisa" n={4} title="Uma pesquisa, três fontes abertas" when="Para casa" minutes={15} tool="Grátis · Gemini"
+	checks={['Você ligou a pesquisa aprofundada (Deep Research) e esperou o relatório', 'Cada número da tabela veio com um link', 'Onde não achou, ela disse que não achou']}
+	human="Você abriu três links, achou o trecho que sustenta cada número e viu quem publicou e quando"
+	fail="O link não abre ou não diz o que ela escreveu? Esse número sai da tabela. Peça uma fonte nova para ele."
+	challenge="Procure uma segunda fonte, fora do relatório, para o número que mais pesa na sua decisão."
+>
+<p>Escolha uma compra ou decisão de verdade: um fornecedor, um eletrodoméstico, uma escola, um plano de saúde. No <a href="https://gemini.google.com/">Gemini</a>, escolha a pesquisa aprofundada antes de mandar o pedido (o botão se chama Deep Research, em inglês mesmo); no grátis tem limite por dia. O relatório leva alguns minutos. Link não é prova: a prova é o trecho dentro da página.</p>
+<Prompt slot="prompt" id="e3-pesquisa-p"
+	contexto="Moro em [Campinas] e quero comprar [uma geladeira frost free para 4 pessoas]."
+	objetivo="Achar 3 opções e comparar preço, consumo de energia e garantia."
+	referencias="Sites das lojas e dos fabricantes, preços de 2026."
+	restricoes="Cada número com link. Se não achar o preço, diga."
+	formato="Tabela comparativa e as 3 fontes principais."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-palavra" n={5} title="A palavra-código da família" when="Para casa" minutes={10} tool="Sem IA nenhuma"
+	checks={['A família escolheu uma palavra que não aparece em rede social', 'Todo mundo sabe a regra: pedido de dinheiro por áudio ou ligação, pergunte a palavra']}
+	human="Você combinou ao vivo ou por ligação, e não por mensagem"
+	challenge="Combine também com quem cuida dos seus pais ou dos seus filhos."
+>
+<p>Este é o mais importante, e não usa IA. Com poucos segundos de áudio dá para imitar a voz de alguém. Se chegar um áudio ou uma ligação com a voz de um parente pedindo Pix com pressa, desligue, ligue de volta para o número que você já tem e pergunte a palavra.</p>
+<p>Escolha uma palavra fácil de lembrar e difícil de adivinhar: nada de nome de bicho de estimação, de rua ou de time. Combine pessoalmente ou numa ligação. Mensagem escrita fica guardada no celular, e celular se perde.</p>
+<p>A mesma desconfiança vale para mensagem de banco: não clique no link da mensagem. Abra o app ou digite o site você mesmo.</p>
+</Exercise>
+
+## Mais para casa
+
+<Exercise
+	id="e3-contrato" n={6} title="O que este contrato me obriga a fazer" when="Para casa" minutes={15} tool="Grátis · Claude, Gemini ou Gemini Notebook"
+	checks={['Cada prazo, multa e obrigação veio com o número da cláusula', 'Onde o documento não diz, ela disse que não diz']}
+	human="Você abriu cada cláusula citada e leu a frase inteira"
+	fail="Ela fez um resumo? Resumo perde o detalhe. Repita: não resuma, liste prazos, multas e obrigações." failHref="/consulta/seguranca-e-privacidade/" failLabel="segurança e privacidade"
+	challenge="Pergunte: o que este contrato me deixa fazer que eu talvez não saiba?"
+>
+<p>Contrato de aluguel, edital, regulamento, convenção do condomínio, termos de um plano. Se você consulta o mesmo documento várias vezes, ponha num Projeto ou no <a href="https://notebooklm.google.com/">Gemini Notebook</a>, como no Encontro 2. Contrato com dado de outras pessoas: tire os nomes e números antes.</p>
+<Prompt slot="prompt" id="e3-contrato-p"
+	contexto="Anexei [o contrato de aluguel do meu apartamento]. Eu sou [o inquilino]."
+	objetivo="Saber o que eu sou obrigado a fazer e o que acontece se eu não fizer."
+	referencias="Só o documento anexado."
+	restricoes="Não resuma. Para cada item, o número da cláusula. Se o documento não falar de algo, diga."
+	formato="Três listas: prazos, multas e obrigações."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-revisa" n={7} title="Uma IA revisa a outra" when="Para casa" minutes={10} tool="Grátis · duas IAs diferentes"
+	checks={['A segunda IA apontou pelo menos um ponto para conferir', 'Cada ponto veio com o trecho exato do texto']}
+	human="Você conferiu na fonte (a lei, o documento, o site oficial) cada ponto que ela apontou"
+	fail="Ela só elogiou? Peça de novo: aja como quem quer achar erro. Se mesmo assim não achar nada, não é prova de que está certo."
+	challenge="Inverta: mande o texto revisado de volta para a primeira IA e veja o que ela contesta."
+>
+<p>Pegue um texto que uma IA fez para você: o resultado do exercício 2, 3 ou 6, um e-mail importante, um parecer. Cole numa IA diferente, numa conversa nova. As duas podem errar igual, principalmente em lei, data e número. A segunda IA mostra onde olhar. Quem confere é você.</p>
+<Prompt slot="prompt" id="e3-revisa-p"
+	contexto="Outra IA escreveu o texto abaixo para [um cliente da minha loja]."
+	objetivo="Achar o que está errado ou sem fonte antes de eu mandar."
+	referencias="[Cole o texto]"
+	restricoes="Não reescreva. Só aponte. Número, data e lei, marque sempre para eu conferir."
+	formato="Lista: o trecho, o problema e onde eu confiro."
+/>
+</Exercise>
+
+<Exercise
+	id="e3-ensaio" n={8} title="Ensaie a apresentação com a IA" when="Para casa" minutes={20} tool="Grátis · Gemini + YouTube"
+	checks={['O Gemini comentou trechos com o minuto do vídeo', 'Você recebeu pelo menos um ponto concreto para mudar']}
+	human="Você assistiu aos trechos que ela apontou e decidiu o que muda e o que fica"
+	fail="Ela não conseguiu ver o vídeo? Confira se ele está como não listado, e não privado. Ou mande um vídeo curto direto do celular."
+	challenge="Grave de novo com as mudanças e peça para comparar as duas versões."
+>
+<p>Grave você apresentando, até no celular: uma reunião, uma aula, um pedido de aumento, um brinde. Suba no YouTube como "não listado" e mande o link para o <a href="https://gemini.google.com/">Gemini</a>. Não listado não é privado: quem tem o link vê. Material sigiloso fica fora.</p>
+<Prompt slot="prompt" id="e3-ensaio-p"
+	contexto="Este é o ensaio da minha apresentação de [10 minutos] para [a diretoria]: [link do vídeo]."
+	objetivo="Saber o que melhorar antes de apresentar de verdade."
+	referencias="Só o vídeo."
+	restricoes="Seja específico, com o minuto do vídeo. Não comente a minha aparência."
+	formato="Onde eu travei, o que ficou confuso e onde falei rápido demais. No máximo 5 pontos."
+/>
+</Exercise>

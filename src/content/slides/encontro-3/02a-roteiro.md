@@ -5,14 +5,14 @@ title: "Como pôr a IA no seu trabalho sem perder o controle?"
 items:
   - title: "Quem decide"
     text: "Delegue a tarefa, não o julgamento."
-  - title: "Escrever e revisar"
-    text: "Textos, e-mails e documentos."
-  - title: "Planilhas"
-    text: "Perguntas sobre os seus números."
-  - title: "Pesquisar a fundo"
-    text: "Pesquisa longa e conferência das fontes."
+  - title: "Documentos"
+    text: "Do PDF para a planilha, conferido."
+  - title: "Reuniões"
+    text: "Da conversa à ata."
+  - title: "Pesquisa"
+    text: "Pesquisa longa, fontes abertas."
   - title: "Golpes"
-    text: "Voz clonada, vídeo falso e mensagem falsa."
+    text: "Voz, vídeo e mensagem falsos."
 notes: |
-  A pergunta do título é o fio da aula.
+  Esse é o caminho de hoje. A pergunta do título é o fio: como a gente põe a IA no trabalho sem perder o controle? Primeiro, o que dá para entregar e o que fica com a gente. Depois três lugares onde a IA economiza horas: documentos, reuniões e pesquisa. E no fim, cinco minutos sobre o outro lado: quando a IA é usada contra a gente.
 ---
