@@ -1,0 +1,89 @@
+---
+/**
+ * Os quatro agentes do Encontro 3 lado a lado, no mesmo desenho do lado escuro da ficha (FichaAgente):
+ * número, nome, a cena do dia a dia em letra de mão e o verbo do que ele faz. Estático; no slide ativo,
+ * os quatro entram em sequência (só CSS).
+ */
+const AGENTS = [
+	{ nome: 'Coordenação', verbo: 'organiza', cena: 'a caixa de entrada que manda no seu dia' },
+	{ nome: 'Criatividade', verbo: 'rascunha', cena: 'a página em branco' },
+	{ nome: 'Clareza', verbo: 'explica', cena: 'o contrato que ninguém lê' },
+	{ nome: 'Treino', verbo: 'ensaia', cena: 'a conversa que você vem adiando' },
+];
+---
+<figure class="qa not-content" role="img" aria-label={`Os quatro agentes de hoje. ${AGENTS.map((a, i) => `${i + 1}: ${a.nome}, que ${a.verbo}: ${a.cena}`).join('. ')}.`}>
+	<ol>
+		{AGENTS.map((a, i) => (
+			<li style={`--i:${i}`}>
+				<span class="qa-n">{String(i + 1).padStart(2, '0')}</span>
+				<b>{a.nome}</b>
+				<span class="qa-verbo">{a.verbo}</span>
+				<span class="qa-cena">{a.cena}</span>
+			</li>
+		))}
+	</ol>
+</figure>
+<style>
+	.qa {
+		margin: 0;
+	}
+	/* `.qa` na frente: o `.reveal ol { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.qa ol {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.qa li {
+		display: grid;
+		align-content: start;
+		gap: 10px;
+		min-height: 330px;
+		padding: 24px 22px 26px;
+		border-radius: 14px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+	}
+	.qa-n {
+		font: 900 64px/0.9 var(--ivr-font-display);
+		letter-spacing: -0.04em;
+		text-decoration: underline 4px var(--ivr-orange);
+		text-underline-offset: 8px;
+	}
+	.qa li b {
+		margin-top: 18px;
+		font: 900 33px/1 var(--ivr-font-display);
+		letter-spacing: -0.035em;
+	}
+	.qa-verbo {
+		font: 500 15px/1 var(--ivr-font-mono);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+	.qa-cena {
+		margin-top: auto;
+		padding-top: 14px;
+		font: 700 27px/1.15 var(--ivr-font-hand);
+		transform: rotate(-1.5deg);
+		transform-origin: left bottom;
+	}
+	@keyframes qa-in {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+	}
+	:global(.present) .qa li {
+		animation: qa-in 450ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(250ms + var(--i) * 280ms);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .qa li {
+			animation: none;
+		}
+	}
+</style>

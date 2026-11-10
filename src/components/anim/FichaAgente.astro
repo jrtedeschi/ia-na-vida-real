@@ -1,0 +1,159 @@
+---
+/**
+ * A ficha de um agente: o nome, a cena do dia a dia que ele resolve, as peças em que ele se apoia e as quatro linhas
+ * que definem o agente (trabalho, ferramenta, saída, limite). Uma por capítulo do Encontro 3, sempre no mesmo desenho.
+ * Estática; no slide ativo, as linhas entram em sequência (só CSS).
+ * No .md: `visual: ficha-agente` + `visualProps: { n, nome, cena, pecas, trabalho, ferramenta, saida, limite }`.
+ */
+interface Props {
+	n: number;
+	nome: string;
+	/** A cena em letra de mão: "a caixa de entrada que manda no seu dia". */
+	cena: string;
+	/** Peças em que este agente se apoia, entre: Pedido, Contexto, Skill, Conector. */
+	pecas: string[];
+	trabalho: string;
+	ferramenta: string;
+	saida: string;
+	limite: string;
+}
+const { n, nome, cena, pecas, trabalho, ferramenta, saida, limite } = Astro.props;
+const ALL = ['Pedido', 'Contexto', 'Skill', 'Conector'];
+const ROWS = [
+	['O trabalho', trabalho],
+	['A ferramenta', ferramenta],
+	['A saída', saida],
+	['O limite', limite],
+] as const;
+const label = `Ficha do agente ${n}, ${nome}: ${cena}. O trabalho: ${trabalho} A ferramenta: ${ferramenta} A saída: ${saida} O limite: ${limite} Peças usadas: ${pecas.join(' e ')}.`;
+---
+<figure class="fa not-content" role="img" aria-label={label}>
+	<div class="fa-id">
+		<span class="fa-n">agente {String(n).padStart(2, '0')} de 04</span>
+		<b class="fa-nome">{nome}</b>
+		<span class="fa-cena">{cena}</span>
+		<ul class="fa-pecas">
+			{ALL.map((p) => <li class:list={[{ 'fa-on': pecas.includes(p) }]}>{p}</li>)}
+		</ul>
+	</div>
+	<dl class="fa-rows">
+		{ROWS.map(([k, v], i) => (
+			<div class:list={[{ 'fa-limite': i === ROWS.length - 1 }]} style={`--i:${i}`}>
+				<dt>{k}</dt>
+				<dd>{v}</dd>
+			</div>
+		))}
+	</dl>
+</figure>
+<style>
+	.fa {
+		display: grid;
+		grid-template-columns: 0.82fr 1.18fr;
+		align-items: stretch;
+		margin: 0;
+		border: 2.5px solid var(--ivr-ink);
+		border-radius: 14px;
+		background: var(--ivr-paper);
+		box-shadow: 8px 8px 0 var(--ivr-line);
+		overflow: hidden;
+	}
+	.fa-id {
+		display: grid;
+		align-content: center;
+		gap: 14px;
+		padding: 30px 30px 32px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+	}
+	.fa-n {
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-decoration: underline 2px var(--ivr-orange);
+		text-underline-offset: 5px;
+	}
+	.fa-nome {
+		font: 900 62px/0.95 var(--ivr-font-display);
+		letter-spacing: -0.04em;
+	}
+	.fa-cena {
+		font: 700 28px/1.15 var(--ivr-font-hand);
+		opacity: 0.9;
+		transform: rotate(-1.5deg);
+		transform-origin: left center;
+	}
+	/* `.fa` na frente: o `.reveal ul, dl { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.fa .fa-pecas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 10px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.fa-pecas li {
+		padding: 7px 11px;
+		border: 1.5px dashed currentColor;
+		border-radius: 6px;
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.04em;
+		opacity: 0.5;
+	}
+	.fa-pecas li.fa-on {
+		border-style: solid;
+		background: var(--ivr-bg);
+		color: var(--ivr-ink);
+		opacity: 1;
+	}
+	.fa .fa-rows {
+		display: grid;
+		grid-template-rows: repeat(4, 1fr);
+		margin: 0;
+	}
+	.fa-rows > div {
+		display: grid;
+		grid-template-columns: 150px 1fr;
+		align-items: center;
+		gap: 18px;
+		padding: 16px 26px;
+		border-top: 1.5px solid var(--ivr-line);
+	}
+	.fa-rows > div:first-child {
+		border-top: 0;
+	}
+	.fa-rows > div.fa-limite {
+		box-shadow: inset 8px 0 0 var(--ivr-orange);
+	}
+	.fa .fa-rows dt {
+		margin: 0;
+		font: 500 14px/1.2 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.fa .fa-rows dd {
+		margin: 0;
+		font: 700 26px/1.2 var(--ivr-font-display);
+		letter-spacing: -0.02em;
+		color: var(--ivr-ink);
+		text-wrap: balance;
+	}
+	@keyframes fa-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	:global(.present) .fa-id > * {
+		animation: fa-in 450ms 150ms both cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	:global(.present) .fa-rows > div {
+		animation: fa-in 400ms both cubic-bezier(0.16, 1, 0.3, 1);
+		animation-delay: calc(550ms + var(--i) * 260ms);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(.present) .fa * {
+			animation: none !important;
+		}
+	}
+</style>

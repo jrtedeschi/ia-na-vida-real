@@ -21,7 +21,7 @@ const slides = defineCollection({
 				.default('big'),
 			title: z.string(),
 			circle: z.string().optional(),
-			chapter: z.number().int().positive().optional(),
+			chapter: z.number().int().nonnegative().optional(),
 			kicker: z.string().optional(),
 			items: z.array(item(image)).optional(),
 			fragments: z.boolean().default(false),

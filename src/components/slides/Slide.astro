@@ -45,7 +45,7 @@ const frag = d.fragments ? 'fragment' : undefined;
 const bodyClass = d.layout === 'bio' ? 's-bio' : 's-sub';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<section class={sectionClass}>
+<section class={sectionClass} data-file={`${slide.id}.md`}>
 	{d.layout === 'photo' && d.image && <Image src={d.image} alt={d.alt ?? ''} loading="lazy" />}
 	<Fragment>
 		{d.layout === 'photo' ? (
@@ -99,5 +99,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	)}
 	{d.caveat && <p class:list={['s-caveat', frag]} set:html={inline(d.caveat)} />}
 	{marker && <p class="s-chapter" aria-hidden="true">{marker}</p>}
-	{d.notes && <aside class="notes" set:html={inline(d.notes.trim()).replace(/\n\s*\n/g, '<br><br>')} />}
+	{/* O nome do arquivo fecha as notas (tecla S): do slide na tela até o .md para editar, sem procurar. */}
+	<aside class="notes" set:html={`${d.notes ? `${inline(d.notes.trim()).replace(/\n\s*\n/g, '<br><br>')}<br><br>` : ''}<small>Arquivo: src/content/slides/${slide.id}.md</small>`} />
 </section>
