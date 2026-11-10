@@ -8,12 +8,12 @@ alt: QR code que abre a página Arquivos da aula do Encontro 3, no site do curso
 items:
   - "Abra o site do curso"
   - "Encontro 3 · [Arquivos da aula](/encontro-3/arquivos/)"
-  - "Toque em Copiar o texto"
-  - "Cole na conversa com a IA"
+  - "Copie o texto ou baixe o PDF"
+  - "Cole ou anexe na conversa com a IA"
 notes: |
   Antes do primeiro agente, uma coisa prática. Todos os arquivos de hoje estão numa página só do site: Encontro 3, Arquivos da aula. Acabei de colar o link no chat, e quem está no computador pode apontar o celular para o código da tela.
 
-  E não precisa baixar nada. Em cada arquivo tem um botão "Copiar o texto". Toca nele, abre a IA e cola na conversa, junto com o pedido. Quem preferir baixar o PDF, também tem.
+  A reunião tem um botão "Copiar o texto": toca nele, abre a IA e cola na conversa, junto com o pedido, sem baixar nada. As notas fiscais são PDF, e para elas tem um arquivo só com as três.
 
   Abre a página agora e deixa numa aba. Manda um 👍 no chat quando abrir.
 

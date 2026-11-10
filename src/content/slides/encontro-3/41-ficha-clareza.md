@@ -2,20 +2,22 @@
 layout: visual
 visual: ficha-agente
 kicker: Agente 3
-title: Ele acha a cláusula, você lê
+title: Ele lê os PDFs, você confere a soma
 visualProps:
   n: 3
   nome: Clareza
-  cena: o contrato que ninguém lê
-  pecas: [Pedido, Contexto]
-  trabalho: Achar prazos, multas e o que você fica obrigado a fazer.
-  ferramenta: O documento, anexado ou guardado num Projeto.
-  saida: Tabela em português simples, com o número da cláusula.
-  limite: Não resume e não inventa. Se o contrato não diz, ele avisa.
+  cena: a pilha de papel
+  pecas: [Pedido, Contexto, Conector]
+  trabalho: Passar o que está nos PDFs para uma tabela só.
+  ferramenta: Os PDFs anexados e, pelo conector, o seu Drive.
+  saida: Uma linha por documento, o total e a planilha pronta.
+  limite: Campo ilegível vira "não achei". Não inventa.
 notes: |
-  A ficha do terceiro. O trabalho: achar os prazos, as multas e as obrigações. A ferramenta é o próprio documento. Se a gente consulta sempre, ele mora num Projeto, como na aula passada. A saída: uma tabela em português simples, e cada linha com o número da cláusula, para a gente achar o lugar.
+  A ficha do terceiro. O trabalho: passar o que está nos PDFs para uma tabela só. Serve para nota fiscal, extrato de banco, boleto, recibo. A ferramenta: os PDFs anexados e, na hora de virar planilha, o conector com o Drive. A saída: uma linha por documento, o total e a planilha pronta.
 
-  O limite aqui tem duas partes. Não resume, porque resumo perde justamente o detalhe que custa dinheiro. E não inventa: se o contrato não fala de um assunto, ele diz que não fala.
+  E o limite: campo que ele não conseguiu ler vira "não achei". Sem isso, a IA preenche o buraco com um número que parece certo.
 
-  Peças: o pedido e o contexto.
+  Esse agente usa três peças: o pedido, o contexto, que são os PDFs, e o conector. Vamos fazer em dois passos: primeiro a tabela, depois a planilha.
+
+  **Fontes:** os três apps aceitam PDF no plano grátis. ChatGPT grátis: até 3 arquivos por dia (help.openai.com, "Uploading files"). Gemini grátis: até 100 MB por arquivo, com limite de uso (support.google.com/gemini, resposta 14903178). Claude grátis: lê arquivos e roda código (claude.com/pricing). Conferido em 03/11/2026.
 ---

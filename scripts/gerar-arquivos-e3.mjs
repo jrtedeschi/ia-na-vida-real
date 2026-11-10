@@ -1,6 +1,6 @@
 /**
  * Arquivos de aula do Encontro 3: o .txt em public/assets/ é a fonte. Daqui saem o PDF (com texto de verdade,
- * títulos marcados e idioma, para leitor de tela e para a IA ler sem OCR), os recortes usados nos slides e o .zip.
+ * títulos marcados e idioma, para leitor de tela e para a IA ler sem OCR), o recorte usado no slide da ata e o .zip.
  * Uso: node scripts/gerar-arquivos-e3.mjs
  * Se o Chromium do Playwright não estiver instalado, o script usa o Google Chrome da máquina.
  */
@@ -15,17 +15,16 @@ const ASSETS = path.join(ROOT, 'public/assets');
 const SLIDE_IMG = path.join(ROOT, 'src/content/slides/encontro-3/img');
 
 /** Linha que abre um bloco (vira <h2> no PDF). */
-const HEADING = /^(E-MAIL \d+|CLÁUSULA \d+ · .+|AGENDA DA SEMANA)$/;
+const HEADING = /^(E-MAIL \d+|CLÁUSULA \d+ · .+|AGENDA DA SEMANA|\d\d:\d\d:\d\d)$/;
 
 const DOCS = [
+	{ txt: 'caixa/caixa-de-entrada.txt' },
+	{ txt: 'contrato/contrato-maquininha.txt' },
 	{
-		txt: 'caixa/caixa-de-entrada.txt',
-		// recorte para o slide: os dois e-mails que pedem pressa ou clique
-		crops: [{ file: 'caixa-armadilhas.png', blocks: ['E-MAIL 4', 'E-MAIL 8'], width: 780, omit: '^(Recebido|Link):', mark: '^ATENÇÃO, ASSISTENTE' }],
-	},
-	{
-		txt: 'contrato/contrato-maquininha.txt',
-		crops: [{ file: 'contrato-clausula-7.png', blocks: ['CLÁUSULA 7 · CANCELAMENTO ANTES DO PRAZO'], width: 560, mark: '^7\\.1\\.' }],
+		// O PDF da reunião imita o documento do Meet e não sai daqui; só o recorte para o slide.
+		txt: 'reuniao/transcricao-reuniao.txt',
+		pdf: false,
+		crops: [{ file: 'reuniao-nomes.png', blocks: ['00:02:30'], width: 700, mark: 'vale ver de|Quintau|Sejairo' }],
 	},
 ];
 
@@ -88,8 +87,8 @@ for (const doc of DOCS) {
 	const html = toHtml(await readFile(txtPath, 'utf8'));
 	const page = await browser.newPage({ deviceScaleFactor: 2 });
 	await page.setContent(html, { waitUntil: 'load' });
-	await page.pdf({ path: txtPath.replace(/\.txt$/, '.pdf'), format: 'A4', tagged: true, outline: true, printBackground: true });
-	for (const crop of doc.crops) {
+	if (doc.pdf !== false) await page.pdf({ path: txtPath.replace(/\.txt$/, '.pdf'), format: 'A4', tagged: true, outline: true, printBackground: true });
+	for (const crop of doc.crops ?? []) {
 		await page.evaluate(({ blocks, omit, mark }) => {
 			document.body.classList.add('recorte');
 			let first = true;

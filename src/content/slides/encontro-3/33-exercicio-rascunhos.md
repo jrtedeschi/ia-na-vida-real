@@ -36,5 +36,5 @@ notes: |
 
   E antes de mandar para o cliente, a conferência: a data é 22/11? Fecha ao meio-dia? O pão das 6h continua? Ela inventou alguma promoção?
 
-  **Bastidor:** cronômetro: clicar quando a turma abrir a IA. A decisão do domingo vem da reunião do mercadinho (arquivo "A reunião da equipe", exercício da ata, para casa). Se alguma versão vier com emoji ou exclamação, é um bom exemplo: a restrição nem sempre pega de primeira, e a gente repete.
+  **Bastidor:** cronômetro: clicar quando a turma abrir a IA. A decisão do domingo vem da reunião do mercadinho, do exercício da ata. Se alguma versão vier com emoji ou exclamação, é um bom exemplo: a restrição nem sempre pega de primeira, e a gente repete.
 ---

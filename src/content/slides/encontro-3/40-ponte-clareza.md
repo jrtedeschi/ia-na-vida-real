@@ -1,8 +1,8 @@
 ---
 layout: ponte
 chapter: 4
-title: E o contrato que ninguém lê?
+title: E a pilha de papel?
 notes: |
-  Terceiro agente: clareza. A Célia vai trocar de maquininha de cartão. Chegou o contrato, doze cláusulas, e a vontade é rolar até o fim e assinar. Quem nunca?
+  Terceiro agente: clareza. Lembra da nota da Serra Azul, que apareceu na reunião com o número borrado? O mercadinho recebe nota fiscal toda semana, cada fornecedor num formato, e alguém passa tudo para a planilha na mão. A Daniella contou que no mercadinho dela é assim. A Regina perguntou no primeiro encontro dos extratos, cada banco de um jeito. É isso aqui.
 ---
-**Até aqui:** organizar e rascunhar. **Agora:** entender antes de assinar.
+**Até aqui:** organizar e rascunhar. **Agora:** a papelada vira planilha.

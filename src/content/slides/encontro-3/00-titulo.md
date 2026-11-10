@@ -3,7 +3,7 @@ layout: title
 circle: "03"
 title: IA no seu trabalho
 notes: |
-  Boa noite, pessoal! Que bom ver vocês de novo. Hoje é um encontro diferente: tem pouca coisa nova. A gente vai pegar tudo o que viu nos dois primeiros encontros, o pedido, o contexto, a skill, o conector, e juntar num ajudante que trabalha para a gente. O nome da moda para isso é agente.
+  Boa noite, pessoal! Que bom ver vocês de novo. Hoje é um encontro diferente: tem pouca coisa nova. A gente vai pegar tudo o que viu nos dois primeiros encontros, o pedido, o contexto, a skill, o conector, e juntar num ajudante que trabalha para a gente: faz a ata da reunião, passa a pilha de nota fiscal para a planilha. O nome da moda para isso é agente.
 
   E vai ser com a mão na massa: são quatro agentes, e vocês montam os quatro aqui, comigo.
 

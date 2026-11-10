@@ -1,42 +1,43 @@
 ---
 title: 'Encontro 3 · Arquivos da aula'
-description: 'A caixa de entrada, o contrato, as notas fiscais e a reunião do Mercadinho Boa Vista: copie o texto ou baixe o arquivo.'
+description: 'A reunião, as notas fiscais, a caixa de entrada e o contrato do Mercadinho Boa Vista: copie o texto ou baixe o arquivo.'
 ---
 import Arquivo from '../../../components/Arquivo.astro';
 
 Tudo o que a gente usa no Encontro 3 está nesta página. É tudo inventado, de um mercadinho de mentira, então pode mandar para a IA sem medo.
 
-**No celular, o caminho mais curto:** toque em **Copiar o texto**, abra a IA e cole na conversa, junto com o pedido. Não precisa baixar nada. No computador, baixe o PDF e arraste para a conversa.
+**No celular, o caminho mais curto:** toque em **Copiar o texto**, abra a IA e cole na conversa, junto com o pedido. Só as notas fiscais precisam ser baixadas, e para elas tem um PDF só com as três. No computador, baixe o PDF e arraste para a conversa.
 
 <a class="ivr-zip" href="/assets/encontro-3-arquivos.zip" download>Baixar tudo de uma vez (.zip)</a>
 
 ## Em aula
 
-<Arquivo id="arq-caixa" title="A caixa de entrada da Célia" uso="Em aula · Coordenação"
-	txt="/assets/caixa/caixa-de-entrada.txt" pdf="/assets/caixa/caixa-de-entrada.pdf">
-<p>Dez e-mails e a agenda da semana da dona do mercadinho. Dois deles pedem pressa. Para o <a href="/encontro-3/exercicios/#e3-caixa-aula">exercício da caixa de entrada</a>.</p>
-</Arquivo>
-
-<Arquivo id="arq-contrato" title="O contrato da maquininha" uso="Em aula · Clareza"
-	txt="/assets/contrato/contrato-maquininha.txt" pdf="/assets/contrato/contrato-maquininha.pdf">
-<p>Doze cláusulas, uma página e meia. Tem multa, renovação automática e uma cobrança que já vem ligada. Para o <a href="/encontro-3/exercicios/#e3-contrato-aula">exercício do contrato</a>.</p>
-</Arquivo>
-
-## Para casa
-
-<Arquivo id="arq-reuniao" title="A reunião da equipe" uso="Para casa · A ata da reunião"
+<Arquivo id="arq-reuniao" title="A reunião da equipe" uso="Em aula · Coordenação"
 	txt="/assets/reuniao/transcricao-reuniao.txt" pdf="/assets/reuniao/transcricao-reuniao.pdf">
-<p>A transcrição de sete minutos de reunião, no formato que o Meet gera, com nomes mal transcritos e uma decisão que ninguém tomou. Para o <a href="/encontro-3/exercicios/#e3-ata">exercício da ata</a>.</p>
+<p>A transcrição de sete minutos de reunião, no formato que o Meet gera, com nomes mal transcritos e uma decisão que ninguém tomou. Para o <a href="/encontro-3/exercicios/#e3-ata-aula">exercício da ata</a>. Aqui, o mais simples é copiar o texto.</p>
 </Arquivo>
 
-<Arquivo id="arq-notas" title="Três notas fiscais" uso="Para casa · PDFs viram planilha"
+<Arquivo id="arq-notas" title="Três notas fiscais" uso="Em aula · Clareza"
 	txt="/assets/notas/notas-plano-b.txt"
 	extras={[
+		{ label: 'As três notas num PDF só', href: '/assets/notas/notas-3-em-1.pdf' },
 		{ label: 'Nota 1 (PDF)', href: '/assets/notas/nota-1-sol-nascente.pdf' },
 		{ label: 'Nota 2, escaneada (PDF)', href: '/assets/notas/nota-2-serra-azul.pdf' },
 		{ label: 'Nota 3 (PDF)', href: '/assets/notas/nota-3-vale-verde.pdf' },
 	]}>
-<p>Três notas de fornecedores. A nota 2 é uma imagem escaneada, com o número borrado de propósito: o exercício é ver se a IA diz "não achei" ou inventa. Por isso, aqui vale baixar os três PDFs. O texto serve de plano B, se o envio de arquivo falhar. Para o <a href="/encontro-3/exercicios/#e3-pdf">exercício dos PDFs</a>.</p>
+<p>Três notas de fornecedores. Baixe <strong>As três notas num PDF só</strong> e anexe na conversa: é um arquivo em vez de três. A nota 2 é uma imagem escaneada, com o número borrado de propósito: o exercício é ver se a IA diz "não achei" ou inventa. O botão de copiar traz o texto do plano B, para o caso de o envio do arquivo falhar. Para o <a href="/encontro-3/exercicios/#e3-pdf-aula">exercício das notas</a>.</p>
+</Arquivo>
+
+## Para casa
+
+<Arquivo id="arq-caixa" title="A caixa de entrada da Célia" uso="Para casa · exercício 7"
+	txt="/assets/caixa/caixa-de-entrada.txt" pdf="/assets/caixa/caixa-de-entrada.pdf">
+<p>Dez e-mails e a agenda da semana da dona do mercadinho. Dois deles pedem pressa, e um traz uma ordem escondida para a IA. Para o <a href="/encontro-3/exercicios/#e3-caixa-aula">exercício da caixa de entrada</a>.</p>
+</Arquivo>
+
+<Arquivo id="arq-contrato" title="O contrato da maquininha" uso="Para casa · exercício 9"
+	txt="/assets/contrato/contrato-maquininha.txt" pdf="/assets/contrato/contrato-maquininha.pdf">
+<p>Doze cláusulas, uma página e meia. Tem multa, renovação automática e uma cobrança que já vem ligada. Para o <a href="/encontro-3/exercicios/#e3-contrato-aula">exercício do contrato</a>.</p>
 </Arquivo>
 
 ## Não consegui anexar
