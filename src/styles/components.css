@@ -468,3 +468,118 @@ ivr-progress {
 	font-weight: 400;
 	color: var(--ivr-orange);
 }
+
+/* ---------- Arquivo de aula (copiar, baixar, ler) ---------- */
+.ivr-arq {
+	display: grid;
+	gap: 16px;
+	margin-block: 1.5rem;
+	padding: 20px 22px 22px;
+	background: var(--ivr-paper);
+	border: 2px solid var(--ivr-ink);
+	border-radius: 6px;
+	color: var(--ivr-ink);
+}
+.ivr-arq-head {
+	display: grid;
+	gap: 8px;
+	justify-items: start;
+}
+.ivr-arq h3 {
+	margin: 0;
+	font: 900 clamp(1.3rem, 3vw, 1.7rem) / 1.1 var(--ivr-font-display);
+	letter-spacing: -0.03em;
+	color: var(--ivr-ink);
+}
+.ivr-arq-sit {
+	color: var(--ivr-ink-soft);
+	line-height: 1.5;
+}
+.ivr-arq-sit p {
+	margin: 0;
+}
+.ivr-arq-acts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+/* Alvo de toque de 44px no celular: é onde a turma mais usa esta página. */
+.ivr-arq button,
+.ivr-arq-btn {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0 18px;
+	border-radius: 999px;
+	font: 600 15px/1 var(--ivr-font-body);
+	letter-spacing: 0.01em;
+	cursor: pointer;
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.ivr-arq button {
+	border: 0;
+	background: var(--ivr-ink);
+	color: var(--ivr-bg);
+}
+.ivr-arq-btn {
+	border: 2px solid var(--ivr-ink);
+	color: var(--ivr-ink);
+	text-decoration: none;
+}
+.ivr-arq button:hover,
+.ivr-arq-btn:hover {
+	box-shadow: 0 0 0 3px var(--ivr-orange);
+}
+.ivr-arq button:active,
+.ivr-arq-btn:active {
+	transform: scale(0.97);
+}
+.ivr-arq button:focus-visible,
+.ivr-arq-btn:focus-visible,
+.ivr-arq summary:focus-visible,
+.ivr-arq pre:focus-visible {
+	outline: 3px solid var(--ivr-orange);
+	outline-offset: 2px;
+}
+.ivr-arq summary {
+	cursor: pointer;
+	font: 600 15px/1.4 var(--ivr-font-body);
+	padding-block: 6px;
+}
+.ivr-arq summary small {
+	font-weight: 400;
+	color: var(--ivr-ink-soft);
+}
+.ivr-arq pre {
+	margin: 10px 0 0;
+	padding: 16px;
+	max-height: 60vh;
+	overflow: auto;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	font: 400 15.5px/1.6 var(--ivr-font-body);
+	background: var(--ivr-bg);
+	border-radius: 4px;
+	box-shadow: inset 0 0 0 1px var(--ivr-line);
+	color: var(--ivr-ink);
+}
+.ivr-zip {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0 18px;
+	border: 2px solid var(--ivr-ink);
+	border-radius: 999px;
+	font: 600 15px/1 var(--ivr-font-body);
+	color: var(--ivr-ink);
+	text-decoration: none;
+}
+.ivr-zip:hover {
+	box-shadow: 0 0 0 3px var(--ivr-orange);
+}
+@media (prefers-reduced-motion: reduce) {
+	.ivr-arq button,
+	.ivr-arq-btn {
+		transition: none;
+	}
+}

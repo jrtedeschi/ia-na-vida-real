@@ -33,6 +33,9 @@ import MedidorJanela from '../anim/MedidorJanela.astro';
 import Estante from '../anim/Estante.astro';
 import Tropecos from '../anim/Tropecos.astro';
 import SkillJanela from '../anim/SkillJanela.astro';
+import Agente from '../anim/Agente.astro';
+import FichaAgente from '../anim/FichaAgente.astro';
+import QuatroAgentes from '../anim/QuatroAgentes.astro';
 import { TOKEN, NEXT_WORD, HALLUCINATION, CONTEXT_WINDOW, EVOLUTION, TRANSFORMER, PROMPT_ART, MUNDO_NOVO, MEMORIA, CONVERSA_LONGA, RAG, SKILL_JANELA } from '../anim/presets';
 
 const PLAYED = { trigger: 'manual', hideCaption: true } as const;
@@ -72,6 +75,9 @@ export const VISUALS: Record<string, VisualEntry> = {
 	skill: { Comp: SkillJanela, props: SKILL_JANELA, slideClass: 's-anim s-tight', steps: 4 },
 	'medidor-janela': { Comp: MedidorJanela, props: {}, slideClass: 's-tight' },
 	mcp: { Comp: Mcp, props: {}, slideClass: 's-anim' },
+	agente: { Comp: Agente, props: {}, slideClass: 's-code', steps: 5 },
+	'quatro-agentes': { Comp: QuatroAgentes, props: {}, slideClass: 's-code' },
+	'ficha-agente': { Comp: FichaAgente, props: {}, slideClass: 's-code' },
 	timer: { Comp: Timer, props: {}, slideClass: 's-timer' },
 	submarino: { Comp: Submarino, props: {}, slideClass: '', overlay: true, exit: true },
 	'mundo-novo': { Comp: MundoNovo, props: { ...MUNDO_NOVO }, slideClass: 's-mundo', overlay: true },

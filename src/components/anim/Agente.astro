@@ -1,0 +1,170 @@
+---
+/**
+ * Um agente é o pedido com as outras peças em volta. Cinco encaixes numa fileira: o pedido (E1), o contexto, a skill
+ * e o conector (E2) e o limite (hoje). Cada clique do apresentador encaixa uma peça; no último, a barra "agente".
+ * Só CSS: o passo é o número de fragmentos `.s-step` visíveis no slide (visuals.ts, `steps: 5`).
+ * Fora do deck, na impressão e sem movimento, mostra tudo encaixado.
+ */
+const PIECES = [
+	{ when: 'Encontro 1', name: 'Pedido', what: 'o trabalho', like: 'o que fazer' },
+	{ when: 'Encontro 2', name: 'Contexto', what: 'os documentos', like: 'o que precisa saber' },
+	{ when: 'Encontro 2', name: 'Skill', what: 'o jeito da casa', like: 'como a gente faz aqui' },
+	{ when: 'Encontro 2', name: 'Conector', what: 'as chaves', like: 'onde ler e mexer' },
+	{ when: 'Hoje', name: 'Limite', what: 'o combinado', like: 'o que não faz sem você' },
+];
+---
+<figure class="ag not-content" role="img" aria-label="Um agente de IA é montado com cinco peças, como quem treina um ajudante novo. O pedido diz o trabalho. O contexto são os documentos que ele precisa conhecer. A skill é o jeito da casa. O conector são as chaves: onde ele pode ler e mexer. E o limite é o combinado: o que ele não faz sem você. As quatro primeiras vêm dos encontros 1 e 2; o limite é a peça de hoje.">
+	<ol class="ag-row">
+		{PIECES.map((p, i) => (
+			<li class:list={['ag-piece', { 'ag-limit': i === PIECES.length - 1 }]} data-i={i}>
+				<span class="ag-when">{p.when}</span>
+				<b>{p.name}</b>
+				<span class="ag-what">{p.what}</span>
+				<span class="ag-like">{p.like}</span>
+			</li>
+		))}
+	</ol>
+	<p class="ag-sum"><span>Tudo junto</span><b>um agente</b><span>trabalha em vários passos e devolve para você conferir</span></p>
+	<figcaption class="ag-note" aria-hidden="true">é como treinar um ajudante novo</figcaption>
+</figure>
+<style>
+	.ag {
+		position: relative;
+		display: grid;
+		gap: 22px;
+		margin: 0;
+		padding-bottom: 52px;
+	}
+	/* `.ag` na frente: o `.reveal ol, p { margin: 0 }` do deck tem mais peso que o estilo do componente. */
+	.ag .ag-row {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 14px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.ag-piece {
+		display: grid;
+		align-content: start;
+		gap: 8px;
+		min-height: 208px;
+		padding: 18px 16px 20px;
+		border: 2.5px solid var(--ivr-ink);
+		border-radius: 10px;
+		background: var(--ivr-paper);
+		box-shadow: 6px 6px 0 var(--ivr-line);
+		transition:
+			opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.ag-piece.ag-limit {
+		border-color: var(--ivr-orange);
+	}
+	.ag-when {
+		font: 500 13px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ivr-ink-soft);
+	}
+	.ag-piece b {
+		font: 900 34px/1 var(--ivr-font-display);
+		letter-spacing: -0.03em;
+		color: var(--ivr-ink);
+	}
+	.ag-what {
+		font: 700 24px/1.1 var(--ivr-font-hand);
+		color: var(--ivr-graphite-ink);
+	}
+	.ag-like {
+		margin-top: auto;
+		padding-top: 10px;
+		border-top: 1.5px dashed var(--ivr-graphite);
+		font: 500 19px/1.25 var(--ivr-font-body);
+		color: var(--ivr-ink);
+	}
+	.ag .ag-sum {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 6px 16px;
+		margin: 0;
+		padding: 18px 24px;
+		border-radius: 10px;
+		background: var(--ivr-ink);
+		color: var(--ivr-bg);
+		font: 500 22px/1.2 var(--ivr-font-body);
+		transition:
+			opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.ag-sum span:first-child {
+		font: 500 14px/1 var(--ivr-font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.ag-sum b {
+		font: 900 40px/1 var(--ivr-font-display);
+		letter-spacing: -0.03em;
+		text-decoration: underline 3px var(--ivr-orange);
+		text-underline-offset: 6px;
+	}
+	.ag .ag-note {
+		position: absolute;
+		right: 4px;
+		bottom: 0;
+		font: 700 28px/1.1 var(--ivr-font-hand);
+		color: var(--ivr-graphite-ink);
+		transform: rotate(-2deg);
+		transition: opacity 400ms;
+	}
+
+	/* No deck: a peça ainda não encaixada é só o contorno tracejado do encaixe. */
+	:global(.reveal) .ag-piece:not([data-i='0']) {
+		opacity: 0.28;
+		transform: translateY(10px);
+		border-style: dashed;
+		box-shadow: none;
+	}
+	:global(.reveal) .ag-piece:not([data-i='0']) > * {
+		visibility: hidden;
+	}
+	:global(.reveal) .ag-sum,
+	:global(.reveal) .ag-note {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	/* Passo n = n fragmentos `.s-step` visíveis. */
+	:global(.reveal section:has(> .s-step.visible)) .ag-piece[data-i='1'],
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='2'],
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='3'],
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='4'] {
+		opacity: 1;
+		transform: none;
+		border-style: solid;
+		box-shadow: 6px 6px 0 var(--ivr-line);
+	}
+	:global(.reveal section:has(> .s-step.visible)) .ag-piece[data-i='1'] > *,
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='2'] > *,
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='3'] > *,
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-piece[data-i='4'] > * {
+		visibility: visible;
+	}
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-sum {
+		opacity: 1;
+		transform: none;
+		transition-delay: 350ms;
+	}
+	:global(.reveal section:has(> .s-step.visible ~ .s-step.visible ~ .s-step.visible ~ .s-step.visible)) .ag-note {
+		opacity: 1;
+		transform: rotate(-2deg);
+		transition-delay: 700ms;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.ag-piece,
+		.ag .ag-sum,
+		.ag .ag-note {
+			transition: none;
+		}
+	}
+</style>

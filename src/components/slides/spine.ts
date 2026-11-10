@@ -13,7 +13,7 @@ export function withChapters(slides: SlideEntry[]) {
 	let chapter = 0;
 	return slides.map((slide) => {
 		if (slide.data.layout === 'roteiro') chapter = 1;
-		if (slide.data.chapter) chapter = slide.data.chapter; // ponte ou qualquer slide que abre capítulo sem ponte
+		if (slide.data.chapter !== undefined) chapter = slide.data.chapter; // ponte, slide que abre capítulo sem ponte, ou 0 para o fecho
 		return { slide, chapter, spine };
 	});
 }

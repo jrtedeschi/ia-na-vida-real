@@ -1,0 +1,71 @@
+CONTRATO DE LOCAÇÃO DE MAQUININHA DE CARTÃO
+DOCUMENTO FICTÍCIO, CRIADO PARA AULA. Empresas, valores e condições inventados. Sem valor legal.
+
+CONTRATADA: PagaJá Meios de Pagamento Ltda. (fictícia), CNPJ 00.000.004/0001-00.
+CONTRATANTE: Mercadinho Boa Vista (fictício), representado por Célia Ramos.
+Data de assinatura: 16/11/2026.
+
+CLÁUSULA 1 · OBJETO
+
+A CONTRATADA aluga à CONTRATANTE 2 (duas) maquininhas de cartão, modelo PJ-200, com bobina e chip de dados.
+
+CLÁUSULA 2 · PRAZO
+
+2.1. Este contrato vale por 12 (doze) meses, contados de 01/12/2026.
+2.2. Ao fim do prazo, o contrato se renova sozinho por mais 12 (doze) meses, nas mesmas condições, se a CONTRATANTE não avisar por escrito, com pelo menos 60 (sessenta) dias de antecedência, que não quer renovar.
+
+CLÁUSULA 3 · MENSALIDADE
+
+3.1. A mensalidade é de R$ 59,90 (cinquenta e nove reais e noventa centavos) por maquininha, cobrada todo dia 5.
+3.2. A maquininha que vender mais de R$ 8.000,00 (oito mil reais) no mês fica isenta da mensalidade daquele mês.
+
+CLÁUSULA 4 · TAXAS POR VENDA
+
+4.1. Débito: 1,49% do valor da venda.
+4.2. Crédito à vista: 3,19%.
+4.3. Crédito parcelado de 2 a 6 vezes: 4,59%.
+4.4. Crédito parcelado de 7 a 12 vezes: 5,29%.
+
+CLÁUSULA 5 · PRAZO DE RECEBIMENTO
+
+5.1. Vendas no débito caem na conta da CONTRATANTE em 1 (um) dia útil.
+5.2. Vendas no crédito caem em 30 (trinta) dias corridos.
+5.3. A antecipação automática das vendas no crédito vem LIGADA. Com ela, o dinheiro cai em 1 (um) dia útil, com desconto de 2,9% ao mês sobre o valor antecipado, além das taxas da Cláusula 4.
+5.4. Para desligar a antecipação automática, a CONTRATANTE deve pedir pelo aplicativo. O pedido vale a partir do mês seguinte.
+
+CLÁUSULA 6 · REAJUSTE
+
+6.1. A mensalidade é reajustada uma vez por ano pelo IPCA.
+6.2. A CONTRATADA pode alterar as taxas da Cláusula 4 a qualquer momento, com aviso por e-mail 30 (trinta) dias antes.
+
+CLÁUSULA 7 · CANCELAMENTO ANTES DO PRAZO
+
+7.1. Se a CONTRATANTE cancelar antes do fim dos 12 (doze) meses, paga multa de 50% (cinquenta por cento) da soma das mensalidades que faltam, de todas as maquininhas.
+7.2. O pedido de cancelamento deve ser feito por escrito, com 30 (trinta) dias de antecedência.
+
+CLÁUSULA 8 · DEVOLUÇÃO DOS EQUIPAMENTOS
+
+8.1. Ao fim do contrato, a CONTRATANTE devolve as maquininhas em até 10 (dez) dias corridos.
+8.2. Depois desse prazo, paga R$ 15,00 (quinze reais) por dia de atraso, por maquininha.
+8.3. Em caso de perda, roubo ou dano por mau uso, a CONTRATANTE paga R$ 480,00 (quatrocentos e oitenta reais) por maquininha.
+
+CLÁUSULA 9 · OBRIGAÇÕES DA CONTRATANTE
+
+9.1. Manter o cadastro atualizado.
+9.2. Guardar os comprovantes de venda por 18 (dezoito) meses.
+9.3. Avisar a CONTRATADA de qualquer defeito em até 48 (quarenta e oito) horas.
+9.4. Não usar as maquininhas para vendas de outras empresas ou pessoas.
+
+CLÁUSULA 10 · VENDA CONTESTADA
+
+10.1. Se o cliente contestar uma compra na operadora do cartão, o valor é descontado da CONTRATANTE.
+10.2. A CONTRATANTE tem 7 (sete) dias corridos, contados do aviso, para enviar o comprovante da venda. Sem o comprovante, o desconto é definitivo.
+
+CLÁUSULA 11 · SUPORTE
+
+11.1. O atendimento funciona de segunda a sábado, das 8h às 20h.
+11.2. A maquininha com defeito é trocada em até 5 (cinco) dias úteis.
+
+CLÁUSULA 12 · FORO
+
+Fica eleito o foro da comarca da sede da CONTRATADA para resolver qualquer questão sobre este contrato.

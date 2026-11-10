@@ -1,0 +1,44 @@
+---
+/**
+ * Um arquivo de aula, com três jeitos de pegar: copiar o texto (o mais curto no celular), baixar o PDF ou o .txt.
+ * `txt` e `pdf` são caminhos dentro de public/ (ex.: /assets/caixa/caixa-de-entrada.txt). O texto do .txt entra na
+ * página na hora do build, para o botão de copiar e para quem quer ler antes de baixar.
+ */
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+
+interface Props {
+	id: string;
+	title: string;
+	/** Onde o arquivo é usado: "Em aula · Coordenação", "Para casa · exercício 6". */
+	uso: string;
+	txt?: string;
+	pdf?: string;
+	/** Outros arquivos do mesmo material (ex.: as três notas em PDF). */
+	extras?: { label: string; href: string }[];
+}
+const { id, title, uso, txt, pdf, extras = [] } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const text = txt ? (await readFile(path.join(process.cwd(), 'public', txt), 'utf8')).trim() : undefined;
+const words = text ? text.split(/\s+/).length : 0;
+---
+<article class="ivr-arq not-content" id={id}>
+	<div class="ivr-arq-head">
+		<span class="ivr-tag">{uso}</span>
+		<h3>{title}</h3>
+		<div class="ivr-arq-sit"><slot /></div>
+	</div>
+	<div class="ivr-arq-acts">
+		{text && <ivr-copy data-target={`${id}-texto`}><button type="button">Copiar o texto</button></ivr-copy>}
+		{pdf && <a class="ivr-arq-btn" href={`${base}${pdf}`} download>Baixar o PDF</a>}
+		{txt && <a class="ivr-arq-btn" href={`${base}${txt}`} download>Baixar o texto (.txt)</a>}
+		{extras.map((e) => <a class="ivr-arq-btn" href={`${base}${e.href}`} download>{e.label}</a>)}
+	</div>
+	{text && (
+		<details>
+			<summary>Ler aqui, sem baixar <small>({words} palavras)</small></summary>
+			<pre id={`${id}-texto`} data-copy={text} tabindex="0">{text}</pre>
+		</details>
+	)}
+</article>
+<script>import './ivr-elements';</script>

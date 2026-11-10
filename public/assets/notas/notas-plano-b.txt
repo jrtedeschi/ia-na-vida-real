@@ -1,0 +1,23 @@
+DOCUMENTOS FICTÍCIOS, CRIADOS PARA AULA
+
+Distribuidora Sol Nascente Ltda. · CNPJ 00.000.001/0001-00 (fictício)
+Nota fiscal nº 004.512 · série 1 · emissão 03/11/2026
+- Refrigerante cola 2 L: 24 UN x R$ 7,90 = R$ 189,60
+- Água mineral 500 ml: 48 UN x R$ 1,60 = R$ 76,80
+- Suco de uva 1 L: 12 UN x R$ 9,50 = R$ 114,00
+Valor total da nota: R$ 380,40
+
+Laticínios Serra Azul Ltda. · CNPJ 00.000.002/0001-00 (fictício)
+Nota fiscal nº [ilegível] · série 1 · emissão 04/11/2026
+- Leite integral 1 L: 36 UN x R$ 4,89 = R$ 176,04
+- Queijo muçarela: 5 KG x R$ 39,90 = R$ 199,50
+- Iogurte natural 170 g: 30 UN x R$ 2,45 = R$ 73,50
+Valor total da nota: R$ 449,04
+
+Hortifruti Vale Verde ME · CNPJ 00.000.003/0001-00 (fictício)
+Nota fiscal nº 000.931 · série 2 · emissão 05/11/2026
+- Banana prata: 18 KG x R$ 5,49 = R$ 98,82
+- Tomate: 12 KG x R$ 7,80 = R$ 93,60
+- Alface crespa: 20 UN x R$ 2,50 = R$ 50,00
+- Cebola: 10 KG x R$ 4,20 = R$ 42,00
+Valor total da nota: R$ 284,42

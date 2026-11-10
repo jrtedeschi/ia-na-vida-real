@@ -47,7 +47,11 @@ export default defineConfig({
 				},
 				{
 					label: 'Encontro 3 · IA no seu trabalho',
-					items: [{ label: 'Slides', link: '/encontro-3/slides/', attrs: { target: '_blank' } }],
+					items: [
+						{ label: 'Exercícios', link: '/encontro-3/exercicios/' },
+						{ label: 'Arquivos da aula', link: '/encontro-3/arquivos/' },
+						{ label: 'Slides', link: '/encontro-3/slides/', attrs: { target: '_blank' } },
+					],
 				},
 				{
 					label: 'Encontro 4 · Sua rotina com IA',

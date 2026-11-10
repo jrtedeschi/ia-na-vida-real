@@ -2,8 +2,11 @@
 
 Cada slide é um arquivo `.md` em `encontro-N/`. O número no começo do nome dá a ordem.
 
+- **Achar o arquivo de um slide:** no modo apresentador (tecla S), o caminho do `.md` aparece no fim das notas.
 - **Mudar texto:** abra o arquivo e troque as palavras.
 - **Reordenar:** troque o número do arquivo. Para pôr um slide entre o 03 e o 04, use `03a-...md`.
+- **Nome por capítulo (Encontro 3):** o primeiro dígito é o capítulo. `0x` abertura, `1x` capítulo 1, `2x` capítulo 2, até `7x`, o fecho. Slide novo no capítulo 2 entra como `26-...md`, sem renumerar o resto.
+- **Tirar do deck sem perder:** mova o arquivo para `src/content/slides-arquivo/encontro-N/`. Essa pasta fica fora do deck (lá está o Encontro 3 antigo: documentos, reuniões, pesquisa e golpes).
 - **Esconder sem apagar:** `hidden: true`.
 - **Imagens:** ponha o arquivo em `encontro-N/img/` e use `image: ./img/nome.jpg` + `alt:` (descrição da imagem).
 - **Notas do apresentador** (tecla S): campo `notes:`.
@@ -47,6 +50,8 @@ Notas longas: `notes: |` e o texto na linha de baixo, com dois espaços na frent
 | `end` | Encerramento | `title: "{site}"` mostra o endereço do site |
 | `roteiro` | O fio da aula: lista os capítulos | `items:` com `title` (nome do capítulo) e `text` |
 | `ponte` | Abre um capítulo, com o mapa no topo | `chapter:` (número), título = a pergunta do capítulo, texto = "Até aqui / Agora" |
+
+No fecho, `chapter: 0` num slide tira o marcador de capítulo do canto dali em diante.
 
 Campos que servem em qualquer layout: `kicker:` (linha pequena acima do título), `caveat:` (observação no fim),
 `citeLogo:` (logo ao lado do `cite:`, arquivo em `public/`, pintado na cor do texto), `citePhoto:` (foto redonda de quem disse),
@@ -102,7 +107,7 @@ items:
 
 Nomes disponíveis em `visual:` (lista em `src/components/slides/visuals.ts`):
 `fragmentos`, `proxima-palavra`, `alucinacao`, `janela-de-contexto`, `quem-e-quem`, `provedores`, `modelos`,
-`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl` (`visualProps: { simples: true }` mostra só o pedido e o painel, sem código), `harness`, `combustivel`, `difusao`, `raciocinio`, `raciocinio-erro`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide), `memoria`, `conversa-longa`, `rag` e `tropecos` (andam por cliques), `medidor-janela`, `skill` (como o chat acha e abre uma skill; anda por cliques), `timer` (cronômetro; `visualProps: { minutos: 5, fim: "Hora de voltar!" }`; nos exercícios, `sozinho: false` espera o clique e `compacto: true` põe no canto).
+`feita-com-um-pedido`, `evolucao`, `por-dentro-do-modelo`, `mundo-novo` (abre no clique, cobrindo o slide), `pipeline-etl` (`visualProps: { simples: true }` mostra só o pedido e o painel, sem código), `harness`, `combustivel`, `difusao`, `raciocinio`, `raciocinio-erro`, `vida-melhor`, `tarefas-fundamentos`, `submarino` (saída do slide), `memoria`, `conversa-longa`, `rag` e `tropecos` (andam por cliques), `medidor-janela`, `skill` (como o chat acha e abre uma skill; anda por cliques), `mcp` (a figura dos conectores, com chaves que ligam e desligam), `agente` (as cinco peças que montam um agente; anda por cliques), `quatro-agentes` (os quatro agentes do Encontro 3 lado a lado), `ficha-agente` (a ficha de um agente; `visualProps: { n, nome, cena, pecas, trabalho, ferramenta, saida, limite }`), `timer` (cronômetro; `visualProps: { minutos: 5, fim: "Hora de voltar!" }`; nos exercícios, `sozinho: false` espera o clique e `compacto: true` põe no canto).
 
 Para trocar o texto de uma animação só neste slide, use `visualProps:`:
 
@@ -119,3 +124,11 @@ visualProps:
 
 Animação nova: peça ao Claude ("crie uma animação de X para o slide 12"). Ele cria o componente em
 `src/components/anim/`, registra o nome em `visuals.ts` e põe `visual: <nome>` no slide.
+
+## Arquivos de aula
+
+Os arquivos que a turma usa (caixa de entrada, contrato, notas, reunião) ficam em `public/assets/` e aparecem na página
+`src/content/docs/encontro-3/arquivos.mdx`, cada um num cartão `<Arquivo>` com três botões: copiar o texto, baixar o PDF e baixar o `.txt`.
+
+O `.txt` é a fonte. Mudou o texto? Rode `node scripts/gerar-arquivos-e3.mjs`: ele refaz o PDF (com texto de verdade e títulos marcados),
+os recortes usados nos slides (`encontro-3/img/caixa-armadilhas.png` e `contrato-clausula-7.png`) e o `.zip` com tudo.
